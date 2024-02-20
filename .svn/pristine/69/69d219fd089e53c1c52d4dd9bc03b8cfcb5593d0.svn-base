@@ -1,0 +1,1863 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Excel_전환" xml:space="preserve">
+    <value>ຊອກຫາການຈັດຕັ້ງ</value>
+  </data>
+  <data name="Last_Name" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="SN_관련" xml:space="preserve">
+    <value>ຊື່ບໍລິສັດ / ຊື່ຮ້ານ</value>
+  </data>
+  <data name="가용_수량" xml:space="preserve">
+    <value>ລົງທະບຽນຄືນເງິນທີ່ຄືນສິນຄ້າ</value>
+  </data>
+  <data name="가입인원" xml:space="preserve">
+    <value>ໃຊ້/ບໍ່ໃຊ້</value>
+  </data>
+  <data name="가입일" xml:space="preserve">
+    <value>ວັນທີຊອກຫາ</value>
+  </data>
+  <data name="개별PV" xml:space="preserve">
+    <value>ລວມເງິນທີ່ຂາຍຍ່ອຍ</value>
+  </data>
+  <data name="개별단가" xml:space="preserve">
+    <value>ຊື່ຫນ້າຈໍ</value>
+  </data>
+  <data name="검색" xml:space="preserve">
+    <value>ການຊໍາລະເງິນ</value>
+  </data>
+  <data name="결제" xml:space="preserve">
+    <value>ເລືອກລາຍງານ</value>
+  </data>
+  <data name="결제_구분" xml:space="preserve">
+    <value>ສະພາບການເຊື່ອມຕໍ່</value>
+  </data>
+  <data name="결제_금액" xml:space="preserve">
+    <value>ກຸ່ມທີ່ຢູ່ສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="결제_내역" xml:space="preserve">
+    <value>ວັນທີລາອອກ</value>
+  </data>
+  <data name="결제_삭제내역" xml:space="preserve">
+    <value>ຈໍານວນເງິນການຂາຍ</value>
+  </data>
+  <data name="결제_일자" xml:space="preserve">
+    <value>ຕໍາແຫນ່ງ ຍອມຮັບ</value>
+  </data>
+  <data name="결제_종류" xml:space="preserve">
+    <value>ວັນທີລົງທະບຽນ</value>
+  </data>
+  <data name="결제_코드" xml:space="preserve">
+    <value>ຂໍ້ມູນສົ່ງຄືນເງິນ</value>
+  </data>
+  <data name="결제_환불_취소" xml:space="preserve">
+    <value>ໄດ້/ບໍ່ໄດ້ທີ່ອົບຮົມ</value>
+  </data>
+  <data name="결제금액" xml:space="preserve">
+    <value>ລາຍການສິນຄ້າເຂົ້າສາງທີ່ຖືກເລືອກຈະໄດ້ຮັບການຍົກເລີກ</value>
+  </data>
+  <data name="결제방법" xml:space="preserve">
+    <value>ຊື່ສິນຄ້າ</value>
+  </data>
+  <data name="결제액" xml:space="preserve">
+    <value>ວັນທີລາອອກ</value>
+  </data>
+  <data name="결제일자" xml:space="preserve">
+    <value>ລະຫັດບໍລິສັດສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="계좌가명" xml:space="preserve">
+    <value>ຊອກຫາໂດຍກົງປະຈໍາວັນ</value>
+  </data>
+  <data name="계좌가명별_집계" xml:space="preserve">
+    <value>ຂຽນ2 / ບັນທຶກ2</value>
+  </data>
+  <data name="계좌번호" xml:space="preserve">
+    <value>ລົງທະບຽນ/ແກ້ໄຂສະມາຊິກ</value>
+  </data>
+  <data name="계층도_조회" xml:space="preserve">
+    <value>ບັດ</value>
+  </data>
+  <data name="공급가" xml:space="preserve">
+    <value>ຫນ້າຈໍປ່ຽນແລ້ວ</value>
+  </data>
+  <data name="과거_배송지" xml:space="preserve">
+    <value>ການຄິດໄລ່ໃນມື້</value>
+  </data>
+  <data name="과세" xml:space="preserve">
+    <value>ໃຫມ່</value>
+  </data>
+  <data name="교육여부" xml:space="preserve">
+    <value>ຊື່ຕ່ຳແໜ່ງຂັ້ນເທິງຄົນໃຫມ່</value>
+  </data>
+  <data name="교육일" xml:space="preserve">
+    <value>ລະຫັດ</value>
+  </data>
+  <data name="교환" xml:space="preserve">
+    <value>ຊື່ຄົນສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="교환_내역_배송_정보" xml:space="preserve">
+    <value>ເງິນສົດ</value>
+  </data>
+  <data name="교환_내역_배송_정보_입력" xml:space="preserve">
+    <value>ຊອກຫາຜູ້ຜະລິດ</value>
+  </data>
+  <data name="교환_반품" xml:space="preserve">
+    <value>ລະຫັດບັດຈໍາຕົວເກົ່າ</value>
+  </data>
+  <data name="교환_반품PV" xml:space="preserve">
+    <value>ຊື່</value>
+  </data>
+  <data name="교환_반품_일자" xml:space="preserve">
+    <value>ສິນຄ້າ  ລາຍງານ  ບັນທຶກ</value>
+  </data>
+  <data name="교환_반품_주문번호" xml:space="preserve">
+    <value>ລວມ</value>
+  </data>
+  <data name="교환_반품액" xml:space="preserve">
+    <value>ເທິງສຸດ</value>
+  </data>
+  <data name="교환_부분반품_등록_취소" xml:space="preserve">
+    <value>ລາຍການ</value>
+  </data>
+  <data name="교환_부분반품_상품_정보" xml:space="preserve">
+    <value>ລວມຄົນທີຂຶ້ນລົງທະບຽນ</value>
+  </data>
+  <data name="교환_부분반품_취소" xml:space="preserve">
+    <value>ຊອກຫາຂໍ້ມູນຊໍາລະທີ່ບໍ່ມີບັນຊີ</value>
+  </data>
+  <data name="교환_부분반품_환불_결제_등록_취소" xml:space="preserve">
+    <value>ສິນຄ້າບໍ່ດີເຂົ້າສາງທີ່ສົ່ງຄືນ</value>
+  </data>
+  <data name="교환_상품_정보" xml:space="preserve">
+    <value>ທະນາຄານ/ນາມບັດກ່ຽວກັບບໍລິສັດ</value>
+  </data>
+  <data name="교환_정상" xml:space="preserve">
+    <value>ສິນຄ້າບໍ່ດີເຂົ້າສາງທີ່ສົ່ງຄືນ</value>
+  </data>
+  <data name="주문PV" xml:space="preserve">
+    <value>ປະຈຸບັນ ເລກທີ່ສະມາຊິກ</value>
+  </data>
+  <data name="주문_결제_정보" xml:space="preserve">
+    <value>ລົງທະບຽນສົ່ງເງິນຄືນການປ່ຽນ/ຄືນສິນຄ້າ</value>
+  </data>
+  <data name="주문_관리" xml:space="preserve">
+    <value>ລະຫັດ</value>
+  </data>
+  <data name="주문_내역" xml:space="preserve">
+    <value>ເງື່ອນໄຂຄືນສິນຄ້າ</value>
+  </data>
+  <data name="주문_내역_상세_조회" xml:space="preserve">
+    <value>ລວມລົງທະບຽນຄົນ</value>
+  </data>
+  <data name="주문_내역_조회" xml:space="preserve">
+    <value>ຜູ້ຮັບສິນຄ້າ</value>
+  </data>
+  <data name="주문_등록_수정_삭제" xml:space="preserve">
+    <value>ບັນຊີນາມແຝງ</value>
+  </data>
+  <data name="주문_배송_정보" xml:space="preserve">
+    <value>ເລກທີ່ອະນຸຍາດ</value>
+  </data>
+  <data name="주문_변경_내역" xml:space="preserve">
+    <value>ໝາຍເຫດ</value>
+  </data>
+  <data name="주문_삭제_내역" xml:space="preserve">
+    <value>ລວມຈໍານວນການຂາຍ</value>
+  </data>
+  <data name="주문_상품_내역" xml:space="preserve">
+    <value>ລວມລົງທະບຽນຄົນ</value>
+  </data>
+  <data name="주문_상품_삭제내역" xml:space="preserve">
+    <value>ຈໍານວນເງິນສົ່ງຄືນເງິນ/ຍົກເລີກ</value>
+  </data>
+  <data name="주문_상품_정보" xml:space="preserve">
+    <value>ຈໍານວນເງິນການຂາຍ</value>
+  </data>
+  <data name="주문_센타" xml:space="preserve">
+    <value>ກຸ່ມສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="주문_센타명" xml:space="preserve">
+    <value>ບັນຊີລາຍການອາກອນ</value>
+  </data>
+  <data name="주문_수량" xml:space="preserve">
+    <value>ຂໍ້ມູນ4</value>
+  </data>
+  <data name="주문_일자" xml:space="preserve">
+    <value>ປ່ຽນວັນທີ</value>
+  </data>
+  <data name="주문_정보" xml:space="preserve">
+    <value>ຂໍ້ມູນ</value>
+  </data>
+  <data name="주문_제품_상세_내역_조회" xml:space="preserve">
+    <value>ລວມຝາກເງິນ</value>
+  </data>
+  <data name="주문_종류" xml:space="preserve">
+    <value>ປິດເວລາ</value>
+  </data>
+  <data name="주문_집계_관리" xml:space="preserve">
+    <value>ຈຳນວນເງິນທີ່ຈະຈ່າຍ</value>
+  </data>
+  <data name="주문_집계_주문_센타별" xml:space="preserve">
+    <value>ຊອກຫາສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="주문_집계_주문_센타별_상품별" xml:space="preserve">
+    <value>ວັນທີຄິດໄລ່</value>
+  </data>
+  <data name="주문_집계_주문_센타별_카드별" xml:space="preserve">
+    <value>ທີ່ຢູ່ທີ່ສິນຄ້າເຂົ້າສາງ(To)</value>
+  </data>
+  <data name="주문_집계_날짜별" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດບັດ</value>
+  </data>
+  <data name="주문_집계_날짜별_주문_센타별" xml:space="preserve">
+    <value>ຈັດການຜູ້ຈ້າງ</value>
+  </data>
+  <data name="주문_집계_날짜별_상품별" xml:space="preserve">
+    <value>ຂໍ້ມູນ1</value>
+  </data>
+  <data name="주문_집계_상품별" xml:space="preserve">
+    <value>ຊື່ຄົນສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="주문_집계_카드별" xml:space="preserve">
+    <value>ຈໍານວນເງິນໃນບັດ</value>
+  </data>
+  <data name="주문_집계_하선_주문_내역" xml:space="preserve">
+    <value>ໄລຍະທີ່ການນໍາໃຊ້</value>
+  </data>
+  <data name="주문_집계_회원_센타별" xml:space="preserve">
+    <value>ລາຄາສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="주문_집계_회원_센타별_상품별" xml:space="preserve">
+    <value>ລາຄາຂາຍຍ່ອຍ</value>
+  </data>
+  <data name="주문_취소" xml:space="preserve">
+    <value>ອັດຕາສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="주문_취소_권한" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດສູນ</value>
+  </data>
+  <data name="주문금액" xml:space="preserve">
+    <value>ສະພາບສະມາຊິກ</value>
+  </data>
+  <data name="주문센타별" xml:space="preserve">
+    <value>ເພີ່ມຄົນຢຸດຂອງສາຍງານ</value>
+  </data>
+  <data name="주문수량" xml:space="preserve">
+    <value>ເລກທີ່ຈອງສິນຄ້າ</value>
+  </data>
+  <data name="주문액" xml:space="preserve">
+    <value>ທີ່ຢູ່</value>
+  </data>
+  <data name="주문일자" xml:space="preserve">
+    <value>ສະຖານທີ່</value>
+  </data>
+  <data name="주문종류" xml:space="preserve">
+    <value>ປິດເວລາ</value>
+  </data>
+  <data name="구분" xml:space="preserve">
+    <value>ຈໍານວນສິນຄ້າໃນສາງ</value>
+  </data>
+  <data name="구성된_셋트_상품" xml:space="preserve">
+    <value>ຈໍານວນ</value>
+  </data>
+  <data name="금액" xml:space="preserve">
+    <value>ວັນທີສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="금액관련_변경적용일" xml:space="preserve">
+    <value>ຊອກຫາຂໍ້ມູນສະມາຊິກ</value>
+  </data>
+  <data name="기간_구분" xml:space="preserve">
+    <value>ສູນ</value>
+  </data>
+  <data name="기간별_가입_인원수" xml:space="preserve">
+    <value>ກຸ່ມທີ່ຢູ່ສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="기간별_센타별_가입_인원수" xml:space="preserve">
+    <value>ເລືອກເງິນທີ່ຈ່າຍໃຫ້</value>
+  </data>
+  <data name="기록일" xml:space="preserve">
+    <value>ຜູ້ຈັດການສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="기록자" xml:space="preserve">
+    <value>ລະຫັດສິນຄ້າທີ່ຍ້າຍ</value>
+  </data>
+  <data name="기본" xml:space="preserve">
+    <value>ວັນທີການຄືນ</value>
+  </data>
+  <data name="기본_주소_동일" xml:space="preserve">
+    <value>ໜີ້ຄົງຄ້າງ</value>
+  </data>
+  <data name="기본배송지" xml:space="preserve">
+    <value>ທາງລຽນ</value>
+  </data>
+  <data name="기본주소지" xml:space="preserve">
+    <value>ລາຄາສັ່ງຊື້</value>
+  </data>
+  <data name="기존_추천인" xml:space="preserve">
+    <value>ວັນທີສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="기존_후원인" xml:space="preserve">
+    <value>ຊອກຫາຜູ້ໃຊ້</value>
+  </data>
+  <data name="기초_자료_관리" xml:space="preserve">
+    <value>ຊື່ພະແນກກາງ</value>
+  </data>
+  <data name="기타입고" xml:space="preserve">
+    <value>ຊອກຫາຢູ່ເທິງ</value>
+  </data>
+  <data name="날짜" xml:space="preserve">
+    <value>ຄືນສິນຄ້າ</value>
+  </data>
+  <data name="날짜별" xml:space="preserve">
+    <value>ຊື່ເດີມກ່ອນປ່ຽນ</value>
+  </data>
+  <data name="내국인" xml:space="preserve">
+    <value>ເງື່ອນໄຂ</value>
+  </data>
+  <data name="년별" xml:space="preserve">
+    <value>ລາຍງານການເຮັດວຽກ</value>
+  </data>
+  <data name="당일_등록_회원" xml:space="preserve">
+    <value>ລາຍງານທີ່ປ່ຽນລາຄາ</value>
+  </data>
+  <data name="대분류_코드" xml:space="preserve">
+    <value>ຊອກຫາ</value>
+  </data>
+  <data name="대분류명" xml:space="preserve">
+    <value>ຊອກຫາ</value>
+  </data>
+  <data name="대상화면" xml:space="preserve">
+    <value>ທີ່ຢູ່ທີ່ສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="대수" xml:space="preserve">
+    <value>ເຈົ້າຂອງບັດ</value>
+  </data>
+  <data name="대표자" xml:space="preserve">
+    <value>ຊອກຫາຢູ່ເທິງ</value>
+  </data>
+  <data name="동이름" xml:space="preserve">
+    <value>ຫນ້າຈໍປາຍທາງ</value>
+  </data>
+  <data name="등록_센타명" xml:space="preserve">
+    <value>ຈໍານວນທີ່ສົ່ງຄືນສິນຄ້າຄືນ</value>
+  </data>
+  <data name="등록일" xml:space="preserve">
+    <value>ການຊໍາລະເງິນ</value>
+  </data>
+  <data name="등록일자" xml:space="preserve">
+    <value>ມືຖື</value>
+  </data>
+  <data name="라인_중지_관련" xml:space="preserve">
+    <value>ເງື່ອນໄຂການຂາຍ</value>
+  </data>
+  <data name="라인_중지일" xml:space="preserve">
+    <value>ຈໍານວນສິນຄ້າທີ່ຈະອອກສາງ</value>
+  </data>
+  <data name="라인별_인원수_추천" xml:space="preserve">
+    <value>ການຈັດການຂອງສາງທີ່ເອີ້ນຄືນສິນຄ້າ</value>
+  </data>
+  <data name="라인별_인원수_후원" xml:space="preserve">
+    <value>ຈໍານວນສິນຄ້າທີ່ມີໃນປະຈຸບັນ</value>
+  </data>
+  <data name="라인중지일" xml:space="preserve">
+    <value>ການຂາຍ</value>
+  </data>
+  <data name="로그오프_시간" xml:space="preserve">
+    <value>ລາຍງານຄວາມລະອຽດການເຮັດວຽກ</value>
+  </data>
+  <data name="로그인_가능_상태로_변경" xml:space="preserve">
+    <value>ເປີດໃຊ້ລະຫັດ</value>
+  </data>
+  <data name="로그인_시간" xml:space="preserve">
+    <value>ບັດໝາຍເຫດ</value>
+  </data>
+  <data name="매입처_코드" xml:space="preserve">
+    <value>ຜູ້ໃຊ້ID </value>
+  </data>
+  <data name="매입처_코드_등록" xml:space="preserve">
+    <value>ລວມທັງຫມົດ</value>
+  </data>
+  <data name="매입처명" xml:space="preserve">
+    <value>ລົງທະບຽນຂໍ້ມູນສິນຄ້າ</value>
+  </data>
+  <data name="매출PV" xml:space="preserve">
+    <value>ຈໍານວນເງິນຄໍາຮ້ອງຂໍ</value>
+  </data>
+  <data name="매출_일자" xml:space="preserve">
+    <value>ຊອກຫາການຄິດໄລ່ໃນອາທິດ</value>
+  </data>
+  <data name="매출액" xml:space="preserve">
+    <value>ທາງຕັ້ງ</value>
+  </data>
+  <data name="메인상품명" xml:space="preserve">
+    <value>ຂຽນສໍາລັບຄຸ້ມຄອງສາງ</value>
+  </data>
+  <data name="메인상품코드" xml:space="preserve">
+    <value>ໝາຍເຫດ2</value>
+  </data>
+  <data name="면/과세" xml:space="preserve">
+    <value>ຈັດແຈງຫມົດອາຍຸ ແຕ່ລະພະແນກ</value>
+  </data>
+  <data name="면세" xml:space="preserve">
+    <value>ວັນທີຊອກຫາ</value>
+  </data>
+  <data name="무통장" xml:space="preserve">
+    <value>ເລກທີ່ຕ່ຳແໜ່ງຂັ້ນເທິງຄົນເກົ່າ</value>
+  </data>
+  <data name="무통장_결제_금액" xml:space="preserve">
+    <value>ຂໍ້ມູນ8</value>
+  </data>
+  <data name="무통장_결제일" xml:space="preserve">
+    <value>ຈໍານວນເງິນທີ່ອະນຸມັດ</value>
+  </data>
+  <data name="무통장_입금시_계좌가명을_이용합니다" xml:space="preserve">
+    <value>ວັນທີຄ່າອົບຮົມ</value>
+  </data>
+  <data name="무통장결제액" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດທະນາຄານ</value>
+  </data>
+  <data name="무통장결제일" xml:space="preserve">
+    <value>ບໍລິການສົ່ງສິນຄ້າອອກສາງທີ່ຈອງ</value>
+  </data>
+  <data name="미결제" xml:space="preserve">
+    <value>ສິນຄ້າກ່ອນເຂົ້າສາງທີ່ຍ້າຍມາ</value>
+  </data>
+  <data name="미수금" xml:space="preserve">
+    <value>ທີ່ຢູ່ຫ້ອງການ</value>
+  </data>
+  <data name="미수금_여부" xml:space="preserve">
+    <value>ຕ້ອງການຂໍ້ມູນຂຽນ</value>
+  </data>
+  <data name="미수금무" xml:space="preserve">
+    <value>ປະເພດ2</value>
+  </data>
+  <data name="미수금유" xml:space="preserve">
+    <value>ຕົວຢ່າງ</value>
+  </data>
+  <data name="미수액" xml:space="preserve">
+    <value>ຈັດການສິນຄ້າອອກສາງທີ່ຈອງ</value>
+  </data>
+  <data name="반품" xml:space="preserve">
+    <value>ຍົກເລີກການເຮັດວຽກ</value>
+  </data>
+  <data name="반품PV" xml:space="preserve">
+    <value>ອັດຕາທີ່ສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="반품_교환_상품_정보" xml:space="preserve">
+    <value>ຊື່ຕ່ຳແໜ່ງຂັ້ນເທິງຄົນໃຫມ່</value>
+  </data>
+  <data name="반품_등록_취소" xml:space="preserve">
+    <value>ອອກ</value>
+  </data>
+  <data name="반품_상품_정보" xml:space="preserve">
+    <value>ນໍາໃຊ້ການຈັດຕັ້ງ</value>
+  </data>
+  <data name="반품_수량" xml:space="preserve">
+    <value>ຊອກຫາລາຍງານການຄິດໄລ່ປະຈຳອາທິດເງິນນອກເວລາຂອງບຸກຄົນ</value>
+  </data>
+  <data name="반품_일자" xml:space="preserve">
+    <value>ວັນທີເລີ່ມຢຸດການຈ່າຍເງິນນອກເວລາ</value>
+  </data>
+  <data name="반품_주문번호" xml:space="preserve">
+    <value>ຊອກຫາການຄິດໄລ່ໃນມື້</value>
+  </data>
+  <data name="반품_취소" xml:space="preserve">
+    <value>ໝາຍເຫດ</value>
+  </data>
+  <data name="반품_포함" xml:space="preserve">
+    <value>ບັນທຶກຢຸດເຊົາ</value>
+  </data>
+  <data name="반품_환불_등록_취소" xml:space="preserve">
+    <value>ລວມສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="반품_환불_정보" xml:space="preserve">
+    <value>ຊອກຫາຂໍ້ມູນບັດ</value>
+  </data>
+  <data name="반품금액" xml:space="preserve">
+    <value>ຫນ້າຈໍປ່ຽນແລ້ວ</value>
+  </data>
+  <data name="반품불량입고" xml:space="preserve">
+    <value>ຈໍານວນປະຈຸບັນໃນສາງ</value>
+  </data>
+  <data name="반품센타_반품일자_기준" xml:space="preserve">
+    <value>ວັນທີປ່ຽນ</value>
+  </data>
+  <data name="반품액" xml:space="preserve">
+    <value>ສູນລົງທະບຽນ</value>
+  </data>
+  <data name="반품일반입고" xml:space="preserve">
+    <value>ລາຄາຂາຍຍ່ອຍ</value>
+  </data>
+  <data name="배송" xml:space="preserve">
+    <value>ສູນການຂາຍ</value>
+  </data>
+  <data name="배송_구분" xml:space="preserve">
+    <value>ມືຖື</value>
+  </data>
+  <data name="배송_내역" xml:space="preserve">
+    <value>ລວມເງິນທີ່ຂາຍ</value>
+  </data>
+  <data name="배송_삭제내역" xml:space="preserve">
+    <value>ຍົກເລີກ</value>
+  </data>
+  <data name="배송_선택" xml:space="preserve">
+    <value>ວັນທີຂຽນ</value>
+  </data>
+  <data name="배송_일자" xml:space="preserve">
+    <value>ຂໍ້ມູນຈັດສົ່ງສິນຄ້າອອກສາງທີ່ລວມຈອງ</value>
+  </data>
+  <data name="배송_종류" xml:space="preserve">
+    <value>ທີ່ຢູ່1</value>
+  </data>
+  <data name="배송_코드" xml:space="preserve">
+    <value>ເຫດຜົນຢຸດເຊົາ</value>
+  </data>
+  <data name="배송구분" xml:space="preserve">
+    <value>ການປ່ຽນ-ສິນຄ້າໃຫມ່</value>
+  </data>
+  <data name="배송사_선택" xml:space="preserve">
+    <value>ຂໍ້ມູນທີ່ບໍ່ຂຽນສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="배송사_코드" xml:space="preserve">
+    <value>ຂໍ້ມູນສິນຄ້າການປ່ຽນ/ຄືນສິນຄ້າ  </value>
+  </data>
+  <data name="배송사_코드_등록" xml:space="preserve">
+    <value>ກ່ອນລາຍງານ</value>
+  </data>
+  <data name="배송사명" xml:space="preserve">
+    <value>ເງື່ອນໄຂສ້າງໃໝ່</value>
+  </data>
+  <data name="배송일" xml:space="preserve">
+    <value>ເບີແຟັກ</value>
+  </data>
+  <data name="변경_사유" xml:space="preserve">
+    <value>ຊື່ບໍລິສັດ</value>
+  </data>
+  <data name="변경_센타" xml:space="preserve">
+    <value>ຊຸດຂອງສິນຄ້າປະສົມ</value>
+  </data>
+  <data name="변경_적용일" xml:space="preserve">
+    <value>ວັນທີຍ້າຍ</value>
+  </data>
+  <data name="변경내역" xml:space="preserve">
+    <value>ຕົວຢ່າງ</value>
+  </data>
+  <data name="변경내역2" xml:space="preserve">
+    <value>ວັນທີ່ຢຸດຂອງສາຍງານ</value>
+  </data>
+  <data name="변경일" xml:space="preserve">
+    <value>ເລກສິນຄ້າທີ່ຈອງ</value>
+  </data>
+  <data name="변경자" xml:space="preserve">
+    <value>ລາຄາ / ລາຄາຂາຍ</value>
+  </data>
+  <data name="본인_내역" xml:space="preserve">
+    <value>ຊອກຫາການສະຫຼຸບປະຈຳເດືອນເງິນນອກເວລາຂອງບຸກຄົນຂອງແຕ່ລະສາຂາ</value>
+  </data>
+  <data name="부분반품" xml:space="preserve">
+    <value>ວັນທີຍ້າຍ</value>
+  </data>
+  <data name="비고" xml:space="preserve">
+    <value>ປະເພດ</value>
+  </data>
+  <data name="비고1" xml:space="preserve">
+    <value>ປະເພດ1</value>
+  </data>
+  <data name="비고2" xml:space="preserve">
+    <value>ປະເພດ2</value>
+  </data>
+  <data name="비밀번호" xml:space="preserve">
+    <value>ບໍລິສັດຄົມມະນາຄົມ</value>
+  </data>
+  <data name="비밀번호_확인" xml:space="preserve">
+    <value>ເລກທີ່ສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="비이수" xml:space="preserve">
+    <value>ສູນບໍລິການ</value>
+  </data>
+  <data name="사업자" xml:space="preserve">
+    <value>ບໍ່ມີບັນຊີ</value>
+  </data>
+  <data name="사업자_번호" xml:space="preserve">
+    <value>ຈ່າຍຜ່ອນ</value>
+  </data>
+  <data name="사용" xml:space="preserve">
+    <value>ໝາຍເຫດ</value>
+  </data>
+  <data name="사용_건수" xml:space="preserve">
+    <value>ຫລັງຈາກລາຍງານ</value>
+  </data>
+  <data name="사용건수" xml:space="preserve">
+    <value>ລວມຈຳນວນຕ່ຳແໜ່ງຂັ້ນລຸ່ມ</value>
+  </data>
+  <data name="사용안함" xml:space="preserve">
+    <value>ເວລາທີ່ປ່ຽນ</value>
+  </data>
+  <data name="사용자ID" xml:space="preserve">
+    <value>ເວລາການເຮັດວຽກ</value>
+  </data>
+  <data name="사용자_관리" xml:space="preserve">
+    <value>ສິນຄ້າກ່ອນອອກສາງແລະອື່ນໆ</value>
+  </data>
+  <data name="사용자_로그" xml:space="preserve">
+    <value>ການຕັ້ງຄ່າການຈັດການສະມາຊິກ</value>
+  </data>
+  <data name="사용자_성명" xml:space="preserve">
+    <value>ສໍາເນົາຂອງບັນຊີ</value>
+  </data>
+  <data name="사용자_아이디" xml:space="preserve">
+    <value>ຕ່ຳແໜ່ງຂັ້ນເທິງຄົນໃຫມ່</value>
+  </data>
+  <data name="사용자_즐겨찾기" xml:space="preserve">
+    <value>ກຸ່ມການຂາຍ</value>
+  </data>
+  <data name="사용자명" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດປະເທດ</value>
+  </data>
+  <data name="삭제" xml:space="preserve">
+    <value>ລາຄາທີ່ສະມາຊິກ</value>
+  </data>
+  <data name="상선_변경_내역" xml:space="preserve">
+    <value>ໝາຍເຫດ</value>
+  </data>
+  <data name="상세_변경_내역" xml:space="preserve">
+    <value>ຊອກຫາຂໍ້ມູນທີ່ສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="상위_검색" xml:space="preserve">
+    <value>ການຊໍາລະເງິນ</value>
+  </data>
+  <data name="상위_내역" xml:space="preserve">
+    <value>ຊື່ທີ່ຢູ່ສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="상위_정보" xml:space="preserve">
+    <value>ທີ່ຢູ່ສິນຄ້າອອກສາງ/ສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="상태" xml:space="preserve">
+    <value>ຜູ້ຕ່າງຫນ້າ</value>
+  </data>
+  <data name="상품" xml:space="preserve">
+    <value>ບັນທຶກຢຸດເຊົາ</value>
+  </data>
+  <data name="상품_가격_변동_내역" xml:space="preserve">
+    <value>ຜູ້ອຸປະຖໍາ</value>
+  </data>
+  <data name="상품_규격" xml:space="preserve">
+    <value>ລົງທະບຽນ/ແກ້ໄຂການຂາຍ</value>
+  </data>
+  <data name="상품_내역" xml:space="preserve">
+    <value>ຍອມຮັບການຂາຍ</value>
+  </data>
+  <data name="상품_카테고리_등록_대분류" xml:space="preserve">
+    <value>ໝາຍເຫດ</value>
+  </data>
+  <data name="상품_카테고리_등록_중분류" xml:space="preserve">
+    <value>ສົ່ງສິນຄ້າອື່ນໆ</value>
+  </data>
+  <data name="상품_코드" xml:space="preserve">
+    <value>ຜູ້ອຸປະຖໍາ ຊື່/ເບີ/ເລກ</value>
+  </data>
+  <data name="상품_코드_등록" xml:space="preserve">
+    <value>ຕົກລົງ</value>
+  </data>
+  <data name="상품명" xml:space="preserve">
+    <value>ເບີໂທລະສັບ</value>
+  </data>
+  <data name="상품별" xml:space="preserve">
+    <value>ລົງທະບຽນ/ແກ້ໄຂ ການຄືນ</value>
+  </data>
+  <data name="상품별_재고_현황" xml:space="preserve">
+    <value>ຊອກຫາບໍລິການສົ່ງທີ່ລາຍງານການຂາຍ</value>
+  </data>
+  <data name="상품코드" xml:space="preserve">
+    <value>ຊື່ບັດ</value>
+  </data>
+  <data name="새로운_추천인" xml:space="preserve">
+    <value>ຊື່ຜູ້ຝາກເງິນ</value>
+  </data>
+  <data name="새로운_후원인" xml:space="preserve">
+    <value>ລະຫັດສິນຄ້າ</value>
+  </data>
+  <data name="새로입력" xml:space="preserve">
+    <value>ການຂາຍມີ</value>
+  </data>
+  <data name="새배송지" xml:space="preserve">
+    <value>ໃບສັນຍາຈັດຊື້</value>
+  </data>
+  <data name="생년월일" xml:space="preserve">
+    <value>ລາຄາທີ່ຊື້ສຸດທ້າຍ</value>
+  </data>
+  <data name="생일" xml:space="preserve">
+    <value>ຊອກຫາໂດຍກົງປະຈໍາອາທິ</value>
+  </data>
+  <data name="서브상품명" xml:space="preserve">
+    <value>ເວລາທີ່ປ່ຽນ</value>
+  </data>
+  <data name="서브상품코드" xml:space="preserve">
+    <value>ຊື່ຜູ້ຜະລິດ</value>
+  </data>
+  <data name="선택" xml:space="preserve">
+    <value>ກະລຸນາປ່ຽນສາຍ</value>
+  </data>
+  <data name="선택_내역_입고_처리" xml:space="preserve">
+    <value>ລວມຈໍານວນສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="선택_내역_입고_취소_처리" xml:space="preserve">
+    <value>ລວມການເຮັດວຽກ</value>
+  </data>
+  <data name="선택_내역_저장" xml:space="preserve">
+    <value>ບັດ</value>
+  </data>
+  <data name="선택_내역_체크" xml:space="preserve">
+    <value>ຊອກຫາລວມການຂາຍທີ່ແຕ່ລະສະມາຊິກ</value>
+  </data>
+  <data name="선택_내역_출고_처리" xml:space="preserve">
+    <value>ລະຫັດສູນ</value>
+  </data>
+  <data name="선택_내역_출고_취소_처리" xml:space="preserve">
+    <value>ບຸກຄົນຈັດສິນຄ້າອອກສາງທີ່ລວມຈອງ</value>
+  </data>
+  <data name="설정_저장" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດຜູ້ຜະລິດ</value>
+  </data>
+  <data name="성명" xml:space="preserve">
+    <value>ລວມຈໍານວນເງິນສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="센타" xml:space="preserve">
+    <value>ການປ່ຽນ/ຄືນສິນຄ້າ</value>
+  </data>
+  <data name="센타_일괄_변경" xml:space="preserve">
+    <value>ຊອກຫາ</value>
+  </data>
+  <data name="센타_코드" xml:space="preserve">
+    <value>ຊອກຫາ</value>
+  </data>
+  <data name="센타_코드_등록" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດບັດ</value>
+  </data>
+  <data name="센타명" xml:space="preserve">
+    <value>ລົງທະບຽນ</value>
+  </data>
+  <data name="센타별" xml:space="preserve">
+    <value>ລະຫັດສາງ</value>
+  </data>
+  <data name="센타별_가입_인원수" xml:space="preserve">
+    <value>ຊື່ສູນທີ່ການຂາຍ</value>
+  </data>
+  <data name="센타별_재고_현황" xml:space="preserve">
+    <value>ຈໍານວນເງິນຝາກ</value>
+  </data>
+  <data name="센타수령" xml:space="preserve">
+    <value>ລາຄາສັ່ງຊື້</value>
+  </data>
+  <data name="센타없음" xml:space="preserve">
+    <value>ຊື່ທີ່ຢູ່ສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="센타있음" xml:space="preserve">
+    <value>ສະແດງລາຍງານ</value>
+  </data>
+  <data name="센타장_회원_번호" xml:space="preserve">
+    <value>ເບີໂທລະສັບ2</value>
+  </data>
+  <data name="센타코드" xml:space="preserve">
+    <value>ສິນຄ້າກ່ອນອອກສາງທີ່ຍ້າຍໄປ</value>
+  </data>
+  <data name="센터간_재고_이동" xml:space="preserve">
+    <value>ຈັດການຈ່າຍເງິນນອກເວລາ</value>
+  </data>
+  <data name="센터간_재고_이동_조회" xml:space="preserve">
+    <value>ທາງລຽນ</value>
+  </data>
+  <data name="셋트_상품_구성" xml:space="preserve">
+    <value>ຍົກເລີກການນໍາໃຊ້</value>
+  </data>
+  <data name="소비자" xml:space="preserve">
+    <value>ເລືອກ</value>
+  </data>
+  <data name="소비자가" xml:space="preserve">
+    <value>ໃບສັນຍາຈັດຊື້</value>
+  </data>
+  <data name="소유자명" xml:space="preserve">
+    <value>ວັນທີອົບຮົມ</value>
+  </data>
+  <data name="소진_출고_관리" xml:space="preserve">
+    <value>ຊອກຫາສະຖານທີ່</value>
+  </data>
+  <data name="소진출고" xml:space="preserve">
+    <value>ວັນທີສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="수당_중지_관련" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດສິນຄ້າ</value>
+  </data>
+  <data name="수당_중지_시작일" xml:space="preserve">
+    <value>ຈັດຮຽງ:</value>
+  </data>
+  <data name="수당정지일" xml:space="preserve">
+    <value>ຊະນິດຈັດຊື້</value>
+  </data>
+  <data name="수당중지시작일" xml:space="preserve">
+    <value>ຊອກຫາລຶບລາຍງານທີ່ການຂາຍ</value>
+  </data>
+  <data name="수동_입력" xml:space="preserve">
+    <value>ຊື່ສິນຄ້າ</value>
+  </data>
+  <data name="수량" xml:space="preserve">
+    <value>ບັນຊີ</value>
+  </data>
+  <data name="수령인" xml:space="preserve">
+    <value>ຈັດການສາງ / ການຄຸ້ມຄອງສາງ</value>
+  </data>
+  <data name="수령인명" xml:space="preserve">
+    <value>ວັນທີຊອກຫາ</value>
+  </data>
+  <data name="수정" xml:space="preserve">
+    <value>ຂໍ້ມູນສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="수취인명" xml:space="preserve">
+    <value>ລວມຈໍານວນການຂາຍ</value>
+  </data>
+  <data name="승인_금액" xml:space="preserve">
+    <value>ການປ່ຽນ ການລາຍງານ  ການຂົນສົ່ງ  ການລົງທະບຽນ </value>
+  </data>
+  <data name="승인_번호" xml:space="preserve">
+    <value>ວັນທີຢຸດເຊົາ</value>
+  </data>
+  <data name="승인금액" xml:space="preserve">
+    <value>ລະດັບ</value>
+  </data>
+  <data name="승인번호" xml:space="preserve">
+    <value>ເລກທີ່ສະມາຊິກ</value>
+  </data>
+  <data name="승인일자" xml:space="preserve">
+    <value>ລຶບສະມາຊິກ</value>
+  </data>
+  <data name="실입금액" xml:space="preserve">
+    <value>ຂຽນ1</value>
+  </data>
+  <data name="업태" xml:space="preserve">
+    <value>ວັນທີຄືນສິນຄ້າ</value>
+  </data>
+  <data name="엑셀" xml:space="preserve">
+    <value>EXCEL</value>
+  </data>
+  <data name="엑셀_변환_권한" xml:space="preserve">
+    <value>ນັກບໍລິຫານ</value>
+  </data>
+  <data name="엑셀_전환" xml:space="preserve">
+    <value>ຜູ້ອຸປະຖໍາ</value>
+  </data>
+  <data name="엑셀_전환_현황" xml:space="preserve">
+    <value>ຊອກຫາລາຍງານການຄິດໄລ່ປະຈຳເດືອນເງິນນອກເວລາຂອງບຸກຄົນ</value>
+  </data>
+  <data name="연결_상태" xml:space="preserve">
+    <value>ລວມຈໍານວນ</value>
+  </data>
+  <data name="연락처_1" xml:space="preserve">
+    <value>ລະຫັດສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="연락처_2" xml:space="preserve">
+    <value>ລວມສິນຄ້າເຂົ້າສາງທີ່ສົ່ງຄືນ</value>
+  </data>
+  <data name="영문_First_Name" xml:space="preserve">
+    <value>영문 First Name</value>
+  </data>
+  <data name="영문명" xml:space="preserve">
+    <value>ຍົກເລີກການຄິດໄລ່ໃນອາທິດ</value>
+  </data>
+  <data name="예금주" xml:space="preserve">
+    <value>ຈໍານວນທີ່ສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="외국인" xml:space="preserve">
+    <value>ເວລາທີ່ປ່ຽນ</value>
+  </data>
+  <data name="우편_번호" xml:space="preserve">
+    <value>ຊື່ສິນຄ້າ</value>
+  </data>
+  <data name="우편_번호_검색" xml:space="preserve">
+    <value>ລົງທະບຽນຂອງສາງສິນຄ້າ</value>
+  </data>
+  <data name="우편물_수령지" xml:space="preserve">
+    <value>ການຈັດການສະມາຊິກ</value>
+  </data>
+  <data name="우편번호_조회" xml:space="preserve">
+    <value>ຊື່ສິນຄ້າ</value>
+  </data>
+  <data name="운송장번호" xml:space="preserve">
+    <value>ລຶບສະມາຊິກ</value>
+  </data>
+  <data name="원주문_결제_금액" xml:space="preserve">
+    <value>ວັນທີສັນຍາກັບຄົນງາມ</value>
+  </data>
+  <data name="원주문_결제_일자" xml:space="preserve">
+    <value>ຜູ້ຝາກເງິນ</value>
+  </data>
+  <data name="원주문_결제_정보" xml:space="preserve">
+    <value>ວັນທີລົງທະບຽນ</value>
+  </data>
+  <data name="월별" xml:space="preserve">
+    <value>ຊື່ທີ່ປ່ຽນກ່ອນ</value>
+  </data>
+  <data name="웹비밀번호" xml:space="preserve">
+    <value>ຊອກຫາລວມທີ່ລົງທະບຽນການຂາຍ</value>
+  </data>
+  <data name="웹아이디" xml:space="preserve">
+    <value>ຈໍານວນເງິນສົດ</value>
+  </data>
+  <data name="위치" xml:space="preserve">
+    <value>ຜູ້ຈ້າງ</value>
+  </data>
+  <data name="위치_관련" xml:space="preserve">
+    <value>ສິນຄ້າກ່ອນເຂົ້າສາງ</value>
+  </data>
+  <data name="은행" xml:space="preserve">
+    <value>ສົ່ງຄືນສິນຄ້າແມ່ນ/ບໍ່ແມ່ນ</value>
+  </data>
+  <data name="은행_코드" xml:space="preserve">
+    <value>ທີ່ຢູ່ທີ່ສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="은행_코드_등록" xml:space="preserve">
+    <value>ລວມສິນຄ້າອອກສາງທີ່ຍ້າຍໄປ</value>
+  </data>
+  <data name="은행명" xml:space="preserve">
+    <value>ຈັດການ</value>
+  </data>
+  <data name="이동_일자" xml:space="preserve">
+    <value>ບໍລິສັດສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="이동수량" xml:space="preserve">
+    <value>ປະເພດຫນ່ວຍງານ</value>
+  </data>
+  <data name="이동일자" xml:space="preserve">
+    <value>ລະຫັດພະແນກກາງ</value>
+  </data>
+  <data name="이동입고" xml:space="preserve">
+    <value>ເງື່ອນໄຂ</value>
+  </data>
+  <data name="이동자" xml:space="preserve">
+    <value>ໝາຍເຫດ1</value>
+  </data>
+  <data name="이동출고" xml:space="preserve">
+    <value>ຈໍານວນສິນຄ້າທີ່ຈະເຂົ້າສາງ</value>
+  </data>
+  <data name="이미지_저장" xml:space="preserve">
+    <value>ລາຍການສິນຄ້າເຂົ້າສາງທີ່ຖືກເລືອກຈະໄດ້ຮັບການອະນຸມັດ</value>
+  </data>
+  <data name="이수" xml:space="preserve">
+    <value>ເວລາທີ່ປ່ຽນ</value>
+  </data>
+  <data name="일반입고" xml:space="preserve">
+    <value>ເລກທີ່ຜູ້ຝາກເງິນ</value>
+  </data>
+  <data name="일별" xml:space="preserve">
+    <value>ບໍ່ມີບັນຊີ</value>
+  </data>
+  <data name="일시불" xml:space="preserve">
+    <value>ກຸ່ມສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="일자" xml:space="preserve">
+    <value>ສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="일자별_집계" xml:space="preserve">
+    <value>ຊອກຫາລາຍງານການຂາຍທີ່ຕ່ຳແໜ່ງຂັ້ນລຸ່ມ</value>
+  </data>
+  <data name="입고_관리" xml:space="preserve">
+    <value>ອີເມລ</value>
+  </data>
+  <data name="입고_관리_반품_입고" xml:space="preserve">
+    <value>ຄົນທີ່ປ່ຽນ</value>
+  </data>
+  <data name="입고_관리_반품_입고_취소" xml:space="preserve">
+    <value>ຂອບເຂດທີ່ການນໍາໃຊ້</value>
+  </data>
+  <data name="입고_관리_일반_기타_입고" xml:space="preserve">
+    <value>ເງິນສົ່ງຄືນສິນຄ້າ</value>
+  </data>
+  <data name="입고_관리_입고_조회" xml:space="preserve">
+    <value>ເຄື່ອນໄຫວຂອງສູນ/ຫຸ້ນລະຫວ່າງສາງ</value>
+  </data>
+  <data name="입고_번호" xml:space="preserve">
+    <value>ຊື່</value>
+  </data>
+  <data name="입고_사유" xml:space="preserve">
+    <value>ຄົນແນະນໍາ</value>
+  </data>
+  <data name="입고_일자" xml:space="preserve">
+    <value>ລວມຈໍານວນຄົນ</value>
+  </data>
+  <data name="입고구분" xml:space="preserve">
+    <value>ສາເຫດທີ່ສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="입고번호" xml:space="preserve">
+    <value>ການຈັດການຂາຍ</value>
+  </data>
+  <data name="입고수량" xml:space="preserve">
+    <value>ລາຍງານຂອງຕົນເອງ</value>
+  </data>
+  <data name="입고일" xml:space="preserve">
+    <value>ກ່ຽວກັບແຈ້ງການຂາຍ</value>
+  </data>
+  <data name="입고일자" xml:space="preserve">
+    <value>ສິນຄ້າທີ່ມີຢູ່ໃນປະຈຸບັນທີ່ຂາຍ,ສົ່ງ,ທົ່ວໄປ</value>
+  </data>
+  <data name="입고자" xml:space="preserve">
+    <value>ຂໍ້ມູນ7</value>
+  </data>
+  <data name="입고지" xml:space="preserve">
+    <value>ກວດລະຫັດ</value>
+  </data>
+  <data name="입고지_To" xml:space="preserve">
+    <value>ຈັດເງິນທີ່ຈ່າຍໃຫ້</value>
+  </data>
+  <data name="입고지명" xml:space="preserve">
+    <value>ລວມເງິນສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="입금액" xml:space="preserve">
+    <value>ລົງທະບຽນປະເພດສິນຄ້າ</value>
+  </data>
+  <data name="입금자" xml:space="preserve">
+    <value>ລາອອກສະມາຊິກ</value>
+  </data>
+  <data name="입금자명" xml:space="preserve">
+    <value>ລາຄາປ່ຽນ-ສິນຄ້າໃຫມ່</value>
+  </data>
+  <data name="입력_입고지" xml:space="preserve">
+    <value>ຈັດເງິນທີ່ຈ່າຍໃຫ້</value>
+  </data>
+  <data name="입력_출고지" xml:space="preserve">
+    <value>ແມ່ນ/ບໍ່ແມ່ນສົ່ງຄືນເງິນ/ຍົກເລີກ</value>
+  </data>
+  <data name="입력입고지_입력일자_기준" xml:space="preserve">
+    <value>ພິມ</value>
+  </data>
+  <data name="입력출고지_입력일자_기준" xml:space="preserve">
+    <value>ວັນທີຂາຍສຸດທ້າຍ</value>
+  </data>
+  <data name="자동" xml:space="preserve">
+    <value>ພະແນກຊໍາລະ</value>
+  </data>
+  <data name="작업내역" xml:space="preserve">
+    <value>ຊື່ສິນຄ້າທີ່ຍ້າຍ</value>
+  </data>
+  <data name="작업시간" xml:space="preserve">
+    <value>ປະເພດຫນ່ວຍງານ</value>
+  </data>
+  <data name="작업일자" xml:space="preserve">
+    <value>ຄົນທີ່ແນະນໍາໃຫມ່</value>
+  </data>
+  <data name="작업자" xml:space="preserve">
+    <value>ຕົນເອງ  ເງື່ອນໄຂ ລາຍງານການຂາຍ</value>
+  </data>
+  <data name="재고_관리" xml:space="preserve">
+    <value>ຄືນສິນຄ້າ</value>
+  </data>
+  <data name="재고량" xml:space="preserve">
+    <value>ລວມສິນຄ້າບໍ່ດີເຂົ້າສາງທີ່ສົ່ງຄືນ</value>
+  </data>
+  <data name="저장" xml:space="preserve">
+    <value>ຈໍານວນຄົນ</value>
+  </data>
+  <data name="저장_시간" xml:space="preserve">
+    <value>ຄ່າທໍານຽມ</value>
+  </data>
+  <data name="저장_이름" xml:space="preserve">
+    <value>ຈໍານວນປະຈຸບັນໃນສາງ</value>
+  </data>
+  <data name="전_내역" xml:space="preserve">
+    <value>ບໍລິສັດສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="전_상위번호" xml:space="preserve">
+    <value>ສິນຄ້າອອກສາງທີ່ຈອງ</value>
+  </data>
+  <data name="전_상위성명" xml:space="preserve">
+    <value>ວັນທີເດືອນປີ</value>
+  </data>
+  <data name="전반품불량입고" xml:space="preserve">
+    <value>ເລກທີ່ບັດປະຈໍາຕົວ</value>
+  </data>
+  <data name="전반품일반입고" xml:space="preserve">
+    <value>ຊື່ສູນກ່ຽວກັບສະມາຊິກ</value>
+  </data>
+  <data name="전소진출고" xml:space="preserve">
+    <value>ວັນທີສົ່ງຄືນສິນຄ້າ</value>
+  </data>
+  <data name="전이동입고" xml:space="preserve">
+    <value>ກ່ຽວກັບລົງທະບຽນສະມາຊິກ</value>
+  </data>
+  <data name="전이동출고" xml:space="preserve">
+    <value>ທາງນອນ</value>
+  </data>
+  <data name="전일반입고" xml:space="preserve">
+    <value>ສາຍງານລະ ຄົນຈໍານວນ</value>
+  </data>
+  <data name="전제_선택" xml:space="preserve">
+    <value>ເລກທີ່ໄປສະນີ</value>
+  </data>
+  <data name="전주문출고" xml:space="preserve">
+    <value>ຊອກຫາການຈັດຕັ້ງ - 2</value>
+  </data>
+  <data name="전주문출고배송" xml:space="preserve">
+    <value>ລະຫັດບັດ</value>
+  </data>
+  <data name="전주문출고배송정보X" xml:space="preserve">
+    <value>ຄ່າທໍານຽມ</value>
+  </data>
+  <data name="전주문출고센타" xml:space="preserve">
+    <value>ຄັດເລືອກສາຍງານ</value>
+  </data>
+  <data name="전주문출고직접" xml:space="preserve">
+    <value>ລົງທະບຽນປະເພດສິນຄ້າ</value>
+  </data>
+  <data name="전체" xml:space="preserve">
+    <value>ສະຖານທີ່ງາມ</value>
+  </data>
+  <data name="전체_선택" xml:space="preserve">
+    <value>ຂຽນຂໍ້ມູນທີ່ເລືອກ</value>
+  </data>
+  <data name="전체_취소" xml:space="preserve">
+    <value>ສະພາບການຂາຍ</value>
+  </data>
+  <data name="전화_번호" xml:space="preserve">
+    <value>ທີ່ຢູ່</value>
+  </data>
+  <data name="전환_화면" xml:space="preserve">
+    <value>ທີ່ຢູ່</value>
+  </data>
+  <data name="접속_현황" xml:space="preserve">
+    <value>ຊອກຫາການຄິດໄລ່ປະຈຳເດືອນເງິນນອກເວລາຂອງບຸກຄົນ</value>
+  </data>
+  <data name="정보_변경_내역" xml:space="preserve">
+    <value>ເວລາຂຽນ</value>
+  </data>
+  <data name="정상" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດຜູ້ຜະລິດ</value>
+  </data>
+  <data name="제품_등록일" xml:space="preserve">
+    <value>ບຸກຄົນຈັດສິນຄ້າອອກສາງທີ່ຈອງ</value>
+  </data>
+  <data name="조직_기준일자" xml:space="preserve">
+    <value>ຂໍ້ມູນການນຊໍາລະເງິນ</value>
+  </data>
+  <data name="조회" xml:space="preserve">
+    <value>ຈັດຮຽງ</value>
+  </data>
+  <data name="조회_기간_상세_내역" xml:space="preserve">
+    <value>ວັນທີທີ່ການປຸງແຕ່ງ</value>
+  </data>
+  <data name="조회_센타" xml:space="preserve">
+    <value>ຈໍານວນສົ່ງຄືນສິນຄ້າ</value>
+  </data>
+  <data name="조회_일자" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດຜູ້ຜະລິດ</value>
+  </data>
+  <data name="조회일자" xml:space="preserve">
+    <value>ຊອກຫາສະຫຼຸບປະຈຳວັນ</value>
+  </data>
+  <data name="종료" xml:space="preserve">
+    <value>ປັບການເຮັດວຽກ</value>
+  </data>
+  <data name="종류" xml:space="preserve">
+    <value>ຊອກຫາສິນຄ້າເຂົ້າ/ອອກສູນແລະສາງ</value>
+  </data>
+  <data name="종목" xml:space="preserve">
+    <value>ບໍ່ເກັບພາສີ/ເກັບພາສີ</value>
+  </data>
+  <data name="주_변경_내역" xml:space="preserve">
+    <value>ວັນທີຂາຍ</value>
+  </data>
+  <data name="주문_번호" xml:space="preserve">
+    <value>ສິນຄ້າເຂົ້າສາງທີ່ຍ້າຍມາ</value>
+  </data>
+  <data name="주문번호" xml:space="preserve">
+    <value>ລົງທະບຽນລາຍງານສິນຄ້າ</value>
+  </data>
+  <data name="주문출고" xml:space="preserve">
+    <value>ຍົກເລີກຢຸດເຊົາ</value>
+  </data>
+  <data name="주문출고배송" xml:space="preserve">
+    <value>ຊອກຫາ ຂໍ້ມູນຄືນສິນຄ້າ</value>
+  </data>
+  <data name="주문출고배송정보X" xml:space="preserve">
+    <value>ຊອກຫາສະຫຼຸບປະຈຳເດືອນຂອງແຕ່ລະສາຂາ</value>
+  </data>
+  <data name="주문출고센타" xml:space="preserve">
+    <value>ຊື່ກຸ່ມໃຫຍ່</value>
+  </data>
+  <data name="주문출고직접" xml:space="preserve">
+    <value>ການຂາຍ</value>
+  </data>
+  <data name="주민번호" xml:space="preserve">
+    <value>ເລືອກສາຍງານ</value>
+  </data>
+  <data name="주민번호_보기_권한" xml:space="preserve">
+    <value>ຂໍ້ມູນສິນຄ້າທີ່ການຂາຍ</value>
+  </data>
+  <data name="주민번호_없이" xml:space="preserve">
+    <value>ວັນທີການຈ່າຍ</value>
+  </data>
+  <data name="주소" xml:space="preserve">
+    <value>ຂໍ້ມູນຂາຍ</value>
+  </data>
+  <data name="주소1" xml:space="preserve">
+    <value>ສິນຄ້າບໍ່ດີກ່ອນເຂົ້າສາງທີ່ສົ່ງຄືນ</value>
+  </data>
+  <data name="주소2" xml:space="preserve">
+    <value>ລະຫັດສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="중분류_코드" xml:space="preserve">
+    <value>ລົງທະບຽນ/ແກ້ໄຂທີ່ການຂາຍ</value>
+  </data>
+  <data name="중분류명" xml:space="preserve">
+    <value>ຊອກຫາລາຍການສະຫຼຸບປະຈຳອາທິດ</value>
+  </data>
+  <data name="중지" xml:space="preserve">
+    <value>ອ່ານອີກເທື່ອລົງທະບຽນສະມາຊິກໃນວັນ</value>
+  </data>
+  <data name="중지_여부" xml:space="preserve">
+    <value>ຊອກຫາສະມາຊິກ</value>
+  </data>
+  <data name="직급" xml:space="preserve">
+    <value>ຜູ້ຜະລິດ</value>
+  </data>
+  <data name="직대집계_본인_주문_내역" xml:space="preserve">
+    <value>ລະຫັດທະນາຄານ</value>
+  </data>
+  <data name="직장" xml:space="preserve">
+    <value>ຂໍ້ມູນ6</value>
+  </data>
+  <data name="직장_주소_동일" xml:space="preserve">
+    <value>ເພີ່ມ</value>
+  </data>
+  <data name="직접수령" xml:space="preserve">
+    <value>ຊອກຫາລາຍການສະຫຼຸບປະຈຳເດືອນຂອງແຕ່ລະສາຂາ</value>
+  </data>
+  <data name="직추천" xml:space="preserve">
+    <value>ຈັດການຂອງສາງ</value>
+  </data>
+  <data name="직후원" xml:space="preserve">
+    <value>ລວມສິນຄ້າເຂົ້າສາງທີ່ຍ້າຍມາ</value>
+  </data>
+  <data name="집전화" xml:space="preserve">
+    <value>ເງິນທີ່ຈ່າຍໃຫ້</value>
+  </data>
+  <data name="총PV" xml:space="preserve">
+    <value>ຊະນິດຈັດຊື້</value>
+  </data>
+  <data name="총건수" xml:space="preserve">
+    <value>ຈໍານວນສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="총결제액" xml:space="preserve">
+    <value>ຜູ້ຝາກເງິນ</value>
+  </data>
+  <data name="총주문PV" xml:space="preserve">
+    <value>ປ່ຽນຜູ້ອຸປະຖໍາ</value>
+  </data>
+  <data name="총주문액" xml:space="preserve">
+    <value>ວັນທີທີ່ເຂົ້າຮ່ວມ</value>
+  </data>
+  <data name="총금액" xml:space="preserve">
+    <value>ລະຫັດຄູ່ຮ່ວມບໍລິສັດ</value>
+  </data>
+  <data name="총반품PV" xml:space="preserve">
+    <value>ຊື່ອັງກິດ</value>
+  </data>
+  <data name="총반품불량입고" xml:space="preserve">
+    <value>ລາອອກແມ່ນ/ບໍ່ແມ່ນ</value>
+  </data>
+  <data name="총반품액" xml:space="preserve">
+    <value>ເລກບັດ/ທະນາຄານ</value>
+  </data>
+  <data name="총반품일반입고" xml:space="preserve">
+    <value>ວິນໂດ</value>
+  </data>
+  <data name="총상품PV" xml:space="preserve">
+    <value>ວັນທີສົ່ງຄືນເງິນ/ຍົກເລີກ</value>
+  </data>
+  <data name="총상품액" xml:space="preserve">
+    <value>ຂຽນວັນທີສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="총소진출고" xml:space="preserve">
+    <value>ນໍ້າເບີປະກັນໄພ</value>
+  </data>
+  <data name="총스텝수" xml:space="preserve">
+    <value>ເບີໂທລະສັບ1</value>
+  </data>
+  <data name="총이동입고" xml:space="preserve">
+    <value>ຕິດຕໍ່1</value>
+  </data>
+  <data name="총이동출고" xml:space="preserve">
+    <value>ສັນຍາເຂົ້າຮ່ວມ</value>
+  </data>
+  <data name="총일반입고" xml:space="preserve">
+    <value>ການຊໍາລະເງິນ</value>
+  </data>
+  <data name="총입금액" xml:space="preserve">
+    <value>ລາຄາສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="총재고" xml:space="preserve">
+    <value>ການນໍາໃຊ້</value>
+  </data>
+  <data name="총주문출고" xml:space="preserve">
+    <value>ຈໍານວນຂອງ/ຈໍານວນຂອງ</value>
+  </data>
+  <data name="총주문출고배송" xml:space="preserve">
+    <value>ຈໍານວນເງິນຝາກ</value>
+  </data>
+  <data name="총주문출고배송정보X" xml:space="preserve">
+    <value>ເລກທີ່ສະມາຊິກ</value>
+  </data>
+  <data name="총주문출고센타" xml:space="preserve">
+    <value>ປະເພດ</value>
+  </data>
+  <data name="총주문출고직접" xml:space="preserve">
+    <value>ຈໍານວນເງິນຄໍາຮ້ອງຂໍ</value>
+  </data>
+  <data name="총판매PV" xml:space="preserve">
+    <value>ຄໍາຮ້ອງຂໍ</value>
+  </data>
+  <data name="총하선PV" xml:space="preserve">
+    <value>ຕິດຕໍ່2</value>
+  </data>
+  <data name="최상위로_변경" xml:space="preserve">
+    <value>ຈໍານວນທີ່ການຂາຍ</value>
+  </data>
+  <data name="최조_판매전_상품_가격" xml:space="preserve">
+    <value>ລວມເງິນບໍ່ມີບັນຊີ</value>
+  </data>
+  <data name="최초_판매전_상품_가격" xml:space="preserve">
+    <value>ເລກໃບແຈ້ງ</value>
+  </data>
+  <data name="추가" xml:space="preserve">
+    <value>ບໍ່ມີບັນຊີ</value>
+  </data>
+  <data name="추천_계층도_이미지_저장" xml:space="preserve">
+    <value>ປ່ຽນExcelທີ່ລາຍງານລາຍລະອຽດ</value>
+  </data>
+  <data name="추천_역추적" xml:space="preserve">
+    <value>ລວມເງິນສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="추천_조직" xml:space="preserve">
+    <value>ຊື່ຜູ້ໃຊ້</value>
+  </data>
+  <data name="추천_최상위" xml:space="preserve">
+    <value>ລາຄາສະເລ່ຍທີ່ຊື້ສິນຄ້າ</value>
+  </data>
+  <data name="추천인" xml:space="preserve">
+    <value>ເບີໂທລະສັບ</value>
+  </data>
+  <data name="추천인_그룹" xml:space="preserve">
+    <value>ສູນສິນຄ້າກ່ອນອອກສາງທີ່ຈອງ</value>
+  </data>
+  <data name="추천인_변경" xml:space="preserve">
+    <value>ຈັດຮຽງ2</value>
+  </data>
+  <data name="추천인명" xml:space="preserve">
+    <value>ຊື່ສູນ</value>
+  </data>
+  <data name="추천인번호" xml:space="preserve">
+    <value>ຄໍາຮ້ອງຂໍ</value>
+  </data>
+  <data name="추천하선인원" xml:space="preserve">
+    <value>ສະພາບ</value>
+  </data>
+  <data name="출고_관리_주문_출고" xml:space="preserve">
+    <value>ທີ່ຢູ່ລາຍລະອຽດ</value>
+  </data>
+  <data name="출고_관리_주문_출고_취소" xml:space="preserve">
+    <value>ທີ່ຢູ່</value>
+  </data>
+  <data name="출고_관리_소진_출고" xml:space="preserve">
+    <value>ສິດທີການບໍລິຫານ</value>
+  </data>
+  <data name="출고_관리_출고_조회" xml:space="preserve">
+    <value>ແຈ້ງການປັບປຸງໃຫ້ທັນ</value>
+  </data>
+  <data name="출고_번호" xml:space="preserve">
+    <value>ທີ່ຢູ່</value>
+  </data>
+  <data name="출고_사유" xml:space="preserve">
+    <value>ຈັດເງິນທີ່ຈ່າຍໃຫ້</value>
+  </data>
+  <data name="출고_수량" xml:space="preserve">
+    <value>ແກ້ໄຂວັນທີ</value>
+  </data>
+  <data name="출고_일자" xml:space="preserve">
+    <value>ຍົກເລີກ</value>
+  </data>
+  <data name="출고번호" xml:space="preserve">
+    <value>ລວມການຂາຍ</value>
+  </data>
+  <data name="출고센타_반품일자_기준" xml:space="preserve">
+    <value>ເວລາບັນທຶກ</value>
+  </data>
+  <data name="출고수량" xml:space="preserve">
+    <value>ເບີໂທລະສັບເຮືອນ</value>
+  </data>
+  <data name="출고일" xml:space="preserve">
+    <value>ແຟັກ</value>
+  </data>
+  <data name="출고일자" xml:space="preserve">
+    <value>ທີ່ຢູ່ທີ່ສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="출고자" xml:space="preserve">
+    <value>ກວດລະຫັດ</value>
+  </data>
+  <data name="출고지" xml:space="preserve">
+    <value>ຈັດການສາງ</value>
+  </data>
+  <data name="출고지_From" xml:space="preserve">
+    <value>ແມ່ນ/ບໍ່ແມ່ນສົ່ງຄືນເງິນ/ຍົກເລີກ</value>
+  </data>
+  <data name="출고지명" xml:space="preserve">
+    <value>ລວມສິນຄ້າເຂົ້າສາງທີ່ທົ່ວໄປ</value>
+  </data>
+  <data name="취소" xml:space="preserve">
+    <value>ທີ່ຢູ່ທີ່ສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="카드" xml:space="preserve">
+    <value>ທະບຽນລະຫັດທະນາຄານ</value>
+  </data>
+  <data name="카드_결제_금액" xml:space="preserve">
+    <value>ບຸກຄົນຈັດສິນຄ້າກ່ອນອອກສາງທີ່ຈອງ</value>
+  </data>
+  <data name="카드_결제_내역_조회" xml:space="preserve">
+    <value>ເບີໂທລະສັບ2</value>
+  </data>
+  <data name="카드_결제일" xml:space="preserve">
+    <value>ການຈັດຕັ້ງຄົນແຕ່ລະຂັ້ນ</value>
+  </data>
+  <data name="카드_번호" xml:space="preserve">
+    <value>ຊອກຫາສະຫຼຸບປະຈຳອາທິດ</value>
+  </data>
+  <data name="카드_승인_금액" xml:space="preserve">
+    <value>ຈັດການການຊອກຫາ</value>
+  </data>
+  <data name="카드_유효_기간" xml:space="preserve">
+    <value>ທະບຽນລະຫັດທະນາຄານ</value>
+  </data>
+  <data name="카드_은행명" xml:space="preserve">
+    <value>ຊື່ສະມາຊິກ </value>
+  </data>
+  <data name="카드_은행번호" xml:space="preserve">
+    <value>ຊອກຫາວັນທີສິນຄ້າອອກສາງ(ອັດຕາ)ທີ່ລາຍງານການຂາຍ</value>
+  </data>
+  <data name="카드_코드" xml:space="preserve">
+    <value>ກະລຸນາຂຽນບໍ່ມີ</value>
+  </data>
+  <data name="카드_코드_등록" xml:space="preserve">
+    <value>ລວມຮັບເງິນ</value>
+  </data>
+  <data name="카드_할부_기간" xml:space="preserve">
+    <value>ຈັດການການຕິດໜີ້ຂອງການຂາຍ</value>
+  </data>
+  <data name="카드결제액" xml:space="preserve">
+    <value>ສິນຄ້າຄົງເຫລືອຂອງແຕ່ລະສູນ</value>
+  </data>
+  <data name="카드결제일" xml:space="preserve">
+    <value>ສາເຫດທີ່ປ່ຽນ</value>
+  </data>
+  <data name="카드명" xml:space="preserve">
+    <value>ລວມການຂາຍ</value>
+  </data>
+  <data name="카드번호" xml:space="preserve">
+    <value>ກຸ່ມສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="카드별" xml:space="preserve">
+    <value>ເລກທີ່ຜູ້ຝາກເງິນ</value>
+  </data>
+  <data name="카드별_집계" xml:space="preserve">
+    <value>ຊອກຫາອັດຕາສິນຄ້າອອກສາງ/ສິນຄ້າເຂົ້າສາງທີ່ລາຍງານການຂາຍ</value>
+  </data>
+  <data name="카드사" xml:space="preserve">
+    <value>ວັນທີຊອກຫາ</value>
+  </data>
+  <data name="카드소유자" xml:space="preserve">
+    <value>ບໍລິການສົ່ງສິນຄ້າອອກສາງທີ່ລວມຈອງ</value>
+  </data>
+  <data name="카드코드" xml:space="preserve">
+    <value>ສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="탈퇴" xml:space="preserve">
+    <value>ວັນທີສິນຄ້າອອກສາງ/ສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="탈퇴_관련" xml:space="preserve">
+    <value>ລວມອື່ນໆສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="탈퇴_여부" xml:space="preserve">
+    <value>ຊອກຫາສະມາຊິກທີ່ລາອອກ</value>
+  </data>
+  <data name="탈퇴사유" xml:space="preserve">
+    <value>ຂະຫນາດຫນັງສື</value>
+  </data>
+  <data name="탈퇴일" xml:space="preserve">
+    <value>ເລກທີ່ຕ່ຳແໜ່ງຂັ້ນເທິງຄົນໃຫມ່</value>
+  </data>
+  <data name="판매센타_판매일자_기준" xml:space="preserve">
+    <value>ຈໍານວນທີ່ມີຢູ່</value>
+  </data>
+  <data name="판매원" xml:space="preserve">
+    <value>ການຊໍາລະເງິນ</value>
+  </data>
+  <data name="판매원구분" xml:space="preserve">
+    <value>ຊອກຫາສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="팩스_번호" xml:space="preserve">
+    <value>ລາຄາສິນຄ້າຄັ້ງຂໍາອິດທີ່ກ່ອນການຂາຍ</value>
+  </data>
+  <data name="표시_내역" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດສູນ</value>
+  </data>
+  <data name="표시_내역_적용" xml:space="preserve">
+    <value>ຊື່ຜູ້ອຸປະຖໍາ</value>
+  </data>
+  <data name="프로그램_관리" xml:space="preserve">
+    <value>ຈໍານວນທີ່ຍ້າຍ</value>
+  </data>
+  <data name="프린트_미리보기" xml:space="preserve">
+    <value>ອື່ນໆຈັດສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="프린트미리보기" xml:space="preserve">
+    <value>ໃຊ້/ບໍ່ໃຊ້</value>
+  </data>
+  <data name="프린트설정" xml:space="preserve">
+    <value>ບໍລິສັດຄົມມະນາຄົມ</value>
+  </data>
+  <data name="하선인원수" xml:space="preserve">
+    <value>ວິທີການໄດ້ຮັບ</value>
+  </data>
+  <data name="하위_내역" xml:space="preserve">
+    <value>ຍົກເລີກທີ່ສົ່ງຄືນເງິນ/ອານຸມັດ</value>
+  </data>
+  <data name="할부" xml:space="preserve">
+    <value>ເລືອກທັງຫມົດ</value>
+  </data>
+  <data name="합계PV" xml:space="preserve">
+    <value>ຜູ້ຝາກເງິນ</value>
+  </data>
+  <data name="합계금액" xml:space="preserve">
+    <value>ສໍາເລັດແລ້ວບໍ່ແລ້ວ</value>
+  </data>
+  <data name="핸드폰" xml:space="preserve">
+    <value>ທີ່ຢູ່ຫ້ອງການ</value>
+  </data>
+  <data name="현금" xml:space="preserve">
+    <value>ລວມຈໍານວນ</value>
+  </data>
+  <data name="현금_결제_금액" xml:space="preserve">
+    <value>ຕ່ຳແໜ່ງຂັ້ນເທິງຄົນເກົ່າ</value>
+  </data>
+  <data name="현금_결제일" xml:space="preserve">
+    <value>ລວມເງິນສິນຄ້າເຂົ້າສາງທີ່ສົ່ງຄືນ</value>
+  </data>
+  <data name="현금_무통장_입금_내역_조회" xml:space="preserve">
+    <value>ວັນທີຂາຍ</value>
+  </data>
+  <data name="현금결제액" xml:space="preserve">
+    <value>ເລກທີ່ອະນຸຍາດ</value>
+  </data>
+  <data name="현금결제일" xml:space="preserve">
+    <value>ເລກທີ່ຄົນແນະນໍາ</value>
+  </data>
+  <data name="현직급" xml:space="preserve">
+    <value>ສາເຫດລາອອກ</value>
+  </data>
+  <data name="환불_결제_정보" xml:space="preserve">
+    <value>ປ່ຽນຊື່ສະມາຊິກ</value>
+  </data>
+  <data name="환불_결제액_합" xml:space="preserve">
+    <value>ອອກ</value>
+  </data>
+  <data name="환불_금액" xml:space="preserve">
+    <value>ກ່ຽວກັລລະບົບ</value>
+  </data>
+  <data name="환불_내역" xml:space="preserve">
+    <value>ລວມຈໍານວນສິນຄ້າບໍ່ດີເຂົ້າສາງທີ່ສົ່ງຄືນ</value>
+  </data>
+  <data name="환불_일자" xml:space="preserve">
+    <value>ສິນຄ້າເຂົ້າສາງທີ່ສົ່ງຄືນ</value>
+  </data>
+  <data name="환불_취소" xml:space="preserve">
+    <value>ຊອກຫາສິນຄ້າລາຍລະອຽດການປ່ຽນ/ຄືນສິນຄ້າ </value>
+  </data>
+  <data name="환불액" xml:space="preserve">
+    <value>ຊື່ຂອງທະນາຄານ</value>
+  </data>
+  <data name="환블_금액" xml:space="preserve">
+    <value>ສາຍງານ</value>
+  </data>
+  <data name="활동" xml:space="preserve">
+    <value>ຈັດການຂໍ້ມູນພື້ນຖານ</value>
+  </data>
+  <data name="활동_여부" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດນາມບັດ</value>
+  </data>
+  <data name="회사_계좌_가명" xml:space="preserve">
+    <value>ຊື່ສະມາຊິກເກົ່າ</value>
+  </data>
+  <data name="회사_계좌_등록" xml:space="preserve">
+    <value>ຊື່ຕ່ຳແໜ່ງຂັ້ນເທິງຄົນເກົ່າ</value>
+  </data>
+  <data name="회사_은행_계좌번호" xml:space="preserve">
+    <value>ລົງທະບຽນ/ແກ້ໄຂທີ່ສະມາຊິກ</value>
+  </data>
+  <data name="회사_은행_코드" xml:space="preserve">
+    <value>ຂໍ້ມູນ3</value>
+  </data>
+  <data name="회사_은행명" xml:space="preserve">
+    <value>ການຕັ້ງຄ່າ</value>
+  </data>
+  <data name="회원_가입" xml:space="preserve">
+    <value />
+  </data>
+  <data name="회원_가입_현황_날짜별" xml:space="preserve">
+    <value>ລວມເງິນຂາຍ/ສົ່ງຄືນສິນຄ້າ</value>
+  </data>
+  <data name="회원_가입_현황_날짜별_센타" xml:space="preserve">
+    <value>ສິນຄ້າທີ່ມີຢູ່ໃນປະຈຸບັນທີ່ຂາຍ,ສົ່ງ,ທົ່ວໄປ</value>
+  </data>
+  <data name="회원_가입_현황_날짜별_센타별" xml:space="preserve">
+    <value>ປ່ຽນ-ໃຫມ່</value>
+  </data>
+  <data name="회원_가입_현황_센타별" xml:space="preserve">
+    <value>ວັນທີສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="회원_검색" xml:space="preserve">
+    <value>ຈໍານວນເງິນສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="회원_관련_정보" xml:space="preserve">
+    <value>ກ່ອນລາຍງານ</value>
+  </data>
+  <data name="회원_관리" xml:space="preserve">
+    <value>ລະຫັດສິນຄ້າ</value>
+  </data>
+  <data name="회원_기본_배송_주소" xml:space="preserve">
+    <value>ຊອກຫາ</value>
+  </data>
+  <data name="회원_기본_주소" xml:space="preserve">
+    <value>ລວມ</value>
+  </data>
+  <data name="회원_등록시_매출창_자동" xml:space="preserve">
+    <value>ຈໍານວນສິນຄ້າທີ່ຄົງເຫລືອ</value>
+  </data>
+  <data name="회원_번호" xml:space="preserve">
+    <value>ການຈົບອົບຮົມ</value>
+  </data>
+  <data name="회원_번호_생성" xml:space="preserve">
+    <value>ສູນສິນຄ້າອອກສາງທີ່ຈອງ</value>
+  </data>
+  <data name="회원_센타명" xml:space="preserve">
+    <value>ກຸ່ມສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="회원_정보" xml:space="preserve">
+    <value>ສູນສິນຄ້າອອກສາງທີ່ລວມຈອງ</value>
+  </data>
+  <data name="회원_정보_등록" xml:space="preserve">
+    <value>ຊອກຫາລວມເງິນນອກເວລາທີ່ແຕ່ລະສະມາຊິກ</value>
+  </data>
+  <data name="회원_정보_변경_내역" xml:space="preserve">
+    <value>ການຈັດການສະມາຊິກ</value>
+  </data>
+  <data name="회원_정보_변경_조회" xml:space="preserve">
+    <value> ຄໍາຮ້ອງຂໍ</value>
+  </data>
+  <data name="회원_정보_삭제" xml:space="preserve">
+    <value>ລຶບ</value>
+  </data>
+  <data name="회원_정보_수정" xml:space="preserve">
+    <value>ລວມຈໍານວນສິນຄ້າອອກສາງ</value>
+  </data>
+  <data name="회원_주소_관리" xml:space="preserve">
+    <value>ຫນ້າຈໍກັບສ້າງໄດ້</value>
+  </data>
+  <data name="회원_주요_정보_변경" xml:space="preserve">
+    <value>ເງິນສົດ</value>
+  </data>
+  <data name="회원_지사명" xml:space="preserve">
+    <value>ຊອກຫາໃຫມ່</value>
+  </data>
+  <data name="회원_직장_주소" xml:space="preserve">
+    <value>ວັນທີສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="회원_현황" xml:space="preserve">
+    <value>ຈໍານວນຄົນ</value>
+  </data>
+  <data name="회원가" xml:space="preserve">
+    <value>ພາສີມູນຄ່າເພີ່ມ </value>
+  </data>
+  <data name="회원등록" xml:space="preserve">
+    <value>ວັນທີທີ່ຂຽນສະມາຊິກ</value>
+  </data>
+  <data name="회원명" xml:space="preserve">
+    <value>ປ່ຽນແລ້ວ</value>
+  </data>
+  <data name="회원번호" xml:space="preserve">
+    <value>ການຈົບອົບຮົມ</value>
+  </data>
+  <data name="회원상태" xml:space="preserve">
+    <value>ເງິນສົດ</value>
+  </data>
+  <data name="회원센타별" xml:space="preserve">
+    <value>ຊື່ສະມາຊິກໃຫມ່</value>
+  </data>
+  <data name="후_내역" xml:space="preserve">
+    <value>ການຈັດການບໍລິຫານ</value>
+  </data>
+  <data name="후_상위번호" xml:space="preserve">
+    <value>ເລກໃບແຈ້ງ</value>
+  </data>
+  <data name="후_상위성명" xml:space="preserve">
+    <value>ສະຖານທີ່</value>
+  </data>
+  <data name="후원_계보도" xml:space="preserve">
+    <value>ໝາຍເຫດບໍ່ມີບັນຊີ</value>
+  </data>
+  <data name="후원_계층도_이미지_저장" xml:space="preserve">
+    <value>ບໍລິການສົ່ງສິນຄ້າກ່ອນອອກສາງທີ່ຈອງ</value>
+  </data>
+  <data name="후원_역추적" xml:space="preserve">
+    <value>ລົງທະບຽນລະຫັດທະນາຄານ</value>
+  </data>
+  <data name="후원_조직" xml:space="preserve">
+    <value>ວັນທີທີ່ຈະສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="후원_최상위" xml:space="preserve">
+    <value>ຂໍ້ມູນການຊໍາລະເງິນທີ່ການຂາຍເບື້ອງຕົ້ນ</value>
+  </data>
+  <data name="후원_추천인_변경_내역" xml:space="preserve">
+    <value>ລວມສິນຄ້າເຂົ້າສາງ</value>
+  </data>
+  <data name="후원인" xml:space="preserve">
+    <value>ຍົກເລີກການຄິດໄລ່ໃນມື້</value>
+  </data>
+  <data name="후원인_그룹" xml:space="preserve">
+    <value>ການຂາຍມີ</value>
+  </data>
+  <data name="후원인_변경" xml:space="preserve">
+    <value>ສະພາບການປຸງແຕ່ງ</value>
+  </data>
+  <data name="후원인기준하선" xml:space="preserve">
+    <value>ປະເພດສົ່ງສິນຄ້າ</value>
+  </data>
+  <data name="후원인명" xml:space="preserve">
+    <value>ການຂາຍມີ</value>
+  </data>
+  <data name="후원하선인원" xml:space="preserve">
+    <value>ສາງທີ່ເໝາະສົມ</value>
+  </data>
+</root>

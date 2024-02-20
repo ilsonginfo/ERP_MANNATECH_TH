@@ -1,0 +1,3087 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A라인PV" xml:space="preserve">
+    <value>A라인PV</value>
+  </data>
+  <data name="A라인액" xml:space="preserve">
+    <value>A라인액</value>
+  </data>
+  <data name="B라인PV" xml:space="preserve">
+    <value>B라인PV</value>
+  </data>
+  <data name="B라인액" xml:space="preserve">
+    <value>B라인액</value>
+  </data>
+  <data name="Excel_전환" xml:space="preserve">
+    <value>Excel 전환</value>
+  </data>
+  <data name="Last_Name" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="PV합" xml:space="preserve">
+    <value>PV합</value>
+  </data>
+  <data name="SN_관련" xml:space="preserve">
+    <value>SN 관련</value>
+  </data>
+  <data name="WEB" xml:space="preserve">
+    <value>WEB</value>
+  </data>
+  <data name="_적립" xml:space="preserve">
+    <value>+ 적립</value>
+  </data>
+  <data name="가감_구분" xml:space="preserve">
+    <value>가감 구분</value>
+  </data>
+  <data name="가용_수량" xml:space="preserve">
+    <value>가용 수량</value>
+  </data>
+  <data name="가입인원" xml:space="preserve">
+    <value>가입인원</value>
+  </data>
+  <data name="가입일" xml:space="preserve">
+    <value>가입일</value>
+  </data>
+  <data name="개별PV" xml:space="preserve">
+    <value>개별PV</value>
+  </data>
+  <data name="개별단가" xml:space="preserve">
+    <value>개별단가</value>
+  </data>
+  <data name="개인_정보" xml:space="preserve">
+    <value>개인 정보</value>
+  </data>
+  <data name="거래명세서" xml:space="preserve">
+    <value>거래명세서</value>
+  </data>
+  <data name="건수" xml:space="preserve">
+    <value>건수</value>
+  </data>
+  <data name="검색" xml:space="preserve">
+    <value>검색[F1]</value>
+  </data>
+  <data name="검색_기준일" xml:space="preserve">
+    <value>검색 기준일</value>
+  </data>
+  <data name="결제" xml:space="preserve">
+    <value>결제</value>
+  </data>
+  <data name="결제_구분" xml:space="preserve">
+    <value>결제 구분</value>
+  </data>
+  <data name="결제_금액" xml:space="preserve">
+    <value>결제 금액</value>
+  </data>
+  <data name="결제_내역" xml:space="preserve">
+    <value>결제 내역</value>
+  </data>
+  <data name="결제_내역II" xml:space="preserve">
+    <value>결제 내역II</value>
+  </data>
+  <data name="결제_삭제내역" xml:space="preserve">
+    <value>결제 삭제내역</value>
+  </data>
+  <data name="결제_일자" xml:space="preserve">
+    <value>결제 일자</value>
+  </data>
+  <data name="결제_종류" xml:space="preserve">
+    <value>결제_종류</value>
+  </data>
+  <data name="결제_코드" xml:space="preserve">
+    <value>결제 코드</value>
+  </data>
+  <data name="결제_환불_취소" xml:space="preserve">
+    <value>결제 환불 취소</value>
+  </data>
+  <data name="결제금액" xml:space="preserve">
+    <value>결제금액</value>
+  </data>
+  <data name="결제방법" xml:space="preserve">
+    <value>결제방법</value>
+  </data>
+  <data name="결제액" xml:space="preserve">
+    <value>결제액</value>
+  </data>
+  <data name="결제일자" xml:space="preserve">
+    <value>결제일자</value>
+  </data>
+  <data name="결제한_금액" xml:space="preserve">
+    <value>결제한 금액</value>
+  </data>
+  <data name="결제할_금액" xml:space="preserve">
+    <value>결제할 금액</value>
+  </data>
+  <data name="계좌가명" xml:space="preserve">
+    <value>계좌 임시명</value>
+  </data>
+  <data name="계좌가명별_집계" xml:space="preserve">
+    <value>계좌 임시명별 집계</value>
+  </data>
+  <data name="계좌번호" xml:space="preserve">
+    <value>계좌번호</value>
+  </data>
+  <data name="계층도_조회" xml:space="preserve">
+    <value>계층도 조회</value>
+  </data>
+  <data name="공급가" xml:space="preserve">
+    <value>공급가</value>
+  </data>
+  <data name="공제" xml:space="preserve">
+    <value>공제</value>
+  </data>
+  <data name="공제번호" xml:space="preserve">
+    <value>공제번호</value>
+  </data>
+  <data name="공제번호_수동_발급_저장" xml:space="preserve">
+    <value>공제번호 수동 발급 저장</value>
+  </data>
+  <data name="과거_배송지" xml:space="preserve">
+    <value>과거 배송지</value>
+  </data>
+  <data name="과세" xml:space="preserve">
+    <value>과세</value>
+  </data>
+  <data name="교육_이수자_신고" xml:space="preserve">
+    <value>교육 이수자 신고</value>
+  </data>
+  <data name="교육여부" xml:space="preserve">
+    <value>교육여부</value>
+  </data>
+  <data name="교육이수자" xml:space="preserve">
+    <value>교육이수자</value>
+  </data>
+  <data name="교육일" xml:space="preserve">
+    <value>교육일</value>
+  </data>
+  <data name="교환" xml:space="preserve">
+    <value>교환</value>
+  </data>
+  <data name="교환_내역_배송_정보" xml:space="preserve">
+    <value>교환 내역 배송 정보</value>
+  </data>
+  <data name="교환_내역_배송_정보_입력" xml:space="preserve">
+    <value>교환 내역 배송 정보 입력</value>
+  </data>
+  <data name="교환_반품" xml:space="preserve">
+    <value>교환 반품</value>
+  </data>
+  <data name="교환_반품PV" xml:space="preserve">
+    <value>교환 반품 PV</value>
+  </data>
+  <data name="교환_반품_일자" xml:space="preserve">
+    <value>교환/반품 일자</value>
+  </data>
+  <data name="교환_반품_주문번호" xml:space="preserve">
+    <value>교환 반품 주문번호</value>
+  </data>
+  <data name="교환_반품액" xml:space="preserve">
+    <value>교환 반품액</value>
+  </data>
+  <data name="교환_부분반품_등록_취소" xml:space="preserve">
+    <value>교환 부분반품 등록/취소</value>
+  </data>
+  <data name="교환_부분반품_상품_내역" xml:space="preserve">
+    <value>교환 부분반품 상품 내역</value>
+  </data>
+  <data name="교환_부분반품_취소" xml:space="preserve">
+    <value>교환/부분반품 취소</value>
+  </data>
+  <data name="교환_상품_정보" xml:space="preserve">
+    <value>교환 상품 정보</value>
+  </data>
+  <data name="교환_정상" xml:space="preserve">
+    <value>교환 정상</value>
+  </data>
+  <data name="주문PV" xml:space="preserve">
+    <value>판매PV</value>
+  </data>
+  <data name="주문_결제_정보" xml:space="preserve">
+    <value>판매 결제 정보</value>
+  </data>
+  <data name="주문_관리" xml:space="preserve">
+    <value>판매 관리</value>
+  </data>
+  <data name="주문_내역" xml:space="preserve">
+    <value>판매 내역</value>
+  </data>
+  <data name="주문_내역_상세_조회" xml:space="preserve">
+    <value>판매 현황II</value>
+  </data>
+  <data name="주문_내역_조회" xml:space="preserve">
+    <value>판매 현황</value>
+  </data>
+  <data name="주문_등록_수정" xml:space="preserve">
+    <value>판매 등록/수정</value>
+  </data>
+  <data name="주문_배송_정보" xml:space="preserve">
+    <value>판매 배송 정보</value>
+  </data>
+  <data name="주문_변경_내역" xml:space="preserve">
+    <value>판매 변경 현황</value>
+  </data>
+  <data name="주문_삭제_내역" xml:space="preserve">
+    <value>판매 삭제 현황</value>
+  </data>
+  <data name="주문_상품_내역" xml:space="preserve">
+    <value>판매 상품 내역</value>
+  </data>
+  <data name="주문_상품_내역II" xml:space="preserve">
+    <value>주문 상품 내역II</value>
+  </data>
+  <data name="주문_상품_삭제내역" xml:space="preserve">
+    <value>판매 상품 삭제 내역</value>
+  </data>
+  <data name="주문_상품_정보" xml:space="preserve">
+    <value>판매 상품 정보</value>
+  </data>
+  <data name="주문_센타" xml:space="preserve">
+    <value>판매 센타</value>
+  </data>
+  <data name="주문_센타명" xml:space="preserve">
+    <value>판매 센타명</value>
+  </data>
+  <data name="주문_수량" xml:space="preserve">
+    <value>판매 수량</value>
+  </data>
+  <data name="주문_일자" xml:space="preserve">
+    <value>판매 일자</value>
+  </data>
+  <data name="주문_정보" xml:space="preserve">
+    <value>판매 정보</value>
+  </data>
+  <data name="주문_제품_상세_내역_조회" xml:space="preserve">
+    <value>판매 제품 상세 내역 현황</value>
+  </data>
+  <data name="주문_종류" xml:space="preserve">
+    <value>판매  종류</value>
+  </data>
+  <data name="주문_집계_관리" xml:space="preserve">
+    <value>판매 집계</value>
+  </data>
+  <data name="주문_집계_주문_센타별_상품별" xml:space="preserve">
+    <value>판매 센타별 상품별</value>
+  </data>
+  <data name="주문_집계_주문_센타별_카드별" xml:space="preserve">
+    <value>판매 센타별 카드별</value>
+  </data>
+  <data name="주문_집계_날짜별" xml:space="preserve">
+    <value>판매 날짜별</value>
+  </data>
+  <data name="주문_집계_날짜별_주문_센타별" xml:space="preserve">
+    <value>판매 날짜별 판매 센타별</value>
+  </data>
+  <data name="주문_집계_날짜별_상품별" xml:space="preserve">
+    <value>판매 날짜별 판매 상품별</value>
+  </data>
+  <data name="주문_집계_상품별" xml:space="preserve">
+    <value>판매 상품별</value>
+  </data>
+  <data name="주문_집계_카드별" xml:space="preserve">
+    <value>판매 카드별</value>
+  </data>
+  <data name="주문_집계_판매_센타별" xml:space="preserve">
+    <value>판매 센타별</value>
+  </data>
+  <data name="주문_집계_하선_주문_내역" xml:space="preserve">
+    <value>판매 하선 내역</value>
+  </data>
+  <data name="주문_집계_회원_센타별" xml:space="preserve">
+    <value>회원 센타별 판매</value>
+  </data>
+  <data name="주문_집계_회원_센타별_상품별" xml:space="preserve">
+    <value>회원 센타별 상품별 판매</value>
+  </data>
+  <data name="주문_취소" xml:space="preserve">
+    <value>판매 취소</value>
+  </data>
+  <data name="주문_취소_권한" xml:space="preserve">
+    <value>판매 취소 권한</value>
+  </data>
+  <data name="주문금액" xml:space="preserve">
+    <value>판매금액</value>
+  </data>
+  <data name="주문센타별" xml:space="preserve">
+    <value>판매센타별</value>
+  </data>
+  <data name="주문수량" xml:space="preserve">
+    <value>판매수량</value>
+  </data>
+  <data name="주문액" xml:space="preserve">
+    <value>판매액</value>
+  </data>
+  <data name="주문일" xml:space="preserve">
+    <value />
+  </data>
+  <data name="주문일자" xml:space="preserve">
+    <value>판매일자</value>
+  </data>
+  <data name="주문종류" xml:space="preserve">
+    <value>판매종류</value>
+  </data>
+  <data name="구분" xml:space="preserve">
+    <value>구분</value>
+  </data>
+  <data name="구성된_셋트_상품" xml:space="preserve">
+    <value>구성 Set 상품</value>
+  </data>
+  <data name="구주소" xml:space="preserve">
+    <value>구주소</value>
+  </data>
+  <data name="그룹도_재구성" xml:space="preserve">
+    <value>그룹도 재구성</value>
+  </data>
+  <data name="글자_크기" xml:space="preserve">
+    <value>글자 크기</value>
+  </data>
+  <data name="금액" xml:space="preserve">
+    <value>금액</value>
+  </data>
+  <data name="금액_PV" xml:space="preserve">
+    <value>금액/PV</value>
+  </data>
+  <data name="금액관련_변경적용일" xml:space="preserve">
+    <value>가격 변경 시작일</value>
+  </data>
+  <data name="금액별" xml:space="preserve">
+    <value>금액별</value>
+  </data>
+  <data name="금액합" xml:space="preserve">
+    <value>금액합</value>
+  </data>
+  <data name="기간PV" xml:space="preserve">
+    <value>기간PV</value>
+  </data>
+  <data name="기간_구분" xml:space="preserve">
+    <value>기간 구분</value>
+  </data>
+  <data name="기간_마감" xml:space="preserve">
+    <value>기간 마감</value>
+  </data>
+  <data name="기간_마감_취소" xml:space="preserve">
+    <value>기간 마감 취소</value>
+  </data>
+  <data name="기간_마감별_집계1" xml:space="preserve">
+    <value>기간 마감별 집계1</value>
+  </data>
+  <data name="기간_마감별_집계2" xml:space="preserve">
+    <value>기간 마감별 집계2</value>
+  </data>
+  <data name="기간금액" xml:space="preserve">
+    <value>기간금액</value>
+  </data>
+  <data name="기간내_결제현황" xml:space="preserve">
+    <value>기간내 결제현황</value>
+  </data>
+  <data name="기간내_상품현황" xml:space="preserve">
+    <value>기간내 상품현황</value>
+  </data>
+  <data name="기간반품PV" xml:space="preserve">
+    <value>기간반품PV</value>
+  </data>
+  <data name="기간반품금액" xml:space="preserve">
+    <value>기간반품금액</value>
+  </data>
+  <data name="기간별_가입_인원수" xml:space="preserve">
+    <value>기간별 가입 인원수</value>
+  </data>
+  <data name="기간별_산하_실적_현황" xml:space="preserve">
+    <value>기간별 산하 실적 현황</value>
+  </data>
+  <data name="기간별_센타별_가입_인원수" xml:space="preserve">
+    <value>기간별 센타별 가입 인원수</value>
+  </data>
+  <data name="기간하선판매" xml:space="preserve">
+    <value>기간하선판매</value>
+  </data>
+  <data name="기록일" xml:space="preserve">
+    <value>기록일</value>
+  </data>
+  <data name="기록자" xml:space="preserve">
+    <value>기록자</value>
+  </data>
+  <data name="기본" xml:space="preserve">
+    <value>기본</value>
+  </data>
+  <data name="기본_배송지" xml:space="preserve">
+    <value>기본 배송지</value>
+  </data>
+  <data name="기본_상품" xml:space="preserve">
+    <value>기본 상품</value>
+  </data>
+  <data name="기본_주소_동일" xml:space="preserve">
+    <value>기본 주소 동일</value>
+  </data>
+  <data name="기본_주소지" xml:space="preserve">
+    <value>기본 주소지</value>
+  </data>
+  <data name="기본배송지" xml:space="preserve">
+    <value>기본배송지</value>
+  </data>
+  <data name="기본주소지" xml:space="preserve">
+    <value>기본주소지</value>
+  </data>
+  <data name="기존_상선" xml:space="preserve">
+    <value>기존 상선</value>
+  </data>
+  <data name="기존_추천인" xml:space="preserve">
+    <value>기존 추천인</value>
+  </data>
+  <data name="기존_후원인" xml:space="preserve">
+    <value>기존 후원인</value>
+  </data>
+  <data name="기준개월" xml:space="preserve">
+    <value>기준개월</value>
+  </data>
+  <data name="기초_관리_Set_상품_구성" xml:space="preserve">
+    <value>기초 관리 -&gt; Set상품 구성</value>
+  </data>
+  <data name="기초_관리_배송처_등록" xml:space="preserve">
+    <value>기초 관리 -&gt; 배송처 등록</value>
+  </data>
+  <data name="기초_관리_상품_관리" xml:space="preserve">
+    <value>기초 관리 -&gt; 상품 관리</value>
+  </data>
+  <data name="기초_관리_상품_대분류_등록" xml:space="preserve">
+    <value>기초 관리 -&gt; 상품 대분류 등록</value>
+  </data>
+  <data name="기초_관리_센타_코드_등록" xml:space="preserve">
+    <value>기초 관리 -&gt; 센타 코드 등록</value>
+  </data>
+  <data name="기초_관리_은행_코드_등록" xml:space="preserve">
+    <value>기초 관리 -&gt; 은행 코드 등록</value>
+  </data>
+  <data name="기초_관리_카드_코드_등록" xml:space="preserve">
+    <value>기초 관리 -&gt; 카드 코드 등록</value>
+  </data>
+  <data name="기초_관리_회사_계좌_등록" xml:space="preserve">
+    <value>기초 관리 -&gt; 회사 계좌 등록</value>
+  </data>
+  <data name="기초_자료_관리" xml:space="preserve">
+    <value>기초 관리</value>
+  </data>
+  <data name="기타" xml:space="preserve">
+    <value>기타</value>
+  </data>
+  <data name="기타_수당" xml:space="preserve">
+    <value>기타 수당</value>
+  </data>
+  <data name="기타수당" xml:space="preserve">
+    <value>기타수당</value>
+  </data>
+  <data name="기타입고" xml:space="preserve">
+    <value>기타입고</value>
+  </data>
+  <data name="날짜" xml:space="preserve">
+    <value>날짜</value>
+  </data>
+  <data name="날짜별" xml:space="preserve">
+    <value>날짜별</value>
+  </data>
+  <data name="내국인" xml:space="preserve">
+    <value>내국인</value>
+  </data>
+  <data name="년별" xml:space="preserve">
+    <value>년별</value>
+  </data>
+  <data name="닫기" xml:space="preserve">
+    <value>닫기[F12]</value>
+  </data>
+  <data name="당월" xml:space="preserve">
+    <value>당월</value>
+  </data>
+  <data name="당일" xml:space="preserve">
+    <value>당일</value>
+  </data>
+  <data name="당일_등록" xml:space="preserve">
+    <value>당일 등록</value>
+  </data>
+  <data name="당일_등록_회원" xml:space="preserve">
+    <value>당일 등록 회원</value>
+  </data>
+  <data name="대분류_코드" xml:space="preserve">
+    <value>대분류 코드</value>
+  </data>
+  <data name="대분류명" xml:space="preserve">
+    <value>대분류명</value>
+  </data>
+  <data name="대상_센타" xml:space="preserve">
+    <value>대상 센타</value>
+  </data>
+  <data name="대상_직원" xml:space="preserve">
+    <value>대상 직원</value>
+  </data>
+  <data name="대상_직원번호" xml:space="preserve">
+    <value>대상 직원번호</value>
+  </data>
+  <data name="대상_회원명" xml:space="preserve">
+    <value>대상 회원명</value>
+  </data>
+  <data name="대상_회원번호" xml:space="preserve">
+    <value>대상 회원번호</value>
+  </data>
+  <data name="대상화면" xml:space="preserve">
+    <value>대상화면</value>
+  </data>
+  <data name="대수" xml:space="preserve">
+    <value>대수</value>
+  </data>
+  <data name="대수_조정" xml:space="preserve">
+    <value>대수 조정</value>
+  </data>
+  <data name="대표자" xml:space="preserve">
+    <value>대표자</value>
+  </data>
+  <data name="동이름" xml:space="preserve">
+    <value>동이름</value>
+  </data>
+  <data name="등급" xml:space="preserve">
+    <value>등급</value>
+  </data>
+  <data name="등록_센타명" xml:space="preserve">
+    <value>등록 센타명</value>
+  </data>
+  <data name="등록일" xml:space="preserve">
+    <value>등록일</value>
+  </data>
+  <data name="등록일자" xml:space="preserve">
+    <value>등록일자</value>
+  </data>
+  <data name="라인" xml:space="preserve">
+    <value>라인</value>
+  </data>
+  <data name="라인_관련" xml:space="preserve">
+    <value>라인 관련</value>
+  </data>
+  <data name="라인_중지_관련" xml:space="preserve">
+    <value>라인 중지 관련</value>
+  </data>
+  <data name="라인_중지일" xml:space="preserve">
+    <value>라인 중지일</value>
+  </data>
+  <data name="라인별_인원수_추천" xml:space="preserve">
+    <value>라인별 인원수 추천</value>
+  </data>
+  <data name="라인별_인원수_후원" xml:space="preserve">
+    <value>라인별 인원수 후원</value>
+  </data>
+  <data name="라인중지일" xml:space="preserve">
+    <value>라인중지일</value>
+  </data>
+  <data name="랜덤부여" xml:space="preserve">
+    <value>랜덤부여</value>
+  </data>
+  <data name="로그아웃_상태로_변경" xml:space="preserve">
+    <value>로그아웃 상태로 변경</value>
+  </data>
+  <data name="로그오프_시간" xml:space="preserve">
+    <value>로그오프_시간</value>
+  </data>
+  <data name="로그인_가능_상태로_변경" xml:space="preserve">
+    <value>로그인 가능 상태로 변경</value>
+  </data>
+  <data name="로그인_시간" xml:space="preserve">
+    <value>로그인 시간</value>
+  </data>
+  <data name="마감_관리" xml:space="preserve">
+    <value>마감 관리</value>
+  </data>
+  <data name="마감_기간" xml:space="preserve">
+    <value>마감 기간</value>
+  </data>
+  <data name="마감_시작일" xml:space="preserve">
+    <value>마감 시작일</value>
+  </data>
+  <data name="마감_실행" xml:space="preserve">
+    <value>마감 실행</value>
+  </data>
+  <data name="마감_역추적" xml:space="preserve">
+    <value>마감 역추적</value>
+  </data>
+  <data name="마감_종료일" xml:space="preserve">
+    <value>마감 종료일</value>
+  </data>
+  <data name="마감_취소" xml:space="preserve">
+    <value>마감 취소</value>
+  </data>
+  <data name="마감기간" xml:space="preserve">
+    <value>마감기간</value>
+  </data>
+  <data name="마감일" xml:space="preserve">
+    <value>마감일</value>
+  </data>
+  <data name="마감일자" xml:space="preserve">
+    <value>마감일자</value>
+  </data>
+  <data name="마감종료일" xml:space="preserve">
+    <value>마감종료일</value>
+  </data>
+  <data name="마이오피스에_보여주기" xml:space="preserve">
+    <value>마이오피스에 보여주기</value>
+  </data>
+  <data name="마일리지" xml:space="preserve">
+    <value>마일리지</value>
+  </data>
+  <data name="마일리지_가감" xml:space="preserve">
+    <value>마일리지 가감</value>
+  </data>
+  <data name="마일리지_결제액" xml:space="preserve">
+    <value>마일리지 결제액</value>
+  </data>
+  <data name="마일리지_결제일" xml:space="preserve">
+    <value>마일리지 결제일</value>
+  </data>
+  <data name="마일리지_관리" xml:space="preserve">
+    <value>마일리지 관리</value>
+  </data>
+  <data name="마일리지_관리_마일리지_가감" xml:space="preserve">
+    <value>마일리지 관리 -&gt; 마일리지 가감</value>
+  </data>
+  <data name="마일리지_관리_마일리지_삭제" xml:space="preserve">
+    <value>마일리지 관리 -&gt; 마일리지 삭제</value>
+  </data>
+  <data name="마일리지_관리_마일리지_상세_조회" xml:space="preserve">
+    <value>마일리지 관리 -&gt; 마일리지 상세 조회</value>
+  </data>
+  <data name="마일리지_관리_마일리지_잔여_현황" xml:space="preserve">
+    <value>마일리지 관리 -&gt; 마일리지 잔여 현황</value>
+  </data>
+  <data name="마일리지_관리_마일리지_조회" xml:space="preserve">
+    <value>마일리지 관리 -&gt; 마일리지 조회</value>
+  </data>
+  <data name="마일리지_삭제" xml:space="preserve">
+    <value>마일리지 삭제</value>
+  </data>
+  <data name="마일리지_상세_조회" xml:space="preserve">
+    <value>마일리지 상세 조회</value>
+  </data>
+  <data name="마일리지_잔여_현황" xml:space="preserve">
+    <value>마일리지 잔여 현황</value>
+  </data>
+  <data name="마일리지_조회" xml:space="preserve">
+    <value>마일리지 조회</value>
+  </data>
+  <data name="마일리지_합계" xml:space="preserve">
+    <value>마일리지_합계</value>
+  </data>
+  <data name="매입처_코드" xml:space="preserve">
+    <value>매입처 코드</value>
+  </data>
+  <data name="매입처_코드_등록" xml:space="preserve">
+    <value>매입처 등록</value>
+  </data>
+  <data name="매입처명" xml:space="preserve">
+    <value>매입처명</value>
+  </data>
+  <data name="매출PV" xml:space="preserve">
+    <value>판매PV</value>
+  </data>
+  <data name="매출_일자" xml:space="preserve">
+    <value>판매 일자</value>
+  </data>
+  <data name="매출액" xml:space="preserve">
+    <value>판매액</value>
+  </data>
+  <data name="메인상품명" xml:space="preserve">
+    <value>Set상품명</value>
+  </data>
+  <data name="메인상품코드" xml:space="preserve">
+    <value>Set상품코드</value>
+  </data>
+  <data name="메인화면_알림_보기_권한" xml:space="preserve">
+    <value>메인화면 알림 보기 권한</value>
+  </data>
+  <data name="면_과세" xml:space="preserve">
+    <value>면/과세</value>
+  </data>
+  <data name="면세" xml:space="preserve">
+    <value>면세</value>
+  </data>
+  <data name="무통장" xml:space="preserve">
+    <value>무통장</value>
+  </data>
+  <data name="무통장_결제_금액" xml:space="preserve">
+    <value>무통장 결제 금액</value>
+  </data>
+  <data name="무통장_결제액" xml:space="preserve">
+    <value>무통장 결제액</value>
+  </data>
+  <data name="무통장_결제일" xml:space="preserve">
+    <value>무통장 결제일</value>
+  </data>
+  <data name="무통장_입금시_계좌가명을_이용합니다" xml:space="preserve">
+    <value>무통장 입금시 계좌가명을 이용합니다.</value>
+  </data>
+  <data name="무통장_합계" xml:space="preserve">
+    <value>무통장 합계</value>
+  </data>
+  <data name="무통장결제액" xml:space="preserve">
+    <value>무통장결제액</value>
+  </data>
+  <data name="무통장결제일" xml:space="preserve">
+    <value>무통장결제일</value>
+  </data>
+  <data name="미결제" xml:space="preserve">
+    <value>미결제</value>
+  </data>
+  <data name="미마감일자" xml:space="preserve">
+    <value>미마감일자</value>
+  </data>
+  <data name="미발생자" xml:space="preserve">
+    <value>미발생자</value>
+  </data>
+  <data name="미사용" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="미수금" xml:space="preserve">
+    <value>미수금</value>
+  </data>
+  <data name="미수금_여부" xml:space="preserve">
+    <value>미수금 여부</value>
+  </data>
+  <data name="미수금무" xml:space="preserve">
+    <value>미수금무</value>
+  </data>
+  <data name="미수금유" xml:space="preserve">
+    <value>미수금유</value>
+  </data>
+  <data name="미수액" xml:space="preserve">
+    <value>미수액</value>
+  </data>
+  <data name="미승인" xml:space="preserve">
+    <value>미승인</value>
+  </data>
+  <data name="미신고" xml:space="preserve">
+    <value>미신고</value>
+  </data>
+  <data name="미입력" xml:space="preserve">
+    <value>미입력</value>
+  </data>
+  <data name="미확정" xml:space="preserve">
+    <value>미확정</value>
+  </data>
+  <data name="반품" xml:space="preserve">
+    <value>반품</value>
+  </data>
+  <data name="반품PV" xml:space="preserve">
+    <value>반품PV</value>
+  </data>
+  <data name="반품_교환_부분반품_환불_및_결제_등록_취소" xml:space="preserve">
+    <value>반품/교환/부분반품 환불 및 결제 등록/취소</value>
+  </data>
+  <data name="반품_교환_상품_내역" xml:space="preserve">
+    <value>반품 교환 상품 내역</value>
+  </data>
+  <data name="반품_등록_취소" xml:space="preserve">
+    <value>반품 등록/취소</value>
+  </data>
+  <data name="반품_상품_내역" xml:space="preserve">
+    <value>반품 상품 내역</value>
+  </data>
+  <data name="반품_수량" xml:space="preserve">
+    <value>반품 수량</value>
+  </data>
+  <data name="반품_일자" xml:space="preserve">
+    <value>반품 일자</value>
+  </data>
+  <data name="반품_주문번호" xml:space="preserve">
+    <value>반품 주문 번호</value>
+  </data>
+  <data name="반품_취소" xml:space="preserve">
+    <value>반품 취소</value>
+  </data>
+  <data name="반품_포함" xml:space="preserve">
+    <value>반품 포함</value>
+  </data>
+  <data name="반품_환불_등록_취소" xml:space="preserve">
+    <value>반품 환불 등록/취소</value>
+  </data>
+  <data name="반품_환불_정보" xml:space="preserve">
+    <value>반품 환불 정보</value>
+  </data>
+  <data name="반품공제액" xml:space="preserve">
+    <value>반품공제액</value>
+  </data>
+  <data name="반품금액" xml:space="preserve">
+    <value>반품금액</value>
+  </data>
+  <data name="반품불량입고" xml:space="preserve">
+    <value>반품불량입고</value>
+  </data>
+  <data name="반품센타_반품일자_기준" xml:space="preserve">
+    <value>반품센타 반품일자 기준</value>
+  </data>
+  <data name="반품수" xml:space="preserve">
+    <value>반품수</value>
+  </data>
+  <data name="반품액" xml:space="preserve">
+    <value>반품액</value>
+  </data>
+  <data name="반품일반입고" xml:space="preserve">
+    <value>반품일반입고</value>
+  </data>
+  <data name="반품주문번호" xml:space="preserve">
+    <value>반품 주문번호</value>
+  </data>
+  <data name="반품총합PV" xml:space="preserve">
+    <value>반품총합PV</value>
+  </data>
+  <data name="반품판매자" xml:space="preserve">
+    <value>반품 판매자</value>
+  </data>
+  <data name="발생액" xml:space="preserve">
+    <value>발생액</value>
+  </data>
+  <data name="발생자" xml:space="preserve">
+    <value>발생자</value>
+  </data>
+  <data name="배송" xml:space="preserve">
+    <value>배송</value>
+  </data>
+  <data name="배송_구분" xml:space="preserve">
+    <value>배송 구분</value>
+  </data>
+  <data name="배송_내역" xml:space="preserve">
+    <value>배송 내역</value>
+  </data>
+  <data name="배송_삭제내역" xml:space="preserve">
+    <value>배송 삭제내역</value>
+  </data>
+  <data name="배송_선택" xml:space="preserve">
+    <value>배송 선택</value>
+  </data>
+  <data name="배송_일자" xml:space="preserve">
+    <value>배송 일자</value>
+  </data>
+  <data name="배송_종류" xml:space="preserve">
+    <value>배송 종류</value>
+  </data>
+  <data name="배송_코드" xml:space="preserve">
+    <value>배송 코드</value>
+  </data>
+  <data name="배송구분" xml:space="preserve">
+    <value>배송구분</value>
+  </data>
+  <data name="배송사_선택" xml:space="preserve">
+    <value>배송사 선택</value>
+  </data>
+  <data name="배송사_코드" xml:space="preserve">
+    <value>배송사 코드</value>
+  </data>
+  <data name="배송사_코드_등록" xml:space="preserve">
+    <value>배송처 등록</value>
+  </data>
+  <data name="배송사명" xml:space="preserve">
+    <value>배송사명</value>
+  </data>
+  <data name="배송일" xml:space="preserve">
+    <value>배송일</value>
+  </data>
+  <data name="배송입력여부" xml:space="preserve">
+    <value>배송입력여부</value>
+  </data>
+  <data name="변경_사유" xml:space="preserve">
+    <value>변경 사유</value>
+  </data>
+  <data name="변경_센타" xml:space="preserve">
+    <value>변경 센타</value>
+  </data>
+  <data name="변경_적용일" xml:space="preserve">
+    <value>변경 적용일</value>
+  </data>
+  <data name="변경건" xml:space="preserve">
+    <value>변경건</value>
+  </data>
+  <data name="변경내역" xml:space="preserve">
+    <value>변경내역</value>
+  </data>
+  <data name="변경내역2" xml:space="preserve">
+    <value>변경내역2</value>
+  </data>
+  <data name="변경일" xml:space="preserve">
+    <value>변경일</value>
+  </data>
+  <data name="변경자" xml:space="preserve">
+    <value>변경자</value>
+  </data>
+  <data name="본인_내역" xml:space="preserve">
+    <value>본인 내역</value>
+  </data>
+  <data name="본인_라인별_판매내역" xml:space="preserve">
+    <value>본인/라인별 판매 내역</value>
+  </data>
+  <data name="부분반품" xml:space="preserve">
+    <value>부분반품</value>
+  </data>
+  <data name="비고" xml:space="preserve">
+    <value>비고</value>
+  </data>
+  <data name="비고_저장" xml:space="preserve">
+    <value>비고 저장</value>
+  </data>
+  <data name="비매출자_현황" xml:space="preserve">
+    <value>비매출자 현황</value>
+  </data>
+  <data name="비밀번호" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="비밀번호_확인" xml:space="preserve">
+    <value>비밀번호 확인</value>
+  </data>
+  <data name="비이수" xml:space="preserve">
+    <value>비이수</value>
+  </data>
+  <data name="비이수자" xml:space="preserve">
+    <value>비이수자</value>
+  </data>
+  <data name="사업자" xml:space="preserve">
+    <value>사업자</value>
+  </data>
+  <data name="사업자_번호" xml:space="preserve">
+    <value>사업자 번호</value>
+  </data>
+  <data name="사용" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="사용_건수" xml:space="preserve">
+    <value>사용 건수</value>
+  </data>
+  <data name="사용_여부" xml:space="preserve">
+    <value>사용 여부</value>
+  </data>
+  <data name="사용_주문번호" xml:space="preserve">
+    <value>사용_주문번호</value>
+  </data>
+  <data name="사용가능_마일리지" xml:space="preserve">
+    <value>사용가능 마일리지</value>
+  </data>
+  <data name="사용건수" xml:space="preserve">
+    <value>사용건수</value>
+  </data>
+  <data name="사용안함" xml:space="preserve">
+    <value>사용안함</value>
+  </data>
+  <data name="사용액" xml:space="preserve">
+    <value>사용액</value>
+  </data>
+  <data name="사용자ID" xml:space="preserve">
+    <value>사용자ID</value>
+  </data>
+  <data name="사용자_ID" xml:space="preserve">
+    <value>사용자 ID</value>
+  </data>
+  <data name="사용자_관리" xml:space="preserve">
+    <value>사용자 관리</value>
+  </data>
+  <data name="사용자_로그" xml:space="preserve">
+    <value>사용자 로그</value>
+  </data>
+  <data name="사용자_성명" xml:space="preserve">
+    <value>사용자 성명</value>
+  </data>
+  <data name="사용자_아이디" xml:space="preserve">
+    <value>사용자 아이디</value>
+  </data>
+  <data name="사용자_접속_로그" xml:space="preserve">
+    <value>사용자 접속 로그</value>
+  </data>
+  <data name="사용자_퀵메뉴_구성" xml:space="preserve">
+    <value>사용자 퀵메뉴 구성</value>
+  </data>
+  <data name="사용자명" xml:space="preserve">
+    <value>사용자명</value>
+  </data>
+  <data name="사용자별" xml:space="preserve">
+    <value>사용자별</value>
+  </data>
+  <data name="삭제" xml:space="preserve">
+    <value>삭제[F4]</value>
+  </data>
+  <data name="삭제일" xml:space="preserve">
+    <value>삭제일</value>
+  </data>
+  <data name="삭제자" xml:space="preserve">
+    <value>삭제자</value>
+  </data>
+  <data name="산하_실적_현황" xml:space="preserve">
+    <value>산하 실적 현황</value>
+  </data>
+  <data name="상선_변경_내역" xml:space="preserve">
+    <value>상선 변경 내역</value>
+  </data>
+  <data name="상세_변경_내역" xml:space="preserve">
+    <value>상세 변경 내역</value>
+  </data>
+  <data name="상위_검색" xml:space="preserve">
+    <value>상위 검색</value>
+  </data>
+  <data name="상위_내역" xml:space="preserve">
+    <value>상위 내역</value>
+  </data>
+  <data name="상위_변경_현황" xml:space="preserve">
+    <value>상위 변경 현황</value>
+  </data>
+  <data name="상위_정보" xml:space="preserve">
+    <value>상위 정보</value>
+  </data>
+  <data name="상태" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="상품" xml:space="preserve">
+    <value>상품</value>
+  </data>
+  <data name="상품_가격_변동_내역" xml:space="preserve">
+    <value>상품가 변경 내역</value>
+  </data>
+  <data name="상품_규격" xml:space="preserve">
+    <value>상품 규격</value>
+  </data>
+  <data name="상품_내역" xml:space="preserve">
+    <value>상품 내역</value>
+  </data>
+  <data name="상품_중분류_등록" xml:space="preserve">
+    <value>상품 중분류 등록</value>
+  </data>
+  <data name="상품_카테고리_등록_대분류" xml:space="preserve">
+    <value>상품 대분류 등록</value>
+  </data>
+  <data name="상품_카테고리_등록_중분류" xml:space="preserve">
+    <value>상품 중분류 등록</value>
+  </data>
+  <data name="상품_코드" xml:space="preserve">
+    <value>상품 코드</value>
+  </data>
+  <data name="상품_코드_등록" xml:space="preserve">
+    <value>상품 관리</value>
+  </data>
+  <data name="상품명" xml:space="preserve">
+    <value>상품명</value>
+  </data>
+  <data name="상품명_또는_코드" xml:space="preserve">
+    <value>상품명 또는 코드</value>
+  </data>
+  <data name="상품별" xml:space="preserve">
+    <value>상품별</value>
+  </data>
+  <data name="상품별_입_출고_현황" xml:space="preserve">
+    <value>상품별 입/출고 현황</value>
+  </data>
+  <data name="상품별_재고_현황" xml:space="preserve">
+    <value>상품별 재고 현황</value>
+  </data>
+  <data name="상품코드" xml:space="preserve">
+    <value>상품코드</value>
+  </data>
+  <data name="새로운_상선" xml:space="preserve">
+    <value>새로운 상선</value>
+  </data>
+  <data name="새로운_추천인" xml:space="preserve">
+    <value>새로운 추천인</value>
+  </data>
+  <data name="새로운_후원인" xml:space="preserve">
+    <value>새로운 후원인</value>
+  </data>
+  <data name="새로입력" xml:space="preserve">
+    <value>초기화[F5]</value>
+  </data>
+  <data name="새반품_입력" xml:space="preserve">
+    <value>새반품 입력</value>
+  </data>
+  <data name="새반품_환불_입력" xml:space="preserve">
+    <value>새반품 환불 입력</value>
+  </data>
+  <data name="새배송_입력" xml:space="preserve">
+    <value>새배송 입력</value>
+  </data>
+  <data name="새배송지" xml:space="preserve">
+    <value>새주소지</value>
+  </data>
+  <data name="새판매_입력" xml:space="preserve">
+    <value>새판매 입력</value>
+  </data>
+  <data name="생년월일" xml:space="preserve">
+    <value>생년월일</value>
+  </data>
+  <data name="생일" xml:space="preserve">
+    <value>생일</value>
+  </data>
+  <data name="서브상품명" xml:space="preserve">
+    <value>포함상품명</value>
+  </data>
+  <data name="서브상품코드" xml:space="preserve">
+    <value>포함상품코드</value>
+  </data>
+  <data name="선택" xml:space="preserve">
+    <value>선택</value>
+  </data>
+  <data name="선택_내역_체크" xml:space="preserve">
+    <value>선태 내역 체크</value>
+  </data>
+  <data name="선택_완료" xml:space="preserve">
+    <value>선택 완료[F1]</value>
+  </data>
+  <data name="설정_저장" xml:space="preserve">
+    <value>설정 저장</value>
+  </data>
+  <data name="성명" xml:space="preserve">
+    <value>성명</value>
+  </data>
+  <data name="센타" xml:space="preserve">
+    <value>센타</value>
+  </data>
+  <data name="센타_마감" xml:space="preserve">
+    <value>센타 마감</value>
+  </data>
+  <data name="센타_마감_취소" xml:space="preserve">
+    <value>센타 마감 취소</value>
+  </data>
+  <data name="센타_마감_회원별" xml:space="preserve">
+    <value>센타 마감 회원별</value>
+  </data>
+  <data name="센타_마감별_집계" xml:space="preserve">
+    <value>센타 마감별 집계</value>
+  </data>
+  <data name="센타_일괄_변경" xml:space="preserve">
+    <value>전체 센타 변경</value>
+  </data>
+  <data name="센타_코드" xml:space="preserve">
+    <value>센타 코드</value>
+  </data>
+  <data name="센타_코드_등록" xml:space="preserve">
+    <value>센타 코드 등록</value>
+  </data>
+  <data name="센타명" xml:space="preserve">
+    <value>센타명</value>
+  </data>
+  <data name="센타별" xml:space="preserve">
+    <value>센타별</value>
+  </data>
+  <data name="센타별_가입_인원수" xml:space="preserve">
+    <value>센타별 가입 인원수</value>
+  </data>
+  <data name="센타별_입_출고_현황" xml:space="preserve">
+    <value>센타별 입/출고 현황</value>
+  </data>
+  <data name="센타별_재고_현황" xml:space="preserve">
+    <value>센타별 재고 현황</value>
+  </data>
+  <data name="센타수령" xml:space="preserve">
+    <value>센타수령</value>
+  </data>
+  <data name="센타없음" xml:space="preserve">
+    <value>센타없음</value>
+  </data>
+  <data name="센타있음" xml:space="preserve">
+    <value>센타있음</value>
+  </data>
+  <data name="센타장_회원_번호" xml:space="preserve">
+    <value>센타장 회원 번호</value>
+  </data>
+  <data name="센타코드" xml:space="preserve">
+    <value>센타코드</value>
+  </data>
+  <data name="셋트_상품_구성" xml:space="preserve">
+    <value>Set상품 구성</value>
+  </data>
+  <data name="소계" xml:space="preserve">
+    <value>소계</value>
+  </data>
+  <data name="소득세합" xml:space="preserve">
+    <value>소득세합</value>
+  </data>
+  <data name="소비자" xml:space="preserve">
+    <value>소비자</value>
+  </data>
+  <data name="소비자가" xml:space="preserve">
+    <value>소비자가</value>
+  </data>
+  <data name="소속센타" xml:space="preserve">
+    <value>소속 센타</value>
+  </data>
+  <data name="소유자명" xml:space="preserve">
+    <value>소유자명</value>
+  </data>
+  <data name="소진_출고_관리" xml:space="preserve">
+    <value>소진 출고 관리</value>
+  </data>
+  <data name="소진출고" xml:space="preserve">
+    <value>소진출고</value>
+  </data>
+  <data name="수당_관리" xml:space="preserve">
+    <value>수당 관리</value>
+  </data>
+  <data name="수당_관리II" xml:space="preserve">
+    <value>수당 관리II</value>
+  </data>
+  <data name="수당_관리_기타_수당" xml:space="preserve">
+    <value>수당 관리 -&gt; 기타 수당</value>
+  </data>
+  <data name="수당_관리_센타_마감" xml:space="preserve">
+    <value>수당 관리 -&gt; 센타 마감</value>
+  </data>
+  <data name="수당_관리_센타_마감_취소" xml:space="preserve">
+    <value>수당 관리 -&gt; 센타 마감 취소</value>
+  </data>
+  <data name="수당_관리_센타_마감_회원별" xml:space="preserve">
+    <value>수당 관리 -&gt; 센타 마감 회원별</value>
+  </data>
+  <data name="수당_관리_센타_마감별_집계" xml:space="preserve">
+    <value>수당 관리 -&gt; 센타 마감별 집계</value>
+  </data>
+  <data name="수당_관리_수당_집계_회원별" xml:space="preserve">
+    <value>수당 관리 -&gt; 수당 집계 회원별</value>
+  </data>
+  <data name="수당_관리_인정_매출" xml:space="preserve">
+    <value>수당 관리 -&gt; 인정 매출</value>
+  </data>
+  <data name="수당_관리_인정_직급" xml:space="preserve">
+    <value>수당 관리 -&gt; 인정 직급</value>
+  </data>
+  <data name="수당_관리_주간_마감" xml:space="preserve">
+    <value>수당 관리 -&gt; 주간 마감</value>
+  </data>
+  <data name="수당_관리_주간_마감_취소" xml:space="preserve">
+    <value>수당 관리 -&gt; 주간 마감 취소</value>
+  </data>
+  <data name="수당_관리_주간_마감_회원별" xml:space="preserve">
+    <value>수당 관리 -&gt; 주간 마감 회원별</value>
+  </data>
+  <data name="수당_관리_주간_마감별_집계" xml:space="preserve">
+    <value>수당 관리 -&gt; 주간 마감별 집계</value>
+  </data>
+  <data name="수당_관리_판매_내역_마감_역추적" xml:space="preserve">
+    <value>수당 관리 -&gt; 판매 내역 마감 역추적</value>
+  </data>
+  <data name="수당_내역" xml:space="preserve">
+    <value>수당 내역</value>
+  </data>
+  <data name="수당_내역_신고" xml:space="preserve">
+    <value>수당 내역 신고</value>
+  </data>
+  <data name="수당_중지_관련" xml:space="preserve">
+    <value>수당 중지 관련</value>
+  </data>
+  <data name="수당_중지_시작일" xml:space="preserve">
+    <value>수당 중지 시작일</value>
+  </data>
+  <data name="수당_집계_회원별" xml:space="preserve">
+    <value>수당 집계 회원별</value>
+  </data>
+  <data name="수당구분" xml:space="preserve">
+    <value>수당구분</value>
+  </data>
+  <data name="수당내역" xml:space="preserve">
+    <value>수당내역</value>
+  </data>
+  <data name="수당명칭" xml:space="preserve">
+    <value>수당명칭</value>
+  </data>
+  <data name="수당발생" xml:space="preserve">
+    <value>수당발생</value>
+  </data>
+  <data name="수당정지일" xml:space="preserve">
+    <value>수당정지일</value>
+  </data>
+  <data name="수당중지시작일" xml:space="preserve">
+    <value>수당중지시작일</value>
+  </data>
+  <data name="수당중지일" xml:space="preserve">
+    <value>수당중지일</value>
+  </data>
+  <data name="수당직급" xml:space="preserve">
+    <value>수당직급</value>
+  </data>
+  <data name="수당합" xml:space="preserve">
+    <value>수당합</value>
+  </data>
+  <data name="수동_입력" xml:space="preserve">
+    <value>수동 입력</value>
+  </data>
+  <data name="수량" xml:space="preserve">
+    <value>수량</value>
+  </data>
+  <data name="수량합" xml:space="preserve">
+    <value>수량합</value>
+  </data>
+  <data name="수령인" xml:space="preserve">
+    <value>수령인</value>
+  </data>
+  <data name="수령인명" xml:space="preserve">
+    <value>수령인명</value>
+  </data>
+  <data name="수정" xml:space="preserve">
+    <value>수정</value>
+  </data>
+  <data name="수취인명" xml:space="preserve">
+    <value>수취인명</value>
+  </data>
+  <data name="승인" xml:space="preserve">
+    <value>승인</value>
+  </data>
+  <data name="승인_금액" xml:space="preserve">
+    <value>승인 금액</value>
+  </data>
+  <data name="승인_번호" xml:space="preserve">
+    <value>승인 번호</value>
+  </data>
+  <data name="승인_일자" xml:space="preserve">
+    <value>승인 일자</value>
+  </data>
+  <data name="승인금액" xml:space="preserve">
+    <value>승인금액</value>
+  </data>
+  <data name="승인번호" xml:space="preserve">
+    <value>승인번호</value>
+  </data>
+  <data name="승인여부" xml:space="preserve">
+    <value>승인여부</value>
+  </data>
+  <data name="승인일자" xml:space="preserve">
+    <value>승인일자</value>
+  </data>
+  <data name="승인일자미입력시판매일자변경없음" xml:space="preserve">
+    <value>승인일자 미입력시 : 판매일자 변경 없음</value>
+  </data>
+  <data name="승인일자입력시판매일자가입력날짜로변경" xml:space="preserve">
+    <value>승인일자 입력시 : 판매일자가 입력 날짜로 변경</value>
+  </data>
+  <data name="신고" xml:space="preserve">
+    <value>신고</value>
+  </data>
+  <data name="신고여부" xml:space="preserve">
+    <value>신고여부</value>
+  </data>
+  <data name="신고일자" xml:space="preserve">
+    <value>신고일자</value>
+  </data>
+  <data name="신주소" xml:space="preserve">
+    <value>신주소</value>
+  </data>
+  <data name="실입금액" xml:space="preserve">
+    <value>실입금액</value>
+  </data>
+  <data name="실지급액" xml:space="preserve">
+    <value>실지급액</value>
+  </data>
+  <data name="실지급액합" xml:space="preserve">
+    <value>실지급액합</value>
+  </data>
+  <data name="업데이트중입니다" xml:space="preserve">
+    <value>업데이트중입니다</value>
+  </data>
+  <data name="업태" xml:space="preserve">
+    <value>업태</value>
+  </data>
+  <data name="엑셀" xml:space="preserve">
+    <value>EXCEL[F8]</value>
+  </data>
+  <data name="엑셀_변환_권한" xml:space="preserve">
+    <value>엑셀 변환 권한</value>
+  </data>
+  <data name="엑셀_전환" xml:space="preserve">
+    <value>엑셀 전환[F8]</value>
+  </data>
+  <data name="엑셀_전환_현황" xml:space="preserve">
+    <value>엑셀 전환 현황</value>
+  </data>
+  <data name="연결_상태" xml:space="preserve">
+    <value>연결 상태</value>
+  </data>
+  <data name="연락처_1" xml:space="preserve">
+    <value>연락처 1</value>
+  </data>
+  <data name="연락처_2" xml:space="preserve">
+    <value>연락처 2</value>
+  </data>
+  <data name="영문_First_Name" xml:space="preserve">
+    <value>영문 First Name</value>
+  </data>
+  <data name="영문_Last_Name" xml:space="preserve">
+    <value>영문 Last Name</value>
+  </data>
+  <data name="영문명" xml:space="preserve">
+    <value>영문명</value>
+  </data>
+  <data name="예금주" xml:space="preserve">
+    <value>예금주</value>
+  </data>
+  <data name="외국인" xml:space="preserve">
+    <value>외국인</value>
+  </data>
+  <data name="요청_일자" xml:space="preserve">
+    <value>요청 일자</value>
+  </data>
+  <data name="요청수량" xml:space="preserve">
+    <value>요청수량</value>
+  </data>
+  <data name="요청자" xml:space="preserve">
+    <value>요청자</value>
+  </data>
+  <data name="우편_번호" xml:space="preserve">
+    <value>우편 번호</value>
+  </data>
+  <data name="우편_번호_검색" xml:space="preserve">
+    <value>우편 번호 검색</value>
+  </data>
+  <data name="우편물_수령지" xml:space="preserve">
+    <value>우편물 수령지</value>
+  </data>
+  <data name="우편번호_조회" xml:space="preserve">
+    <value>우편번호 조회</value>
+  </data>
+  <data name="운송장번호" xml:space="preserve">
+    <value>운송장번호</value>
+  </data>
+  <data name="원판매_결제_내역" xml:space="preserve">
+    <value>원판매 결제 내역</value>
+  </data>
+  <data name="원판매_결제_일자" xml:space="preserve">
+    <value>원판매 결제 일자</value>
+  </data>
+  <data name="원판매_결제액" xml:space="preserve">
+    <value>원주문 결제액</value>
+  </data>
+  <data name="월_마감" xml:space="preserve">
+    <value>월 마감</value>
+  </data>
+  <data name="월_마감_취소" xml:space="preserve">
+    <value>월 마감 취소</value>
+  </data>
+  <data name="월_마감별_집계1" xml:space="preserve">
+    <value>월 마감별 집계1</value>
+  </data>
+  <data name="월_마감별_집계2" xml:space="preserve">
+    <value>월 마감별 집계2</value>
+  </data>
+  <data name="월별" xml:space="preserve">
+    <value>월별</value>
+  </data>
+  <data name="월별년별만도표를구성합니다" xml:space="preserve">
+    <value>월별/년별만 도표를 구성 합니다.</value>
+  </data>
+  <data name="웹비밀번호" xml:space="preserve">
+    <value>웹비밀번호</value>
+  </data>
+  <data name="웹아이디" xml:space="preserve">
+    <value>웹아이디</value>
+  </data>
+  <data name="위치" xml:space="preserve">
+    <value>위치</value>
+  </data>
+  <data name="위치_관련" xml:space="preserve">
+    <value>위치 관련</value>
+  </data>
+  <data name="유효_기간" xml:space="preserve">
+    <value>유효 기간</value>
+  </data>
+  <data name="은행" xml:space="preserve">
+    <value>은행</value>
+  </data>
+  <data name="은행_코드" xml:space="preserve">
+    <value>은행 코드</value>
+  </data>
+  <data name="은행_코드_등록" xml:space="preserve">
+    <value>은행 코드 등록</value>
+  </data>
+  <data name="은행명" xml:space="preserve">
+    <value>은행명</value>
+  </data>
+  <data name="이동_일자" xml:space="preserve">
+    <value>이동 일자</value>
+  </data>
+  <data name="이동수량" xml:space="preserve">
+    <value>이동수량</value>
+  </data>
+  <data name="이동일자" xml:space="preserve">
+    <value>이동 일자</value>
+  </data>
+  <data name="이동입고" xml:space="preserve">
+    <value>이동입고</value>
+  </data>
+  <data name="이동자" xml:space="preserve">
+    <value>이동자</value>
+  </data>
+  <data name="이동출고" xml:space="preserve">
+    <value>이동출고</value>
+  </data>
+  <data name="이미지_저장" xml:space="preserve">
+    <value>이미지 저장</value>
+  </data>
+  <data name="이수" xml:space="preserve">
+    <value>이수</value>
+  </data>
+  <data name="이월" xml:space="preserve">
+    <value>이월</value>
+  </data>
+  <data name="이월액" xml:space="preserve">
+    <value>이월액</value>
+  </data>
+  <data name="이전" xml:space="preserve">
+    <value>이전</value>
+  </data>
+  <data name="이전PV" xml:space="preserve">
+    <value>이전PV</value>
+  </data>
+  <data name="이전금액" xml:space="preserve">
+    <value>이전금액</value>
+  </data>
+  <data name="이전반품PV" xml:space="preserve">
+    <value>이전반품PV</value>
+  </data>
+  <data name="이전반품금액" xml:space="preserve">
+    <value>이전반품금액</value>
+  </data>
+  <data name="인원수별" xml:space="preserve">
+    <value>인원수별</value>
+  </data>
+  <data name="인정_매출" xml:space="preserve">
+    <value>인정 매출</value>
+  </data>
+  <data name="인정_직급" xml:space="preserve">
+    <value>인정 직급</value>
+  </data>
+  <data name="인정직급" xml:space="preserve">
+    <value>인정직급</value>
+  </data>
+  <data name="일반" xml:space="preserve">
+    <value>일반</value>
+  </data>
+  <data name="일반입고" xml:space="preserve">
+    <value>일반입고</value>
+  </data>
+  <data name="일별" xml:space="preserve">
+    <value>일별</value>
+  </data>
+  <data name="일시불" xml:space="preserve">
+    <value>일시불</value>
+  </data>
+  <data name="일일_마감" xml:space="preserve">
+    <value>일일 마감</value>
+  </data>
+  <data name="일일_마감_취소" xml:space="preserve">
+    <value>일일 마감 취소</value>
+  </data>
+  <data name="일일_마감별_집계1" xml:space="preserve">
+    <value>일일 마감별 집계1</value>
+  </data>
+  <data name="일일_마감별_집계2" xml:space="preserve">
+    <value>일일 마감별 집계2</value>
+  </data>
+  <data name="일자" xml:space="preserve">
+    <value>일자</value>
+  </data>
+  <data name="일자별_집계" xml:space="preserve">
+    <value>일자별 집계</value>
+  </data>
+  <data name="입고_관리" xml:space="preserve">
+    <value>입고 관리</value>
+  </data>
+  <data name="입고_반품_입고" xml:space="preserve">
+    <value>입고 - 반품 입고</value>
+  </data>
+  <data name="입고_반품_입고_취소" xml:space="preserve">
+    <value>입고 - 반품 입고 취소</value>
+  </data>
+  <data name="입고_번호" xml:space="preserve">
+    <value>입고_번호</value>
+  </data>
+  <data name="입고_사유" xml:space="preserve">
+    <value>입고 사유</value>
+  </data>
+  <data name="입고_일반_입고" xml:space="preserve">
+    <value>입고 - 일반 입고</value>
+  </data>
+  <data name="입고_일자" xml:space="preserve">
+    <value>입고 일자</value>
+  </data>
+  <data name="입고_입고_조회" xml:space="preserve">
+    <value>입고 - 입고 조회</value>
+  </data>
+  <data name="입고구분" xml:space="preserve">
+    <value>입고구분</value>
+  </data>
+  <data name="입고번호" xml:space="preserve">
+    <value>입고번호</value>
+  </data>
+  <data name="입고수량" xml:space="preserve">
+    <value>입고수량</value>
+  </data>
+  <data name="입고일" xml:space="preserve">
+    <value>입고일</value>
+  </data>
+  <data name="입고일자" xml:space="preserve">
+    <value>입고일자</value>
+  </data>
+  <data name="입고자" xml:space="preserve">
+    <value>입고자</value>
+  </data>
+  <data name="입고지" xml:space="preserve">
+    <value>입고지</value>
+  </data>
+  <data name="입고지_To" xml:space="preserve">
+    <value>입고지(To)</value>
+  </data>
+  <data name="입고지명" xml:space="preserve">
+    <value>입고지명</value>
+  </data>
+  <data name="입금액" xml:space="preserve">
+    <value>입금액</value>
+  </data>
+  <data name="입금자" xml:space="preserve">
+    <value>입금자</value>
+  </data>
+  <data name="입금자명" xml:space="preserve">
+    <value>입금자명</value>
+  </data>
+  <data name="입력" xml:space="preserve">
+    <value>입력</value>
+  </data>
+  <data name="입력_입고일" xml:space="preserve">
+    <value>입력 입고일</value>
+  </data>
+  <data name="입력_입고지" xml:space="preserve">
+    <value>입력 입고지</value>
+  </data>
+  <data name="입력_출고일" xml:space="preserve">
+    <value>입력 출고일</value>
+  </data>
+  <data name="입력_출고지" xml:space="preserve">
+    <value>입력 출고지</value>
+  </data>
+  <data name="입력입고지_입력입고일자_기준" xml:space="preserve">
+    <value>입력입고지 입력입고일자 기준</value>
+  </data>
+  <data name="입력출고지_입력출고일자_기준" xml:space="preserve">
+    <value>입력출고지 입력출고일자 기준</value>
+  </data>
+  <data name="입력한_승인_일자" xml:space="preserve">
+    <value>입력한 승인 일자</value>
+  </data>
+  <data name="자동" xml:space="preserve">
+    <value>자동</value>
+  </data>
+  <data name="자동순차부여" xml:space="preserve">
+    <value>자동순차부여</value>
+  </data>
+  <data name="작업내역" xml:space="preserve">
+    <value>작업내역</value>
+  </data>
+  <data name="작업시간" xml:space="preserve">
+    <value>작업시간</value>
+  </data>
+  <data name="작업일자" xml:space="preserve">
+    <value>작업일자</value>
+  </data>
+  <data name="작업자" xml:space="preserve">
+    <value>작업자</value>
+  </data>
+  <data name="잔여" xml:space="preserve">
+    <value>잔여</value>
+  </data>
+  <data name="잔여_마일리지" xml:space="preserve">
+    <value>잔여 마일리지</value>
+  </data>
+  <data name="재고_관리" xml:space="preserve">
+    <value>재고 관리</value>
+  </data>
+  <data name="재고_관리_상품별_입_출고_현황" xml:space="preserve">
+    <value>재고 관리 -&gt; 상품별 입/출고 현황</value>
+  </data>
+  <data name="재고_관리_상품별_재고_현황" xml:space="preserve">
+    <value>재고 관리 -&gt; 상품별 재고 현황</value>
+  </data>
+  <data name="재고_관리_센타별_입_출고_현황" xml:space="preserve">
+    <value>재고 관리 -&gt; 센타별 입/출고 현황</value>
+  </data>
+  <data name="재고_관리_입고_반품_입고" xml:space="preserve">
+    <value>재고 관리 -&gt; 입고 -&gt; 반품 입고</value>
+  </data>
+  <data name="재고_관리_입고_반품_입고_취소" xml:space="preserve">
+    <value>재고 관리 -&gt; 입고 -&gt; 반품 입고 취소</value>
+  </data>
+  <data name="재고_관리_입고_일반_입고" xml:space="preserve">
+    <value>재고 관리 -&gt; 입고 -&gt; 일반 입고</value>
+  </data>
+  <data name="재고_관리_입고_입고_조회" xml:space="preserve">
+    <value>재고 관리 -&gt; 입고 -&gt; 입고_조회</value>
+  </data>
+  <data name="재고_관리_재고_이동_요청" xml:space="preserve">
+    <value>재고 관리 -&gt; 재고 이동 요청</value>
+  </data>
+  <data name="재고_관리_출고_소진_출고" xml:space="preserve">
+    <value>재고 관리 -&gt; 출고 -&gt; 소진 출고</value>
+  </data>
+  <data name="재고_관리_출고_출고_조회" xml:space="preserve">
+    <value>재고 관리 -&gt; 출고 -&gt; 출고 조회</value>
+  </data>
+  <data name="재고_관리_출고_판매_출고" xml:space="preserve">
+    <value>재고 관리 -&gt; 출고 -&gt; 판매 출고</value>
+  </data>
+  <data name="재고_관리_출고_판매_출고_취소" xml:space="preserve">
+    <value>재고 관리 -&gt; 출고 -&gt; 판매 출고 취소</value>
+  </data>
+  <data name="재고_이동_요청" xml:space="preserve">
+    <value>재고 이동 요청</value>
+  </data>
+  <data name="재고_이동_현황" xml:space="preserve">
+    <value>재고 이동 현황</value>
+  </data>
+  <data name="재고_이동_확정" xml:space="preserve">
+    <value>재고 이동 확정</value>
+  </data>
+  <data name="재고량" xml:space="preserve">
+    <value>재고량</value>
+  </data>
+  <data name="저장" xml:space="preserve">
+    <value>저장[F1]</value>
+  </data>
+  <data name="저장_시간" xml:space="preserve">
+    <value>저장_시간</value>
+  </data>
+  <data name="저장_이름" xml:space="preserve">
+    <value>저장 이름</value>
+  </data>
+  <data name="적립" xml:space="preserve">
+    <value>적립</value>
+  </data>
+  <data name="적립_" xml:space="preserve">
+    <value>- 적립</value>
+  </data>
+  <data name="적립_주문번호" xml:space="preserve">
+    <value>적립 주문번호</value>
+  </data>
+  <data name="적립액" xml:space="preserve">
+    <value>적립액</value>
+  </data>
+  <data name="적용_PV" xml:space="preserve">
+    <value>적용 PV</value>
+  </data>
+  <data name="적용_Sheet" xml:space="preserve">
+    <value>적용 Sheet</value>
+  </data>
+  <data name="적용_금액" xml:space="preserve">
+    <value>적용 금액</value>
+  </data>
+  <data name="적용_날짜" xml:space="preserve">
+    <value>적용 날짜</value>
+  </data>
+  <data name="적용_마일리지" xml:space="preserve">
+    <value>적용 마일리지</value>
+  </data>
+  <data name="적용_일자" xml:space="preserve">
+    <value>적용 일자</value>
+  </data>
+  <data name="적용_파일_경로" xml:space="preserve">
+    <value>적용 파일 경로</value>
+  </data>
+  <data name="적용_파일_찾기" xml:space="preserve">
+    <value>적용 파일 찾기</value>
+  </data>
+  <data name="전_내역" xml:space="preserve">
+    <value>전 내역</value>
+  </data>
+  <data name="전_상위번호" xml:space="preserve">
+    <value>전 상위번호</value>
+  </data>
+  <data name="전_상위성명" xml:space="preserve">
+    <value>전 상위성명</value>
+  </data>
+  <data name="전반품불량입고" xml:space="preserve">
+    <value>전반품불량입고</value>
+  </data>
+  <data name="전반품일반입고" xml:space="preserve">
+    <value>전반품일반입고</value>
+  </data>
+  <data name="전소진출고" xml:space="preserve">
+    <value>전소진출고</value>
+  </data>
+  <data name="전월" xml:space="preserve">
+    <value>전월</value>
+  </data>
+  <data name="전이동입고" xml:space="preserve">
+    <value>전이동입고</value>
+  </data>
+  <data name="전이동출고" xml:space="preserve">
+    <value>일반입고</value>
+  </data>
+  <data name="전일반입고" xml:space="preserve">
+    <value>전일반입고</value>
+  </data>
+  <data name="전재고량" xml:space="preserve">
+    <value>전재고량</value>
+  </data>
+  <data name="전제_선택" xml:space="preserve">
+    <value>전체 선택</value>
+  </data>
+  <data name="전주문출고" xml:space="preserve">
+    <value>전주문출고</value>
+  </data>
+  <data name="전주문출고배송" xml:space="preserve">
+    <value>전주문출고배송</value>
+  </data>
+  <data name="전주문출고배송정보X" xml:space="preserve">
+    <value>전주문출고배송정보X</value>
+  </data>
+  <data name="전주문출고센타" xml:space="preserve">
+    <value>전주문출고센타</value>
+  </data>
+  <data name="전주문출고직접" xml:space="preserve">
+    <value>전주문출고직접</value>
+  </data>
+  <data name="전직급" xml:space="preserve">
+    <value>전직급</value>
+  </data>
+  <data name="전체" xml:space="preserve">
+    <value>전체</value>
+  </data>
+  <data name="전체_선택" xml:space="preserve">
+    <value>전체 선택</value>
+  </data>
+  <data name="전체_체크" xml:space="preserve">
+    <value>전체 체크</value>
+  </data>
+  <data name="전체_취소" xml:space="preserve">
+    <value>전체 취소</value>
+  </data>
+  <data name="전체_판매_센타_변경" xml:space="preserve">
+    <value>전체 판매 센타 변경</value>
+  </data>
+  <data name="전화_번호" xml:space="preserve">
+    <value>전화 번호</value>
+  </data>
+  <data name="전화번호" xml:space="preserve">
+    <value>전화번호</value>
+  </data>
+  <data name="전환_화면" xml:space="preserve">
+    <value>전환 화면</value>
+  </data>
+  <data name="전환_횟수" xml:space="preserve">
+    <value>전환 횟수</value>
+  </data>
+  <data name="접속_현황" xml:space="preserve">
+    <value>접속 현황</value>
+  </data>
+  <data name="정보_변경_내역" xml:space="preserve">
+    <value>정보 변경 내역</value>
+  </data>
+  <data name="정산_일자" xml:space="preserve">
+    <value>정산 일자</value>
+  </data>
+  <data name="정상" xml:space="preserve">
+    <value>정상</value>
+  </data>
+  <data name="제품_등록일" xml:space="preserve">
+    <value>상품 등록일자</value>
+  </data>
+  <data name="조직_기준일자" xml:space="preserve">
+    <value>조직 기준일자</value>
+  </data>
+  <data name="조합_관리" xml:space="preserve">
+    <value>조합 관리</value>
+  </data>
+  <data name="조합_관리__교육_이수자_신고" xml:space="preserve">
+    <value>조합 관리 -&gt; 교육 이수자 신고</value>
+  </data>
+  <data name="조합_관리_수당_내역_신고" xml:space="preserve">
+    <value>조합 관리 -&gt; 수당 내역 신고</value>
+  </data>
+  <data name="조합_관리_출고_내역_신고" xml:space="preserve">
+    <value>조합 관리 -&gt; 출고 내역 신고</value>
+  </data>
+  <data name="조합_관리_판매_내역_조합_신고" xml:space="preserve">
+    <value>조합 관리 -&gt; 판매 내역 조합 신고</value>
+  </data>
+  <data name="조합_관리_판매_내역_조합_신고_취소" xml:space="preserve">
+    <value>조합 관리 -&gt; 판매 내역 조합 신고 취소</value>
+  </data>
+  <data name="조회" xml:space="preserve">
+    <value>조회</value>
+  </data>
+  <data name="조회_기간_상세_내역" xml:space="preserve">
+    <value>조회 기간 상세 내역</value>
+  </data>
+  <data name="조회_센타" xml:space="preserve">
+    <value>조회 센타</value>
+  </data>
+  <data name="조회_일자" xml:space="preserve">
+    <value>조회 일자</value>
+  </data>
+  <data name="조회일자" xml:space="preserve">
+    <value>조회일자</value>
+  </data>
+  <data name="조회회원_변경" xml:space="preserve">
+    <value>조회 회원 변경</value>
+  </data>
+  <data name="종료" xml:space="preserve">
+    <value>종료</value>
+  </data>
+  <data name="종류" xml:space="preserve">
+    <value>종류</value>
+  </data>
+  <data name="종목" xml:space="preserve">
+    <value>종목</value>
+  </data>
+  <data name="주_변경_내역" xml:space="preserve">
+    <value>주 변경 내역</value>
+  </data>
+  <data name="주간_마감" xml:space="preserve">
+    <value>주간 마감</value>
+  </data>
+  <data name="주간_마감_취소" xml:space="preserve">
+    <value>주간 마감 취소</value>
+  </data>
+  <data name="주간_마감_회원별" xml:space="preserve">
+    <value>주간 마감 회원별</value>
+  </data>
+  <data name="주간_마감별_집계" xml:space="preserve">
+    <value>주간 마감별 집계</value>
+  </data>
+  <data name="주간_마감별_집계2" xml:space="preserve">
+    <value>주간 마감별 집계2</value>
+  </data>
+  <data name="주문_번호" xml:space="preserve">
+    <value>주문 번호</value>
+  </data>
+  <data name="주문번호" xml:space="preserve">
+    <value>주문번호</value>
+  </data>
+  <data name="주문번호_검색" xml:space="preserve">
+    <value>주문번호 검색</value>
+  </data>
+  <data name="주문출고" xml:space="preserve">
+    <value>주문출고</value>
+  </data>
+  <data name="주문출고배송" xml:space="preserve">
+    <value>주문출고배송</value>
+  </data>
+  <data name="주문출고배송정보X" xml:space="preserve">
+    <value>주문출고배송정보X</value>
+  </data>
+  <data name="주문출고센타" xml:space="preserve">
+    <value>주문출고센타</value>
+  </data>
+  <data name="주문출고직접" xml:space="preserve">
+    <value>주문출고직접</value>
+  </data>
+  <data name="주민번호" xml:space="preserve">
+    <value>주민번호</value>
+  </data>
+  <data name="주민번호_관련" xml:space="preserve">
+    <value>주민번호 관련</value>
+  </data>
+  <data name="주민번호_보기_권한" xml:space="preserve">
+    <value>주민번호 보기 권한</value>
+  </data>
+  <data name="주민번호_없이" xml:space="preserve">
+    <value>주민번호("-"없이)</value>
+  </data>
+  <data name="주민세합" xml:space="preserve">
+    <value>주민세합</value>
+  </data>
+  <data name="주소" xml:space="preserve">
+    <value>주소</value>
+  </data>
+  <data name="주소1" xml:space="preserve">
+    <value>주소</value>
+  </data>
+  <data name="주소2" xml:space="preserve">
+    <value>상세주소</value>
+  </data>
+  <data name="주소_내역" xml:space="preserve">
+    <value>주소 내역</value>
+  </data>
+  <data name="중분류_코드" xml:space="preserve">
+    <value>중분류 코드</value>
+  </data>
+  <data name="중분류명" xml:space="preserve">
+    <value>중분류명</value>
+  </data>
+  <data name="중지" xml:space="preserve">
+    <value>중지</value>
+  </data>
+  <data name="중지_여부" xml:space="preserve">
+    <value>중지 여부</value>
+  </data>
+  <data name="지급_일자" xml:space="preserve">
+    <value>지급 일자</value>
+  </data>
+  <data name="지급일" xml:space="preserve">
+    <value>지급일</value>
+  </data>
+  <data name="지급일자" xml:space="preserve">
+    <value>지급일자</value>
+  </data>
+  <data name="직급" xml:space="preserve">
+    <value>직급</value>
+  </data>
+  <data name="직대집계_본인_주문_내역" xml:space="preserve">
+    <value>직대집계 본인 주문 내역</value>
+  </data>
+  <data name="직원" xml:space="preserve">
+    <value>직원</value>
+  </data>
+  <data name="직원번호" xml:space="preserve">
+    <value>직원번호</value>
+  </data>
+  <data name="직장" xml:space="preserve">
+    <value>직장</value>
+  </data>
+  <data name="직장_주소_동일" xml:space="preserve">
+    <value>직장 주소 동일</value>
+  </data>
+  <data name="직접수령" xml:space="preserve">
+    <value>직접수령</value>
+  </data>
+  <data name="직접입력" xml:space="preserve">
+    <value>직접입력</value>
+  </data>
+  <data name="직추천" xml:space="preserve">
+    <value>직추천</value>
+  </data>
+  <data name="직후원" xml:space="preserve">
+    <value>직후원</value>
+  </data>
+  <data name="집전화" xml:space="preserve">
+    <value>집전화</value>
+  </data>
+  <data name="차액" xml:space="preserve">
+    <value>차액</value>
+  </data>
+  <data name="체크_교환" xml:space="preserve">
+    <value>체크 교환</value>
+  </data>
+  <data name="체크_내역_일괄_탈퇴" xml:space="preserve">
+    <value>체크 내역 일괄 탈퇴</value>
+  </data>
+  <data name="체크_내역_입고" xml:space="preserve">
+    <value>체크 내역 입고</value>
+  </data>
+  <data name="체크_내역_입고_취소" xml:space="preserve">
+    <value>체크 내역 입고 취소</value>
+  </data>
+  <data name="체크_내역_저장" xml:space="preserve">
+    <value>체크 내역 저장</value>
+  </data>
+  <data name="체크_내역_적용" xml:space="preserve">
+    <value>체크 내역 적용</value>
+  </data>
+  <data name="체크_내역_출고" xml:space="preserve">
+    <value>체크 내역 출고</value>
+  </data>
+  <data name="체크_내역_출고_취소" xml:space="preserve">
+    <value>체크 내역 출고 취소</value>
+  </data>
+  <data name="체크_반품" xml:space="preserve">
+    <value>체크 반품</value>
+  </data>
+  <data name="체크_부분반품" xml:space="preserve">
+    <value>체크 부분반품</value>
+  </data>
+  <data name="체크_정상" xml:space="preserve">
+    <value>체크 정상</value>
+  </data>
+  <data name="체크하신내역들이다삭제처리됩니다" xml:space="preserve">
+    <value>체크 하신 내역들이 다 삭제 처리 됩니다.</value>
+  </data>
+  <data name="체크하신내역들이다신고처리됩니다" xml:space="preserve">
+    <value>체크 하신 내역들이 다 신고 처리 됩니다.</value>
+  </data>
+  <data name="체크하신내역들이다취소처리됩니다" xml:space="preserve">
+    <value>체크 하신 내역들이 다 취소 처리 됩니다</value>
+  </data>
+  <data name="총PV" xml:space="preserve">
+    <value>총PV</value>
+  </data>
+  <data name="총가입인원" xml:space="preserve">
+    <value>총가입인원</value>
+  </data>
+  <data name="총건수" xml:space="preserve">
+    <value>총건수</value>
+  </data>
+  <data name="총결제액" xml:space="preserve">
+    <value>총결제액</value>
+  </data>
+  <data name="총주문PV" xml:space="preserve">
+    <value>총판매PV</value>
+  </data>
+  <data name="총주문액" xml:space="preserve">
+    <value>총판매액</value>
+  </data>
+  <data name="총금액" xml:space="preserve">
+    <value>총금액</value>
+  </data>
+  <data name="총대수" xml:space="preserve">
+    <value>총대수</value>
+  </data>
+  <data name="총매출PV" xml:space="preserve">
+    <value>총매출PV</value>
+  </data>
+  <data name="총매출액" xml:space="preserve">
+    <value>총매출액</value>
+  </data>
+  <data name="총반품PV" xml:space="preserve">
+    <value>총반품PV</value>
+  </data>
+  <data name="총반품불량입고" xml:space="preserve">
+    <value>총반품불량입고</value>
+  </data>
+  <data name="총반품액" xml:space="preserve">
+    <value>총반품액</value>
+  </data>
+  <data name="총반품일반입고" xml:space="preserve">
+    <value>총반품일반입고</value>
+  </data>
+  <data name="총사용" xml:space="preserve">
+    <value>총사용</value>
+  </data>
+  <data name="총상품PV" xml:space="preserve">
+    <value>총상품PV</value>
+  </data>
+  <data name="총상품액" xml:space="preserve">
+    <value>총상품액</value>
+  </data>
+  <data name="총소진출고" xml:space="preserve">
+    <value>총소진출고</value>
+  </data>
+  <data name="총이동입고" xml:space="preserve">
+    <value>총이동입고</value>
+  </data>
+  <data name="총이동출고" xml:space="preserve">
+    <value>총이동출고</value>
+  </data>
+  <data name="총일반입고" xml:space="preserve">
+    <value>총일반입고</value>
+  </data>
+  <data name="총입금액" xml:space="preserve">
+    <value>총입금액</value>
+  </data>
+  <data name="총잔여" xml:space="preserve">
+    <value>총잔여</value>
+  </data>
+  <data name="총재고" xml:space="preserve">
+    <value>총재고</value>
+  </data>
+  <data name="총적립" xml:space="preserve">
+    <value>총적립</value>
+  </data>
+  <data name="총주문출고" xml:space="preserve">
+    <value>총주문출고</value>
+  </data>
+  <data name="총주문출고배송" xml:space="preserve">
+    <value>총주문출고배송</value>
+  </data>
+  <data name="총주문출고배송정보X" xml:space="preserve">
+    <value>총주문출고배송정보X</value>
+  </data>
+  <data name="총주문출고센타" xml:space="preserve">
+    <value>총주문출고센타</value>
+  </data>
+  <data name="총주문출고직접" xml:space="preserve">
+    <value>총주문출고직접</value>
+  </data>
+  <data name="총지급액합" xml:space="preserve">
+    <value>총지급액합</value>
+  </data>
+  <data name="총판매" xml:space="preserve">
+    <value>총판매</value>
+  </data>
+  <data name="총판매PV" xml:space="preserve">
+    <value>총판매PV</value>
+  </data>
+  <data name="총하선" xml:space="preserve">
+    <value>총하선</value>
+  </data>
+  <data name="총하선PV" xml:space="preserve">
+    <value>총하선PV</value>
+  </data>
+  <data name="총합PV" xml:space="preserve">
+    <value>총합PV</value>
+  </data>
+  <data name="총합금액" xml:space="preserve">
+    <value>총합금액</value>
+  </data>
+  <data name="최근3개월" xml:space="preserve">
+    <value>최근3개월</value>
+  </data>
+  <data name="최근7일" xml:space="preserve">
+    <value>최근7일</value>
+  </data>
+  <data name="최상위" xml:space="preserve">
+    <value>최상위</value>
+  </data>
+  <data name="최상위로_변경" xml:space="preserve">
+    <value>최상위로 변경</value>
+  </data>
+  <data name="최초_판매전_상품_가격" xml:space="preserve">
+    <value>첫 판매전 상품 가격</value>
+  </data>
+  <data name="추가" xml:space="preserve">
+    <value>추가</value>
+  </data>
+  <data name="추천_계층도_이미지_저장" xml:space="preserve">
+    <value>추천 계층도 이미지 저장</value>
+  </data>
+  <data name="추천_그룹도" xml:space="preserve">
+    <value>추천 그룹도</value>
+  </data>
+  <data name="추천_내역" xml:space="preserve">
+    <value>추천 내역</value>
+  </data>
+  <data name="추천_역추적" xml:space="preserve">
+    <value>추천 역추적</value>
+  </data>
+  <data name="추천_조직" xml:space="preserve">
+    <value>추천 그룹</value>
+  </data>
+  <data name="추천_조직도" xml:space="preserve">
+    <value>추천 그룹도</value>
+  </data>
+  <data name="추천_최상위" xml:space="preserve">
+    <value>추천 최상위</value>
+  </data>
+  <data name="추천_트리구조_조회" xml:space="preserve">
+    <value>추천 트리구조 조회</value>
+  </data>
+  <data name="추천_트리구조도_조회" xml:space="preserve">
+    <value>추천 트리 구조도 조회</value>
+  </data>
+  <data name="추천기준_트리구조" xml:space="preserve">
+    <value>추천 기준 트리구조</value>
+  </data>
+  <data name="추천인" xml:space="preserve">
+    <value>추천인</value>
+  </data>
+  <data name="추천인_그룹" xml:space="preserve">
+    <value>추천인 그룹</value>
+  </data>
+  <data name="추천인_변경" xml:space="preserve">
+    <value>추천인 변경</value>
+  </data>
+  <data name="추천인명" xml:space="preserve">
+    <value>추천인명</value>
+  </data>
+  <data name="추천인번호" xml:space="preserve">
+    <value>추천인번호</value>
+  </data>
+  <data name="추천하선인원" xml:space="preserve">
+    <value>추천하선인원</value>
+  </data>
+  <data name="축소" xml:space="preserve">
+    <value>축소</value>
+  </data>
+  <data name="출고_내역_신고" xml:space="preserve">
+    <value>출고 내역 신고</value>
+  </data>
+  <data name="출고_대상" xml:space="preserve">
+    <value>출고 대상</value>
+  </data>
+  <data name="출고_번호" xml:space="preserve">
+    <value>출고_번호</value>
+  </data>
+  <data name="출고_사유" xml:space="preserve">
+    <value>출고 사유</value>
+  </data>
+  <data name="출고_소진_출고" xml:space="preserve">
+    <value>출고 - 소진 출고</value>
+  </data>
+  <data name="출고_수량" xml:space="preserve">
+    <value>출고 수량</value>
+  </data>
+  <data name="출고_일자" xml:space="preserve">
+    <value>출고 일자</value>
+  </data>
+  <data name="출고_조합_미신고건" xml:space="preserve">
+    <value>출고 조합 미신고건</value>
+  </data>
+  <data name="출고_출고_조회" xml:space="preserve">
+    <value>출고 - 출고 조회</value>
+  </data>
+  <data name="출고_판매_출고" xml:space="preserve">
+    <value>출고 - 판매 출고</value>
+  </data>
+  <data name="출고_판매_출고_취소" xml:space="preserve">
+    <value>출고 - 판매 출고 취소</value>
+  </data>
+  <data name="출고번호" xml:space="preserve">
+    <value>출고번호</value>
+  </data>
+  <data name="출고수량" xml:space="preserve">
+    <value>출고수량</value>
+  </data>
+  <data name="출고일" xml:space="preserve">
+    <value>출고일</value>
+  </data>
+  <data name="출고일자" xml:space="preserve">
+    <value>출고일자</value>
+  </data>
+  <data name="출고자" xml:space="preserve">
+    <value>출고자</value>
+  </data>
+  <data name="출고지" xml:space="preserve">
+    <value>출고지</value>
+  </data>
+  <data name="출고지_From" xml:space="preserve">
+    <value>출고지(From)</value>
+  </data>
+  <data name="출고지_반품일자_기준" xml:space="preserve">
+    <value>출고지 반품일자 기준</value>
+  </data>
+  <data name="출고지명" xml:space="preserve">
+    <value>출고지명</value>
+  </data>
+  <data name="취소" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="카드" xml:space="preserve">
+    <value>카드</value>
+  </data>
+  <data name="카드_결제_금액" xml:space="preserve">
+    <value>카드 결제 금액</value>
+  </data>
+  <data name="카드_결제_내역_조회" xml:space="preserve">
+    <value>카드 결제 내역 현황</value>
+  </data>
+  <data name="카드_결제액" xml:space="preserve">
+    <value>카드 결제액</value>
+  </data>
+  <data name="카드_결제일" xml:space="preserve">
+    <value>카드 결제일</value>
+  </data>
+  <data name="카드_번호" xml:space="preserve">
+    <value>카드 번호</value>
+  </data>
+  <data name="카드_승인_금액" xml:space="preserve">
+    <value>카드 승인 금액</value>
+  </data>
+  <data name="카드_유효_기간" xml:space="preserve">
+    <value>카드 유효 기간</value>
+  </data>
+  <data name="카드_은행명" xml:space="preserve">
+    <value>카드/은행명</value>
+  </data>
+  <data name="카드_은행번호" xml:space="preserve">
+    <value>카드/은행번호</value>
+  </data>
+  <data name="카드_코드" xml:space="preserve">
+    <value>카드 코드</value>
+  </data>
+  <data name="카드_코드_등록" xml:space="preserve">
+    <value>카드 코드 등록</value>
+  </data>
+  <data name="카드_할부_기간" xml:space="preserve">
+    <value>카드 할부 기간</value>
+  </data>
+  <data name="카드_합계" xml:space="preserve">
+    <value>카드 합계</value>
+  </data>
+  <data name="카드결제액" xml:space="preserve">
+    <value>카드결제액</value>
+  </data>
+  <data name="카드결제일" xml:space="preserve">
+    <value>카드결제일</value>
+  </data>
+  <data name="카드명" xml:space="preserve">
+    <value>카드명</value>
+  </data>
+  <data name="카드번호" xml:space="preserve">
+    <value>카드번호</value>
+  </data>
+  <data name="카드별" xml:space="preserve">
+    <value>카드별</value>
+  </data>
+  <data name="카드별_집계" xml:space="preserve">
+    <value>카드별 집계</value>
+  </data>
+  <data name="카드사" xml:space="preserve">
+    <value>카드사</value>
+  </data>
+  <data name="카드소유자" xml:space="preserve">
+    <value>카드소유자</value>
+  </data>
+  <data name="카드소유자_입금자" xml:space="preserve">
+    <value>카드소유자/입금자</value>
+  </data>
+  <data name="카드코드" xml:space="preserve">
+    <value>카드코드</value>
+  </data>
+  <data name="컴퓨터이름" xml:space="preserve">
+    <value>컴퓨터 이름</value>
+  </data>
+  <data name="퀵메뉴_구성가능_메뉴" xml:space="preserve">
+    <value>퀵메뉴 구성가능 메뉴</value>
+  </data>
+  <data name="탈퇴" xml:space="preserve">
+    <value>탈퇴</value>
+  </data>
+  <data name="탈퇴_관련" xml:space="preserve">
+    <value>탈퇴 관련</value>
+  </data>
+  <data name="탈퇴_여부" xml:space="preserve">
+    <value>탈퇴 여부</value>
+  </data>
+  <data name="탈퇴사유" xml:space="preserve">
+    <value>탈퇴사유</value>
+  </data>
+  <data name="탈퇴일" xml:space="preserve">
+    <value>탈퇴일</value>
+  </data>
+  <data name="택배사_관련_정보_가져오기" xml:space="preserve">
+    <value>택배사 관련 정보 - 가져오기</value>
+  </data>
+  <data name="퇴사" xml:space="preserve">
+    <value>퇴사</value>
+  </data>
+  <data name="판매_관리_주문_제품_상세_내역_현황" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 제품 상세 내역 현황</value>
+  </data>
+  <data name="판매_관리_전체_판매_센타_변경" xml:space="preserve">
+    <value>판매 관리 -&gt; 전체 판매 센타 변경</value>
+  </data>
+  <data name="판매_관리_카드_결제_내역_현황" xml:space="preserve">
+    <value>판매 관리 -&gt; 카드 결제 내역 현황</value>
+  </data>
+  <data name="판매_관리_판매_내역_조합_승인" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 내역 조합 승인</value>
+  </data>
+  <data name="판매_관리_판매_내역_조합_승인_취소" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 내역 조합 승인 취소</value>
+  </data>
+  <data name="판매_관리_판매_등록_수정" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 등록/수정</value>
+  </data>
+  <data name="판매_관리_판매_미승인_내역_삭제" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 미승인 내역 삭제</value>
+  </data>
+  <data name="판매_관리_판매_변경_현황" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 변경 현황</value>
+  </data>
+  <data name="판매_관리_판매_삭제_현황" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 삭제 현황</value>
+  </data>
+  <data name="판매_관리_판매_승인" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 승인</value>
+  </data>
+  <data name="판매_관리_판매_승인_내역_취소" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 승인 내역 취소</value>
+  </data>
+  <data name="판매_관리_판매_현황" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 현황</value>
+  </data>
+  <data name="판매_관리_판매_현황II" xml:space="preserve">
+    <value>판매 관리 -&gt; 판매 현황II</value>
+  </data>
+  <data name="판매_관리_현금_무통장_입금_내역_현황" xml:space="preserve">
+    <value>판매 관리 -&gt; 현금/무통장 입금 내역 현황</value>
+  </data>
+  <data name="판매_날짜별_판매_결제별" xml:space="preserve">
+    <value>판매 날짜별 판매 결제별</value>
+  </data>
+  <data name="판매_내역" xml:space="preserve">
+    <value>판매 내역</value>
+  </data>
+  <data name="판매_내역_마감_역추적" xml:space="preserve">
+    <value>판매 내역 마감 역추적</value>
+  </data>
+  <data name="판매_내역_조합_신고" xml:space="preserve">
+    <value>판매 내역 조합 신고</value>
+  </data>
+  <data name="판매_내역_조합_신고_취소" xml:space="preserve">
+    <value>판매 내역 조합 신고 취소</value>
+  </data>
+  <data name="판매_미승인_내역_삭제" xml:space="preserve">
+    <value>판매 미승인 내역 삭제</value>
+  </data>
+  <data name="판매_미승인건" xml:space="preserve">
+    <value>판매 미승인건</value>
+  </data>
+  <data name="판매_미출고건" xml:space="preserve">
+    <value>판매 미출고건</value>
+  </data>
+  <data name="판매_삭제" xml:space="preserve">
+    <value>판매 삭제</value>
+  </data>
+  <data name="판매_상태" xml:space="preserve">
+    <value>판매 상태</value>
+  </data>
+  <data name="판매_센타별" xml:space="preserve">
+    <value>판매 센타별</value>
+  </data>
+  <data name="판매_승인" xml:space="preserve">
+    <value>판매 승인</value>
+  </data>
+  <data name="판매_승인_내역_취소" xml:space="preserve">
+    <value>판매 승인 내역 취소</value>
+  </data>
+  <data name="판매_역추적" xml:space="preserve">
+    <value>판매 역추적</value>
+  </data>
+  <data name="판매_조합_미신고건" xml:space="preserve">
+    <value>판매 조합 미신고건</value>
+  </data>
+  <data name="판매_집계" xml:space="preserve">
+    <value>판매 집계</value>
+  </data>
+  <data name="판매_집계II" xml:space="preserve">
+    <value>판매 집계II</value>
+  </data>
+  <data name="판매_집계_기간별_산하_실적_현황" xml:space="preserve">
+    <value>판매 집계 -&gt; 기간별 산하 실적 현황</value>
+  </data>
+  <data name="판매_집계_판매_날짜별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 날짜별</value>
+  </data>
+  <data name="판매_집계_판매_날짜별_판매_결제별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 날짜별 판매 결제별</value>
+  </data>
+  <data name="판매_집계_판매_날짜별_판매_상품별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 날짜별 판매 상품별</value>
+  </data>
+  <data name="판매_집계_판매_날짜별_판매_센타별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 날짜별 판매 센타별</value>
+  </data>
+  <data name="판매_집계_판매_상품별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 상품별</value>
+  </data>
+  <data name="판매_집계_판매_센타별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 센타별</value>
+  </data>
+  <data name="판매_집계_판매_센타별_상품별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 센타별 상품별</value>
+  </data>
+  <data name="판매_집계_판매_센타별_카드별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 센타별 카드별</value>
+  </data>
+  <data name="판매_집계_판매_카드별" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 카드별</value>
+  </data>
+  <data name="판매_집계_판매_하선_내역" xml:space="preserve">
+    <value>판매 집계 -&gt; 판매 하선 내역</value>
+  </data>
+  <data name="판매_집계_회원_센타별" xml:space="preserve">
+    <value>판매 집계 -&gt; 회원 센타별</value>
+  </data>
+  <data name="판매_집계_회원_센타별_판매_상품별" xml:space="preserve">
+    <value>판매 집계 -&gt; 회원 센타별 판매 상품별</value>
+  </data>
+  <data name="판매_취소" xml:space="preserve">
+    <value>판매 취소</value>
+  </data>
+  <data name="판매_취소_삭제" xml:space="preserve">
+    <value>판매 취소/삭제</value>
+  </data>
+  <data name="판매금액" xml:space="preserve">
+    <value>판매금액</value>
+  </data>
+  <data name="판매센타" xml:space="preserve">
+    <value>판매센타</value>
+  </data>
+  <data name="판매센타_판매일자_기준" xml:space="preserve">
+    <value>판매센타 판매일자 기준</value>
+  </data>
+  <data name="판매수" xml:space="preserve">
+    <value>판매수</value>
+  </data>
+  <data name="판매원" xml:space="preserve">
+    <value>판매원</value>
+  </data>
+  <data name="판매원구분" xml:space="preserve">
+    <value>판매원구부</value>
+  </data>
+  <data name="판매일자" xml:space="preserve">
+    <value>판매일자</value>
+  </data>
+  <data name="판매자" xml:space="preserve">
+    <value>판매자</value>
+  </data>
+  <data name="판매자_성명" xml:space="preserve">
+    <value>판매자 성명</value>
+  </data>
+  <data name="팩스_번호" xml:space="preserve">
+    <value>FAX 번호</value>
+  </data>
+  <data name="표시_내역" xml:space="preserve">
+    <value>표시 내역</value>
+  </data>
+  <data name="표시_내역_적용" xml:space="preserve">
+    <value>표시 내역 적용</value>
+  </data>
+  <data name="프로그램_관리" xml:space="preserve">
+    <value>프로그램 관리</value>
+  </data>
+  <data name="프로그램_관리_사용자_관리" xml:space="preserve">
+    <value>프로그램 관리 -&gt; 사용자 관리</value>
+  </data>
+  <data name="프로그램_관리_사용자_로그" xml:space="preserve">
+    <value>프로그램 관리 -&gt; 사용자 로그</value>
+  </data>
+  <data name="프로그램_관리_사용자_접속_로그" xml:space="preserve">
+    <value>프로그램 관리 -&gt; 사용자 접속 로그</value>
+  </data>
+  <data name="프로그램_관리_사용자_퀵메뉴_구성" xml:space="preserve">
+    <value>프로그램 관리 -&gt; 사용자 퀵메뉴 구성</value>
+  </data>
+  <data name="프로그램_사용" xml:space="preserve">
+    <value>프로그램 사용</value>
+  </data>
+  <data name="프로그램_사용_ID" xml:space="preserve">
+    <value>프로그램 사용 ID</value>
+  </data>
+  <data name="프로그램_사용_비번" xml:space="preserve">
+    <value>프로그램 사용 비번</value>
+  </data>
+  <data name="프린트_미리보기" xml:space="preserve">
+    <value>프린트 미리보기</value>
+  </data>
+  <data name="프린트미리보기" xml:space="preserve">
+    <value>프린트미리보기</value>
+  </data>
+  <data name="프린트설정" xml:space="preserve">
+    <value>프린트설정</value>
+  </data>
+  <data name="하선인원" xml:space="preserve">
+    <value>하선인원</value>
+  </data>
+  <data name="하위_내역" xml:space="preserve">
+    <value>하위 내역</value>
+  </data>
+  <data name="할부" xml:space="preserve">
+    <value>할부</value>
+  </data>
+  <data name="할부_기간" xml:space="preserve">
+    <value>할부 기간</value>
+  </data>
+  <data name="합계" xml:space="preserve">
+    <value>합계</value>
+  </data>
+  <data name="합계PV" xml:space="preserve">
+    <value>합계PV</value>
+  </data>
+  <data name="합계금액" xml:space="preserve">
+    <value>합계금액</value>
+  </data>
+  <data name="핸드폰" xml:space="preserve">
+    <value>핸드폰</value>
+  </data>
+  <data name="현금" xml:space="preserve">
+    <value>현금</value>
+  </data>
+  <data name="현금_결제_금액" xml:space="preserve">
+    <value>현금 결제 금액</value>
+  </data>
+  <data name="현금_결제액" xml:space="preserve">
+    <value>현금 결제액</value>
+  </data>
+  <data name="현금_결제일" xml:space="preserve">
+    <value>현금 결제일</value>
+  </data>
+  <data name="현금_무통장_입금_내역_조회" xml:space="preserve">
+    <value>현금/무통장 입금 내역</value>
+  </data>
+  <data name="현금_합계" xml:space="preserve">
+    <value>현금 합계</value>
+  </data>
+  <data name="현금결제액" xml:space="preserve">
+    <value>현금결제액</value>
+  </data>
+  <data name="현금결제일" xml:space="preserve">
+    <value>현금결제일</value>
+  </data>
+  <data name="현재고" xml:space="preserve">
+    <value>현재고</value>
+  </data>
+  <data name="현직급" xml:space="preserve">
+    <value>현직급</value>
+  </data>
+  <data name="현화면_변경_불가_내역" xml:space="preserve">
+    <value>현화면 변경 불가 내역</value>
+  </data>
+  <data name="확장" xml:space="preserve">
+    <value>확장</value>
+  </data>
+  <data name="확정비고" xml:space="preserve">
+    <value>확정 비고</value>
+  </data>
+  <data name="확정수량" xml:space="preserve">
+    <value>확정 수량</value>
+  </data>
+  <data name="환불_결제_내역" xml:space="preserve">
+    <value>환불 결제 내역</value>
+  </data>
+  <data name="환불_결제액_합" xml:space="preserve">
+    <value>환불 결제액 합</value>
+  </data>
+  <data name="환불_금액" xml:space="preserve">
+    <value>환불 금액</value>
+  </data>
+  <data name="환불_내역" xml:space="preserve">
+    <value>환불 내역</value>
+  </data>
+  <data name="환불_일자" xml:space="preserve">
+    <value>환불 일자</value>
+  </data>
+  <data name="환불_취소" xml:space="preserve">
+    <value>환불 취소</value>
+  </data>
+  <data name="환불액" xml:space="preserve">
+    <value>환불액</value>
+  </data>
+  <data name="환블_금액" xml:space="preserve">
+    <value>환불 금액</value>
+  </data>
+  <data name="활동" xml:space="preserve">
+    <value>활동</value>
+  </data>
+  <data name="활동_여부" xml:space="preserve">
+    <value>활동 여부</value>
+  </data>
+  <data name="회사_계좌_가명" xml:space="preserve">
+    <value>회사 계좌 임시명</value>
+  </data>
+  <data name="회사_계좌_등록" xml:space="preserve">
+    <value>회사 계좌 등록</value>
+  </data>
+  <data name="회사_은행_계좌번호" xml:space="preserve">
+    <value>회사 은행 계좌번호</value>
+  </data>
+  <data name="회사_은행_코드" xml:space="preserve">
+    <value>회사 은행 코드</value>
+  </data>
+  <data name="회사_은행명" xml:space="preserve">
+    <value>회사 은행명</value>
+  </data>
+  <data name="회원" xml:space="preserve">
+    <value>회원</value>
+  </data>
+  <data name="회원_가입_현황_날짜별" xml:space="preserve">
+    <value>날짜별 회원 가입 현황</value>
+  </data>
+  <data name="회원_가입_현황_날짜별_센타" xml:space="preserve">
+    <value>날짜별 센타별 회원 가입 현황</value>
+  </data>
+  <data name="회원_가입_현황_날짜별_센타별" xml:space="preserve">
+    <value>날짜별 센타별 회원 가입 현황</value>
+  </data>
+  <data name="회원_가입_현황_센타별" xml:space="preserve">
+    <value>센타별 회원 가입 현황</value>
+  </data>
+  <data name="회원_검색" xml:space="preserve">
+    <value>회원 검색</value>
+  </data>
+  <data name="회원_관련_정보" xml:space="preserve">
+    <value>회원 관련 정보</value>
+  </data>
+  <data name="회원_관리" xml:space="preserve">
+    <value>회원 관리</value>
+  </data>
+  <data name="회원_관리_날짜별_센타별_회원_가입_현황" xml:space="preserve">
+    <value>회원 관리 -&gt; 날짜별 센타별 회원 가입 현황</value>
+  </data>
+  <data name="회원_관리_날짜별_회원_가입_현황" xml:space="preserve">
+    <value>회원 관리 -&gt; 날짜별 회원 가입 현황</value>
+  </data>
+  <data name="회원_관리_비매출자_현황" xml:space="preserve">
+    <value>회원 관리 -&gt; 비매출자 현황</value>
+  </data>
+  <data name="회원_관리_상위_변경_현황" xml:space="preserve">
+    <value>회원 관리 -&gt; 상위 변경 현황</value>
+  </data>
+  <data name="회원_관리_센타별_회원_가입_현황" xml:space="preserve">
+    <value>회원 관리 -&gt; 센타별 회원 가입 현황</value>
+  </data>
+  <data name="회원_관리_전체_센타_변경" xml:space="preserve">
+    <value>회원 관리 -&gt; 전체 센타 변경</value>
+  </data>
+  <data name="회원_관리_추천_그룹도" xml:space="preserve">
+    <value>회원 관리 -&gt; 추천 그룹도</value>
+  </data>
+  <data name="회원_관리_추천_트리구조도_조회" xml:space="preserve">
+    <value>회원 관리 -&gt; 추천 트리 구조도 조회</value>
+  </data>
+  <data name="회원_관리_추천인_변경" xml:space="preserve">
+    <value>회원 관리 -&gt; 추천인 변경</value>
+  </data>
+  <data name="회원_관리_회원_등록" xml:space="preserve">
+    <value>회원 관리 -&gt; 회원 등록</value>
+  </data>
+  <data name="회원_관리_회원_정보_변경_현황" xml:space="preserve">
+    <value>회원 관리 -&gt; 회원 정보 변경 현황</value>
+  </data>
+  <data name="회원_관리_회원_주소_관리" xml:space="preserve">
+    <value>회원 관리 -&gt; 회원 주소 관리</value>
+  </data>
+  <data name="회원_관리_회원_주요_정보_변경_삭제" xml:space="preserve">
+    <value>회원 관리 -&gt; 회원 주요 정보 변경 삭제</value>
+  </data>
+  <data name="회원_관리_회원_현황" xml:space="preserve">
+    <value>회원 관리 -&gt; 회원 현황</value>
+  </data>
+  <data name="회원_관리_후원_그룹도" xml:space="preserve">
+    <value>회원 관리 -&gt; 후원 그룹도</value>
+  </data>
+  <data name="회원_관리_후원_트리구조도_조회" xml:space="preserve">
+    <value>회원 관리 -&gt; 후원 트리 구조도 조회</value>
+  </data>
+  <data name="회원_관리_후원인_변경" xml:space="preserve">
+    <value>회원 관리 -&gt; 후원인 변경</value>
+  </data>
+  <data name="회원_기본_배송_주소" xml:space="preserve">
+    <value>회원 기본 배송 주소</value>
+  </data>
+  <data name="회원_기본_주소" xml:space="preserve">
+    <value>회원 기본 주소</value>
+  </data>
+  <data name="회원_등록_주소" xml:space="preserve">
+    <value>회원 등록 주소</value>
+  </data>
+  <data name="회원_등록시_매출창_자동" xml:space="preserve">
+    <value>회원 등록시 매출창 자동</value>
+  </data>
+  <data name="회원_번호" xml:space="preserve">
+    <value>회원 번호</value>
+  </data>
+  <data name="회원_번호_생성" xml:space="preserve">
+    <value>회원 번호 생성</value>
+  </data>
+  <data name="회원_상태" xml:space="preserve">
+    <value>회원상태</value>
+  </data>
+  <data name="회원_센타명" xml:space="preserve">
+    <value>회원 센타명</value>
+  </data>
+  <data name="회원_정보" xml:space="preserve">
+    <value>회원 정보</value>
+  </data>
+  <data name="회원_정보_등록" xml:space="preserve">
+    <value>회원 등록</value>
+  </data>
+  <data name="회원_정보_변경_내역" xml:space="preserve">
+    <value>회원 정보 변경 현황</value>
+  </data>
+  <data name="회원_정보_변경_조회" xml:space="preserve">
+    <value>회원 정보 변경/조회</value>
+  </data>
+  <data name="회원_정보_삭제" xml:space="preserve">
+    <value>회원 삭제</value>
+  </data>
+  <data name="회원_정보_수정" xml:space="preserve">
+    <value>회원 수정</value>
+  </data>
+  <data name="회원_주소_관리" xml:space="preserve">
+    <value>회원 주소 관리</value>
+  </data>
+  <data name="회원_주요_정보_변경_삭제" xml:space="preserve">
+    <value>회원 주요 정보 변경/삭제</value>
+  </data>
+  <data name="회원_지사명" xml:space="preserve">
+    <value>회원 지사명</value>
+  </data>
+  <data name="회원_직장_주소" xml:space="preserve">
+    <value>회원 직장 주소</value>
+  </data>
+  <data name="회원_현황" xml:space="preserve">
+    <value>회원 현황</value>
+  </data>
+  <data name="회원가" xml:space="preserve">
+    <value>회원가</value>
+  </data>
+  <data name="회원등록" xml:space="preserve">
+    <value>회원등록</value>
+  </data>
+  <data name="회원명" xml:space="preserve">
+    <value>회원명</value>
+  </data>
+  <data name="회원번호" xml:space="preserve">
+    <value>회원번호</value>
+  </data>
+  <data name="회원번호_생성_방식" xml:space="preserve">
+    <value>회원번호 생성 방식</value>
+  </data>
+  <data name="회원상태" xml:space="preserve">
+    <value>회원상태</value>
+  </data>
+  <data name="회원센타별" xml:space="preserve">
+    <value>회원센타별</value>
+  </data>
+  <data name="회원수" xml:space="preserve">
+    <value>회원수</value>
+  </data>
+  <data name="후_내역" xml:space="preserve">
+    <value>후 내역</value>
+  </data>
+  <data name="후_상위번호" xml:space="preserve">
+    <value>후 상위번호</value>
+  </data>
+  <data name="후_상위성명" xml:space="preserve">
+    <value>후 상위성명</value>
+  </data>
+  <data name="후레쉬" xml:space="preserve">
+    <value>후레쉬</value>
+  </data>
+  <data name="후원_계보도" xml:space="preserve">
+    <value>후원 계보도</value>
+  </data>
+  <data name="후원_계층도_이미지_저장" xml:space="preserve">
+    <value>후원 계층도 이미지 저장</value>
+  </data>
+  <data name="후원_그룹도" xml:space="preserve">
+    <value>후원 그룹도</value>
+  </data>
+  <data name="후원_내역" xml:space="preserve">
+    <value>후원 내역</value>
+  </data>
+  <data name="후원_역추적" xml:space="preserve">
+    <value>후원 역추적</value>
+  </data>
+  <data name="후원_조직" xml:space="preserve">
+    <value>후원 그룹</value>
+  </data>
+  <data name="후원_조직도" xml:space="preserve">
+    <value>후원 그룹도</value>
+  </data>
+  <data name="후원_최상위" xml:space="preserve">
+    <value>후원 최상위</value>
+  </data>
+  <data name="후원_트리구조_조회" xml:space="preserve">
+    <value>후원 트리구조 조회</value>
+  </data>
+  <data name="후원_트리구조도_조회" xml:space="preserve">
+    <value>후원 트리 구조도 조회</value>
+  </data>
+  <data name="후원기준_트리구조" xml:space="preserve">
+    <value>후원 기준 트리구조</value>
+  </data>
+  <data name="후원인" xml:space="preserve">
+    <value>후원인</value>
+  </data>
+  <data name="후원인_그룹" xml:space="preserve">
+    <value>후원인 그룹</value>
+  </data>
+  <data name="후원인_변경" xml:space="preserve">
+    <value>후원인 변경</value>
+  </data>
+  <data name="후원인기준하선" xml:space="preserve">
+    <value>후원인 기준 하선</value>
+  </data>
+  <data name="후원인명" xml:space="preserve">
+    <value>후원인명</value>
+  </data>
+  <data name="후원하선인원" xml:space="preserve">
+    <value>후원하선인원</value>
+  </data>
+</root>

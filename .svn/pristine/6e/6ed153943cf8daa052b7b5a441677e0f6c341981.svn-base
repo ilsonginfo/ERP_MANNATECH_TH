@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Msg_Base_Cancel" xml:space="preserve">
+    <value>内訳がキャンセルされました。</value>
+  </data>
+  <data name="Msg_Base_Cancel_Err" xml:space="preserve">
+    <value>内訳キャンセル中に誤り発生. プログラム業者に問い合わせしてください。</value>
+  </data>
+  <data name="Msg_Base_Cancel_Q" xml:space="preserve">
+    <value>内訳をキャンセルしますか?</value>
+  </data>
+  <data name="Msg_Base_Del" xml:space="preserve">
+    <value>内訳が削除されました。</value>
+  </data>
+  <data name="Msg_Base_Del_Err" xml:space="preserve">
+    <value>内訳削除中に誤り発生. プログラム業者に問い合わせしてください。</value>
+  </data>
+  <data name="Msg_Base_Del_Q" xml:space="preserve">
+    <value>内訳を削除しますか?</value>
+  </data>
+  <data name="Msg_Base_Del_Save" xml:space="preserve">
+    <value>最上端の保存ボタンを押してください。押さないとDBに反映されません。</value>
+  </data>
+  <data name="Msg_Base_Edit" xml:space="preserve">
+    <value>内訳が変更されました。</value>
+  </data>
+  <data name="Msg_Base_Edit_Err" xml:space="preserve">
+    <value>内訳変更中にエラー発生。 プログラム業者に問い合わせしてください。</value>
+  </data>
+  <data name="Msg_Base_Edit_Q" xml:space="preserve">
+    <value>変更内訳を保存しますか?</value>
+  </data>
+  <data name="Msg_Base_Exit_Q" xml:space="preserve">
+    <value>プログラムを終了しますか?</value>
+  </data>
+  <data name="Msg_Base_Export_Err" xml:space="preserve">
+    <value>内訳転換中に誤り発生. プログラム業者に問い合わせしてください。</value>
+  </data>
+  <data name="Msg_Base_Export_Save" xml:space="preserve">
+    <value>作業の内訳が保存されました。</value>
+  </data>
+  <data name="Msg_Base_Save" xml:space="preserve">
+    <value>内訳が保存されました。</value>
+  </data>
+  <data name="Msg_Base_Save_Err" xml:space="preserve">
+    <value>内訳保存中に誤り発生. プログラム業者に問い合わせしてください。</value>
+  </data>
+  <data name="Msg_Base_Save_Q" xml:space="preserve">
+    <value>新しい内訳を保存しますか?</value>
+  </data>
+  <data name="Msg_Base_Select_Err" xml:space="preserve">
+    <value>内訳照会中に誤り発生. プログラム業者に問い合わせしてください。</value>
+  </data>
+  <data name="Msg_Connect_Data" xml:space="preserve">
+    <value>現内訳と関連したデータが存在します。</value>
+  </data>
+  <data name="Msg_Edit_Two_Not" xml:space="preserve">
+    <value>修正時、２件以上入力できません。</value>
+  </data>
+  <data name="Msg_Excel_Not_TF" xml:space="preserve">
+    <value>エクセル転換できる使用者権限がありません。</value>
+  </data>
+  <data name="Msg_Goods_Sort_1" xml:space="preserve">
+    <value>大分類コードを選択してください。</value>
+  </data>
+  <data name="Msg_Goods_Sort_2" xml:space="preserve">
+    <value>中分類コードを選択してください。</value>
+  </data>
+  <data name="Msg_Input_Same_Not" xml:space="preserve">
+    <value>修正の場合、同時に入力が不可能です。</value>
+  </data>
+  <data name="Msg_Key_Not_Change" xml:space="preserve">
+    <value>変更作業の時、コードは変更できません。</value>
+  </data>
+  <data name="Msg_Login_ID" xml:space="preserve">
+    <value>存在しない使用者IDです。</value>
+  </data>
+  <data name="Msg_Login_ID_2" xml:space="preserve">
+    <value>すでに接続されている使用者IDです。 接続不可能です。</value>
+  </data>
+  <data name="Msg_Login_PW" xml:space="preserve">
+    <value>パスワードが一致しません。</value>
+  </data>
+  <data name="Msg_Mem_Delete_" xml:space="preserve">
+    <value>中止会員を新しい上位に指定できません。</value>
+  </data>
+  <data name="Msg_Mem_Down_" xml:space="preserve">
+    <value>本人下位グループに属した会員を新しい上位に指定できません。</value>
+  </data>
+  <data name="Msg_Mem_Down_Full" xml:space="preserve">
+    <value>新しい上位に指定された会員のダウン内訳がプールです。</value>
+  </data>
+  <data name="Msg_Mem_Down_Same" xml:space="preserve">
+    <value>新しい上位が以前と同一です。</value>
+  </data>
+  <data name="Msg_Mem_Down_Self" xml:space="preserve">
+    <value>新しい上位に本人を指定できません。</value>
+  </data>
+  <data name="Msg_Mem_Leave_" xml:space="preserve">
+    <value>脱退会員を上位に指定できません。</value>
+  </data>
+  <data name="Msg_Mem_Leave_Sell" xml:space="preserve">
+    <value>脱退会員は購入できません。</value>
+  </data>
+  <data name="Msg_Mem_Mbid_Auto_Nomin" xml:space="preserve">
+    <value>会員番号自動生成の場合は推薦者を必ず入力しなければなりません。</value>
+  </data>
+  <data name="Msg_Mem_Mbid_Auto_Not" xml:space="preserve">
+    <value>最上位チェックされた場合、会員番号を自動にできません。 手動チェック後、番号を直接入力してください。</value>
+  </data>
+  <data name="Msg_Mem_Mbid_Hand_Not_Q" xml:space="preserve">
+    <value>会員番号手動入力選択. 会員番号未入力状態. 自動で生成しましょうか？</value>
+  </data>
+  <data name="Msg_Mem_Mbid_Not" xml:space="preserve">
+    <value>手動で入力された会員番号はすでに使用中です。</value>
+  </data>
+  <data name="Msg_Mem_Sell_TF_0" xml:space="preserve">
+    <value>単純消費者を上位に指定できません。</value>
+  </data>
+  <data name="Msg_Mem_Up_Checked" xml:space="preserve">
+    <value>最上位選択状態で上位会員コードが入力されています。</value>
+  </data>
+  <data name="Msg_Mem_Webid_Not" xml:space="preserve">
+    <value>すでに同一Web IDが存在します。</value>
+  </data>
+  <data name="Msg_Nom_Same_Save_Q" xml:space="preserve">
+    <value>後援者も推薦者と同一ですか?</value>
+  </data>
+  <data name="Msg_Not_Close_Date" xml:space="preserve">
+    <value>締め切り精算された日付です。</value>
+  </data>
+  <data name="Msg_Not_Del_UserID" xml:space="preserve">
+    <value>削除不可能な使用者IDです。</value>
+  </data>
+  <data name="Msg_Not_FarMenu_20" xml:space="preserve">
+    <value>使用者お気に入りメニューは20個を超えられません。</value>
+  </data>
+  <data name="Msg_Not_Input" xml:space="preserve">
+    <value>入力された内訳がありません。</value>
+  </data>
+  <data name="Msg_Not_Input_Err" xml:space="preserve">
+    <value>入力された内訳に誤りがあります。</value>
+  </data>
+  <data name="Msg_Not_Input_SDate" xml:space="preserve">
+    <value>検索日付を必ず入力してください。</value>
+  </data>
+  <data name="Msg_Not_Input_Sell_01" xml:space="preserve">
+    <value>正常内訳です。 現画面では修正/キャンセルできません。</value>
+  </data>
+  <data name="Msg_Not_Input_Sell_1" xml:space="preserve">
+    <value>現内訳は返品/部分返品/交換が発生した内訳です。 修正/キャンセルできません。</value>
+  </data>
+  <data name="Msg_Not_Input_Sell_2" xml:space="preserve">
+    <value>全体返品内訳です。 現画面では修正/キャンセルできません。</value>
+  </data>
+  <data name="Msg_Not_Input_Sell_3" xml:space="preserve">
+    <value>部分返品内訳です。 現画面では修正/キャンセルできません。</value>
+  </data>
+  <data name="Msg_Not_Input_Sell_4" xml:space="preserve">
+    <value>交換内訳です。 現画面では修正/キャンセルできません。</value>
+  </data>
+  <data name="Msg_Not_Select" xml:space="preserve">
+    <value>選択された内訳がありません。</value>
+  </data>
+  <data name="Msg_Not_Select_0" xml:space="preserve">
+    <value>選択された内訳中に数量0の内訳が存在します。</value>
+  </data>
+  <data name="Msg_Not_Select_Term" xml:space="preserve">
+    <value>お問い合わせ内訳を入力してください。</value>
+  </data>
+  <data name="Msg_Requisite_Data" xml:space="preserve">
+    <value>必須要素を入力してください。</value>
+  </data>
+  <data name="Msg_Re_Action" xml:space="preserve">
+    <value>確認後、もう一度試みてください。</value>
+  </data>
+  <data name="Msg_Re_Select" xml:space="preserve">
+    <value>選択後、もう一度試みてください。</value>
+  </data>
+  <data name="Msg_Same_Code" xml:space="preserve">
+    <value>すでに同一コードが存在します。</value>
+  </data>
+  <data name="Msg_Same_Name" xml:space="preserve">
+    <value>すでに同一名称が存在します。</value>
+  </data>
+  <data name="Msg_Save_Folder" xml:space="preserve">
+    <value>フォルダに内訳が保存されました。</value>
+  </data>
+  <data name="Msg_Sell_Del_2" xml:space="preserve">
+    <value>現注文と関連した返品内訳が存在します。</value>
+  </data>
+  <data name="Msg_Sell_Del_3" xml:space="preserve">
+    <value>現注文と関連した部分返品内訳が存在します。</value>
+  </data>
+  <data name="Msg_Sell_Del_4" xml:space="preserve">
+    <value>現注文と関連した交換内訳が存在します。</value>
+  </data>
+  <data name="Msg_Sell_Del_Not_TF" xml:space="preserve">
+    <value>購入キャンセルできる使用者権限がありません。</value>
+  </data>
+  <data name="Msg_Sell_Return_Re" xml:space="preserve">
+    <value>すでに返品された内訳です。</value>
+  </data>
+  <data name="Msg_Sell_Return_Re_002" xml:space="preserve">
+    <value>全体返品された内訳です。</value>
+  </data>
+  <data name="Msg_Sell_Return_Re_002_001" xml:space="preserve">
+    <value>払い戻し日付が元販売決済日以前です。</value>
+  </data>
+  <data name="Msg_Sell_Return_Re_002_002" xml:space="preserve">
+    <value>返品関連払い戻し内訳や元注文関連決済内訳の内から選択後.</value>
+  </data>
+  <data name="Msg_Sell_Return_Re_002_003" xml:space="preserve">
+    <value>返品関連払い戻し内訳選択後.</value>
+  </data>
+  <data name="Msg_Sell_Return_Re_002_004" xml:space="preserve">
+    <value>払い戻し額で入力した金額が元販売決済金額より多いです。</value>
+  </data>
+  <data name="Msg_Sell_Return_Re_003" xml:space="preserve">
+    <value>残りの返品使用可能数量がありません。</value>
+  </data>
+  <data name="Msg_Sell_Return_Re_004" xml:space="preserve">
+    <value>返品する数量が使用可能数量より大きくなれません。</value>
+  </data>
+  <data name="Msg_SN_Number_19" xml:space="preserve">
+    <value>未成年者は登録できません。</value>
+  </data>
+  <data name="Msg_SN_Number_Error" xml:space="preserve">
+    <value>事業者番号を正しく入力してください。</value>
+  </data>
+  <data name="Msg_SN_Number_Put" xml:space="preserve">
+    <value>事業者番号は必須入力事項です。</value>
+  </data>
+  <data name="Msg_SN_Number_Same" xml:space="preserve">
+    <value>事業者番号で重複加入が不可能です。</value>
+  </data>
+  <data name="Msg_Sort_AddCode" xml:space="preserve">
+    <value>郵便番号</value>
+  </data>
+  <data name="Msg_Sort_BuNum" xml:space="preserve">
+    <value>事業者番号</value>
+  </data>
+  <data name="Msg_Sort_Cacu_Price" xml:space="preserve">
+    <value>決済金額</value>
+  </data>
+  <data name="Msg_Sort_Cacu_Price_1" xml:space="preserve">
+    <value>現金決済金額</value>
+  </data>
+  <data name="Msg_Sort_Cacu_Price_1_2" xml:space="preserve">
+    <value>現金/無通帳決済金額</value>
+  </data>
+  <data name="Msg_Sort_Cacu_Price_1_3" xml:space="preserve">
+    <value>現金/カード決済金額</value>
+  </data>
+  <data name="Msg_Sort_Cacu_Price_2" xml:space="preserve">
+    <value>無通帳決済金額</value>
+  </data>
+  <data name="Msg_Sort_Cacu_Price_2_3" xml:space="preserve">
+    <value>カード/無通帳決済金額</value>
+  </data>
+  <data name="Msg_Sort_Cacu_Price_3" xml:space="preserve">
+    <value>カード決済金額</value>
+  </data>
+  <data name="Msg_Sort_Cacu_Price_R" xml:space="preserve">
+    <value>払い戻し金額</value>
+  </data>
+  <data name="Msg_Sort_Center" xml:space="preserve">
+    <value>センター</value>
+  </data>
+  <data name="Msg_Sort_ChangDate" xml:space="preserve">
+    <value>変更適用日</value>
+  </data>
+  <data name="Msg_Sort_Check" xml:space="preserve">
+    <value>すでに選択された内訳が存在します。</value>
+  </data>
+  <data name="Msg_Sort_Close" xml:space="preserve">
+    <value>手当て精算</value>
+  </data>
+  <data name="Msg_Sort_Count" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="Msg_Sort_Cpno" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Msg_Sort_Date" xml:space="preserve">
+    <value>日付</value>
+  </data>
+  <data name="Msg_Sort_Fax" xml:space="preserve">
+    <value>ファックス番号</value>
+  </data>
+  <data name="Msg_Sort_Goods" xml:space="preserve">
+    <value>商品</value>
+  </data>
+  <data name="Msg_Sort_Goods_Sort" xml:space="preserve">
+    <value>上位区分</value>
+  </data>
+  <data name="Msg_Sort_Goods_Sort_1" xml:space="preserve">
+    <value>大分類</value>
+  </data>
+  <data name="Msg_Sort_Goods_Sort_2" xml:space="preserve">
+    <value>中分類</value>
+  </data>
+  <data name="Msg_Sort_HomeTel" xml:space="preserve">
+    <value>自宅電話番号</value>
+  </data>
+  <data name="Msg_Sort_Hptel" xml:space="preserve">
+    <value>携帯電話番号</value>
+  </data>
+  <data name="Msg_Sort_InPut" xml:space="preserve">
+    <value>入庫</value>
+  </data>
+  <data name="Msg_Sort_LineCnt" xml:space="preserve">
+    <value>会員後援位置</value>
+  </data>
+  <data name="Msg_Sort_Mem" xml:space="preserve">
+    <value>会員</value>
+  </data>
+  <data name="Msg_Sort_MemNumber" xml:space="preserve">
+    <value>会員番号</value>
+  </data>
+  <data name="Msg_Sort_Move" xml:space="preserve">
+    <value>在庫移動</value>
+  </data>
+  <data name="Msg_Sort_M_Name" xml:space="preserve">
+    <value>会員名</value>
+  </data>
+  <data name="Msg_Sort_Nomin" xml:space="preserve">
+    <value>推薦者</value>
+  </data>
+  <data name="Msg_Sort_Not_Chang" xml:space="preserve">
+    <value>変更不可能</value>
+  </data>
+  <data name="Msg_Sort_N_LineCnt" xml:space="preserve">
+    <value>会員推薦位置</value>
+  </data>
+  <data name="Msg_Sort_OutPut" xml:space="preserve">
+    <value>出庫</value>
+  </data>
+  <data name="Msg_Sort_Purchase" xml:space="preserve">
+    <value>買入先</value>
+  </data>
+  <data name="Msg_Sort_Rece" xml:space="preserve">
+    <value>購買商品配送</value>
+  </data>
+  <data name="Msg_Sort_Save" xml:space="preserve">
+    <value>後援者</value>
+  </data>
+  <data name="Msg_Sort_Sell" xml:space="preserve">
+    <value>販売</value>
+  </data>
+  <data name="Msg_Sort_SellCenter" xml:space="preserve">
+    <value>販売センター</value>
+  </data>
+  <data name="Msg_Sort_SellCode" xml:space="preserve">
+    <value>購買種類</value>
+  </data>
+  <data name="Msg_Sort_SellDate" xml:space="preserve">
+    <value>購買日</value>
+  </data>
+  <data name="Msg_Sort_SellDate_Re" xml:space="preserve">
+    <value>返品日</value>
+  </data>
+  <data name="Msg_Sort_SellDate_ReDate_Er" xml:space="preserve">
+    <value>返品日が購買日より前です。</value>
+  </data>
+  <data name="Msg_Sort_Sell_OrderNumber" xml:space="preserve">
+    <value>注文番号</value>
+  </data>
+  <data name="Msg_Sort_Sell_Price" xml:space="preserve">
+    <value>総購買額</value>
+  </data>
+  <data name="Msg_Sort_Sell_PV" xml:space="preserve">
+    <value>総購買PV</value>
+  </data>
+  <data name="Msg_Sort_Stock_In_Center" xml:space="preserve">
+    <value>入庫先</value>
+  </data>
+  <data name="Msg_Sort_Stock_In_Date" xml:space="preserve">
+    <value>入庫日</value>
+  </data>
+  <data name="Msg_Sort_Stock_IN_Name" xml:space="preserve">
+    <value>入庫理由</value>
+  </data>
+  <data name="Msg_Sort_Stock_Move_Date" xml:space="preserve">
+    <value>移動日付</value>
+  </data>
+  <data name="Msg_Sort_Stock_Out_Center" xml:space="preserve">
+    <value>出庫先</value>
+  </data>
+  <data name="Msg_Sort_Stock_Out_Date" xml:space="preserve">
+    <value>出庫日付</value>
+  </data>
+  <data name="Msg_Sort_Stock_Pre" xml:space="preserve">
+    <value>選択された内訳中にすでに出庫された内訳が存在します。</value>
+  </data>
+  <data name="Msg_Sort_Tel" xml:space="preserve">
+    <value>電話番号</value>
+  </data>
+  <data name="Msg_Sort_Tel1" xml:space="preserve">
+    <value>電話番号</value>
+  </data>
+  <data name="Msg_Sort_User_ID" xml:space="preserve">
+    <value>使用者ID</value>
+  </data>
+  <data name="Msg_Sort_User_Name" xml:space="preserve">
+    <value>使用者名前</value>
+  </data>
+  <data name="Msg_Sort_User_Password" xml:space="preserve">
+    <value>使用者パスワード</value>
+  </data>
+  <data name="Msg_Sort_User_Password_2" xml:space="preserve">
+    <value>使用者パスワード確認</value>
+  </data>
+  <data name="Msg_Sort_User_Password_Not" xml:space="preserve">
+    <value>パスワードとパスワード確認欄に入力した内訳が不一致です。</value>
+  </data>
+  <data name="Msg_Stock_IN" xml:space="preserve">
+    <value>入庫情報が存在する内訳です。</value>
+  </data>
+  <data name="Msg_Stock_Out" xml:space="preserve">
+    <value>出庫情報が存在する内訳です。</value>
+  </data>
+  <data name="Msg_txt_Not_Code" xml:space="preserve">
+    <value>コードをケタ数に合わせて入力してください。</value>
+  </data>
+  <data name="Msg_txt_Not_Data" xml:space="preserve">
+    <value>空欄です。 内訳を入力してください。</value>
+  </data>
+  <data name="Msg_Useing_Data" xml:space="preserve">
+    <value>現資料を使用中のデータが存在します。</value>
+  </data>
+  <data name="Msg_Useing_Line" xml:space="preserve">
+    <value>変更された位置は、現在他の会員様の位置です。 位置を互いに変更しますか?</value>
+  </data>
+  <data name="Msg_Useing_Line_Down" xml:space="preserve">
+    <value>ライン中止は職のままに推薦または、後援した会員がない場合にだけ可能です。</value>
+  </data>
+  <data name="Msg_Useing_Line_Leave" xml:space="preserve">
+    <value>ライン中止は脱退後可能です。 脱退処理を先に保存された後にライン中止をしてくれてください。</value>
+  </data>
+  <data name="Msg_Useing_Line_Not" xml:space="preserve">
+    <value>変更された位置は使うことはできない位置値です。 最大値を越えました。</value>
+  </data>
+  <data name="Msg_Useing_Line_Not_2" xml:space="preserve">
+    <value>変更された位置は、現在他の会員様の位置です。</value>
+  </data>
+  <data name="Msg_Useing_Line_Not_3" xml:space="preserve">
+    <value>ライン中止を解除する場合、その位置を獲得できません。</value>
+  </data>
+  <data name="Msg_Useing_Line_Re_Using" xml:space="preserve">
+    <value>ライン中止を解除する場合、位置値を0以上に入力してください。</value>
+  </data>
+  <data name="Msg_Useing_Not_Data" xml:space="preserve">
+    <value>変更選択された内訳が空欄です。 空欄の内訳を適用しますか?</value>
+  </data>
+</root>

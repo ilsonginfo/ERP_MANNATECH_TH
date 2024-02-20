@@ -1,0 +1,2114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net.Sockets;
+using System.Net;
+using System.Data;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
+
+namespace MLM_Program
+{
+    class cls_Web
+    {
+        private static byte[] getbyte = new byte[270];
+        private static byte[] setbyte = new byte[5400];
+        private string DT_Time = "";
+
+        StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
+
+        const char STX = (char)0x02;
+        const char FS = (char)0x1c;
+        const char ETX = (char)0x03;
+        
+        /*오토쉽 카드결제 승인*/
+        public string Dir_Card_AutoShip_OK(string OrderNumber, int C_Index, ref SqlConnection Conn, ref SqlTransaction tran)
+        {
+            int Ord_SW = 0, Seq_No = 0;
+            string str_sendvalue = "";
+            string SuccessYN = "";
+            Card_AutoShip_OK_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref Conn, ref tran);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.ApproveCardURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "CHDPHARM";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            SuccessYN = Return_Card_AutoShip_OK_Data(getstring, OrderNumber, C_Index, Seq_No, ref Conn, ref tran);
+
+            return SuccessYN;
+        }
+
+        void Card_AutoShip_OK_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No, ref SqlConnection Conn, ref SqlTransaction tran)
+        {
+            string Tsql = "";
+
+            Tsql = " Select ";
+            Tsql = Tsql + " tbl_SalesDetail.OrderNumber,C_index   ";
+            Tsql = Tsql + " , LEFT(tbl_SalesDetail.SellDate,4) +'-' + LEFT(RIGHT(tbl_SalesDetail.SellDate,4),2) + '-' + RIGHT(tbl_SalesDetail.SellDate,2)  ";
+            Tsql = Tsql + " , tbl_SalesDetail.M_Name  ";
+            Tsql = Tsql + " , C_Price1 ";
+            Tsql = Tsql + " , LEFT(C_AppDate1,4) +'-' + LEFT(RIGHT(C_AppDate1,4),2) + '-' + RIGHT(C_AppDate1,2)  ";
+            Tsql = Tsql + " , dbo.DECRYPT_AES256(C_Number1) C_Number1 , C_Number2 , dbo.DECRYPT_AES256(C_P_Number) C_P_Number, C_B_Number   ";
+            Tsql = Tsql + " , C_Installment_Period , C_Name1 , C_Price2 ,C_Etc   ";
+            Tsql = Tsql + " , Case When C_Period1 <>'' And C_Period2 <> '' then   Right (C_Period1,2 ) + C_Period2 ELSE '' End  AS Card_Per   ";
+            Tsql = Tsql + " , tbl_Sales_Cacu.C_CardType ";
+            Tsql = Tsql + " , tbl_SalesDetail.mbid2 ";
+            Tsql = Tsql + " , tbl_Memberinfo.Email ";
+            Tsql = Tsql + " , tbl_Memberinfo.hometel ";
+            Tsql = Tsql + " , tbl_Memberinfo.hptel ";
+            Tsql = Tsql + " , tbl_Memberinfo.Address1 + ' ' + tbl_Memberinfo.Address2 AS Address ";
+            Tsql = Tsql + " , (SELECT TOP 1 ItemName FROM TBL_SALESITEMDETAIL (NOLOCK) WHERE ORDERNUMBER = tbl_SalesDetail.ORDERNUMBER) +  ";
+            Tsql = Tsql + "   (SELECT CASE WHEN COUNT(ORDERNUMBER) < 2 THEN '' ELSE '외' + CONVERT(VARCHAR, COUNT(ORDERNUMBER) - 1) + '개' END FROM TBL_SALESITEMDETAIL (NOLOCK) WHERE ORDERNUMBER = tbl_SalesDetail.ORDERNUMBER AND SellState <> 'C_1') AS ItemName   ";
+            Tsql = Tsql + "  From tbl_Sales_Cacu (nolock)  ";
+            Tsql = Tsql + "  LEFT Join tbl_SalesDetail  (nolock) ON  tbl_SalesDetail.OrderNumber = tbl_Sales_Cacu.OrderNumber   ";
+            Tsql = Tsql + "  LEFT OUTER JOIN tbl_Memberinfo (NOLOCK) ON tbl_SalesDetail.mbid = tbl_Memberinfo.mbid AND tbl_SalesDetail.mbid2 = tbl_Memberinfo.mbid2 ";
+            Tsql = Tsql + "  Where tbl_SalesDetail.OrderNumber = '" + OrderNumber + "' ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_index = " + C_Index;
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_TF = 3   ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.Sugi_TF = '1' ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_Number3 = ''  ";
+            //Tsql = Tsql + "  And tbl_Sales_Cacu.C_Price1 > 0   ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_Price2 > 0   ";
+            Tsql = Tsql + "  And C_P_Number <> ''   ";
+            Tsql = Tsql + "  And C_B_Number <> ''  ";
+
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "Card_OK", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            
+            /*********************/
+            string OrderID = "";                //가맹점 주문번호
+            string ItemName = "";               //상품명(필수)
+            double Amount = 0;                  //결제금액(필수, 최소금액 100원)
+            string Currency = "410";            //통화코드(410:원화, 840:달러)
+            string UserName = "";               //주문자 이름(필수)
+            string UserPhone = "";              //주문자 전화번호
+            string UserID = "";                 //주문자ID(필수)
+            string UserAgent = "ONLINE";        //사용자 환경(고정값)
+            string UserEmail = "";              //주문자이메일(필수)
+            string TxType = "OTBILL";           //트랜잭션 타입(고정값)
+            string ServiceType = "KEYIN";       //서비스타입 (고정값)
+            string IsReBill = "N";              //정기결제여부(고정값)
+            string CardNumber = "";             //카드번호(필수)
+            string ExpirePeriod = "";           //카드유효기간(필수, YYMM)
+            string CardPwd = "";                //카드 비밀번호 앞 2자리(필수)
+            string CardAuth = "";               //생년월일, 사업자번호(필수, 개인카드:생년월일(YYMMDD), 법인카드:사업자번호)
+            string Quota = "";                  //할부개월 (일시불 :00, 2개월 :02)
+
+
+            OrderID = OrderNumber;
+            ItemName = ds.Tables["Card_OK"].Rows[0]["ItemName"].ToString();
+            Amount = double.Parse(ds.Tables["Card_OK"].Rows[0]["C_Price2"].ToString());
+            UserName = ds.Tables["Card_OK"].Rows[0]["M_Name"].ToString();
+            UserID = ds.Tables["Card_OK"].Rows[0]["mbid2"].ToString();
+            UserEmail = ds.Tables["Card_OK"].Rows[0]["Email"].ToString();
+            if (UserEmail == "")
+            {
+                UserEmail = "0@ahkhb.com";
+            }
+            CardNumber = ds.Tables["Card_OK"].Rows[0]["C_Number1"].ToString();
+            ExpirePeriod = ds.Tables["Card_OK"].Rows[0]["Card_Per"].ToString();
+            CardPwd = ds.Tables["Card_OK"].Rows[0]["C_P_Number"].ToString();
+            CardAuth = ds.Tables["Card_OK"].Rows[0]["C_B_Number"].ToString();
+
+            Quota = ds.Tables["Card_OK"].Rows[0]["C_Installment_Period"].ToString();
+            if (Quota == "일시불" || Quota == "")
+            {
+                Quota = "00";
+            }
+
+            str_sendvalue = "orderId=" + OrderID;
+            str_sendvalue = str_sendvalue + "&itemName=" + ItemName;
+            str_sendvalue = str_sendvalue + "&amount=" + Amount;
+            str_sendvalue = str_sendvalue + "&currency=" + Currency;
+            str_sendvalue = str_sendvalue + "&userName=" + UserName;
+            str_sendvalue = str_sendvalue + "&userPhone=" + UserPhone;
+            str_sendvalue = str_sendvalue + "&userId=" + UserID;
+            str_sendvalue = str_sendvalue + "&userAgent=" + UserAgent;
+            str_sendvalue = str_sendvalue + "&userEmail=" + UserEmail;
+            str_sendvalue = str_sendvalue + "&txType=" + TxType;
+            str_sendvalue = str_sendvalue + "&serviceType=" + ServiceType;
+            str_sendvalue = str_sendvalue + "&isReBill=" + IsReBill;
+            str_sendvalue = str_sendvalue + "&billInfo=" + CardNumber;
+            str_sendvalue = str_sendvalue + "&expirePeriod=" + ExpirePeriod;
+            str_sendvalue = str_sendvalue + "&cardPwd=" + CardPwd;
+            str_sendvalue = str_sendvalue + "&cardAuth=" + CardAuth;
+            str_sendvalue = str_sendvalue + "&quota=" + Quota;
+            /*********************/
+
+
+
+            DataTable dt = new DataTable();
+
+            string StrSql = "";
+            StrSql = "EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + " ,'" + OrderNumber + "','" + CardNumber + "','" + ExpirePeriod + "','A','','" + cls_User.gid + "'";
+            //Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", Conn, tran, ds, "", "");
+            //Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+            Temp_Connect.Open_Data_Set(StrSql, Conn, tran, ref dt, "", "");
+            Seq_No = int.Parse(dt.Rows[0][0].ToString());
+
+            setbyte = Encoding.Default.GetBytes(str_sendvalue);
+            Ord_SW = 1;
+        }
+
+        private string Return_Card_AutoShip_OK_Data(string Getstring, string OrderNumber, int C_Index, int Seq_No, ref SqlConnection Conn, ref SqlTransaction tran)
+        {
+            string SuccessYN = "", C_Number2 = "", C_Number3 = "", StrSql = "";
+            string CardCode = "", CardName = "", ErrMessage = "";
+            double Price = 0;
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+                SuccessYN = ReturnData["successYN"].ToString();
+            }
+            catch
+            {
+                return "N";
+            }
+
+            if (SuccessYN == "Y")
+            {
+                C_Number2 = ReturnData["cardAuthNo"].ToString(); 
+                C_Number3 = ReturnData["tid"].ToString();
+                CardCode = ReturnData["cardCode"].ToString();
+                CardName = ReturnData["cardName"].ToString();
+                Price = double.Parse(ReturnData["amount"].ToString());
+            }
+            else
+            {
+                ErrMessage = ReturnData["message"].ToString();
+            }
+
+
+            if (SuccessYN == "Y")
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Code = '" + CardCode + "' ";      //카드코드
+                StrSql = StrSql + " , C_Price1 = " + Price;
+                StrSql = StrSql + " , C_CodeName = '" + CardName + "' ";    //카드명
+                StrSql = StrSql + " , C_Number3  = '" + C_Number3 + "'";  //거래번호
+                StrSql = StrSql + " , C_Number2 = '" + C_Number2 + "'";  //승인번호                        
+                StrSql = StrSql + " , C_Number4 = ''"; //승인번호                        
+                StrSql = StrSql + " , Sugi_TF = '2' ";  //승인이 제대로 이루어 졋다. 2번으로 넣는다.
+                StrSql = StrSql + " , C_AppDate1 = CONVERT(VARCHAR(8), GETDATE(), 112) ";
+                StrSql = StrSql + " , C_CancelTF = 0 ";
+                StrSql = StrSql + " , C_CancelDate = '' ";
+                StrSql = StrSql + " , C_CancelPrice = 0 ";
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql, Conn, tran, "", "");
+
+            }
+            else
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Price1  = 0 ";
+                StrSql = StrSql + " , C_Etc =  '" + ErrMessage + "'";  //승인 오류시 비고칸에 내역을 넣도록 한다.
+                StrSql = StrSql + " , C_AppDate1 = CONVERT(VARCHAR(8), GETDATE(), 112) ";
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql, Conn, tran, "", "");
+            }
+
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " rStatus = '" + SuccessYN + "'";
+            StrSql = StrSql + " ,rAuthNo = '" + C_Number2 + "'";    //승인번호
+            StrSql = StrSql + " ,rTransactionNo = '" + C_Number3 + "'"; //거래번호
+            StrSql = StrSql + " ,C_Number3 = '" + C_Number3 + "'";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            if (SuccessYN == "Y")
+                StrSql = StrSql + " ,C_C_Price1 = " + Price;
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, Conn, tran, "", "");
+
+            return SuccessYN;
+        }
+
+
+
+        /*카드결제 승인*/
+        public string Dir_Card_Approve_OK(string OrderNumber, int C_Index)
+        {
+            int Ord_SW = 0, Seq_No = 0;
+            string str_sendvalue = "";
+            string SuccessYN = "";
+            Card_Approve_OK_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.ApproveCardURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "CHDPHARM";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            SuccessYN = Return_Card_Approve_OK_Data(getstring, OrderNumber, C_Index, Seq_No);
+
+            return SuccessYN;
+        }
+
+
+        public string Dir_Card_Approve_OK_Err(string OrderNumber, int C_Index, ref string Err_M)
+        {
+            int Ord_SW = 0, Seq_No = 0;
+            string str_sendvalue = "";
+            string SuccessYN = "";
+            Err_M = "";
+            //20190312구현호 4 주문번호를 승인관련 클래스에 던져준다.
+            Card_Approve_OK_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.ApproveCardURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "menatech";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            SuccessYN = Return_Card_Approve_OK_Data_Err(getstring, OrderNumber, C_Index, Seq_No, ref Err_M);
+
+            return SuccessYN;
+        }
+
+
+
+        void Card_Approve_OK_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No)
+        {
+            string Tsql = "";   //20190312구현호 5 //결제를하기위해 데이터베이스에다가 카드정보를 넣은것을 불러온다
+
+            Tsql = " Select ";
+            Tsql = Tsql + " tbl_SalesDetail.OrderNumber,C_index   ";
+            Tsql = Tsql + " , LEFT(tbl_SalesDetail.SellDate,4) +'-' + LEFT(RIGHT(tbl_SalesDetail.SellDate,4),2) + '-' + RIGHT(tbl_SalesDetail.SellDate,2)  ";
+            Tsql = Tsql + " , tbl_SalesDetail.M_name  ";
+            Tsql = Tsql + " , C_Price1 ";
+            Tsql = Tsql + " , LEFT(C_AppDate1,4) +'-' + LEFT(RIGHT(C_AppDate1,4),2) + '-' + RIGHT(C_AppDate1,2)  ";
+            Tsql = Tsql + " , dbo.DECRYPT_AES256(C_Number1) C_Number1 , C_Number2 , dbo.DECRYPT_AES256(C_P_Number) C_P_Number, C_B_Number C_B_Number   ";
+            Tsql = Tsql + " , C_Installment_Period , C_Name1 , C_Price2 ,C_Etc   ";
+            Tsql = Tsql + " , Case When C_Period1 <>'' And C_Period2 <> '' then   Right (C_Period1,2 ) + C_Period2 ELSE '' End  AS Card_Per   ";
+            Tsql = Tsql + " , tbl_Sales_Cacu.C_CardType ";
+            Tsql = Tsql + " , tbl_SalesDetail.mbid2 ";
+            Tsql = Tsql + " , tbl_SalesDetail.M_Name ";
+            //Tsql = Tsql + " , tbl_SalesDetail.C_Name1 as M_Name";
+            Tsql = Tsql + " , tbl_Memberinfo.Email ";
+            Tsql = Tsql + " , tbl_Memberinfo.hometel ";
+            Tsql = Tsql + " , tbl_Memberinfo.hptel ";
+            Tsql = Tsql + " , tbl_Memberinfo.Address1 + ' ' + tbl_Memberinfo.Address2 AS Address ";
+            Tsql = Tsql + " , (SELECT TOP 1 ItemName FROM TBL_SALESITEMDETAIL (NOLOCK) WHERE ORDERNUMBER = tbl_SalesDetail.ORDERNUMBER) +  ";
+            Tsql = Tsql + "   (SELECT CASE WHEN COUNT(ORDERNUMBER) < 2 THEN '' ELSE '외' + CONVERT(VARCHAR, COUNT(ORDERNUMBER) - 1) + '개' END FROM TBL_SALESITEMDETAIL (NOLOCK) WHERE ORDERNUMBER = tbl_SalesDetail.ORDERNUMBER AND SellState <> 'C_1') AS ItemName   ";
+            Tsql = Tsql + " , tbl_Sales_Cacu.associated_Card ";
+            Tsql = Tsql + "  From tbl_Sales_Cacu (nolock)  ";
+            Tsql = Tsql + "  LEFT Join tbl_SalesDetail  (nolock) ON  tbl_SalesDetail.OrderNumber = tbl_Sales_Cacu.OrderNumber   ";
+            Tsql = Tsql + "  LEFT OUTER JOIN tbl_Memberinfo (NOLOCK) ON tbl_SalesDetail.mbid = tbl_Memberinfo.mbid AND tbl_SalesDetail.mbid2 = tbl_Memberinfo.mbid2 ";
+            Tsql = Tsql + "  Where tbl_SalesDetail.OrderNumber = '" + OrderNumber + "' ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_index = " + C_Index;
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_TF = 3   ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.Sugi_TF = '1' ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_Number3 = ''  ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_Price1 > 0   ";
+            Tsql = Tsql + "  And tbl_Sales_Cacu.C_Price2 > 0   ";
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "Card_OK", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            //20190312구현호 6 웹에다가 쏠 정보를 하나씩하나씩 그려서 만들어준다
+            if (ReCnt == 0) return;
+            //++++++++++++++++++++++++++++++++
+            string OrderID = "";                //가맹점 주문번호
+            string ItemName = "";               //상품명(필수)
+            double Amount = 0;                  //결제금액(필수, 최소금액 100원)
+            string Currency = "410";            //통화코드(410:원화, 840:달러)
+            string UserName = "";               //주문자 이름(필수)
+            string UserPhone = "";              //주문자 전화번호
+            string UserID = "";                 //주문자ID(필수)
+            string UserAgent = "ONLINE";        //사용자 환경(고정값)
+            string UserEmail = "";    //주문자이메일(필수)
+            string TxType = "OTBILL";           //트랜잭션 타입(고정값)
+            string ServiceType = "KEYIN";       //서비스타입 (고정값)
+            string IsReBill = "N";              //정기결제여부(고정값)
+            string CardNumber = "";             //카드번호(필수)
+            string ExpirePeriod = "";           //카드유효기간(필수, YYMM)
+            string CardPwd = "";                //카드 비밀번호 앞 2자리(필수)
+            string CardAuth = "";               //생년월일, 사업자번호(필수, 개인카드:생년월일(YYMMDD), 법인카드:사업자번호)
+            string Quota = "";                  //할부개월 (일시불 :00, 2개월 :02)
+            string payMode = "";                //20190926구현호 하나은행 제휴카드결제시 payMode 구분값 전달 일반카드: card, 하나제휴카드 : hanaCard
+            string associated_Card = "";                 //20190926구현호 하나은행 제휴카드여부
+
+            OrderID = OrderNumber;
+            ItemName = ds.Tables["Card_OK"].Rows[0]["ItemName"].ToString();
+            Amount = double.Parse(ds.Tables["Card_OK"].Rows[0]["C_Price2"].ToString());
+            UserName = ds.Tables["Card_OK"].Rows[0]["M_Name"].ToString();
+            UserID = ds.Tables["Card_OK"].Rows[0]["mbid2"].ToString();
+
+            UserPhone = ds.Tables["Card_OK"].Rows[0]["hptel"].ToString().Replace("-", "");
+            UserEmail = ds.Tables["Card_OK"].Rows[0]["Email"].ToString();
+            if(UserEmail == "")
+            {
+                UserEmail = "0@ahkhb.com";
+            }
+            CardNumber = ds.Tables["Card_OK"].Rows[0]["C_Number1"].ToString();
+            ExpirePeriod = ds.Tables["Card_OK"].Rows[0]["Card_Per"].ToString();
+            CardPwd = ds.Tables["Card_OK"].Rows[0]["C_P_Number"].ToString();
+            CardAuth = encrypter.Decrypt(ds.Tables["Card_OK"].Rows[0]["C_B_Number"].ToString());
+            payMode = ds.Tables["Card_OK"].Rows[0]["C_P_Number"].ToString();
+            Quota = ds.Tables["Card_OK"].Rows[0]["C_Installment_Period"].ToString();
+
+            associated_Card = ds.Tables["Card_OK"].Rows[0]["associated_Card"].ToString();
+            if(associated_Card == "hana")
+            {
+                payMode = "hanaCard";
+            }
+            else
+            {
+                payMode = "card";
+            }
+
+            if (Quota == "일시불" || Quota == "")
+            {
+                Quota = "00";
+            }
+
+            if (Quota.Length == 1)
+            {
+                Quota = "0" + Quota;
+            }
+
+            str_sendvalue = "orderId=" + OrderID;
+            str_sendvalue = str_sendvalue + "&itemName=" + ItemName;
+            str_sendvalue = str_sendvalue + "&amount=" + Amount;
+            str_sendvalue = str_sendvalue + "&currency=" + Currency;
+            str_sendvalue = str_sendvalue + "&userName=" + UserName;
+            str_sendvalue = str_sendvalue + "&userPhone=" + UserPhone;
+            str_sendvalue = str_sendvalue + "&userId=" + UserID;
+            str_sendvalue = str_sendvalue + "&userAgent=" + UserAgent;
+            str_sendvalue = str_sendvalue + "&userEmail=" + UserEmail;
+            str_sendvalue = str_sendvalue + "&txType=" + TxType;
+            str_sendvalue = str_sendvalue + "&serviceType=" + ServiceType;
+            str_sendvalue = str_sendvalue + "&isReBill=" + IsReBill;
+            str_sendvalue = str_sendvalue + "&billInfo=" + CardNumber;
+            str_sendvalue = str_sendvalue + "&expirePeriod=" + ExpirePeriod;
+            str_sendvalue = str_sendvalue + "&cardPwd=" + CardPwd;
+            str_sendvalue = str_sendvalue + "&cardAuth=" + CardAuth;
+            str_sendvalue = str_sendvalue + "&quota=" + Quota;
+            str_sendvalue = str_sendvalue + "&payMode=" + payMode;
+
+
+            string StrSql = "";
+            //20190312구현호 7 로그를쌓는다.카드정보를 기입했고 결제 시돌 할거니까 로그를 쌓는다.
+            StrSql = "EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + " ,'" + OrderNumber + "','" + CardNumber + "','" + ExpirePeriod + "','A','','" + cls_User.gid + "'";
+            Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
+
+            Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+
+            Ord_SW = 1;
+        }
+
+        private string Return_Card_Approve_OK_Data(string Getstring, string OrderNumber, int C_Index, int Seq_No)
+        {
+            string SuccessYN = "", C_Number2 = "", C_Number3 = "", StrSql = "";
+            string CardCode = "", CardName = "", ErrMessage = "";
+            double Price = 0;
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+            }
+            catch
+            {
+                return "N";
+            }
+
+            SuccessYN = ReturnData["successYN"].ToString();
+
+            if (SuccessYN == "Y")
+            {
+                C_Number3 = ReturnData["tid"].ToString(); //거래번호
+                C_Number2 = ReturnData["cardAuthNo"].ToString();     //승인번호
+                CardCode = ReturnData["cardCode"].ToString();
+                CardName = ReturnData["cardName"].ToString();
+                Price = double.Parse(ReturnData["amount"].ToString());
+            }
+            else
+            {
+                ErrMessage = ReturnData["message"].ToString();
+            }
+
+
+            if (SuccessYN == "Y")
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Code = '" + CardCode + "' ";      //카드코드
+                StrSql = StrSql + " , C_CodeName = '" + CardName + "' ";    //카드명
+                StrSql = StrSql + " , C_Number3  = '" + C_Number3 + "'";  //거래번호
+                StrSql = StrSql + " , C_Number2 = '" + C_Number2 + "'";  //승인번호                        
+                StrSql = StrSql + " , C_Number4 = ''"; //승인번호                        
+                StrSql = StrSql + " , Sugi_TF = '2' ";  //승인이 제대로 이루어 졋다. 2번으로 넣는다.
+                StrSql = StrSql + " , C_AppDate1 = CONVERT(VARCHAR(8), GETDATE(), 112) ";
+                StrSql = StrSql + " , C_CancelTF = 0 ";
+                StrSql = StrSql + " , C_CancelDate = '' ";
+                StrSql = StrSql + " , C_CancelPrice = 0 ";
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql);
+
+            }
+            else
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Price1  = 0 ";
+                StrSql = StrSql + " , C_Etc = '" + ErrMessage + "'";  //승인 오류시 비고칸에 내역을 넣도록 한다.
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql);
+            }
+
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " rStatus = '" + SuccessYN + "'";
+            StrSql = StrSql + " ,rAuthNo = '" + C_Number2 + "'";    //승인번호
+            StrSql = StrSql + " ,rTransactionNo = '" + C_Number3 + "'"; //거래번호
+            StrSql = StrSql + " ,C_Number3 = '" + C_Number3 + "'";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            if (SuccessYN == "Y")
+                StrSql = StrSql + " ,C_C_Price1 = " + Price;
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+
+            return SuccessYN;
+        }
+
+
+
+        private string Return_Card_Approve_OK_Data_Err(string Getstring, string OrderNumber, int C_Index, int Seq_No, ref string  Err_M )
+        {
+            string SuccessYN = "", C_Number2 = "", C_Number3 = "", StrSql = "";
+            string CardCode = "", CardName = "", ErrMessage = "";
+            double Price = 0;
+           cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+            Err_M = "";
+
+
+            //j오브젝트가 제이슨에 대한 데이터를 c#으로 가져오는 클래스
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+            }
+            catch
+            {
+                return "N";
+            }
+            //succesyn 가져옴
+            SuccessYN = ReturnData["successYN"].ToString();
+            //만약성공하게되면
+            if (SuccessYN == "Y")
+            {
+                C_Number3 = ReturnData["tid"].ToString(); //거래번호
+                C_Number2 = ReturnData["cardAuthNo"].ToString();     //승인번호
+                CardCode = ReturnData["cardCode"].ToString().Trim();
+                CardName = ReturnData["cardName"].ToString();
+                Price = double.Parse(ReturnData["amount"].ToString());
+            }
+            //실패했다면없다는 메세지만
+            else
+            {
+                ErrMessage = ReturnData["message"].ToString();
+
+                Err_M = ErrMessage; 
+            }
+
+            //결제마스터테이블에 내가 받아온 정보를 기입한다
+            if (SuccessYN == "Y")
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql+= Environment.NewLine + " C_Code = '" + CardCode + "' ";      //카드코드
+                StrSql+= Environment.NewLine + " , C_CodeName = '" + CardName + "' ";    //카드명
+                StrSql+= Environment.NewLine + " , C_Number3  = '" + C_Number3 + "'";  //거래번호
+                StrSql+= Environment.NewLine + " , C_Number2 = '" + C_Number2 + "'";  //승인번호                        
+                StrSql+= Environment.NewLine + " , C_Number4 = ''"; //승인번호                        
+                StrSql+= Environment.NewLine + " , Sugi_TF = '2' ";  //승인이 제대로 이루어 졋다. 2번으로 넣는다.
+                StrSql+= Environment.NewLine + " , C_AppDate1 = CONVERT(VARCHAR(8), GETDATE(), 112) ";
+                StrSql+= Environment.NewLine + " , C_CancelTF = 0 ";
+                StrSql+= Environment.NewLine + " , C_CancelDate = '' ";
+                StrSql+= Environment.NewLine + " , C_CancelPrice = 0 ";
+                StrSql+= Environment.NewLine + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql+= Environment.NewLine + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql);
+
+            }
+            //실패시 실패사유와 C_Price1이 결재성공시 가져오는 값인데 초기화시킨다
+            else
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Price1  = 0 ";
+                StrSql = StrSql + " , C_Etc = '" + ErrMessage + "'";  //승인 오류시 비고칸에 내역을 넣도록 한다.
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql);
+            }
+
+            //로그를 쌓는다.
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql += Environment.NewLine + " rStatus = '" + SuccessYN + "'";
+            StrSql += Environment.NewLine + " ,rAuthNo = '" + C_Number2 + "'";    //승인번호
+            StrSql += Environment.NewLine + " ,rTransactionNo = '" + C_Number3 + "'"; //거래번호
+            StrSql += Environment.NewLine + " ,C_Number3 = '" + C_Number3 + "'";
+            StrSql += Environment.NewLine + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            if (SuccessYN == "Y")
+                StrSql += Environment.NewLine + " ,C_C_Price1 = " + Price;
+            StrSql += Environment.NewLine + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+
+            return SuccessYN;
+        }
+
+
+        /*오토쉽 카드 취소*/
+        public string Dir_Card_AutoShip_Approve_Cancel(string OrderNumber, int C_Index, ref SqlConnection Conn, ref SqlTransaction tran)
+        {
+            int Ord_SW = 0, Seq_No = 0;
+            string str_sendvalue = "";
+            string SuccessYN = "";
+            double ReturnPrice = 0;
+            Card_AutoShip_Approve_Cancel_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref ReturnPrice, ref Conn, ref tran);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.CancelCardURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "CHDPHARM";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            SuccessYN = Return_Card_AutoShip_Approve_Cancel_Data(getstring, OrderNumber, C_Index, Seq_No, ReturnPrice, ref Conn, ref tran);
+
+            return SuccessYN;
+        }
+
+        void Card_AutoShip_Approve_Cancel_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No, ref double ReturnPrice, ref SqlConnection Conn, ref SqlTransaction tran)
+        {
+            string Tsql = "";
+
+            Tsql = " Select C_index , C_Price1 ,dbo.DECRYPT_AES256(C_Number1) C_Number1,C_Number3 , C_Number2 ,C_Period1,C_Period2, ISNULL(TerminalID, '') TerminalID";
+            Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
+            Tsql = Tsql + " Where OrderNumber = '" + OrderNumber + "'";
+            Tsql = Tsql + " And   C_TF   = 3 ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_index =" + C_Index;
+            Tsql = Tsql + " And C_Price1 > 0 ";
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "Card_Cancel", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            //++++++++++++++++++++++++++++++++
+            string mgr_txtype = "40";                                                   //40:취소(승인/매입 자동판단취소)
+            string C_Number3 = ds.Tables["Card_Cancel"].Rows[0]["C_Number3"].ToString();  //PG거래번호
+            string req_id = cls_User.gid;                                               //요청자ID
+            string mgr_msg = "";                                                        //취소사유
+            string C_Number1 = ds.Tables["Card_Cancel"].Rows[0]["C_Number1"].ToString();    //카드번호
+            string mall_id = ds.Tables["Card_Cancel"].Rows[0]["TerminalID"].ToString();     //단말기ID
+            ReturnPrice = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString());
+
+            str_sendvalue = "mgr_txtype=" + mgr_txtype;
+            str_sendvalue = str_sendvalue + "&org_cno=" + C_Number3;
+            str_sendvalue = str_sendvalue + "&req_id=" + req_id;
+            str_sendvalue = str_sendvalue + "&mgr_msg=" + mgr_msg;
+            str_sendvalue = str_sendvalue + "&mall_id=" + mall_id;
+
+            string StrSql = "";
+            StrSql = "EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + ",'" + OrderNumber + "','" + C_Number1 + "','','C','" + C_Number3 + "','" + cls_User.gid + "'";
+            Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
+
+            Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+
+            setbyte = Encoding.Default.GetBytes(str_sendvalue);
+            Ord_SW = 1;
+
+        }
+
+        private string Return_Card_AutoShip_Approve_Cancel_Data(string Getstring, string OrderNumber, int C_Index, int Seq_No, double ReturnPrice, ref SqlConnection Conn, ref SqlTransaction tran)
+        {
+            string SuccessYN = "", C_Number4 = "", StrSql = "";
+            string ErrMessage = "";
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+            }
+            catch (Exception e)
+            {
+                //MessageBox.Show("통신에러");
+                return "N";
+            }
+
+            SuccessYN = ReturnData["successYN"].ToString();
+
+            if (SuccessYN == "Y")
+            {
+                C_Number4 = ReturnData["r_cno"].ToString();
+            }
+            else
+            {
+                ErrMessage = ReturnData["errMessage"].ToString();
+            }
+
+
+            if (SuccessYN == "Y")
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + "  C_Number3 = ''";  //거래번호
+                StrSql = StrSql + " ,C_Number4 = '" + C_Number4 + "'";  //거래번호
+                StrSql = StrSql + " ,C_CancelTF = 1 ";
+                StrSql = StrSql + " ,C_CancelDate = Convert(Varchar(25),GetDate(),21) ";
+                StrSql = StrSql + " ,C_CancelPrice = C_Price1 ";
+                StrSql = StrSql + " ,C_Price1 = 0 ";
+
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql, Conn, tran, "", "");
+            }
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " rStatus = '" + SuccessYN + "'";
+            StrSql = StrSql + " ,rTransactionNo = '" + C_Number4 + "'";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            if (SuccessYN == "Y")
+                StrSql = StrSql + " , C_C_Price1 = " + ReturnPrice;
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, Conn, tran, "", "");
+
+            return SuccessYN;
+        }
+
+        /*선결제 카드 취소
+         * 그냥 무조건 취소로 시켜버린다
+         */
+        public string Before_Card_Cancel(string OrderNumber, int C_Index)
+        {
+            int Seq_No = 0;
+            //string SuccessYN = "";
+            double ReturnPrice = 0;
+            
+            string Tsql = "";
+
+            Tsql = " Select C_index , C_Price1 , dbo.DECRYPT_AES256(C_Number1) C_Number1,C_Number3 , C_Number2 ,C_Period1,C_Period2";
+            Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
+            Tsql = Tsql + " Where OrderNumber = '" + OrderNumber + "'";
+            Tsql = Tsql + " And   C_TF   = 3 ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_index =" + C_Index;
+            Tsql = Tsql + " And C_Price1 > 0 ";
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "Card_Cancel", ds) == false) return "N";
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0)
+            {
+                //0값이면 결제가안된거니 그냥 이력상으로 취소가되게끔해줍시다.
+                Tsql = " Select C_index , C_Price1 , dbo.DECRYPT_AES256(C_Number1) C_Number1,C_Number3 , C_Number2 ,C_Period1,C_Period2";
+                Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
+                Tsql = Tsql + " Where OrderNumber = '" + OrderNumber + "'";
+                Tsql = Tsql + " And   C_TF   = 3 ";
+                Tsql = Tsql + " And tbl_Sales_Cacu.C_index =" + C_Index;
+                Tsql = Tsql + " And C_Price1 = 0 ";
+                //++++++++++++++++++++++++++++++++
+
+                ds = new DataSet();
+                //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+                if (Temp_Connect.Open_Data_Set(Tsql, "Card_Cancel", ds) == false) return "N";
+                ReCnt = Temp_Connect.DataSet_ReCount;
+
+                if (ReCnt > 0 && ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString().Equals("0"))
+                    return "Y";
+
+                return "N";
+            }
+            //++++++++++++++++++++++++++++++++
+            double Amount = 0;                  //취소금액(필수)
+            string tid = "";                    //다날 원거래키(필수)
+            
+
+            ReturnPrice = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString());
+
+            Amount = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString());
+            tid = ds.Tables["Card_Cancel"].Rows[0]["C_Number3"].ToString();
+
+
+            string C_Number1 = "";
+            C_Number1 = ds.Tables["Card_Cancel"].Rows[0]["C_Number1"].ToString();
+
+            string StrSql = "";
+            StrSql = "EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + ",'" + OrderNumber + "','" + C_Number1 + "','','C','" + tid + "','" + cls_User.gid + "'";
+            Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
+
+            Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+
+
+            StrSql = "Update tbl_Sales_Cacu SET ";
+            StrSql = StrSql + "  C_Number3 = '' ";  //거래번호
+            StrSql = StrSql + " ,C_Number4 = '' ";  //거래번호
+            StrSql = StrSql + " ,C_CancelTF = 1 ";
+            StrSql = StrSql + " ,C_CancelDate = Convert(Varchar(25),GetDate(),21) ";
+            StrSql = StrSql + " ,C_CancelPrice = C_Price1 ";
+            StrSql = StrSql + " ,C_Price1 = 0 ";
+
+            StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+            StrSql = StrSql + " And   C_index = " + C_Index;
+
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+            
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " rStatus = 'Y'";
+            StrSql = StrSql + " ,rTransactionNo = ''";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            StrSql = StrSql + " , C_C_Price1 = " + ReturnPrice;
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+            
+            return "Y";
+        }
+
+
+
+
+        /*카드 취소*/
+        public string Dir_Card_Approve_Cancel(string OrderNumber, int C_Index)
+        {
+            int Ord_SW = 0, Seq_No = 0;
+            string str_sendvalue = "";
+            string SuccessYN = "";
+            double ReturnPrice = 0;
+
+            Card_Approve_Cancel_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref ReturnPrice);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.CancelCardURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "menatech";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            SuccessYN = Return_Card_Approve_Cancel_Data(getstring, OrderNumber, C_Index, Seq_No, ReturnPrice);
+
+            return SuccessYN;
+        }
+
+        void Card_Approve_Cancel_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No, ref double ReturnPrice)
+        {
+            string Tsql = "";
+            //20190926 구현호
+            Tsql = " Select C_index , C_Price1 , dbo.DECRYPT_AES256(C_Number1) C_Number1,C_Number3 , C_Number2 ,C_Period1,C_Period2, ISNULL(TerminalID, '') TerminalID, Associated_Card";
+            Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
+            Tsql = Tsql + " Where OrderNumber = '" + OrderNumber + "'";
+            Tsql = Tsql + " And   C_TF   = 3 ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_index =" + C_Index;
+            Tsql = Tsql + " And C_Price1 > 0 ";
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "Card_Cancel", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            //++++++++++++++++++++++++++++++++
+            double Amount = 0;                  //취소금액(필수)
+            string tid = "";                    //다날 원거래키(필수)
+            string CancelType = "";             //취소타입(필수, C:전체취소, P:부분취소
+            string CancelRequester = "";        //취소요청자
+            string CancelDesc = "";             //취소사유
+            string TxType = "CANCEL";           //트랜잭션 타입(고정값)
+            string ServiceType = "DANALCARD";   //서비스 타입(고정값)
+            string TargetGubun = "C";           //타겟구분 (C:신용카드(수기), T:단말기 H:하나카드)
+
+            ReturnPrice = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString());
+
+            Amount = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString());
+            tid = ds.Tables["Card_Cancel"].Rows[0]["C_Number3"].ToString();
+            CancelType = "C";
+
+            if (ds.Tables["Card_Cancel"].Rows[0]["TerminalID"].ToString() != "")
+                TargetGubun = "T";
+            //20190926 구현호 하나제휴카드 취소시 타겟구분값은 H로 들어간다
+            if (ds.Tables["Card_Cancel"].Rows[0]["Associated_Card"].ToString() == "hana")
+                TargetGubun = "H";
+            str_sendvalue = "amount=" + Amount;
+            str_sendvalue = str_sendvalue + "&tid=" + tid;
+            str_sendvalue = str_sendvalue + "&cancelType=" + CancelType;
+            str_sendvalue = str_sendvalue + "&cancelRequester=" + CancelRequester;
+            str_sendvalue = str_sendvalue + "&cancelDesc=" + CancelDesc;
+            str_sendvalue = str_sendvalue + "&txType=" + TxType;
+            str_sendvalue = str_sendvalue + "&serviceType=" + ServiceType;
+            str_sendvalue = str_sendvalue + "&targetGubun=" + TargetGubun;
+
+            string C_Number1 = "";
+            C_Number1 = ds.Tables["Card_Cancel"].Rows[0]["C_Number1"].ToString();
+
+            string StrSql = "";
+            StrSql = "EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + ",'" + OrderNumber + "','" + C_Number1 + "','','C','" + tid + "','" + cls_User.gid + "'";
+            Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
+
+            Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+
+            setbyte = Encoding.Default.GetBytes(str_sendvalue);
+            Ord_SW = 1;
+
+        }
+
+
+        private string Return_Card_Approve_Cancel_Data(string Getstring, string OrderNumber, int C_Index, int Seq_No, double ReturnPrice)
+        {
+            string SuccessYN = "", C_Number4 = "", StrSql = "";
+            string ErrMessage = "";
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("통신에러");
+                return "N";
+            }
+            
+            SuccessYN = ReturnData["successYN"].ToString();
+
+            if (SuccessYN == "Y")
+            {
+                C_Number4 = ReturnData["tid"].ToString();
+            }
+            else
+            {
+                ErrMessage = ReturnData["message"].ToString();
+            }
+
+
+            if (SuccessYN == "Y")
+            {
+                StrSql = " Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + "  C_Number3 = ''";  //거래번호
+                StrSql = StrSql + " ,C_Number4 = '" + C_Number4 + "'";  //거래번호
+                StrSql = StrSql + " ,C_CancelTF = 1 ";
+                StrSql = StrSql + " ,C_CancelDate = Convert(Varchar(25),GetDate(),21) ";
+                StrSql = StrSql + " ,C_CancelPrice = C_Price1 ";
+                StrSql = StrSql + " ,C_Price1 = 0 ";
+
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql, "", "", 1);
+            }
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " rStatus = '" + SuccessYN + "'";
+            StrSql = StrSql + " ,rTransactionNo = '" + C_Number4 + "'";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            if (SuccessYN == "Y")
+                StrSql = StrSql + " , C_C_Price1 = " + ReturnPrice;
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+
+            return SuccessYN;
+        }
+
+
+        /*카드 부분 취소*/
+        public string Dir_Card_Approve_Return(string OrderNumber, int C_Index, string OrderNumber_R, int C_Index_R)
+        {
+            int Ord_SW = 0, Seq_No = 0;
+            string str_sendvalue = "";
+            string SuccessYN = "", ReturnGubun = "";
+            double ReturnPrice = 0;
+            Card_Approve_Return_Data(OrderNumber, C_Index, OrderNumber_R, C_Index_R, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref ReturnPrice, ref ReturnGubun);
+
+            if (Ord_SW == 0)
+                return "";
+
+            if(Ord_SW == 2) //단말기(선결제) 건이다 
+            {
+                return Before_Card_Cancel(OrderNumber, C_Index);
+            }
+            
+
+            string URL = cls_app_static_var.CancelCardURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "CHDPHARM";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "N";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            SuccessYN = Return_Card_Approve_Return_Data(getstring, OrderNumber, C_Index, Seq_No, ReturnPrice, ReturnGubun);
+
+
+            return SuccessYN;
+        }
+
+        void Card_Approve_Return_Data(string OrderNumber, int C_Index, string OrderNumber_R, int C_Index_R, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No, ref double ReturnPrice, ref string ReturnGubun)
+        {
+            string Tsql = "";
+
+            /*원승인내역*/
+            Tsql = " Select ";
+            Tsql = Tsql + " CASE WHEN C_C_Sum_Price1 > 0 THEN 'Y' ELSE 'N' END Chk_Return ";
+            Tsql = Tsql + " , C_Number3 ";
+            Tsql = Tsql + " , C_Price1 ";
+            Tsql = Tsql + " , C_AppDate1 ";
+            Tsql = Tsql + " , dbo.DECRYPT_AES256(C_Number1) C_Number1 ";
+            Tsql = Tsql + " , ISNULL(TerminalID, '') TerminalID  ";
+            Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
+            Tsql = Tsql + " Where OrderNumber = '" + OrderNumber + "' ";
+            Tsql = Tsql + " And C_index = " + C_Index;
+            Tsql = Tsql + " And C_Price1 > 0 ";
+
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "Card_Approve", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            //++++++++++++++++++++++++++++++++
+
+            string C_Number1 = "", C_Number3 = "", ChkReturn = "", AppDate = "", TargetGubun = "C";
+            double PaymentPrice = 0;
+
+            C_Number3 = ds.Tables["Card_Approve"].Rows[0]["C_Number3"].ToString();
+            ChkReturn = ds.Tables["Card_Approve"].Rows[0]["Chk_Return"].ToString();
+            PaymentPrice = double.Parse(ds.Tables["Card_Approve"].Rows[0]["C_Price1"].ToString());
+            AppDate = ds.Tables["Card_Approve"].Rows[0]["C_AppDate1"].ToString();
+            C_Number1 = ds.Tables["Card_Approve"].Rows[0]["C_Number1"].ToString();
+
+            if (ds.Tables["Card_Approve"].Rows[0]["TerminalID"].ToString() != "")
+                TargetGubun = "T";
+
+            /*환불내역*/
+            Tsql = " Select ";
+            Tsql = Tsql + " C_Price1 ";
+            Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
+            Tsql = Tsql + " Where OrderNumber = '" + OrderNumber_R + "' ";
+            Tsql = Tsql + " And C_index = " + C_Index_R;
+
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "Card_Return", ds) == false) return;
+            ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            ReturnPrice = Math.Abs(double.Parse(ds.Tables["Card_Return"].Rows[0]["C_Price1"].ToString()));
+
+            string NowDate = DateTime.Now.ToString("yyyyMMdd");
+            string CancelType = "";
+
+            if (ChkReturn == "Y")       //부분취소
+            {
+                CancelType = "P";
+            }
+            else    //전체환불이 가능한 상태에서
+            {
+                if (PaymentPrice == ReturnPrice)    //환불금액하고 승인금액하고 같으면 전체 환불
+                {
+                    CancelType = "C";
+                }
+                else
+                {
+                    CancelType = "P";
+                }
+            }
+
+            str_sendvalue = "amount=" + ReturnPrice;
+            str_sendvalue = str_sendvalue + "&tid=" + C_Number3;
+            str_sendvalue = str_sendvalue + "&cancelType=" + CancelType;
+            str_sendvalue = str_sendvalue + "&cancelRequester=";
+            str_sendvalue = str_sendvalue + "&cancelDesc=";
+            str_sendvalue = str_sendvalue + "&txType=CANCEL";
+            str_sendvalue = str_sendvalue + "&serviceType=DANALCARD";
+            str_sendvalue = str_sendvalue + "&targetGubun=" + TargetGubun;
+
+
+            string StrSql = "";
+            StrSql = "EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + ",'" + OrderNumber + "','" + C_Number1 + "','','C3','" + C_Number3 + "','" + cls_User.gid + "'";
+            Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
+
+            Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+            ReturnGubun = CancelType;
+            setbyte = Encoding.Default.GetBytes(str_sendvalue);
+            Ord_SW = 1;
+        }
+
+
+        private string Return_Card_Approve_Return_Data(string Getstring, string OrderNumber, int C_Index, int Seq_No, double ReturnPrice, string ReturnGubun)
+        {
+            string SuccessYN = "", C_Number4 = "", StrSql = "";
+            string ErrMessage = "";
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+            }
+            catch
+            {
+                return "N";
+            }
+
+            SuccessYN = ReturnData["successYN"].ToString();
+
+            double Amount = 0;
+
+            if (SuccessYN == "Y")
+            {
+                C_Number4 = ReturnData["tid"].ToString();
+                Amount = double.Parse(ReturnData["amount"].ToString());
+            }
+            else
+            {
+                ErrMessage = ReturnData["message"].ToString();
+            }
+
+
+            if (SuccessYN == "Y")
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+
+                if (ReturnGubun == "C")
+                {
+                    StrSql = StrSql + "  C_Number3 = ''";  //ksnet 거래번호
+                    StrSql = StrSql + " ,C_Number4 = '" + C_Number4 + "'";  //ksnet 거래번호
+                    StrSql = StrSql + " ,C_CancelTF = 1 ";
+                    StrSql = StrSql + " ,C_CancelDate = Convert(Varchar(25),GetDate(),21) ";
+                    StrSql = StrSql + " ,C_CancelPrice = C_Price1 ";
+                    StrSql = StrSql + " ,C_Price1 = 0 ";
+                }
+                else
+                {
+                    StrSql = StrSql + " C_C_Price1 = " + Amount;
+                    StrSql = StrSql + " , C_Price1 = C_Price1 - " + Amount;
+                    StrSql = StrSql + " , C_C_Sum_Price1 = C_C_Sum_Price1 + " + Amount;
+                }
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql, "", "", 1);
+            }
+            else
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Etc = '" + ErrMessage + "'";
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+            }
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " rStatus = '" + SuccessYN + "'";
+            StrSql = StrSql + " ,rTransactionNo = '" + C_Number4 + "'";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            if (SuccessYN == "Y")
+                StrSql = StrSql + " , C_C_Price1 = " + Amount;
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+
+            return SuccessYN;
+        }
+
+        /*가상계좌 발행*/
+        public string Dir_VR_Account_Approve_OK(string OrderNumber, int C_Index, object mbid2)
+        {
+            int Ord_SW = 0;
+            int Seq_No = 0;
+            string str_sendvalue = "";
+            VR_Account_OK_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.ApproveAccountURL;
+
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "CHDPHARM";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            string SuccessYN = "";
+            SuccessYN = Return_AV_Account_OK_Data(getstring, OrderNumber, C_Index, mbid2, Seq_No);
+
+            return SuccessYN;
+        }
+
+
+        void VR_Account_OK_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No)
+        {
+            string Tsql = "";
+
+            Tsql = " Select ";
+            Tsql = Tsql + " C_Price2 ";
+            Tsql = Tsql + " , C_Code BankCode ";
+            Tsql = Tsql + " , CASE WHEN C_Cash_Send_TF IN (1,2) THEN '1' ELSE '0' END ReceiptYN ";
+            Tsql = Tsql + " , CASE WHEN C_Cash_Bus_TF = 0 THEN '01' WHEN C_Cash_Bus_TF = 1 THEN '02' ELSE '' END Receipt_Gubun1 ";
+            Tsql = Tsql + " , CASE WHEN C_Cash_Bus_TF = 0 THEN '3' WHEN C_Cash_Bus_TF = 1 THEN '4' ELSE '' END Receipt_Gubun2 ";
+            Tsql = Tsql + " , C_Cash_Send_Nu Receipt_Num"; //현금영수증신청번호
+            Tsql = Tsql + " , tbl_Sales_Cacu.OrderNumber ";
+            Tsql = Tsql + " , tbl_SalesDetail.mbid2 ";
+            Tsql = Tsql + " , tbl_SalesDetail.M_Name ";
+            Tsql = Tsql + " , ISNULL(tbl_Memberinfo.Email, '') Email";
+            Tsql = Tsql + " , ISNULL(tbl_Memberinfo.hometel, '') HomeTel";
+            Tsql = Tsql + " , ISNULL(tbl_Memberinfo.hptel, '') HpTel ";
+            Tsql = Tsql + " , ISNULL(tbl_Memberinfo.Address1, '') + ' ' + ISNULL(tbl_Memberinfo.Address2, '') AS Address ";
+            Tsql = Tsql + " , CONVERT(VARCHAR(8), GETDATE(), 112) DT ";
+            Tsql = Tsql + " , (SELECT TOP 1 ItemName FROM TBL_SALESITEMDETAIL (NOLOCK) WHERE ORDERNUMBER = tbl_SalesDetail.ORDERNUMBER) +  ";
+            Tsql = Tsql + "   (SELECT CASE WHEN COUNT(ORDERNUMBER) < 2 THEN '' ELSE '외' + CONVERT(VARCHAR, COUNT(ORDERNUMBER) - 1) + '개' END FROM TBL_SALESITEMDETAIL (NOLOCK) WHERE ORDERNUMBER = tbl_SalesDetail.ORDERNUMBER AND SellState <> 'C_1') AS ItemName   ";
+            Tsql = Tsql + " From tbl_Sales_Cacu (NOLOCK) ";
+            Tsql = Tsql + " INNER JOIN tbl_SalesDetail (NOLOCK) ON tbl_Sales_Cacu.OrderNumber = tbl_SalesDetail.OrderNumber ";
+            Tsql = Tsql + " INNER JOIN tbl_Memberinfo (NOLOCK) ON tbl_SalesDetail.mbid = tbl_Memberinfo.mbid AND tbl_SalesDetail.mbid2 = tbl_Memberinfo.mbid2 ";
+            Tsql = Tsql + " WHERE tbl_Sales_Cacu.OrderNumber = '" + OrderNumber + "' ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_TF = 5 ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_Number3 = '' ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_Number1 = '' ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_Price2 > 0 ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_Index = " + C_Index;
+
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "AV_ACCOUNT", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            //++++++++++++++++++++++++++++++++
+            string AccountHolder = "";      //예금주명(기본값)
+            double Amount = 0;                                  //결제금액(필수, 최소금액1원)
+            string ItemName = "";                               //상품명(필수)
+            string ExpireDate = "";                             //입금마감기한(기본 요청일 + 2일)
+            string OrderID = "";                                //가맹점 주문번호
+            string BankCodeBase = "";                           //주문자가 입금할 은행 코드
+            string ByPassValue = "";                            //추가필드값
+            string IsCashReceiptUI = "";                        //현금영수증 UI표시 설정 유무(기본값:Y)
+            string UserID = "";                                 //주문자ID(필수)
+            string UserName = "";                               //주문자이름
+            string UserEmail = "";                              //주문자 이메일
+            string UserAgent = "PC";                            //사용자환경
+            string TxType = "AUTH";                             //트랜잭션 타입(고정값)
+            string ServiceType = "DANALVACCOUNT";               //서비스 타입(고정값)
+
+
+            Amount = double.Parse(ds.Tables["AV_ACCOUNT"].Rows[0]["C_Price2"].ToString());
+            ItemName = ds.Tables["AV_ACCOUNT"].Rows[0]["ItemName"].ToString();
+            OrderID = OrderNumber;
+            BankCodeBase = ds.Tables["AV_ACCOUNT"].Rows[0]["BankCode"].ToString();
+            IsCashReceiptUI = "N";
+            UserID = ds.Tables["AV_ACCOUNT"].Rows[0]["mbid2"].ToString();
+            UserName = ds.Tables["AV_ACCOUNT"].Rows[0]["M_Name"].ToString();
+            UserEmail = ds.Tables["AV_ACCOUNT"].Rows[0]["Email"].ToString();
+
+
+            str_sendvalue = str_sendvalue + "accountHolder=" + AccountHolder;
+            str_sendvalue = str_sendvalue + "&amount=" + Amount;
+            str_sendvalue = str_sendvalue + "&itemName=" + ItemName;
+            str_sendvalue = str_sendvalue + "&expireDate=" + ExpireDate;
+            str_sendvalue = str_sendvalue + "&orderId=" + OrderID;
+            str_sendvalue = str_sendvalue + "&bankCodeBase=" + BankCodeBase;
+            str_sendvalue = str_sendvalue + "&byPassValue=" + ByPassValue;
+            str_sendvalue = str_sendvalue + "&isCashReceiptUi=" + IsCashReceiptUI;
+            str_sendvalue = str_sendvalue + "&userId=" + UserID;
+            str_sendvalue = str_sendvalue + "&userName=" + UserName;
+            str_sendvalue = str_sendvalue + "&userEmail=" + UserEmail;
+            str_sendvalue = str_sendvalue + "&userAgent=" + UserAgent;
+            str_sendvalue = str_sendvalue + "&txType=" + TxType;
+            str_sendvalue = str_sendvalue + "&serviceType=" + ServiceType;
+            
+
+
+            string StrSql = "";
+            StrSql = "EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + " ,'"+ OrderNumber + "','','가상계좌','A','','" + cls_User.gid + "'";
+            Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
+
+            Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+
+            setbyte = Encoding.Default.GetBytes(str_sendvalue);
+            Ord_SW = 1;
+
+        }
+
+        private string Return_AV_Account_OK_Data(string Getstring, string OrderNumber, int C_Index, object mbid2, int Seq_No)
+        {
+            string SuccessYN = "", C_Number1 = "", C_Number3 = "", BankCode = "", BankName = "", ErrMessage = "", StrSql = "";
+            double Price = 0;
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+            }
+            catch
+            {
+                return "N";
+            }
+
+            SuccessYN = ReturnData["successYN"].ToString();
+
+            if (SuccessYN == "Y")
+            {
+                
+                C_Number3 = ReturnData["tid"].ToString();
+                C_Number1 = ReturnData["virtualAccount"].ToString();
+                BankCode = ReturnData["bankCode"].ToString();
+                BankName = ReturnData["bankName"].ToString();
+                Price = double.Parse(ReturnData["amount"].ToString());
+            }
+            else
+            {
+                ErrMessage = ReturnData["message"].ToString();
+            }
+
+
+
+
+            if (SuccessYN == "Y")
+            {
+
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Number3  = '" + C_Number3 + "'"; //거래번호
+                StrSql = StrSql + " , C_Number1 = dbo.ENCRYPT_AES256('" + C_Number1 + "')"; //가상계좌번호
+                StrSql = StrSql + " ,C_Code = '" + BankCode + "' ";
+                StrSql = StrSql + " ,C_CodeName = '" + BankName + "' ";
+                StrSql = StrSql + " ,C_CancelTF = 0 ";
+                StrSql = StrSql + " ,C_CancelDate = '' ";
+                StrSql = StrSql + " ,C_CancelPrice = 0 ";
+
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql);
+
+
+                StrSql = "Insert into tbl_Sales_Cacu_ACC   ";
+                StrSql = StrSql + " (OrderNumber ,C_index ,C_Cash_Receipt_TF , Bank_Code , Bank_ACC_Account , C_Price2, mbid, mbid2 ,expire_date , Cul_Send_TF , Exi_TF_OrderNumber ) ";
+                StrSql = StrSql + " Values ('" + OrderNumber + "'";
+                StrSql = StrSql + "," + C_Index;
+                StrSql = StrSql + ",0";
+                StrSql = StrSql + ",'" + BankCode + "'";
+                StrSql = StrSql + ", '" + C_Number1 + "'";
+                StrSql = StrSql + "," + Price;
+                StrSql = StrSql + ",'' ";
+                StrSql = StrSql + "," + mbid2.ToString();
+                StrSql = StrSql + ",'',0 , '' ) ";
+
+                Temp_Connect.Update_Data(StrSql);
+
+                StrSql = "Insert into TLS_PAYMENT_ACCOUNT (MBID, MBID2 , ORDERNUMBER, ACCOUNTNUMBER, PGNUMBER, WRITEDATE, TOTALPRICE, RECEIPTINFO, RECEIPTTYPE, RECEIPTMODE, RECEIPTSTATUS)";
+                StrSql += Environment.NewLine + "SELECT  '' as 'MBID', '" + mbid2 + "' as 'MBID2'";
+                StrSql += Environment.NewLine + ",OrderNumber";
+                StrSql += Environment.NewLine + ", '" + C_Number1 + "' AS 'ACCOUNTNUMBER'";
+                StrSql += Environment.NewLine + ", C_Number3 AS 'PGNUMBER'";
+                StrSql += Environment.NewLine + ", Convert(varchar, GETDATE(), 21) AS 'WRITEDATE'";
+                StrSql += Environment.NewLine + ", C_Price2 AS 'TOTALPRICE'";
+                StrSql += Environment.NewLine + ", (SELECT TOP 1 dbo.ENCRYPT_AES256(C_Cash_Send_Nu) FROM tbl_SalesDetail WHERE tbl_SalesDetail.OrderNumber = tbl_Sales_Cacu.OrderNumber) AS 'RECEIPTINFO'";
+                StrSql += Environment.NewLine + ", case C_Cash_Send_TF when '1' then '0' when '2' then '1' ELSE '' end 'RECEIPTTYPE'";
+                StrSql += Environment.NewLine + ", 4 as 'RECEIPTMODE'";
+                StrSql += Environment.NewLine + ",case WHEN C_Cash_Send_TF IN (1,2) THEN 'Y' ELSE 'N' END 'RECEIPTSTATUS'";
+                StrSql += Environment.NewLine + "FROM tbl_Sales_Cacu ";
+                StrSql += Environment.NewLine + "WHERE OrderNumber = '" + OrderNumber + "'";
+                StrSql += Environment.NewLine + "AND C_index = " + C_Index;
+                
+                Temp_Connect.Update_Data(StrSql);
+           
+                /*
+                위와 동일한거임 
+                StrSql = "Insert into TLS_PAYMENT_ACCOUNT (MBID2 , ORDERNUMBER, ACCOUNTNUMBER, PGNUMBER, WRITEDATE, TOTALPRICE, RECEIPTTYPE, RECEIPTMODE, RECEIPTMODE, RECEIPTSTATUS)";
+                StrSql += Environment.NewLine + "SELECT  '" + mbid2 + "' as 'MBID2'";
+                StrSql += Environment.NewLine + ", '" + OrderNumber + "' as OrderNumber";
+                StrSql += Environment.NewLine + ", dbo.ENCRYPT_AES256('" + C_Number1 + "') AS 'ACCOUNTNUMBER'";
+                StrSql += Environment.NewLine + ", '" + C_Number3 + "' AS 'PGNUMBER'";
+                StrSql += Environment.NewLine + ", Convert(varchar, GETDATE(), 21) AS 'WRITEDATE'";
+                StrSql += Environment.NewLine + ", C_Price2 AS 'TOTALPRICE'";
+                StrSql += Environment.NewLine + ", (SELECT TOP 1 dbo.ENCRYPT_AES256(C_Cash_Send_Nu) FROM tbl_SalesDetail WHERE tbl_SalesDetail.OrderNumber = tbl_Sales_Cacu.OrderNumber)";
+                StrSql += Environment.NewLine + ", case C_Cash_Send_TF when '1' then '0' when '2' then '1' ELSE '' end 'RECEIPTTYPE'";
+                StrSql += Environment.NewLine + ", 4 as 'RECEIPTMODE'";
+                StrSql += Environment.NewLine + ",case WHEN C_Cash_Send_TF IN (1,2) THEN 'Y' ELSE 'N' END 'RECEIPTSTATUS'";
+                StrSql += Environment.NewLine + "FROM tbl_Sales_Cacu ";
+                StrSql += Environment.NewLine + "WHERE OrderNumber = '" + OrderNumber + "'";
+                StrSql += Environment.NewLine + "AND C_index = " + C_Index;
+
+                 */
+
+            }
+            else
+            {
+                C_Number3 = "";
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Price1  = 0 ";
+                StrSql = StrSql + " , C_Etc = '" + ErrMessage + "'";  //승인 오류시 비고칸에 내역을 넣도록 한다.
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql);
+            }
+
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " Card_No = '" + C_Number1 + "'";
+            StrSql = StrSql + " ,C_Number3 = '" + C_Number3 + "'";
+            StrSql = StrSql + " ,rStatus = '" + SuccessYN + "' ";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+
+            return SuccessYN;
+        }
+
+
+        /*가상계좌 취소*/
+        public string Dir_VR_Account_Approve_Cancel(string OrderNumber, int C_Index)
+        {
+            int Ord_SW = 0;
+            int Seq_No = 0;
+            string str_sendvalue = "";
+            VR_Account_Cancel_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.CancelAccountURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "PMI";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            string SuccessYN = "";
+            SuccessYN = Return_AV_Account_Cancel_Data(getstring, OrderNumber, C_Index , Seq_No);
+
+            return SuccessYN;
+        }
+
+        void VR_Account_Cancel_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No)
+        {
+            string Tsql = "";
+
+            Tsql = " Select ";
+            Tsql = Tsql + " tbl_Sales_Cacu.C_Number3 ";
+            Tsql = Tsql + " From tbl_Sales_Cacu (NOLOCK) ";
+            Tsql = Tsql + " Where tbl_Sales_Cacu.OrderNumber = '" + OrderNumber + "' ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_TF = 5 ";
+            Tsql = Tsql + " And tbl_Sales_Cacu.C_index = " + C_Index;
+
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "AV_ACCOUNT_CANCEL", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            //++++++++++++++++++++++++++++++++
+
+            string tid = "";                        //다날 거래키(필수)
+            string TxType = "SESSIONCLOSE";         //트랜잭션 타입(고정값)
+            string ServiceType = "DANALVACCOUNT";   //서비스 타입(고정값)
+
+            tid = ds.Tables["AV_ACCOUNT_CANCEL"].Rows[0]["C_Number3"].ToString();
+
+            str_sendvalue = "tid=" + tid;
+            str_sendvalue = str_sendvalue + "&txType=" + TxType;
+            str_sendvalue = str_sendvalue + "&serviceType=" + ServiceType;
+
+            string StrSql = "";
+            StrSql = " EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + " ,'" + OrderNumber + "','','가상계좌','C','" + tid + "','" + cls_User.gid + "' ";
+            Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
+
+            Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+
+            setbyte = Encoding.Default.GetBytes(str_sendvalue);
+            Ord_SW = 1;
+        }
+
+        private string Return_AV_Account_Cancel_Data(string Getstring, string OrderNumber, int C_Index, int Seq_No)
+        {
+            string SuccessYN = "", C_Number4 = "", ErrMessage = "", StrSql = "";
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+                SuccessYN = ReturnData["successYN"].ToString();
+            }
+            catch
+            {
+                return "N";
+            }
+
+            if (SuccessYN == "Y")
+            {
+                C_Number4 = ReturnData["tid"].ToString();
+            }
+            else
+            {
+                ErrMessage = ReturnData["message"].ToString();
+            }
+
+            if (SuccessYN == "Y")
+            {
+                StrSql = "Update tbl_Sales_Cacu SET ";
+                StrSql = StrSql + " C_Number3 = ''";  //ksnet 거래번호
+                StrSql = StrSql + " ,C_Number4 = '" + C_Number4 + "' ";
+                StrSql = StrSql + " ,C_CancelTF = 1 ";
+                StrSql = StrSql + " ,C_CancelDate = Convert(Varchar(25),GetDate(),21) ";
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql);
+                
+                StrSql = "Update tbl_Sales_Cacu_ACC SET ";
+                StrSql = StrSql + " Cul_Send_TF = 1";
+                StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                StrSql = StrSql + " And   C_index = " + C_Index;
+
+                Temp_Connect.Update_Data(StrSql);
+
+            }
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " rStatus = '" + SuccessYN + "' ";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+
+
+            return SuccessYN;
+        }
+
+
+
+
+        /*현금영수증 취소*/
+        public string Dir_VR_Cash_Receipt_All_Cancel(string OrderNumber, int C_Index)
+        {
+            int Ord_SW = 0;
+            int Seq_No = 0;
+            string str_sendvalue = "";
+            string ReturnGubun = "";
+            double Price = 0;
+
+            VR_Cash_Receipt_All_Cancel_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref ReturnGubun, ref Price);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.CashCancelURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "ANEW";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            getstring = getstring.Trim();
+            string SuccessYN = "";
+            SuccessYN = Return_VR_Cash_Receipt_All_Cancel_Data(getstring, OrderNumber, C_Index, Seq_No, ReturnGubun, Price);
+
+            return SuccessYN;
+        }
+
+        void VR_Cash_Receipt_All_Cancel_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No, ref string ReturnGubun, ref double Price)
+        {
+            string Tsql = "";
+
+            /*원승인내역*/
+            Tsql = " Select ";
+            Tsql = Tsql + " CASE WHEN C_C_Sum_Price1 > 0 THEN 'Y' ELSE 'N' END Chk_Return ";
+            Tsql = Tsql + " , C_Number3 ";
+            Tsql = Tsql + " , C_Price1 ";
+            Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
+            Tsql = Tsql + " Where OrderNumber = '" + OrderNumber + "' ";
+            Tsql = Tsql + " And C_index = " + C_Index;
+
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(Tsql, "AV_ACCOUNT", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            //++++++++++++++++++++++++++++++++
+
+            string C_Number3 = "", ChkReturn = "";
+            double PaymentPrice = 0, ReturnPrice = 0;
+
+            C_Number3 = ds.Tables["AV_ACCOUNT"].Rows[0]["C_Number3"].ToString();
+            ChkReturn = ds.Tables["AV_ACCOUNT"].Rows[0]["Chk_Return"].ToString();
+            PaymentPrice = double.Parse(ds.Tables["AV_ACCOUNT"].Rows[0]["C_Price1"].ToString());
+            ReturnPrice = PaymentPrice;
+
+            string CancelType = "C";
+
+            str_sendvalue = "amount=" + PaymentPrice;                        //취소금액
+            str_sendvalue = str_sendvalue + "&tid=" + C_Number3;                        //거래키
+            str_sendvalue = str_sendvalue + "&cancelType=" + CancelType;    //'C' 전체취소, 'P' 부분취소
+
+            /*
+serviceCharge 		// 봉사료(TAXTYPE이 업체세팅인 경우 필수)
+cancelRequester 	// 취소 요청자
+cancelDesc 		// 취소 사유
+            */
+
+            string StrSql = "";
+            StrSql = " EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + " ,'" + OrderNumber + "','','현금영수증','C','" + C_Number3 + "','" + cls_User.gid + "' ";
+            Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
+
+            Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+
+            ReturnGubun = CancelType;
+            Price = ReturnPrice;
+
+            setbyte = Encoding.Default.GetBytes(str_sendvalue);
+            Ord_SW = 1;
+
+        }
+
+        private string Return_VR_Cash_Receipt_All_Cancel_Data(string Getstring, string OrderNumber, int C_Index, int Seq_No, string ReturnGubun, double Price)
+        {
+            string SuccessYN = "", Cash_Canel_No = "", StrSql = "", ErrMessage = "";
+
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+                SuccessYN = ReturnData["successYN"].ToString();
+
+                if (SuccessYN == "Y")
+                {
+                    Cash_Canel_No = ReturnData["tid"].ToString();
+                }
+                else
+                {
+                    ErrMessage = ReturnData["Message"].ToString();
+                }
+            }
+            catch
+            {
+                return "N";
+            }
+            try
+            {
+                if (SuccessYN == "Y")
+                {
+                    StrSql = "Update tbl_Sales_Cacu SET ";
+                    StrSql = StrSql + "   C_Cash_Cancel_Number = '" + Cash_Canel_No + "'";  //ksnet 거래번호
+                    StrSql = StrSql + " , C_CancelTF = 1 ";
+                    StrSql = StrSql + " , C_CancelDate = Convert(Varchar(25),GetDate(),21) ";
+                    //StrSql = StrSql + " ,C_Price1 = C_Price1 - " + Price;
+                    StrSql = StrSql + " , C_C_Price1 = " + Price;
+                    StrSql = StrSql + " , C_Cash_Number = ''";
+                    StrSql = StrSql + " , C_C_Sum_Price1 = C_C_Sum_Price1 + " + Price;
+                    StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                    StrSql = StrSql + " And   C_index = " + C_Index;
+
+                    Temp_Connect.Update_Data(StrSql);
+
+                    StrSql = "Update tbl_Sales_Cacu_ACC SET ";
+                    StrSql = StrSql + " Cul_Send_TF = 1";
+                    StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                    StrSql = StrSql + " And   C_index = " + C_Index;
+
+                    Temp_Connect.Update_Data(StrSql);
+
+                    StrSql = "Update tbl_Sales_Cacu_Card SET ";
+                    StrSql = StrSql + " C_C_Price1 = " + Price;
+                    StrSql = StrSql + " , rAuthNo = '" + Cash_Canel_No + "'";
+                    StrSql = StrSql + " , Return_Date = Convert(Varchar(25),GetDate(),21)";
+                    StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+                    Temp_Connect.Update_Data(StrSql, "", "", 1);
+                }
+                else
+                {
+                    StrSql = "Update tbl_Sales_Cacu SET ";
+                    StrSql = StrSql + " C_Etc = '" + ErrMessage + "'";
+                    StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+                    StrSql = StrSql + " And   C_index = " + C_Index;
+
+                    StrSql = "Update tbl_Sales_Cacu_Card SET ";
+                    StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+                    StrSql = StrSql + " Where Seqno  =" + Seq_No;
+
+                    Temp_Connect.Update_Data(StrSql, "", "", 1);
+                }
+
+
+                return SuccessYN;
+            }
+            catch (Exception ex)
+            {
+                return "N";
+            }
+         
+        }
+
+
+        /*현금영수증 생성 */
+        public string Dir_Cash_Receipt_Approve(string OrderNumber, int C_Index, string Send_Number)
+        {
+            int Ord_SW = 0;
+            string str_sendvalue = "";
+            string _SendNumber = Send_Number;
+
+            VR_Cash_Receipt_Approve_Data(OrderNumber, C_Index, ref _SendNumber, ref Ord_SW, ref str_sendvalue);
+
+            if (Ord_SW == 0)
+                return "";
+
+            string URL = cls_app_static_var.CashReceiptURL;
+
+            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+            hwr.Method = "POST"; // 포스트 방식으로 전달                
+            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+            hwr.UserAgent = "ANEW";
+            Encoding encoding = Encoding.UTF8;
+            byte[] buffer = encoding.GetBytes(str_sendvalue);
+            hwr.ContentLength = buffer.Length;
+
+            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+            sendStream.Close(); // sendStream 을 종료한다.
+
+            HttpWebResponse wRes;
+            try
+            {
+                wRes = (HttpWebResponse)hwr.GetResponse();
+            }
+            catch (Exception ee)
+            {
+                return "-1";
+            }
+
+            Stream respPostStream = wRes.GetResponseStream();
+            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+            string getstring = null;
+            getstring = readerPost.ReadToEnd().ToString();
+
+            string ErrMessage = string.Empty;
+            string ResultValue = string.Empty;
+
+
+            return Return_VR_Cash_Receipt_Approve_Data(OrderNumber, C_Index, _SendNumber, getstring);
+        }
+
+        private void VR_Cash_Receipt_Approve_Data(string OrderNumber, int C_Index, ref string Send_Number, ref int Ord_SW, ref string str_sendvalue)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("SELECT Detail.mbid2, Detail.M_Name");
+            sb.AppendLine(",Cacu.OrderNumber");
+            sb.AppendLine(",Cacu.C_Price1");
+            sb.AppendLine(",Cacu.C_Price2");
+            sb.AppendLine(",Mem.hptel");
+            sb.AppendLine(",Cacu.C_Cash_Send_TF ");//-- 1 개인, 2 사업자
+            sb.AppendLine(",Cacu.C_Cash_Send_Nu ");//--신청번호 (회사면 사업자번호가 들어갈테고 회원이면 회원의공제코드나 휴대폰번호가 들어갈것이다)
+            sb.AppendLine(",CASE WHEN SumItemDetail.CNT = 1 THEN SumItemDetail.itemName ELSE SumItemDetail.itemName + '외 ' + CAST(CNT AS NVARCHAR)+'개' END ItemNames");
+            sb.AppendLine("FROM tbl_Sales_Cacu (NOLOCK) Cacu");
+            sb.AppendLine(" JOIN tbl_SalesDetail (NOLOCK) Detail on Cacu.OrderNumber = Detail.OrderNumber");
+            sb.AppendLine(" JOIN tbl_Memberinfo (NOLOCK) Mem on Detail.mbid2 = Mem.mbid2");
+            sb.AppendLine(" JOIN (SELECT OrderNumber,min(itemname) itemName, SUM(ItemCount) CNT FROM tbl_SalesItemDetail (NOLOCK)  GROUP BY OrderNumber) as SumItemDetail ON Detail.OrderNumber = SumItemDetail.OrderNumber");
+            sb.AppendLine("WHERE Cacu.OrderNumber ='"  + OrderNumber + "'");
+            sb.AppendLine("AND Cacu.C_index = " + C_Index);
+            sb.AppendLine("AND Cacu.C_TF IN (1,2, 5) ");//--현금과 무통장, 가상계좌인경우에만 
+            sb.AppendLine("AND Detail.ReturnTF = 1 ");
+            sb.AppendLine("AND Cacu.C_Price1 > 0 ");
+            sb.AppendLine("AND Cacu.C_Cash_Send_TF IN (1,2)");//-- 신청을하지않았다면 -1 또는 0 값이 걸려있을것이기에 
+       
+            //++++++++++++++++++++++++++++++++
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            DataSet ds = new DataSet();
+            //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
+            if (Temp_Connect.Open_Data_Set(sb.ToString(), "AV_ACCOUNT", ds) == false) return;
+            int ReCnt = Temp_Connect.DataSet_ReCount;
+
+            if (ReCnt == 0) return;
+            //++++++++++++++++++++++++++++++++
+
+            string Mbid2           = ds.Tables["AV_ACCOUNT"].Rows[0]["mbid2"].ToString(); 
+            string Name            = ds.Tables["AV_ACCOUNT"].Rows[0]["M_Name"].ToString();
+            string ordernumber     = ds.Tables["AV_ACCOUNT"].Rows[0]["ordernumber"].ToString();
+            string amount          = ds.Tables["AV_ACCOUNT"].Rows[0]["C_Price1"].ToString();
+            string itemNames       = ds.Tables["AV_ACCOUNT"].Rows[0]["itemNames"].ToString();
+            string cashReceiptType = ds.Tables["AV_ACCOUNT"].Rows[0]["C_Cash_Send_TF"].ToString().Equals("1") ? "0" : "1";//(0:소득공제, 1:지출증빙)"
+            string cashReceiptInfo = ds.Tables["AV_ACCOUNT"].Rows[0]["C_Cash_Send_Nu"].ToString().Replace("-","").Replace(" ","").Trim();
+            string hpTel           = ds.Tables["AV_ACCOUNT"].Rows[0]["hpTel"].ToString();
+            Send_Number = cashReceiptInfo;
+
+            str_sendvalue = "taxType=D";                           
+            str_sendvalue += "&amount=" + amount;
+            str_sendvalue += "&itemName=" +itemNames;    
+            str_sendvalue += "&cashReceiptType="  + cashReceiptType;
+            str_sendvalue += "&cashReceiptUserName=" + Name;
+            str_sendvalue += "&cashReceiptInfo=" + cashReceiptInfo;
+            str_sendvalue += "&orderId=" + ordernumber;// CP 주문번호
+          //str_sendvalue += "userEmail=" // 구매자 이메일
+            str_sendvalue += "&userId=" + Mbid2;       // 구매자 ID
+            str_sendvalue += "&userPhone=" + hpTel; // 구매자 전화번호
+            Ord_SW = 1;
+
+        }
+
+        private string Return_VR_Cash_Receipt_Approve_Data(string OrderNumber, int C_Index, string Send_Number, string Getstring)
+        {
+            StringBuilder sb = new StringBuilder();
+            string SuccessYN = string.Empty;
+            string tId = string.Empty;
+            string StatusMessage = string.Empty;
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+            JObject ReturnData = new JObject();
+
+            try
+            {
+                ReturnData = JObject.Parse(Getstring);
+                SuccessYN = ReturnData["successYN"].ToString();
+
+                if (SuccessYN == "Y")
+                {
+                    tId = ReturnData["tid"].ToString();
+                    StatusMessage = ReturnData["message"].ToString();
+
+                }
+                else
+                {
+                    StatusMessage = ReturnData["message"].ToString();
+                }
+            }
+            catch
+            {
+                SuccessYN = "N";
+            }
+
+            if (SuccessYN.Equals("Y"))
+            {
+
+                try
+                {
+                    sb.Clear();
+                    sb.AppendLine("EXEC Usp_Insert_tbl_Sales_Cacu_Bank " + C_Index + ",'" + OrderNumber + "','" + Send_Number + "','A' ,'''' ,'" + cls_User.gid + "' ");
+                    DataSet ds = new DataSet();
+                    Temp_Connect.Open_Data_Set(sb.ToString(), "Cacu_Card", ds);
+
+                    int Seq_No = int.Parse(ds.Tables["Cacu_Card"].Rows[0][0].ToString());
+
+                    sb.Clear();
+                    sb.AppendLine("Update tbl_Sales_Cacu SET ");
+                    sb.AppendLine(" C_Cash_Number = '" + tId + "'");  //ksnet 거래번호
+                    sb.AppendLine(", C_Number3 = '" + tId + "'");  //ksnet 거래번호
+                    sb.AppendLine(" Where OrderNumber ='" + OrderNumber + "'");
+                    sb.AppendLine(" And   C_index = " + C_Index);
+                    Temp_Connect.Update_Data(sb.ToString(), "", "");
+
+                    sb.Clear();
+                    sb.AppendLine("Update tbl_Sales_Cacu_Bank SET ");
+                    sb.AppendLine(" rStatus = 'OK'");
+                    sb.AppendLine(" ,rHTradeDate = ''");
+                    sb.AppendLine(" ,rHTradeTime = ''");
+                    sb.AppendLine(" ,rHMessage1 = '" + StatusMessage + "'");
+                    sb.AppendLine(" ,rHCashTransactionNo = '" + tId + "'");  //현금영수증 승인번호
+                    sb.AppendLine(" ,C_Number3 = '" + tId + "'"); // 2018-09-05 LG 모듈은TID 값과 같음 
+                    sb.AppendLine(" ,Return_Date = Convert(Varchar(25),GetDate(),21)");
+                    sb.AppendLine(" Where Seqno  =" + Seq_No);
+                    Temp_Connect.Update_Data(sb.ToString(), "", "");
+                }
+                catch
+                {
+                    SuccessYN = "N";
+                }
+            }
+         
+
+            return SuccessYN;
+        }
+    }
+}
