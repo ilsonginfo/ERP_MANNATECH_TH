@@ -227,7 +227,7 @@ namespace MLM_Program
                 C_Number3 = ReturnData["chargeId"].ToString();     //승인번호
                 //CardCode = ReturnData["r_acquirer_cd"].ToString();
                 //CardName = ReturnData["r_acquirer_nm"].ToString();
-                //Price = double.Parse(ReturnData["r_amount"].ToString());
+                Price = double.Parse(ReturnData["amount"].ToString());  // 결제 승인 완료 금액
 
                 //if (ReturnData["r_card_gubun"].ToString() == "Y")
                 //    Cash_Sort_TF = "1";
@@ -244,7 +244,7 @@ namespace MLM_Program
             {
                 StrSql = "Update tbl_Sales_Cacu SET ";
                 StrSql = StrSql + " C_Code = '" + CardCode + "' ";      //카드코드
-                //StrSql = StrSql + " , C_Price1 = " + Price;
+                StrSql = StrSql + " , C_Price1 = " + Price;           // 결제 승인 완료 금액
                 StrSql = StrSql + " , C_CodeName = '" + CardName + "' ";    //카드명
                 StrSql = StrSql + " , C_Number3  = '" + C_Number3 + "'";  //거래번호
                 StrSql = StrSql + " , C_Number2 = '" + C_Number2 + "'";  //승인번호                        
@@ -445,12 +445,6 @@ namespace MLM_Program
         //public string Dir_Card_AutoShip_OK(string OrderNumber, int C_Index, ref string ErrMessage, ref SqlConnection Conn, ref SqlTransaction tran)
         public string Dir_Card_AutoShip_OK(string OrderNumber, int C_Index, ref string ErrMessage)
         {
-            //태국인경우 바로 태국전용 Function 호출 
-            if(cls_User.gid_CountryCode == "TH")
-            {
-                return Dir_Card_AutoShip_OK_TH(OrderNumber, C_Index, ref ErrMessage);
-            }
-
             int Ord_SW = 0, Seq_No = 0;
             string str_sendvalue = "";
             string SuccessYN = "";

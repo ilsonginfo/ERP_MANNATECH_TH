@@ -5194,7 +5194,19 @@ namespace MLM_Program
                                     if (SuccessYN_Card == "N")
                                     {
 
-                                        SuccessYN_Card = Cls_Web.Dir_Card_AutoShip_OK(OrderNumber, int.Parse(ds_Card.Tables["CardSearch"].Rows[i_Card]["CacuIndex"].ToString()), ref ErrMessage);
+                                        //SuccessYN_Card = Cls_Web.Dir_Card_AutoShip_OK(OrderNumber, int.Parse(ds_Card.Tables["CardSearch"].Rows[i_Card]["CacuIndex"].ToString()), ref ErrMessage);
+
+                                        // 태국인경우 바로 태국전용 Function 호출 
+                                        if (cls_User.gid_CountryCode == "TH")
+                                        {
+                                            SuccessYN_Card = Cls_Web.Dir_Card_AutoShip_OK_TH(OrderNumber, int.Parse(ds_Card.Tables["CardSearch"].Rows[i_Card]["CacuIndex"].ToString()), ref ErrMessage);
+                                        }
+                                        // 한국인 경우
+                                        else
+                                        {
+                                            SuccessYN_Card = Cls_Web.Dir_Card_AutoShip_OK(OrderNumber, int.Parse(ds_Card.Tables["CardSearch"].Rows[i_Card]["CacuIndex"].ToString()), ref ErrMessage);
+                                        }
+
                                     }
                                 }
                             }
