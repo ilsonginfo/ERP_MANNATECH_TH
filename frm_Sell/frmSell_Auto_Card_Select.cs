@@ -834,6 +834,17 @@ namespace MLM_Program
             //Tsql = Tsql + " Left Join tbl_Card (nolock)  On tbl_Memberinfo_A.A_CardCode = tbl_Card.ncode ";
 
             Tsql = Tsql + " Where S1.Recordid <> '' ";
+            
+            // 태국인 경우
+            if (cls_User.gid_CountryCode == "TH")
+            {
+                Tsql = Tsql + " AND tbl_SalesDetail.Na_Code = 'TH' ";
+            }
+            // 한국인 경우
+            else
+            {
+                Tsql = Tsql + " AND tbl_SalesDetail.Na_Code = '' OR tbl_SalesDetail.Na_Code = 'KR' OR tbl_SalesDetail.Na_Code IS NULL ";
+            }
 
             if (Cms_R_T_index != "")
             {

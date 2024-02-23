@@ -1282,23 +1282,34 @@ namespace MLM_Program
                                         Temp_Connect.Open_Data_Set(StrSql, "CardSearch", ds_Card);
                                         ReCnt_Card = Temp_Connect.DataSet_ReCount;
 
-                                        string ErrMessage = "";
-                                        if (ReCnt_Card > 0)
+                                    string ErrMessage = "";
+                                    if (ReCnt_Card > 0)
+                                    {
+                                        /*카드결제*/
+                                        for (int i_Card = 0; i_Card < ReCnt_Card; i_Card++)
                                         {
-                                            /*카드결제*/
-                                            for (int i_Card = 0; i_Card < ReCnt_Card; i_Card++)
+                                            if (SuccessYN_Card == "N")
                                             {
-                                                if (SuccessYN_Card == "N")
+
+                                                //SuccessYN_Card = Cls_Web.Dir_Card_AutoShip_OK(OrderNumber, int.Parse(ds_Card.Tables["CardSearch"].Rows[i_Card]["CacuIndex"].ToString()), ref ErrMessage);
+
+                                                // 태국인경우 바로 태국전용 Function 호출 
+                                                if (cls_User.gid_CountryCode == "TH")
                                                 {
-
-                                                    SuccessYN_Card = Cls_Web.Dir_Card_AutoShip_OK(OrderNumber, int.Parse(ds_Card.Tables["CardSearch"].Rows[i_Card]["CacuIndex"].ToString()), ref ErrMessage);
-
+                                                    SuccessYN_Card = Cls_Web.Dir_Card_AutoShip_OK_TH(OrderNumber, int.Parse(ds_Card.Tables["CardSearch"].Rows[i_Card]["CacuIndex"].ToString()), ref ErrMessage);
                                                 }
+                                                // 한국인 경우
+                                                else
+                                                {
+                                                    SuccessYN_Card = Cls_Web.Dir_Card_AutoShip_OK(OrderNumber, int.Parse(ds_Card.Tables["CardSearch"].Rows[i_Card]["CacuIndex"].ToString()), ref ErrMessage);
+                                                }
+
                                             }
                                         }
+                                    }
 
-                                        /*결제 성공 유무 확인*/
-                                        if (SuccessYN_Card == "Y" && ItemCount_Chk == "Y")
+                                    /*결제 성공 유무 확인*/
+                                    if (SuccessYN_Card == "Y" && ItemCount_Chk == "Y")
                                             SuccessYN = "Y";
                                         else
                                             SuccessYN = "N";
