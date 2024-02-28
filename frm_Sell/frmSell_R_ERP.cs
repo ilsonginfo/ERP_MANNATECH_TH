@@ -2695,6 +2695,7 @@ namespace MLM_Program
             strSql = strSql + " LEFT JOIN tbl_Base_Change_Detail Ch_T (nolock) ON Ch_T.M_Detail_S = 'tbl_Sales_Cacu' And  Ch_T.M_Detail = Convert(Varchar,tbl_Sales_Cacu.C_TF) ";
 
             strSql = strSql + " LEFT JOIN tbl_Bank (nolock) ON Right(tbl_Sales_Cacu.C_Code,2)  = Right(tbl_Bank.Ncode,2)  And tbl_Sales_Cacu.C_TF = 5   ";
+            cls_NationService.SQL_BankNationCode(ref strSql);
 
             strSql = strSql + " Where tbl_Sales_Cacu.OrderNumber = '" + OrderNumber.ToString() + "' and tbl_Sales_Cacu.c_tf = 3 ";
             strSql = strSql + " Order By C_index ASC ";

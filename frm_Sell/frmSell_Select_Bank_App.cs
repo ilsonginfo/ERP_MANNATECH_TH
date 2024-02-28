@@ -318,14 +318,16 @@ namespace MLM_Program
             Tsql = Tsql + " LEFT JOIN tbl_BankForCompany (nolock) ON tbl_Sales_Cacu.C_Code = tbl_BankForCompany.BankCode And  tbl_Sales_Cacu.C_Number1 = tbl_BankForCompany.BankAccountNumber  And tbl_SalesDetail.Na_Code = tbl_BankForCompany.Na_Code ";            
             Tsql = Tsql + " LEFT Join tbl_Memberinfo   (nolock) On tbl_SalesDetail.mbid=tbl_Memberinfo.mbid  And tbl_SalesDetail.mbid2=tbl_Memberinfo.mbid2  ";
             Tsql = Tsql + " LEFT JOIN tbl_SellType   (nolock) ON tbl_SellType.SellCode = tbl_SalesDetail.SellCode  ";
-            Tsql = Tsql + " LEFT JOIN tbl_Bank  (nolock) ON tbl_Bank.Ncode =tbl_Sales_Cacu.C_Code  And  tbl_Bank.Na_Code =tbl_SalesDetail.Na_Code ";
+            //Tsql = Tsql + " LEFT JOIN tbl_Bank  (nolock) ON tbl_Bank.Ncode =tbl_Sales_Cacu.C_Code  And  tbl_Bank.Na_Code =tbl_SalesDetail.Na_Code ";
+            Tsql = Tsql + " LEFT JOIN tbl_Bank  (nolock) ON tbl_Bank.Ncode =tbl_Sales_Cacu.C_Code ";
+            cls_NationService.SQL_BankNationCode(ref Tsql);
 
             //Tsql = Tsql + " LEFT JOIN tbl_Sales_Cacu_Bank  (nolock) ON tbl_Sales_Cacu_Bank.OrderNumber = tbl_Sales_Cacu.OrderNumber And tbl_Sales_Cacu_Bank.C_index =tbl_Sales_Cacu.C_index     ";
             //Tsql = Tsql + " And Seqno IN (Select Max(Seqno) From tbl_Sales_Cacu_Bank (nolock) Where CanCel_Flag ='A' Group by OrderNumber, C_index   ) "; 
-                 
+
             //Tsql = Tsql + " , Ch_T." + cls_app_static_var.Base_M_Detail_Ex + " ReturnTFName ";        
             //Tsql = Tsql + " LEFT JOIN tbl_Base_Change_Detail Ch_T (nolock) ON Ch_T.M_Detail_S = 'tbl_SalesDetail' And  Ch_T.M_Detail = Convert(Varchar,tbl_SalesDetail.ReturnTF ) ";
-            
+
         }
 
 

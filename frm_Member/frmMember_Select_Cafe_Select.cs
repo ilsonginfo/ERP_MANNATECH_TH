@@ -302,7 +302,9 @@ namespace MLM_Program
             //, Grade30_ID , Grade30_Name 
 
             Tsql = Tsql + " LEFT JOIN tbl_Business (nolock) ON tbl_Memberinfo.BusinessCode = tbl_Business.NCode And tbl_Memberinfo.Na_code = tbl_Business.Na_code ";
-            Tsql = Tsql + " Left Join tbl_Bank On tbl_Memberinfo.bankcode=tbl_Bank.ncode And tbl_Memberinfo.Na_code = tbl_Bank.Na_code ";            
+            //Tsql = Tsql + " Left Join tbl_Bank On tbl_Memberinfo.bankcode=tbl_Bank.ncode And tbl_Memberinfo.Na_code = tbl_Bank.Na_code ";
+            Tsql = Tsql + " Left Join tbl_Bank On tbl_Memberinfo.bankcode=tbl_Bank.ncode ";
+            cls_NationService.SQL_BankNationCode(ref Tsql);
             Tsql = Tsql + " Left Join tbl_Class C1 On tbl_Memberinfo.CurGrade=C1.Grade_Cnt ";
 
             //Tsql = Tsql + " Left Join tbl_Memberinfo_Ten_Temp C1 On tbl_Memberinfo_Ten_Temp.Mbid = tbl_Memberinfo.Mbid And tbl_Memberinfo_Ten_Temp.Mbid2 = tbl_Memberinfo.Mbid2 And tbl_Memberinfo_Ten_Temp ='" + cls_User.gid + "'";  

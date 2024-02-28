@@ -601,6 +601,7 @@ namespace MLM_Program
 
             Tsql = Tsql + " Left Join tbl_Business  (nolock) On tbl_Memberinfo.businesscode=tbl_Business.ncode And tbl_Memberinfo.Na_code = tbl_Business.Na_code";
             Tsql = Tsql + " Left Join tbl_Bank  (nolock) On tbl_ClosePay_04_Mod.bankcode=tbl_Bank.ncode  ";
+            cls_NationService.SQL_BankNationCode(ref Tsql);
 
             //C2 현   C1 전   C4 유지
             Tsql = Tsql + " Left Join tbl_Class C2  (nolock) On MM_Up.CurGrade=C2.Grade_Cnt ";

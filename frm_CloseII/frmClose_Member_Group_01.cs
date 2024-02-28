@@ -443,7 +443,9 @@ namespace MLM_Program
     
             StrSql = StrSql + " From tbl_Memberinfo (nolock)" ;
             StrSql = StrSql + " Left Join tbl_business (nolock)  On tbl_memberinfo.businesscode = tbl_business.ncode  ";
-            StrSql = StrSql + " Left Join tbl_bANK     (nolock)  On tbl_memberinfo.bankcode = tbl_bANK.ncode And tbl_Memberinfo.Na_code = tbl_bANK.Na_code ";
+            //StrSql = StrSql + " Left Join tbl_bANK     (nolock)  On tbl_memberinfo.bankcode = tbl_bANK.ncode And tbl_Memberinfo.Na_code = tbl_bANK.Na_code ";
+            StrSql = StrSql + " Left Join tbl_bANK     (nolock)  On tbl_memberinfo.bankcode = tbl_bANK.ncode ";
+            cls_NationService.SQL_BankNationCode(ref StrSql);
             StrSql = StrSql + " LEFT JOIN tbl_Class C1 (nolock)  On tbl_Memberinfo.CurGrade = C1.Grade_Cnt   " ;
             StrSql = StrSql + " Left Join ufn_Mem_CurGrade_Mbid_Search ('',0) AS CC_A On CC_A.Mbid = tbl_Memberinfo.Mbid And  CC_A.Mbid2 = tbl_Memberinfo.Mbid2 ";            
             

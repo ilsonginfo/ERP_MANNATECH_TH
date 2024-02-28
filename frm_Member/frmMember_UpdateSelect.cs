@@ -839,7 +839,9 @@ namespace MLM_Program
                 Tsql = Tsql + " LEFT JOIN tbl_Card (nolock) ON tbl_Card.Ncode = MAuto.A_CardCode "; 
 
                 Tsql = Tsql + " LEFT JOIN tbl_Business (nolock) ON tbl_Memberinfo.BusinessCode = tbl_Business.NCode And tbl_Memberinfo.Na_code = tbl_Business.Na_code ";
-                Tsql = Tsql + " Left Join tbl_Bank (nolock) On tbl_Memberinfo.bankcode=tbl_Bank.ncode And tbl_Memberinfo.Na_code = tbl_Bank.Na_code ";
+                //Tsql = Tsql + " Left Join tbl_Bank (nolock) On tbl_Memberinfo.bankcode=tbl_Bank.ncode And tbl_Memberinfo.Na_code = tbl_Bank.Na_code ";
+                Tsql = Tsql + " Left Join tbl_Bank (nolock) On tbl_Memberinfo.bankcode=tbl_Bank.ncode ";
+                cls_NationService.SQL_BankNationCode(ref Tsql);
                 Tsql = Tsql + " LEFT JOIN  tbl_Nation  (nolock) ON tbl_Nation.nationCode = tbl_Memberinfo.Na_Code  ";
                 Tsql = Tsql + " Left Join tbl_Class CP On tbl_Memberinfo.CurGrade = CP.Grade_Cnt ";
                 //Tsql = Tsql + " Left Join ufn_Mem_CurGrade_Mbid_Search ('" + Mbid + "'," + Mbid2.ToString() + ") AS CC_A On CC_A.Mbid = tbl_Memberinfo.Mbid And  CC_A.Mbid2 = tbl_Memberinfo.Mbid2 ";            
