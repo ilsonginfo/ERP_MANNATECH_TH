@@ -8968,6 +8968,16 @@ namespace MLM_Program
                     StrSql = StrSql + ",1";
                 StrSql = StrSql + ",0, ";
 
+                if (chK_PV_CV_Check.Checked == true)
+                {
+                    PV_CV_Check = 1;
+                }
+                else
+                {
+                    PV_CV_Check = 0;
+                }
+                StrSql = StrSql + "" + PV_CV_Check + "";
+                
 
                 //2023-11-23 지성경. 왜 네이버가읍어...필드를 만들었으면 다 넣어줘야지 아무리 의미가없더라도
                 StrSql = StrSql + "," + SalesDetail[Ins_Ordernumber].InputPayment_8_TH;
@@ -8975,16 +8985,18 @@ namespace MLM_Program
                 StrSql = StrSql + "," + SalesDetail[Ins_Ordernumber].InputPayment_10_TH;
                 StrSql = StrSql + "," + SalesDetail[Ins_Ordernumber].InputNaver;
 
-                if (chK_PV_CV_Check.Checked == true)
-            {
-                PV_CV_Check = 1;
-            }
-            else
-            {
-                PV_CV_Check = 0;
-            }
-                StrSql = StrSql + ""+ PV_CV_Check+"";
                 StrSql = StrSql + ")";
+
+                //    if (chK_PV_CV_Check.Checked == true)
+                //{
+                //    PV_CV_Check = 1;
+                //}
+                //else
+                //{
+                //    PV_CV_Check = 0;
+                //}
+                //    StrSql = StrSql + ""+ PV_CV_Check+"";
+                //    StrSql = StrSql + ")";
 
                 if (Temp_Connect.Insert_Data(StrSql, "tbl_SalesDetail", Conn, tran, this.Name.ToString(), this.Text) == false) return;
 
