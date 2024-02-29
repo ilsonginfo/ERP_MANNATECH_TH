@@ -16,7 +16,7 @@ namespace MLM_Program
             }
             if (cls_User.gid_CountryCode == "TH")
             {
-                Tsql += " And tbl_Bank.Na_code = 'KR' ";
+                Tsql += " And tbl_Bank.Na_code = 'TH' ";
             }
         }
     }

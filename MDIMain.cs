@@ -2398,6 +2398,7 @@ namespace MLM_Program
             {
                 Close_Menu.Visible = false;
                 UnionMenu.Visible = false;
+                this.Login_Board_TF = 0; //로그인보드 강제로 안보이게
             }
 
             if (cls_User.gid_CountryCode == "TH")
