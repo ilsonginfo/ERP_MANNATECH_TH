@@ -535,6 +535,9 @@ namespace MLM_Program
             //}
 
             Tsql = Tsql + sb.ToString();
+
+            cls_NationService.SQL_Memberinfo_NationCode(ref Tsql);
+
             Tsql = Tsql + " Order by tbl_SalesDetail.SellDate DESC, tbl_SalesDetail.OrderNumber ";
             Tsql = Tsql + ",tbl_SalesDetail.Mbid, tbl_SalesDetail.Mbid2  ";
         }

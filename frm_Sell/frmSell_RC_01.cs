@@ -75,8 +75,12 @@ namespace MLM_Program
             cm.from_control_text_base_chang(this);
             
             mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;            
-           if (cls_User.gid_CountryCode == "KR") mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.  
-            else
+            if (cls_User.gid_CountryCode == "KR")
+            {
+                mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.  
+            }
+            //else
+            else if (cls_User.gid_CountryCode != "TH")  // 태국인 경우는 한국과 마찬가지로 배송내역 가림. - 240304 syhuh
             {
                 //2020-07-27 일본, 미국은 직판신고가 안되니 교환가동하도록함
                 groupBox2.Visible = true;
@@ -4344,8 +4348,6 @@ namespace MLM_Program
                     //txtAddCode2.Text = ds.Tables["t_P_table"].Rows[0]["Addcode1"].ToString().Substring(3, 3);
                 }
             }
-
-
 
             //string T_Num_1 = ""; string T_Num_2 = ""; string T_Num_3 = "";
             cls_form_Meth cfm = new cls_form_Meth();

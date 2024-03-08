@@ -1454,7 +1454,9 @@ namespace MLM_Program
             sb.AppendLine(" A.REG_DATE AS REG_DATE2,  ");
             sb.AppendLine(" B.REG_DATE AS REG_DATE3,  ");
             sb.AppendLine(" A.STATUS AS STATUS1 ,  ");
-            sb.AppendLine(" B.STATUS AS STATUS2  ");
+            //sb.AppendLine(" B.STATUS AS STATUS2  ");
+            sb.AppendLine(" B.STATUS AS STATUS2,  ");   // 240307 태국 구분 관련 추가 - syhuh
+            sb.AppendLine(" C.Na_Code  ");  // 240307 태국 구분 관련 추가 - syhuh
             sb.AppendLine(" FROM  (SELECT * FROM  TBL_MEMBER_CHANGE_SPON WHERE GUBUN = 'N') A   ");
             sb.AppendLine("  JOIN (SELECT * FROM TBL_MEMBER_CHANGE_SPON WHERE GUBUN ='S') B ON A.MBID2 = B.MBID2   ");
             sb.AppendLine(" AND LEFT (CONVERT(CHAR(23), A.REG_DATE, 21),19) = LEFT (CONVERT(CHAR(23), B.REG_DATE, 21),19)   ");
@@ -1483,7 +1485,9 @@ namespace MLM_Program
             sb.AppendLine("A.REG_DATE AS REG_DATE2,  ");
             sb.AppendLine("A.REG_DATE AS REG_DATE3,  ");
             sb.AppendLine("A.STATUS AS STATUS1 ,  ");
-            sb.AppendLine("A.STATUS AS STATUS2 ");
+            //sb.AppendLine("A.STATUS AS STATUS2 ");
+            sb.AppendLine("A.STATUS AS STATUS2, ");     // 240307 태국 구분 관련 추가 - syhuh
+            sb.AppendLine("C.Na_Code ");    // 240307 태국 구분 관련 추가 - syhuh
             sb.AppendLine("FROM TBL_MEMBER_CHANGE_SPON A  ");
             sb.AppendLine("LEFT JOIN TBL_MEMBERINFO C ON A.MBID2 = C.MBID2  ");
             sb.AppendLine("LEFT JOIN TBL_MEMBERINFO D ON A.E_MBID2 = D.MBID2  ");
@@ -1506,6 +1510,8 @@ namespace MLM_Program
             sb.AppendLine(") ");
             sb.AppendLine(") ");
             sb.AppendLine("AS LASTTABLE  WHERE LASTTABLE.MBID2 <> '' ");
+
+            cls_NationService.SQL_NationCode(ref sb, "LASTTABLE", "AND ", true);    // 240307 태국 구분 관련 추가 - syhuh
 
             if (txtID.Text.Trim() != "")
                 sb.AppendLine(" And LASTTABLE.MBID2 LIKE '%" + txtID.Text.Trim() + "%'");

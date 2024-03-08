@@ -1558,7 +1558,7 @@ namespace MLM_Program
                 }
                 tran.Dispose();
                 Temp_Connect.Close_DB();
-                MessageBox.Show("저장이 완료돼었습니다.");
+                MessageBox.Show("저장이 완료 되었습니다.");
                 Base_Clear();
            
 

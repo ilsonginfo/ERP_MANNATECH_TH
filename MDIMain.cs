@@ -2385,15 +2385,24 @@ namespace MLM_Program
 
         private void MDIMain_Load(object sender, EventArgs e)
         {
+            string NA_CODE = cls_User.gid_CountryCode;
+
             if (!cls_Connect_DB.LiveFlag)
             {
                 this.BackgroundImage = null;
-                this.Text = this.Text + "[개발기 프로그램]";
+                if (NA_CODE == "TH")
+                {
+                    this.Text = this.Text + "[Development program]";
+                }
+                else if (NA_CODE == "KR" || NA_CODE == "")
+                {
+                    this.Text = this.Text + "[개발기 프로그램]";
+                }
                 this.Login_Board_TF = 0; //로그인보드 강제로 안보이게
             }
 
             //AA_Check();
-            string NA_CODE = cls_User.gid_CountryCode;
+            
             if(NA_CODE == "TH")
             {
                 Close_Menu.Visible = false;

@@ -1275,9 +1275,11 @@ namespace MLM_Program
             Tsql = "Select 0, Name , NCode ,price2 ,''    ";
             Tsql = Tsql + " , '', '' ,'' ,'' ,'' ";
             if (mtxtInDate.Text.Replace("-", "").Length == 8)
-                Tsql = Tsql + " From ufn_Good_Search_01 ('" + mtxtInDate.Text.Replace("-", "").Trim() + "') ";
+                //Tsql = Tsql + " From ufn_Good_Search_01 ('" + mtxtInDate.Text.Replace("-", "").Trim() + "') ";
+                Tsql = Tsql + " From ufn_Good_Search_02 ('" + mtxtInDate.Text.Replace("-", "").Trim() + "', '" + cls_User.gid_CountryCode + "') ";
             else
-                Tsql = Tsql + " From ufn_Good_Search_01 ('" + cls_User.gid_date_time + "') ";
+                //Tsql = Tsql + " From ufn_Good_Search_01 ('" + cls_User.gid_date_time + "') ";
+                Tsql = Tsql + " From ufn_Good_Search_02 ('" + cls_User.gid_date_time + "', '" + cls_User.gid_CountryCode + "') ";
             Tsql = Tsql + " Order by Ncode ";
 
             //++++++++++++++++++++++++++++++++

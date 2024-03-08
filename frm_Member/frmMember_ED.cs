@@ -303,9 +303,10 @@ namespace MLM_Program
             StrSql = StrSql + " COUNT(TLS_BOARD_SCHEDULE_APPLY.SCHEDULE_SEQ) as cnt , ";
             StrSql = StrSql + " TLS_BOARD_SCHEDULE.SCHEDULE_SEQ";
             StrSql = StrSql + " FROM TLS_BOARD_SCHEDULE  left JOIN TLS_BOARD_SCHEDULE_APPLY ON TLS_BOARD_SCHEDULE.SCHEDULE_SEQ = TLS_BOARD_SCHEDULE_APPLY.SCHEDULE_SEQ WHERE TLS_BOARD_SCHEDULE_APPLY.APPLY_STATUS <> 0 ";
+            StrSql = StrSql + " AND NATION = '" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "' ";  // 240306 - syhuh, 태국 및 한국 분류를 위해 추가.
             StrSql = StrSql + " GROUP BY TITLE,APPLY_END_DATE,TRAINING_START,TRAINING_END,TOTAL_TRAINING_MEMBER_CNT,TLS_BOARD_SCHEDULE.SCHEDULE_SEQ) a where a.cnt <> 0 ";
             StrSql = StrSql + " ORDER BY a.SCHEDULE_SEQ DESC ";     // 230821 - syhuh, [SCHEDULE_SEQ] 순으로 내림차순 추가
-
+            
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
 
@@ -2287,7 +2288,7 @@ namespace MLM_Program
 
                 }
             }
-            MessageBox.Show("저장이 완료돼었습니다.");
+            MessageBox.Show("저장이 완료 되었습니다.");
             _From_Data_Clear();
             Base_Grid_Set(seq);
             Base_Grid_Set_2(seq);
@@ -2336,7 +2337,7 @@ namespace MLM_Program
                 }
             }
             tran.Commit();
-            MessageBox.Show("저장이 완료돼었습니다.");
+            MessageBox.Show("저장이 완료 되었습니다.");
             _From_Data_Clear();
             Base_Grid_Set(seq);
             Base_Grid_Set_2(seq);

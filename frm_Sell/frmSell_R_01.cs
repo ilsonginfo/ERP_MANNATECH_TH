@@ -504,8 +504,19 @@ namespace MLM_Program
 
             strSql = "Select tbl_SalesDetail.* ";
             strSql = strSql + " , tbl_Business.Name BusCodeName ";
-            strSql = strSql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            //strSql = strSql + " , tbl_SellType.SellTypeName SellCodeName  ";
 
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                strSql = strSql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                strSql = strSql + " , tbl_SellType.SellTypeName_En SellCodeName  ";
+            }
+            
             strSql = strSql + " ,Case When ReturnTF = 1 Then '" + cm._chang_base_caption_search("정상") + "'";
             strSql = strSql + "  When ReturnTF = 2 Then '" + cm._chang_base_caption_search("반품") + "'";
             strSql = strSql + "  When ReturnTF = 4 Then '" + cm._chang_base_caption_search("교환") + "'";

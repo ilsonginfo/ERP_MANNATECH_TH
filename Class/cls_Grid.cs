@@ -1536,7 +1536,7 @@ namespace MLM_Program
                 Tsql = "Select user_id ,U_Name   ";
                 Tsql = Tsql + " From tbl_User (nolock) ";
                 Tsql = Tsql + " Where user_id <> '' ";
-
+                cls_NationService.SQL_User_NationCode(ref Tsql);
                 if (tb.Text.Trim() != "")
                 {
                     Tsql = Tsql + " And  (U_Name like '%" + tb.Text.Trim() + "%'";

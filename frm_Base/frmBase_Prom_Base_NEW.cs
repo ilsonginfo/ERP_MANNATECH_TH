@@ -810,13 +810,18 @@ namespace MLM_Program
             if (tb.Name != "txt_ItemCodePr" || tb.Name == "txt_ItemCode" || tb.Name == "txt_ItemCodeUp" || tb.Name == "txt_ItemCodeUpPr")
             {
                 if (mtxtSellDate.Text.Replace("-", "") == "")
-                    cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, "KR", mtxtSellDate.Text, "", 1, "");
+                    //cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, "KR", mtxtSellDate.Text, "", 1, "");
+                    cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode), mtxtSellDate.Text, "", 1, "");
                 else
-                    cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, "KR",cls_User.gid_date_time , "", 1, "");
+                    //cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, "KR",cls_User.gid_date_time , "", 1, "");
+                    cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode), cls_User.gid_date_time, "", 1, "");
             }
             else
-                cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, cls_User.gid_CountryCode);
+                //cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, cls_User.gid_CountryCode);
+                cgb_Pop.Db_Grid_Popup_Make_Sql(tb, tb1_Code, cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode));
             
+
+
         }
 
 
@@ -1341,7 +1346,7 @@ namespace MLM_Program
                 strSql = strSql + " And JDE_PROC.recordid = '" + txtR_Id_Code.Text.Trim() + "'";
 
 
-
+            cls_NationService.SQL_NationCode(ref strSql, "", "AND ", true);
 
 
             //strSql = strSql + " And tbl_Memberinfo.BusinessCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )";
@@ -3007,7 +3012,7 @@ namespace MLM_Program
             Tsql = "Select '0','0', Name , NCode ,price4 ,price2    ";
             Tsql = Tsql + " , Up_itemCode, '' ,'' ,'' ,'' ";
             Tsql = Tsql + " From TBL_goods (nolock) ";
-
+            cls_NationService.SQL_NationCode(ref Tsql, "Tbl_Goods", " WHERE ");
             Tsql = Tsql + " Order by Ncode ";
 
             //Tsql = "Select '0', Name , NCode ,price4 ,price2    ";
