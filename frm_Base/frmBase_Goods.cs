@@ -344,7 +344,17 @@ namespace MLM_Program
             sb.AppendLine(" , P_Code ");
             sb.AppendLine(" , Isnull(tbl_purchase.name, '') AS PName ");
             //sb.AppendLine(" , Case Sell_VAT_TF When 0 then '과세' When 1 then '면세' END   "); //15
-            sb.AppendLine(" , Case Sell_VAT_TF When 0 then '과세(10%)' When 1 then '면세' When 2 then '과세(7%)' END   "); //15
+            //sb.AppendLine(" , Case Sell_VAT_TF When 0 then '과세(10%)' When 1 then '면세' When 2 then '과세(7%)' END   "); //15
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                sb.AppendLine(" , Case Sell_VAT_TF When 0 then '과세(10%)' When 1 then '면세' When 2 then '과세(7%)' END   ");
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                sb.AppendLine(" , Case Sell_VAT_TF When 0 then 'Tax(10%)' When 1 then 'Tax Free/Duty' When 2 then 'Tax(7%)' END   ");
+            }
             sb.AppendLine(" , tbl_Goods.T_ETC ");
             sb.AppendLine(" , isnull(tbl_MakeItemCode1.itemcode ,'') as MakeItemCode1_itemcode");
             sb.AppendLine(" , isnull(tbl_MakeItemCode1.itemname ,'') as MakeItemCode1_itemname");

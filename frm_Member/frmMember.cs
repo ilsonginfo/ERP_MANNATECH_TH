@@ -4943,7 +4943,7 @@ namespace MLM_Program
             combo_Se_Code.SelectedIndex = combo_Se_Code_2.SelectedIndex;
 
             // 태국버전 인 경우
-            if (combo_Se_2.Text == "태국")
+            if (combo_Se_Code_2.Text == "TH")
             {
                 pnlDistrict_TH.Visible = true;
                 pnlProvince_TH.Visible = true;

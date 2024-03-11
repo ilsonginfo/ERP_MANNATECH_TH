@@ -719,18 +719,21 @@ namespace MLM_Program
             basegrid.RowTemplate.Height = 20;
             basegrid.ColumnHeadersHeight = 19;
 
+            //dGridView_Base_Header_Reset(headerText_1, headerText_2);
             
-            dGridView_Base_Header_Reset(headerText_1, headerText_2);
-
             db_grid_Popup_SetDate(Tsql, FieldName_1, FieldName_2);
+
+            dGridView_Base_Header_Reset(headerText_1, headerText_2);    // 240308 - 허성윤, db_grid_Popup_SetDate() 함수 뒤에 실행되도록 위치 조정.
 
             basegrid.DoubleClick += new System.EventHandler(dGridView_Base_DoubleClick);
             basegrid.KeyDown += new KeyEventHandler(dGridView_KeyDown);
-           // basegrid.SortCompare += new DataGridViewSortCompareEventHandler(basegrid_SortCompare);
+            // basegrid.SortCompare += new DataGridViewSortCompareEventHandler(basegrid_SortCompare);
 
             //cls_form_Meth cfm = new cls_form_Meth();
             //cfm.form_Group_Panel_Enable_False(Base_fr);
 
+            basegrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);   //240308 허성윤 추가
+            
 
             basegrid.BringToFront();
             basegrid.RowHeadersVisible =true ;
@@ -1123,8 +1126,9 @@ namespace MLM_Program
                 basegrid.Top = tb.Parent.Top + tb.Top + 27;
                 basegrid.Left = tb.Parent.Left + tb.Left - 5;
             }
-
-            int FormWitdh = 50;
+            basegrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);   //240308 허성윤 추가
+            
+            int FormWitdh = 150;
             foreach (DataGridViewColumn col in basegrid.Columns)
             {
                 FormWitdh += col.Width;
@@ -1618,7 +1622,18 @@ namespace MLM_Program
             {
                 if (Base_fr.Name == "frmMember_Update_2")
                 {
-                    Tsql = "select [leavereason_code],[leavereason_name] from tbl_leavereason (nolock)   ";
+                    Tsql = "";
+                    // 한국인 경우
+                    if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                    {
+                        Tsql = "select [leavereason_code],[leavereason_name] from tbl_leavereason (nolock)   ";
+                    }
+                    // 태국인 경우
+                    else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                    {
+                        Tsql = "select [leavereason_code],[leavereason_name_EN] from tbl_leavereason (nolock)   ";
+                    }
+                    
                     Tsql = Tsql + " Where leavereason_code <> '' ";
                     if (And_Sql != "") Tsql = Tsql + And_Sql;
                     Tsql = Tsql + " Order by leavereason_code ";
@@ -1911,7 +1926,19 @@ namespace MLM_Program
             {
                 if (Base_fr.Name == "frmMember_Update_2")
                 {
-                    db_grid_Popup_Base(2, "재등록가능여부코드", "재등록가능여부명칭", "leavereason_code", "leavereason_name", Tsql);
+                    //db_grid_Popup_Base(2, "재등록가능여부코드", "재등록가능여부명칭", "leavereason_code", "leavereason_name", Tsql);
+
+                    // 한국인 경우
+                    if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                    {
+                        db_grid_Popup_Base(2, "재등록가능여부코드", "재등록가능여부명칭", "leavereason_code", "leavereason_name", Tsql);
+                    }
+                    // 태국인 경우
+                    else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                    {
+                        db_grid_Popup_Base(2, "Re-registration availability code", "Name of re-registration availability", "leavereason_code", "leavereason_name_EN", Tsql);
+                    }
+
                 }
                 else
                 {
@@ -3409,7 +3436,18 @@ namespace MLM_Program
 
             Tsql = Tsql + " ,SellDate ";
             Tsql = Tsql + " ,tbl_SalesDetail.OrderNumber ";
-            Tsql = Tsql + " ,SellTypeName ";
+            //Tsql = Tsql + " ,SellTypeName ";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,SellTypeName ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,SellTypeName_En ";
+            }
+            
             //Tsql = Tsql + " ,Ch_T." + cls_app_static_var.Base_M_Detail_Ex + " Ch_Detail ";
             Tsql = Tsql + " ,Case When ReturnTF = 1 Then '" + cm._chang_base_caption_search("정상") + "'";
             Tsql = Tsql + "  When ReturnTF = 2 Then '" + cm._chang_base_caption_search("반품") + "'";

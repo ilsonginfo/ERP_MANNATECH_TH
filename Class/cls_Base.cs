@@ -1195,8 +1195,19 @@ namespace MLM_Program
         {
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
-            string Tsql;
-            Tsql = "Select nationCode ,nationNameKo  ";
+            string Tsql = "";
+            //Tsql = "Select nationCode ,nationNameKo  ";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = "Select nationCode ,nationNameKo  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = "Select nationCode ,nationNameEng  ";
+            }
+
             Tsql = Tsql + " From tbl_Nation  (nolock)  ";
             Tsql = Tsql + " Where Using_TF = 1 ";
             Tsql = Tsql + " Order by nationNameKo ASC ";
@@ -1214,7 +1225,17 @@ namespace MLM_Program
 
             for (int fi_cnt = 0; fi_cnt <= ReCnt - 1; fi_cnt++)
             {
-                cb_1.Items.Add(ds.Tables["tbl_Nation"].Rows[fi_cnt]["nationNameKo"].ToString());
+                //cb_1.Items.Add(ds.Tables["tbl_Nation"].Rows[fi_cnt]["nationNameKo"].ToString());
+                // 한국인 경우
+                if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                {
+                    cb_1.Items.Add(ds.Tables["tbl_Nation"].Rows[fi_cnt]["nationNameKo"].ToString());
+                }
+                // 태국인 경우
+                else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                {
+                    cb_1.Items.Add(ds.Tables["tbl_Nation"].Rows[fi_cnt]["nationNameEng"].ToString());
+                }
                 cb_1_Code.Items.Add(ds.Tables["tbl_Nation"].Rows[fi_cnt]["nationCode"].ToString());
             }
 
