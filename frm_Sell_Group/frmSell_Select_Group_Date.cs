@@ -496,7 +496,7 @@ namespace MLM_Program
 
             string[] g_HeaderText = {"날짜"  , "주문액"   , "주문PV"  , "주문CV"  , "현금" 
                                        , "카드"   , "무통장"   , "마일리지"    , "미결제"   , "입금액"  
-                                       , "배송비" , "정산날짜"
+                                       , "배송비" , "정산일자"
                                     };
             cgb.grid_col_header_text = g_HeaderText;
 
@@ -1093,7 +1093,20 @@ namespace MLM_Program
                 if (tb.Name == "txtSellCode")
                 {
                     string Tsql;
-                    Tsql = "Select SellCode ,SellTypeName    ";
+
+                    Tsql = " Select SellCode , ";
+
+                    // 한국인 경우
+                    if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                    {
+                        Tsql = Tsql + "SellTypeName    ";
+                    }
+                    // 태국인 경우
+                    else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                    {
+                        Tsql = Tsql + "SellTypeName_en SellTypeName   ";
+                    }
+
                     Tsql = Tsql + " From tbl_SellType (nolock) ";
                     Tsql = Tsql + " Order by SellCode ";
 
@@ -1319,9 +1332,9 @@ namespace MLM_Program
 
         private void Item_Grid_Set(string SellDate)
         {
-            
 
-                       
+            cls_form_Meth cm = new cls_form_Meth();
+
             string Tsql = "";
 
             //string[] g_HeaderText = {"주문번호"  , "주문일자"   , "주문종류"  , "회원_번호"   , "성명"        
@@ -1332,7 +1345,20 @@ namespace MLM_Program
 
             Tsql = "Select tbl_SalesDetail.OrderNumber ";            
             Tsql = Tsql + " ,tbl_SalesDetail.SellDate ";
-            Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+            //Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName SellTypeName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName_En SellTypeName  ";
+            }
+
+   
             if (cls_app_static_var.Member_Number_1 > 0)
                 Tsql = Tsql + ", tbl_SalesDetail.mbid + '-' + Convert(Varchar,tbl_SalesDetail.mbid2) ";
             else
@@ -1365,7 +1391,19 @@ namespace MLM_Program
             //Tsql = Tsql + "  isnull( ";
             //Tsql = Tsql + "  
             //Tsql = Tsql + "  ),'') "; 
-            Tsql = Tsql + " ,Isnull((Select Top 1 Case When Receive_Method =1 then '직접' When Receive_Method =2 then '배송' When Receive_Method = 3 then '센타' End  From tbl_Sales_Rece Where tbl_Sales_Rece.OrderNumber = tbl_SalesDetail.OrderNumber Order by Salesitemindex ),'')";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,Isnull((Select Top 1 Case When Receive_Method =1 then '직접' When Receive_Method =2 then '배송' When Receive_Method = 3 then '센타' End  From tbl_Sales_Rece Where tbl_Sales_Rece.OrderNumber = tbl_SalesDetail.OrderNumber Order by Salesitemindex ),'')";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,Isnull((Select Top 1 Case When Receive_Method =1 then 'Self Pick up' When Receive_Method =2 then 'Shipping' When Receive_Method = 3 then 'Center Pick up' End  From tbl_Sales_Rece Where tbl_Sales_Rece.OrderNumber = tbl_SalesDetail.OrderNumber Order by Salesitemindex ),'')";
+            }
+            
+            //Tsql = Tsql + " ,Isnull((Select Top 1 Case When Receive_Method =1 then '직접' When Receive_Method =2 then '배송' When Receive_Method = 3 then '센타' End  From tbl_Sales_Rece Where tbl_Sales_Rece.OrderNumber = tbl_SalesDetail.OrderNumber Order by Salesitemindex ),'')";
 
             Tsql = Tsql + " , tbl_SalesDetail.Recordid";
             Tsql = Tsql + " , tbl_SalesDetail.RecordTime";

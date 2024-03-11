@@ -1184,7 +1184,20 @@ namespace MLM_Program
             Tsql = "Select tbl_SalesDetail.OrderNumber ";
             Tsql = Tsql + " ,C_index ";
             Tsql = Tsql + " ,tbl_SalesDetail.SellDate ";
-            Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+
+            //Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName SellTypeName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName_En SellTypeName  ";
+            }
+
             Tsql = Tsql + " ,C_Number1 ";
             Tsql = Tsql + " ,C_Number2 ";
             Tsql = Tsql + " ,C_Price1 ";

@@ -236,7 +236,18 @@ namespace MLM_Program
             Tsql = Tsql + " , St_Bus.Name ";
             Tsql = Tsql + " ,LEFT(Out_Date,4) +'-' + LEFT(RIGHT(Out_Date,4),2) + '-' + RIGHT(Out_Date,2)   ";
             Tsql = Tsql + " ,tbl_StockOutput.ItemCode ";
-            Tsql = Tsql + " ,tbl_Goods.name Item_Name  ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,tbl_Goods.name Item_Name  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,tbl_Goods.name_e Item_Name  ";
+            }
+      
 
             Tsql = Tsql + " ,tbl_StockOutput.ItemCount   ";
             Tsql = Tsql + " ,tbl_StockOutput.Out_Name ";

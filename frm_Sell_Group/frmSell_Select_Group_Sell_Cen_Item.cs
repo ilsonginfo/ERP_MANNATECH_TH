@@ -266,7 +266,19 @@ namespace MLM_Program
             Tsql = "Select  tbl_Business.Ncode   ";
             Tsql = Tsql + " ,Isnull(tbl_Business.Name,'')  ";
             Tsql = Tsql + " ,ItemCode  ";
-            Tsql = Tsql + " ,Isnull(tbl_Goods.Name,'')  ";
+
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.Name,'')  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.Name_e,'')  ";
+            }
+
             Tsql = Tsql + " ,Sum(ItemCount)  ";
             Tsql = Tsql + " ,Sum(ItemTotalPrice)  ";
             Tsql = Tsql + " ,Sum(ItemTotalPV)  ";
@@ -347,8 +359,20 @@ namespace MLM_Program
 
             Make_Base_Query_(ref Tsql);
 
-            Tsql = Tsql + " Group By tbl_Business.Ncode , isnull(tbl_Business.Name,'') , ItemCode , isnull(tbl_Goods.Name,'')";
-            Tsql = Tsql + " Order By tbl_Business.Ncode , isnull(tbl_Business.Name,'') , ItemCode , isnull(tbl_Goods.Name,'')";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " Group By tbl_Business.Ncode , isnull(tbl_Business.Name,'') , ItemCode , isnull(tbl_Goods.Name,'')";
+                Tsql = Tsql + " Order By tbl_Business.Ncode , isnull(tbl_Business.Name,'') , ItemCode , isnull(tbl_Goods.Name,'')";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " Group By tbl_Business.Ncode , isnull(tbl_Business.Name,'') , ItemCode , isnull(tbl_Goods.Name_e,'')";
+                Tsql = Tsql + " Order By tbl_Business.Ncode , isnull(tbl_Business.Name,'') , ItemCode , isnull(tbl_Goods.Name_e,'')";
+            }
+
+ 
 
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();                                  
@@ -1312,7 +1336,16 @@ namespace MLM_Program
             Tsql = "Select tbl_SalesDetail.OrderNumber ";
             Tsql = Tsql + " ,tbl_SalesitemDetail.SalesItemIndex ";
             Tsql = Tsql + " ,tbl_SalesDetail.SellDate ";
-            Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,tbl_SellType.SellTypeName_en SellTypeName ";
+            }
             Tsql = Tsql + " ,ItemCode ";
             Tsql = Tsql + " ,tbl_Goods.Name ";
             Tsql = Tsql + " ,itemPrice ";

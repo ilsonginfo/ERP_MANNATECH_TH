@@ -1794,7 +1794,19 @@ namespace MLM_Program
             {
                 if (tb.Text.Trim() == "")
                 {
-                    Tsql = "Select Ncode , Name    ";
+
+                    Tsql = "Select Ncode ";
+                    // 한국인 경우
+                    if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                    {
+                        Tsql = Tsql + " ,Name ";
+                    }
+                    // 태국인 경우
+                    else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                    {
+                        Tsql = Tsql + " ,Name_e Name ";
+                    }
+
                     Tsql = Tsql + " From ufn_Good_Search_ETC ('" + T_SellDate.Replace("-", "").Trim() + "','" + Base_Na_Code + "') ";
                     Tsql = Tsql + " Where Ncode <> '' ";
                     if (And_Sql != "") Tsql = Tsql + And_Sql;
@@ -1802,7 +1814,18 @@ namespace MLM_Program
                 }
                 else
                 {
-                    Tsql = "Select Ncode , Name    ";
+                    Tsql = "Select Ncode ";
+                    // 한국인 경우
+                    if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                    {
+                        Tsql = Tsql + " ,Name ";
+                    }
+                    // 태국인 경우
+                    else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                    {
+                        Tsql = Tsql + " ,Name_e Name ";
+                    }
+
                     Tsql = Tsql + " From ufn_Good_Search_ETC ('" + T_SellDate.Replace("-", "").Trim() + "','" + Base_Na_Code + "') ";
                     Tsql = Tsql + " Where (NCode like '%" + tb.Text.Trim() + "%'";
                     Tsql = Tsql + " OR    Name like '%" + tb.Text.Trim() + "%')";

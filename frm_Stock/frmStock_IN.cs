@@ -881,11 +881,36 @@ namespace MLM_Program
             //                        , "입고수량"   , "입고자"    , "비고"   , ""    , ""                                
             //                            };
 
-            Tsql = "Select Case When IN_FL = '003' Then '일반입고' ELSE '기타입고' End";
+            Tsql = "Select ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + "Case When IN_FL = '003' Then '일반입고' ELSE '기타입고' End";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + "Case When IN_FL = '003' Then 'General Instock' ELSE 'Instock Other Goods' End";
+            }
+
+            
             Tsql = Tsql + " ,In_Index ";
             Tsql = Tsql + " ,LEFT(In_date,4) +'-' + LEFT(RIGHT(In_date,4),2) + '-' + RIGHT(In_date,2) ";
             Tsql = Tsql + " ,ItemCode ";
-            Tsql = Tsql + " ,Isnull(tbl_Goods.name,'') ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.name,'') ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.name_e ,'') name ";
+            }
+
+
             Tsql = Tsql + " ,Isnull(tbl_Business.name,'') ";            
             Tsql = Tsql + " ,ItemCount ";
             Tsql = Tsql + " ,In_Name " ;
@@ -1052,7 +1077,20 @@ namespace MLM_Program
 
             string Tsql = "";
 
-            Tsql = "Select 0, Name , NCode ,price2 ,''    ";
+            Tsql = "Select 0    ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " , Name , NCode ,price2 ,''    ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " , Name_e Name , NCode ,price2 ,''    ";
+            }
+
+            
             Tsql = Tsql + " , '', '' ,'' ,'' ,'' "; 
             if (mtxtInDate.Text.Replace ("-","").Trim ().Length == 8 )
                 //Tsql = Tsql + " From ufn_Good_Search_01 ('" + mtxtInDate.Text.Replace("-", "").Trim() + "') ";

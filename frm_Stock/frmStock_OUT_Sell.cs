@@ -285,7 +285,19 @@ namespace MLM_Program
             sb.AppendLine( ", tbl_SalesItemDetail.RecordTime ");
 
             sb.AppendLine( " , tbl_SalesItemDetail.ItemCode "); 
-            sb.AppendLine( " , tbl_Goods.Name Item_Name ");
+
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                sb.AppendLine(" , tbl_Goods.Name Item_Name ");
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                sb.AppendLine(" , tbl_Goods.Name_e  Item_Name ");
+            }
+
             sb.AppendLine( " , tbl_SalesItemDetail.ItemPrice ");
             sb.AppendLine( " , tbl_SalesItemDetail.ItemPV ");
 
@@ -295,7 +307,17 @@ namespace MLM_Program
             sb.AppendLine( " , tbl_SalesItemDetail.ItemTotalPrice ");
             sb.AppendLine( " , tbl_SalesItemDetail.ItemTotalPV ");
 
-            sb.AppendLine( " , Isnull ( tbl_SellType.SellTypeName , '직원구매' )  SellCodeName  ");
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                sb.AppendLine(" , Isnull ( tbl_SellType.SellTypeName , 'Regular_order' )  SellCodeName  ");
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                sb.AppendLine(" , Isnull ( tbl_SellType.SellTypeName_en , 'Regular_order' )  SellCodeName  ");
+            }
+            
 
 
             cls_form_Meth cm = new cls_form_Meth();

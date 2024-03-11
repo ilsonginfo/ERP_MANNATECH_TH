@@ -270,7 +270,19 @@ namespace MLM_Program
             //                        };
             
                 Tsql = "Select  tbl_salesitemdetail.ItemCode  ";
+
+            //Tsql = Tsql + " ,Isnull(tbl_Goods.Name,'')  ";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
                 Tsql = Tsql + " ,Isnull(tbl_Goods.Name,'')  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.Name_E,'')  ";
+            }
+                        
                 Tsql = Tsql + " ,Sum(tbl_salesitemdetail.ItemCount) as Total3  ";
                 Tsql = Tsql + " ,Sum(ItemTotalPrice) as Total1 ";
                 Tsql = Tsql + " ,Sum(ItemTotalPV) as Total2 ";
@@ -381,7 +393,19 @@ namespace MLM_Program
             Tsql = Tsql + " from   ";
             Tsql = Tsql + " (  ";
             Tsql = Tsql + " Select  A.ItemCode    ";
-            Tsql = Tsql + "  ,Isnull(tbl_Goods.Name,'')    as ItemName  ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.Name,'')    as ItemName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.Name_E,'')    as ItemName  ";
+            }
+
+            //Tsql = Tsql + "  ,Isnull(tbl_Goods.Name,'')    as ItemName  ";
             Tsql = Tsql + "  ,Sum(A.ItemCount)		 as TotalCnt  ";
             Tsql = Tsql + "  ,Sum(A.ItemTotalPrice)  as Total1   ";
             Tsql = Tsql + "  ,Sum(A.ItemTotalPV)	 as Total2   ";
@@ -395,6 +419,46 @@ namespace MLM_Program
             Tsql = Tsql + "  LEFT Join tbl_Goods  (nolock) ON tbl_Goods.Ncode = A.itemCode  ";
             Tsql = Tsql + "  Left Join tbl_SellType  (nolock) On tbl_SellType.SellCode=B.SellCode     ";
         }
+
+        //private void Make_Base_Query2(ref string Tsql)
+        //{
+
+
+        //    Tsql = "SELECT ItemCode, ItemName   ";
+        //    Tsql = Tsql + " , SUM(TotalCnt ) TotalCnt     ";
+        //    Tsql = Tsql + " , SUM(Total1   ) Total1   ";
+        //    Tsql = Tsql + " , SUM(Total2   ) Total2   ";
+        //    Tsql = Tsql + " , SUM(Total3   ) Total3   ";
+        //    Tsql = Tsql + "  , '' , '' , '' , '' ";
+        //    Tsql = Tsql + " from   ";
+        //    Tsql = Tsql + " (  ";
+        //    Tsql = Tsql + " Select  A.ItemCode    ";
+
+        //    // 한국인 경우
+        //    if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+        //    {
+        //        Tsql = Tsql + " ,Isnull(tbl_Goods.Name,'')    as ItemName  ";
+        //    }
+        //    // 태국인 경우
+        //    else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+        //    {
+        //        Tsql = Tsql + " ,Isnull(tbl_Goods.Name_E,'')    as ItemName  ";
+        //    }
+
+        //    Tsql = Tsql + "  ,Isnull(tbl_Goods.Name,'')    as ItemName  ";
+        //    Tsql = Tsql + "  ,Sum(A.ItemCount)		 as TotalCnt  ";
+        //    Tsql = Tsql + "  ,Sum(A.ItemTotalPrice)  as Total1   ";
+        //    Tsql = Tsql + "  ,Sum(A.ItemTotalPV)	 as Total2   ";
+        //    Tsql = Tsql + "  ,Sum(A.ItemTotalCV)	 as Total3   ";
+        //    Tsql = Tsql + "  From tbl_SalesitemDetail AS A  (nolock)   ";
+        //    Tsql = Tsql + "  LEFT Join tbl_SalesDetail B (nolock) On A.OrderNumber = B.OrderNumber  ";
+        //    Tsql = Tsql + "   ";
+        //    Tsql = Tsql + "  LEFT Join tbl_StockOutput(nolock) On tbl_StockOutput.OrderNumber = A.OrderNumber and tbl_StockOutput.Salesitemindex = A.SalesItemIndex   ";
+        //    Tsql = Tsql + "  LEFT JOIN tbl_Sales_Rece (nolock)  ON A.OrderNumber = tbl_Sales_Rece.OrderNumber And (A.Salesitemindex = tbl_Sales_Rece.Salesitemindex OR  -A.Salesitemindex = tbl_Sales_Rece.Salesitemindex )   ";
+        //    Tsql = Tsql + "  LEFT Join tbl_Memberinfo  (nolock) ON tbl_Memberinfo.Mbid = B.Mbid And tbl_Memberinfo.Mbid2 = B.Mbid2   ";
+        //    Tsql = Tsql + "  LEFT Join tbl_Goods  (nolock) ON tbl_Goods.Ncode = A.itemCode  ";
+        //    Tsql = Tsql + "  Left Join tbl_SellType  (nolock) On tbl_SellType.SellCode=B.SellCode     ";
+        //}
         private void Make_Base_Query2_(ref string Tsql)
         {
             string strSql =  "  Where   B.Ga_Order = 0  And B.SellCode <> ''   ";
@@ -412,7 +476,19 @@ namespace MLM_Program
 
             }
             strSql = strSql + "  And B.BusCode in ( Select Center_Code From ufn_User_In_Center ('','') )   ";
-            strSql = strSql + "  And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('') ) Group By A.ItemCode , Isnull(tbl_Goods.Name,'')    ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                strSql = strSql + "  And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('') ) Group By A.ItemCode , Isnull(tbl_Goods.Name,'')    ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                strSql = strSql + "  And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('') ) Group By A.ItemCode , Isnull(tbl_Goods.Name_E,'')    ";
+            }
+
+            
             strSql = strSql + "  UNION ALL   ";
 
             Tsql = Tsql + strSql;
@@ -420,7 +496,19 @@ namespace MLM_Program
         private void Make_Base_Query3(ref string Tsql)
         {
             Tsql = Tsql + "  Select  A.ItemCode    ";
-            Tsql = Tsql + "  ,Isnull(tbl_Goods.Name,'')  as ItemName  ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + "  ,Isnull(tbl_Goods.Name,'')  as ItemName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.Name_E,'')    as ItemName  ";
+            }
+
+            
             Tsql = Tsql + "  ,Sum(A.ItemCount)		 as TotalCnt    ";
             Tsql = Tsql + "  ,Sum(A.ItemTotalPrice)  as Total1   ";
             Tsql = Tsql + "  ,Sum(A.ItemTotalPV)	 as Total2   ";
@@ -450,9 +538,24 @@ namespace MLM_Program
 
             }
             strSql = strSql + " And B.BusCode in ( Select Center_Code From ufn_User_In_Center ('','') )  ";
-            strSql = strSql + "  And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('') ) Group By A.ItemCode , Isnull(tbl_Goods.Name,'')      ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                strSql = strSql + "  And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('') ) Group By A.ItemCode , Isnull(tbl_Goods.Name,'')      ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                strSql = strSql + "  And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('') ) Group By A.ItemCode , Isnull(tbl_Goods.Name_E,'')      ";
+            }
+
+            
             strSql = strSql + "   ) A     ";
             strSql = strSql + "   GROUP BY ItemCode, ItemName   ";
+
+
+            
 
             Tsql = Tsql + strSql;
         }
@@ -467,8 +570,20 @@ namespace MLM_Program
 
                 Make_Base_Query_(ref Tsql);
 
-                Tsql = Tsql + " Group By tbl_salesitemdetail.ItemCode , Isnull(tbl_Goods.Name,'') ";
-                Tsql = Tsql + " Order By tbl_salesitemdetail.ItemCode , Isnull(tbl_Goods.Name,'')  ";
+                // 한국인 경우
+                if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                {
+                    Tsql = Tsql + " Group By tbl_salesitemdetail.ItemCode , Isnull(tbl_Goods.Name,'') ";
+                    Tsql = Tsql + " Order By tbl_salesitemdetail.ItemCode , Isnull(tbl_Goods.Name,'')  ";
+                }
+                // 태국인 경우
+                else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                {
+                    Tsql = Tsql + " Group By tbl_salesitemdetail.ItemCode , Isnull(tbl_Goods.Name_E,'') ";
+                    Tsql = Tsql + " Order By tbl_salesitemdetail.ItemCode , Isnull(tbl_Goods.Name_E,'')  ";
+                }
+
+
             }
             else
             {
@@ -1363,7 +1478,19 @@ namespace MLM_Program
             Tsql = "Select tbl_SalesDetail.OrderNumber ";
             Tsql = Tsql + " ,tbl_salesitemdetail.SalesItemIndex ";
             Tsql = Tsql + " ,tbl_SalesDetail.SellDate ";
-            Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+            //Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName SellTypeName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName_En SellTypeName  ";
+            }
+
             Tsql = Tsql + " ,tbl_salesitemdetail.ItemCode ";
             Tsql = Tsql + " ,tbl_Goods.Name ";
             Tsql = Tsql + " ,itemPrice ";

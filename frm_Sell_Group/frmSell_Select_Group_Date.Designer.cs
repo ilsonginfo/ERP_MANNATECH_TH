@@ -201,6 +201,14 @@
             this.label37 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel33 = new System.Windows.Forms.Panel();
+            this.mtxtSellDate4 = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtSellDate3 = new System.Windows.Forms.MaskedTextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.DTP_SellDate4 = new System.Windows.Forms.DateTimePicker();
+            this.DTP_SellDate3 = new System.Windows.Forms.DateTimePicker();
+            this.label32 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -220,14 +228,6 @@
             this.mtxtSellDate1 = new System.Windows.Forms.MaskedTextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel33 = new System.Windows.Forms.Panel();
-            this.mtxtSellDate4 = new System.Windows.Forms.MaskedTextBox();
-            this.mtxtSellDate3 = new System.Windows.Forms.MaskedTextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.DTP_SellDate4 = new System.Windows.Forms.DateTimePicker();
-            this.DTP_SellDate3 = new System.Windows.Forms.DateTimePicker();
-            this.label32 = new System.Windows.Forms.Label();
             this.pn_Button.SuspendLayout();
             this.grB_Search.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -290,6 +290,8 @@
             this.panel40.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.panel33.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel12.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -300,8 +302,6 @@
             this.panel18.SuspendLayout();
             this.tableLayoutPanel26.SuspendLayout();
             this.panel19.SuspendLayout();
-            this.tableLayoutPanel18.SuspendLayout();
-            this.panel33.SuspendLayout();
             this.SuspendLayout();
             // 
             // pn_Button
@@ -359,8 +359,9 @@
             // 
             // butt_Clear
             // 
-            this.butt_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(89)))), ((int)(((byte)(97))))); this.butt_Clear.ForeColor = System.Drawing.Color.White;
+            this.butt_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(89)))), ((int)(((byte)(97)))));
             this.butt_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butt_Clear.ForeColor = System.Drawing.Color.White;
             this.butt_Clear.Location = new System.Drawing.Point(266, 1);
             this.butt_Clear.Name = "butt_Clear";
             this.butt_Clear.Size = new System.Drawing.Size(111, 26);
@@ -2594,6 +2595,104 @@
             this.panel10.Size = new System.Drawing.Size(1723, 79);
             this.panel10.TabIndex = 0;
             // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.tableLayoutPanel18.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel18.ColumnCount = 2;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.Controls.Add(this.panel33, 1, 0);
+            this.tableLayoutPanel18.Controls.Add(this.label32, 0, 0);
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(655, 3);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 1;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(325, 36);
+            this.tableLayoutPanel18.TabIndex = 158;
+            // 
+            // panel33
+            // 
+            this.panel33.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel33.BackColor = System.Drawing.Color.White;
+            this.panel33.Controls.Add(this.mtxtSellDate4);
+            this.panel33.Controls.Add(this.mtxtSellDate3);
+            this.panel33.Controls.Add(this.label30);
+            this.panel33.Controls.Add(this.DTP_SellDate4);
+            this.panel33.Controls.Add(this.DTP_SellDate3);
+            this.panel33.Location = new System.Drawing.Point(126, 4);
+            this.panel33.Margin = new System.Windows.Forms.Padding(2);
+            this.panel33.Name = "panel33";
+            this.panel33.Size = new System.Drawing.Size(195, 28);
+            this.panel33.TabIndex = 15;
+            // 
+            // mtxtSellDate4
+            // 
+            this.mtxtSellDate4.Location = new System.Drawing.Point(104, 3);
+            this.mtxtSellDate4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.mtxtSellDate4.Name = "mtxtSellDate4";
+            this.mtxtSellDate4.Size = new System.Drawing.Size(67, 21);
+            this.mtxtSellDate4.TabIndex = 64;
+            this.mtxtSellDate4.Enter += new System.EventHandler(this.txtData_Enter);
+            this.mtxtSellDate4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
+            this.mtxtSellDate4.Leave += new System.EventHandler(this.txtData_Base_Leave);
+            // 
+            // mtxtSellDate3
+            // 
+            this.mtxtSellDate3.Location = new System.Drawing.Point(3, 3);
+            this.mtxtSellDate3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.mtxtSellDate3.Name = "mtxtSellDate3";
+            this.mtxtSellDate3.Size = new System.Drawing.Size(67, 21);
+            this.mtxtSellDate3.TabIndex = 0;
+            this.mtxtSellDate3.Enter += new System.EventHandler(this.txtData_Enter);
+            this.mtxtSellDate3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
+            this.mtxtSellDate3.Leave += new System.EventHandler(this.txtData_Base_Leave);
+            // 
+            // label30
+            // 
+            this.label30.Location = new System.Drawing.Point(94, 7);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(9, 15);
+            this.label30.TabIndex = 60;
+            this.label30.Text = "~";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DTP_SellDate4
+            // 
+            this.DTP_SellDate4.Location = new System.Drawing.Point(170, 3);
+            this.DTP_SellDate4.Name = "DTP_SellDate4";
+            this.DTP_SellDate4.Size = new System.Drawing.Size(21, 21);
+            this.DTP_SellDate4.TabIndex = 56;
+            this.DTP_SellDate4.TabStop = false;
+            this.DTP_SellDate4.CloseUp += new System.EventHandler(this.DTP_Base_CloseUp);
+            // 
+            // DTP_SellDate3
+            // 
+            this.DTP_SellDate3.Location = new System.Drawing.Point(69, 3);
+            this.DTP_SellDate3.Name = "DTP_SellDate3";
+            this.DTP_SellDate3.Size = new System.Drawing.Size(21, 21);
+            this.DTP_SellDate3.TabIndex = 53;
+            this.DTP_SellDate3.TabStop = false;
+            this.DTP_SellDate3.CloseUp += new System.EventHandler(this.DTP_Base_CloseUp);
+            // 
+            // label32
+            // 
+            this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label32.ForeColor = System.Drawing.Color.White;
+            this.label32.Location = new System.Drawing.Point(2, 2);
+            this.label32.Margin = new System.Windows.Forms.Padding(0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(120, 32);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "정산_일자";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // label21
             // 
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -2605,7 +2704,7 @@
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(232, 25);
             this.label21.TabIndex = 156;
-            this.label21.Text = "결제 승인 처리된 내역만 조회 됩니다.";
+            this.label21.Text = "결제 승인 처리된 내역만 검색 됩니다.";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel2
@@ -2869,104 +2968,6 @@
             this.label48.Text = "주문일자";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tableLayoutPanel18
-            // 
-            this.tableLayoutPanel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.tableLayoutPanel18.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel18.ColumnCount = 2;
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel18.Controls.Add(this.panel33, 1, 0);
-            this.tableLayoutPanel18.Controls.Add(this.label32, 0, 0);
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(655, 3);
-            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
-            this.tableLayoutPanel18.RowCount = 1;
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(325, 36);
-            this.tableLayoutPanel18.TabIndex = 158;
-            // 
-            // panel33
-            // 
-            this.panel33.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel33.BackColor = System.Drawing.Color.White;
-            this.panel33.Controls.Add(this.mtxtSellDate4);
-            this.panel33.Controls.Add(this.mtxtSellDate3);
-            this.panel33.Controls.Add(this.label30);
-            this.panel33.Controls.Add(this.DTP_SellDate4);
-            this.panel33.Controls.Add(this.DTP_SellDate3);
-            this.panel33.Location = new System.Drawing.Point(126, 4);
-            this.panel33.Margin = new System.Windows.Forms.Padding(2);
-            this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(195, 28);
-            this.panel33.TabIndex = 15;
-            // 
-            // mtxtSellDate4
-            // 
-            this.mtxtSellDate4.Location = new System.Drawing.Point(104, 3);
-            this.mtxtSellDate4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.mtxtSellDate4.Name = "mtxtSellDate4";
-            this.mtxtSellDate4.Size = new System.Drawing.Size(67, 21);
-            this.mtxtSellDate4.TabIndex = 64;
-            this.mtxtSellDate4.Enter += new System.EventHandler(this.txtData_Enter);
-            this.mtxtSellDate4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
-            this.mtxtSellDate4.Leave += new System.EventHandler(this.txtData_Base_Leave);
-            // 
-            // mtxtSellDate3
-            // 
-            this.mtxtSellDate3.Location = new System.Drawing.Point(3, 3);
-            this.mtxtSellDate3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.mtxtSellDate3.Name = "mtxtSellDate3";
-            this.mtxtSellDate3.Size = new System.Drawing.Size(67, 21);
-            this.mtxtSellDate3.TabIndex = 0;
-            this.mtxtSellDate3.Enter += new System.EventHandler(this.txtData_Enter);
-            this.mtxtSellDate3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
-            this.mtxtSellDate3.Leave += new System.EventHandler(this.txtData_Base_Leave);
-            // 
-            // label30
-            // 
-            this.label30.Location = new System.Drawing.Point(94, 7);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(9, 15);
-            this.label30.TabIndex = 60;
-            this.label30.Text = "~";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DTP_SellDate4
-            // 
-            this.DTP_SellDate4.Location = new System.Drawing.Point(170, 3);
-            this.DTP_SellDate4.Name = "DTP_SellDate4";
-            this.DTP_SellDate4.Size = new System.Drawing.Size(21, 21);
-            this.DTP_SellDate4.TabIndex = 56;
-            this.DTP_SellDate4.TabStop = false;
-            this.DTP_SellDate4.CloseUp += new System.EventHandler(this.DTP_Base_CloseUp);
-            // 
-            // DTP_SellDate3
-            // 
-            this.DTP_SellDate3.Location = new System.Drawing.Point(69, 3);
-            this.DTP_SellDate3.Name = "DTP_SellDate3";
-            this.DTP_SellDate3.Size = new System.Drawing.Size(21, 21);
-            this.DTP_SellDate3.TabIndex = 53;
-            this.DTP_SellDate3.TabStop = false;
-            this.DTP_SellDate3.CloseUp += new System.EventHandler(this.DTP_Base_CloseUp);
-            // 
-            // label32
-            // 
-            this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(2, 2);
-            this.label32.Margin = new System.Windows.Forms.Padding(0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(120, 32);
-            this.label32.TabIndex = 0;
-            this.label32.Text = "정산_일자";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // frmSell_Select_Group_Date
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -3073,6 +3074,9 @@
             this.panel40.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.panel33.ResumeLayout(false);
+            this.panel33.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
@@ -3087,9 +3091,6 @@
             this.tableLayoutPanel26.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
-            this.tableLayoutPanel18.ResumeLayout(false);
-            this.panel33.ResumeLayout(false);
-            this.panel33.PerformLayout();
             this.ResumeLayout(false);
 
         }
