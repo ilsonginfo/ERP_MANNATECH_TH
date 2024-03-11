@@ -2401,6 +2401,8 @@ namespace MLM_Program
 
         private void Base_Grid_Set()
         {
+            cls_form_Meth cm = new cls_form_Meth();
+            
             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
             dGridView_Base_Header_Reset(); //디비그리드 헤더와 기본 셋팅을 한다.
             cgb.d_Grid_view_Header_Reset();
@@ -2441,7 +2443,8 @@ namespace MLM_Program
 
             Tsql = Tsql + " , tbl_Memberinfo.address1 ";
             Tsql = Tsql + " , tbl_Memberinfo.address2 ";
-            Tsql = Tsql + " , Case  When tbl_Memberinfo.Sell_Mem_TF = 0 then '판매원' ELSE  '소비자' End";
+            //Tsql = Tsql + " , Case  When tbl_Memberinfo.Sell_Mem_TF = 0 then '판매원' ELSE  '소비자' End";
+            Tsql = Tsql + " , Case  When tbl_Memberinfo.Sell_Mem_TF = 0 then '" + cm._chang_base_caption_search("판매원") + "' ELSE  '" + cm._chang_base_caption_search("소비자") + "' End";
             Tsql = Tsql + " , tbl_Memberinfo.recordid ";
             Tsql = Tsql + " , tbl_Memberinfo.recordtime ";
 

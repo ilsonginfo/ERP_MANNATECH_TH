@@ -770,6 +770,8 @@ namespace MLM_Program
 
         private void Base_Sub_Grid_Set(string Cms_R_T_index = "", string Recordid = "")
         {
+            cls_form_Meth cm = new cls_form_Meth();
+
             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
             dGridView_Base_Sub_Header_Reset(); //디비그리드 헤더와 기본 셋팅을 한다.
             cg_Sub.d_Grid_view_Header_Reset();
@@ -811,7 +813,8 @@ namespace MLM_Program
             Tsql = Tsql + ", S1.OrderNumber ";
             Tsql = Tsql + ", Isnull(tbl_SalesDetail.InsuranceNumber,'')  ";
 
-            Tsql = Tsql + ", Case When  S1.Price2 >0  then '정상' ELSE '실패' END ";
+            //Tsql = Tsql + ", Case When  S1.Price2 >0  then '정상' ELSE '실패' END ";
+            Tsql = Tsql + ", Case When  S1.Price2 >0  then '" + cm._chang_base_caption_search("정상") + "' ELSE '" + cm._chang_base_caption_search("실패") + "' END ";
 
             Tsql = Tsql + ", LEFT(S1.PayDate,4) +'-' + LEFT(RIGHT(S1.PayDate,4),2) + '-' + RIGHT(S1.PayDate,2)   ";
             Tsql = Tsql + ", S1.Price1 ";
@@ -820,7 +823,49 @@ namespace MLM_Program
             Tsql = Tsql + ", S1.CardNumber ";
             Tsql = Tsql + ", ''";
 
-            Tsql = Tsql + ", S1.MessAGe ";
+            //Tsql = Tsql + ", S1.MessAGe ";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + ", S1.MessAGe ";
+            }
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + ", CASE ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '결제 성공' THEN 'Payment success'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '1일 체크카드 한도초과' THEN 'Daily check card limit exceeded'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '가맹점 등록 요망TEL 1600-1234' THEN 'Affiliate registration required TEL 1600-1234'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '거래 금액 너무 적음' THEN 'Transaction amount too small'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '거래정지 카드' THEN 'Transaction suspension card'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '구카드 이용, 신규카드 사용 요망' THEN 'Use old card, please use new card'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '구카드, 신규수령카드 이용요망' THEN 'Please use your old card or new card.'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '도난 / 분실 카드 카드사 신고' THEN 'Report stolen/lost card to credit card company'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '비밀번호 오류 회수 초과' THEN 'Password error count exceeded'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '사용개시등록요망 (1588-4500)' THEN 'Please register to begin use (1588-4500)'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '서비스 불가능 카드' THEN 'unserviceable card'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '승인거절/ 은행잔액부족' THEN 'Approval rejected/insufficient bank balance'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '유효 기간 경과 카드' THEN 'Expired card'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '유효 기간 오류' THEN 'Validity Period Error'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '유효기간 경과 카드' THEN 'Card with expired expiration date'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '유효기간 오류' THEN 'Expiration date error'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '일시거래정지카드' THEN 'Temporary transaction suspension card'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '잔액 부족' THEN 'insufficient balance'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '체크카드할부불가 (1588-4500)' THEN 'Check card installment not possible (1588-4500)' ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '카드 번호 입력 오류' THEN 'Card number input error'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '카드번호 길이 오류' THEN 'Card number length error'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '카드번호 입력 오류' THEN 'Card number input error'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '카드사 전화요망' THEN 'Please call your credit card company'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '카드유효기간오류' THEN 'Card expiration date error'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '한도초과' THEN 'limit Excess'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '한도초과상향문의 1588-8900' THEN 'Inquiry regarding limit increase: 1588-8900'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '할부 개월 입력 오류' THEN 'Installment month input error'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '할부 거래 불가능 카드' THEN 'Card that does not allow installment transactions'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '할부 구매 한도 초과' THEN 'Installment purchase limit exceeded'  ";
+                Tsql = Tsql + " WHEN S1.MESSAGE = '허가된 거래가 아님' THEN 'Not an authorized transaction'  ";
+                Tsql = Tsql + " ELSE S1.MESSAGE ";
+                Tsql = Tsql + " END ";
+            }
+                
             Tsql = Tsql + ", Convert(varchar, S1.RecordTime,21) ";
             Tsql = Tsql + ",S1.RecordID,'' ";
 

@@ -613,7 +613,18 @@ namespace MLM_Program
 
             strSql = "Select tbl_SalesDetail.* ";
             strSql = strSql + " , tbl_Business.Name BusCodeName ";
-            strSql = strSql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            //strSql = strSql + " , tbl_SellType.SellTypeName SellCodeName  ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                strSql = strSql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                strSql = strSql + " , tbl_SellType.SellTypeName_En SellCodeName  ";
+            }
 
             strSql = strSql + " ,Case When ReturnTF = 1 Then '" + cm._chang_base_caption_search("정상") + "'";
             strSql = strSql + "  When ReturnTF = 2 Then '" + cm._chang_base_caption_search("반품") + "'";
@@ -634,7 +645,8 @@ namespace MLM_Program
             {
                 strSql = strSql + " , Case When  tbl_SalesDetail.union_Seq > 0 And T_REALMLM.ERRCODE = '0000' Then ISNULL(T_REALMLM.GUARANTE_NUM,'') ";
                 strSql = strSql + "        When  tbl_SalesDetail.union_Seq > 0 And T_REALMLM.ERRCODE <> '0000' Then  ISNULL(T_REALMLM_ErrCode.Er_Msg ,'' ) ";
-                strSql = strSql + "        When  tbl_SalesDetail.union_Seq = 0 Then '미신고'  ";
+                //strSql = strSql + "        When  tbl_SalesDetail.union_Seq = 0 Then '미신고'  ";
+                strSql = strSql + "        When  tbl_SalesDetail.union_Seq = 0 Then '" + cm._chang_base_caption_search("미신고") + "'  ";
                 strSql = strSql + "   End InsuranceNumber2 ";
             }
             else if (cls_app_static_var.Sell_Union_Flag == "D")  //직판
@@ -646,22 +658,35 @@ namespace MLM_Program
                 //strSql = strSql + " When  ReturnTF = 1 And tbl_SalesDetail.InsuranceNumber = '' Then '미승인요청' ";
                 //strSql = strSql + " ELSE tbl_SalesDetail.InsuranceNumber END  InsuranceNumber2 ";
 
+                //strSql = strSql + " , Case When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail  (nolock)  AS A1 Where A1.Re_BaseOrderNumber <> '' And tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber Order by OrderNumber ) IS NULL And tbl_SalesDetail.InsuranceNumber <> '' Then tbl_SalesDetail.InsuranceNumber  ";
+                //strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail  (nolock)  AS A1 Where A1.Re_BaseOrderNumber <> '' And tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber Order by OrderNumber ) IS NOT NULL And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(취소상태)'  ";
+                //strSql = strSql + "  When  ReturnTF = 5 And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(취소상태)'  ";
+                //strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 2 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(취소요청중)'  ";
+                //strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 3 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(부분취소)'  ";
+                //strSql = strSql + "  When  ReturnTF = 2 then '반품처리'  ";
+                //strSql = strSql + "  When  ReturnTF = 3 then '부분반품처리'  ";
+                //strSql = strSql + "  When  ReturnTF = 1 And tbl_SalesDetail.InsuranceNumber = '' Then '발급실패.재발급요청' + ' ' + tbl_SalesDetail.INS_Num_Err   ";
+                //strSql = strSql + "  ELSE tbl_SalesDetail.InsuranceNumber END InsuranceNumber2 ";
+
                 strSql = strSql + " , Case When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail  (nolock)  AS A1 Where A1.Re_BaseOrderNumber <> '' And tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber Order by OrderNumber ) IS NULL And tbl_SalesDetail.InsuranceNumber <> '' Then tbl_SalesDetail.InsuranceNumber  ";
-                strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail  (nolock)  AS A1 Where A1.Re_BaseOrderNumber <> '' And tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber Order by OrderNumber ) IS NOT NULL And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(취소상태)'  ";
-                strSql = strSql + "  When  ReturnTF = 5 And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(취소상태)'  ";
-                strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 2 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(취소요청중)'  ";
-                strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 3 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(부분취소)'  ";
-                strSql = strSql + "  When  ReturnTF = 2 then '반품처리'  ";
-                strSql = strSql + "  When  ReturnTF = 3 then '부분반품처리'  ";
-                strSql = strSql + "  When  ReturnTF = 1 And tbl_SalesDetail.InsuranceNumber = '' Then '발급실패.재발급요청' + ' ' + tbl_SalesDetail.INS_Num_Err   ";
+                strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail  (nolock)  AS A1 Where A1.Re_BaseOrderNumber <> '' And tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber Order by OrderNumber ) IS NOT NULL And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("취소상태") + ")'  ";
+                strSql = strSql + "  When  ReturnTF = 5 And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("취소상태") + ")'  ";
+                strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 2 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("취소요청중") + ")'  ";
+                strSql = strSql + "  When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 3 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("부분취소") + ")'  ";
+                strSql = strSql + "  When  ReturnTF = 2 then '" + cm._chang_base_caption_search("반품처리") + "'  ";
+                strSql = strSql + "  When  ReturnTF = 3 then '" + cm._chang_base_caption_search("부분반품처리") + "'  ";
+                strSql = strSql + "  When  ReturnTF = 1 And tbl_SalesDetail.InsuranceNumber = '' Then '" + cm._chang_base_caption_search("발급실패.재발급요청") + "' + ' ' + tbl_SalesDetail.INS_Num_Err   ";
                 strSql = strSql + "  ELSE tbl_SalesDetail.InsuranceNumber END InsuranceNumber2 ";
+
+                //
             }
             else
             {
                 strSql = strSql + " , InsuranceNumber As InsuranceNumber2 ";
             }
 
-            strSql = strSql + " , (SELECT TOP 1 ISNULL(CASE WHEN R1.Receive_Method = 1 THEN '직접수령' WHEN R1.Receive_Method = 2 THEN '배송' ELSE '' END, '') FROM tbl_Sales_Rece (NOLOCK) AS R1 WHERE tbl_SalesDetail.OrderNumber = R1.OrderNumber AND R1.RecIndex > 0) AS ReceiveName "; 
+            //strSql = strSql + " , (SELECT TOP 1 ISNULL(CASE WHEN R1.Receive_Method = 1 THEN '직접수령' WHEN R1.Receive_Method = 2 THEN '배송' ELSE '' END, '') FROM tbl_Sales_Rece (NOLOCK) AS R1 WHERE tbl_SalesDetail.OrderNumber = R1.OrderNumber AND R1.RecIndex > 0) AS ReceiveName ";
+            strSql = strSql + " , (SELECT TOP 1 ISNULL(CASE WHEN R1.Receive_Method = 1 THEN '" + cm._chang_base_caption_search("직접수령") + "' WHEN R1.Receive_Method = 2 THEN '" + cm._chang_base_caption_search("배송") + "' ELSE '' END, '') FROM tbl_Sales_Rece (NOLOCK) AS R1 WHERE tbl_SalesDetail.OrderNumber = R1.OrderNumber AND R1.RecIndex > 0) AS ReceiveName ";
 
             strSql = strSql + " From tbl_SalesDetail (nolock) ";
             //strSql = strSql + " LEFT JOIN tbl_SalesDetail_TF (nolock) ON tbl_SalesDetail.OrderNumber = tbl_SalesDetail_TF.OrderNumber ";

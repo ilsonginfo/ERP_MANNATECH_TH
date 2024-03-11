@@ -11173,7 +11173,8 @@ namespace MLM_Program
                   
                     }
                     cls_Connect_DB Temp_Connect2 = new cls_Connect_DB();
-                    string Tsql2 = "select PV_CV_Check from tbl_salesdetail (NOLOCK)  where ordernumber = '" + txt_OrderNumber.Text + "'";
+                    //string Tsql2 = "select PV_CV_Check from tbl_salesdetail (NOLOCK)  where ordernumber = '" + txt_OrderNumber.Text + "'";
+                    string Tsql2 = "select [PV_CV_Check] = ISNULL(PV_CV_Check, 1) from tbl_salesdetail (NOLOCK)  where ordernumber = '" + txt_OrderNumber.Text + "'";
                     DataSet ds2 = new DataSet();
                     if (Temp_Connect2.Open_Data_Set(Tsql2, "tbl_salesdetail", ds2) == false) return;
                     PV_CV_Check = int.Parse(ds2.Tables["tbl_salesdetail"].Rows[0][0].ToString());

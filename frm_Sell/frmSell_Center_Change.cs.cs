@@ -238,6 +238,7 @@ namespace MLM_Program
 
         private void Make_Base_Query(ref string Tsql)
         {
+            cls_form_Meth cm = new cls_form_Meth();
 
             //string[] g_HeaderText = {"회원_번호"  , "성명"   , "주민번호"  , "현직급"   , "위치"        
             //                    , "센타명"   , "가입일"    , "집전화"   , "핸드폰"    , "교육일"
@@ -288,11 +289,14 @@ namespace MLM_Program
             Tsql = Tsql + " , '' ";
             Tsql = Tsql + " , '' ";
             Tsql = Tsql + " , '' ";
-            Tsql = Tsql + " , Case  When tbl_Memberinfo.Sell_Mem_TF = 0 then '판매원' ELSE  '소비자' End";
+            //Tsql = Tsql + " , Case  When tbl_Memberinfo.Sell_Mem_TF = 0 then '판매원' ELSE  '소비자' End";
+            Tsql = Tsql + " , Case  When tbl_Memberinfo.Sell_Mem_TF = 0 then '" + cm._chang_base_caption_search("판매원") + "' ELSE  '" + cm._chang_base_caption_search("소비자") + "' End";
 
 
-            Tsql = Tsql + " , Case tbl_Memberinfo.LeaveCheck When 1 then '활동' When 0 then '탈퇴' End";
-            Tsql = Tsql + " , Case tbl_Memberinfo.LineUserCheck When 1 then '사용' When 0 then '중지' End ";
+            //Tsql = Tsql + " , Case tbl_Memberinfo.LeaveCheck When 1 then '활동' When 0 then '탈퇴' End";
+            //Tsql = Tsql + " , Case tbl_Memberinfo.LineUserCheck When 1 then '사용' When 0 then '중지' End ";
+            Tsql = Tsql + " , Case tbl_Memberinfo.LeaveCheck When 1 then '" + cm._chang_base_caption_search("활동") + "' When 0 then '" + cm._chang_base_caption_search("탈퇴") + "' End";
+            Tsql = Tsql + " , Case tbl_Memberinfo.LineUserCheck When 1 then '" + cm._chang_base_caption_search("사용") + "' When 0 then '" + cm._chang_base_caption_search("중지") + "' End ";
             Tsql = Tsql + " , Case When tbl_Memberinfo.LeaveDate <> '' Then  LEFT(tbl_Memberinfo.LeaveDate,4) +'-' + LEFT(RIGHT(tbl_Memberinfo.LeaveDate,4),2) + '-' + RIGHT(tbl_Memberinfo.LeaveDate,2) ELSE '' End ";
             Tsql = Tsql + " , Case When tbl_Memberinfo.LineUserDate <> '' Then  LEFT(tbl_Memberinfo.LineUserDate,4) +'-' + LEFT(RIGHT(tbl_Memberinfo.LineUserDate,4),2) + '-' + RIGHT(tbl_Memberinfo.LineUserDate,2) ELSE '' End ";
             Tsql = Tsql + " , tbl_SalesDetail.recordid  ";
@@ -428,6 +432,7 @@ namespace MLM_Program
 
 
             strSql = strSql + " And tbl_SalesDetail.BusCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode  + "') )";
+            cls_NationService.SQL_NationCode(ref strSql, "tbl_SalesDetail", "AND ", true);
 
             Tsql = Tsql + strSql ;
             Tsql = Tsql + " Order by tbl_Memberinfo.Mbid, tbl_Memberinfo.Mbid2 ASC ";

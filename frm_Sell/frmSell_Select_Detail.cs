@@ -287,7 +287,17 @@ namespace MLM_Program
             Tsql = Tsql + " ,Isnull(tbl_Business.Name,'') as B_Name";
 
             Tsql = Tsql + " ,Isnull(S_Bus.Name,'') as S_B_Name";
-            Tsql = Tsql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            //Tsql = Tsql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName_En SellCodeName  ";
+            }
             Tsql = Tsql + ", TotalInputPrice ";
             Tsql = Tsql + ",UnaccMoney ";
             Tsql = Tsql + " From tbl_SalesDetail (nolock) ";
