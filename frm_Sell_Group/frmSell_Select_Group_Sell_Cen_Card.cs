@@ -1311,7 +1311,16 @@ namespace MLM_Program
             Tsql = "Select tbl_SalesDetail.OrderNumber ";
             Tsql = Tsql + " ,tbl_Sales_Cacu.C_index ";
             Tsql = Tsql + " ,tbl_SalesDetail.SellDate ";
-            Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,tbl_SellType.SellTypeName_en SellTypeName ";
+            }
             Tsql = Tsql + " ,C_Code ";
             Tsql = Tsql + " ,Isnull(tbl_Card.cardName,'') ";
             Tsql = Tsql + " ,C_Number1 ";

@@ -10,6 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 using System.Reflection;
 
+
 namespace MLM_Program
 {
     public partial class frmMember_Select_Group_Center : Form
@@ -940,8 +941,10 @@ namespace MLM_Program
 
 
         private void Make_Sub_Query(ref string StrSql)
-        {         
-            
+        {
+
+            cls_form_Meth cm = new cls_form_Meth();
+
             StrSql = "Select  ";
             if (cls_app_static_var.Member_Number_1 > 0)
                 StrSql = StrSql + " tbl_Memberinfo.mbid + '-' + Convert(Varchar,tbl_Memberinfo.mbid2) ";
@@ -969,7 +972,7 @@ namespace MLM_Program
 
             StrSql = StrSql + " , Isnull(Nom.M_Name,'') ";
 
-            StrSql = StrSql + " , Case When SSB.SS_Cnt > 0 then '매출' ELSE '비매출' End ";
+            StrSql = StrSql + " , Case When SSB.SS_Cnt > 0 then '" + cm._chang_base_caption_search("매출") + "' ELSE '" + cm._chang_base_caption_search("비매출") +"' End ";
             StrSql = StrSql + " , Isnull( SSB.SS_PV,0) ";
             StrSql = StrSql + " , Isnull( SSB.SS_BV ,0)";
             StrSql = StrSql + " , Isnull( SSB.SS_PR ,0)";

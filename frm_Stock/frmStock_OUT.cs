@@ -1134,6 +1134,7 @@ namespace MLM_Program
             if (txtR_Id_Code2.Text != "")
                 Tsql = Tsql + " And Out_Name = '" + txtR_Id_Code2.Text + "'";
 
+            
             Tsql = Tsql + " And tbl_StockOutput.Out_C_Code in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )";
 
 

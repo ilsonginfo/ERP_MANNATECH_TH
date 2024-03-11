@@ -286,7 +286,19 @@ namespace MLM_Program
                 Tsql = "Select  LEFT(tbl_SalesDetail.SellDate,4)   ";
 
             Tsql = Tsql + " ,ItemCode  ";
-            Tsql = Tsql + " ,Isnull(tbl_Goods.Name,'')  ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.Name,'')  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,Isnull(tbl_Goods.Name_e,'')  ";
+            }
+
+
             Tsql = Tsql + " ,Sum(ItemCount)  ";
             Tsql = Tsql + " ,Sum(ItemTotalPrice)  ";
             Tsql = Tsql + " ,Sum(ItemTotalPV)  ";
@@ -446,21 +458,54 @@ namespace MLM_Program
 
             if (combo_Sort.SelectedIndex == 0)
             {
-                Tsql = Tsql + " Group By tbl_SalesDetail.SellDate,tbl_SalesDetail.SellDate_2 , ItemCode , isnull(Tbl_Goods.Name,'') ";
-                Tsql = Tsql + " Order By tbl_SalesDetail.SellDate, tbl_SalesDetail.SellDate_2 ,ItemCode , isnull(Tbl_Goods.Name,'') ";
+                // 한국인 경우
+                if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                {
+                    Tsql = Tsql + " Group By tbl_SalesDetail.SellDate,tbl_SalesDetail.SellDate_2 , ItemCode , isnull(Tbl_Goods.Name,'') ";
+                    Tsql = Tsql + " Order By tbl_SalesDetail.SellDate, tbl_SalesDetail.SellDate_2 ,ItemCode , isnull(Tbl_Goods.Name,'') ";
+                }
+                // 태국인 경우
+                else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                {
+                    Tsql = Tsql + " Group By tbl_SalesDetail.SellDate,tbl_SalesDetail.SellDate_2 , ItemCode , isnull(Tbl_Goods.Name_e,'') ";
+                    Tsql = Tsql + " Order By tbl_SalesDetail.SellDate, tbl_SalesDetail.SellDate_2 ,ItemCode , isnull(Tbl_Goods.Name_e,'') ";
+                }
+                
             }
 
             if (combo_Sort.SelectedIndex == 1)
             {
-                Tsql = Tsql + " Group By LEFT(tbl_SalesDetail.SellDate,6) ,LEFT(tbl_SalesDetail.SellDate_2,6) , ItemCode , isnull(Tbl_Goods.Name,'') ";
-                Tsql = Tsql + " Order By LEFT(tbl_SalesDetail.SellDate,6),LEFT(tbl_SalesDetail.SellDate_2,6) , ItemCode , isnull(Tbl_Goods.Name,'') ";
+                // 한국인 경우
+                if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                {
+                    Tsql = Tsql + " Group By LEFT(tbl_SalesDetail.SellDate,6) ,LEFT(tbl_SalesDetail.SellDate_2,6) , ItemCode , isnull(Tbl_Goods.Name,'') ";
+                    Tsql = Tsql + " Order By LEFT(tbl_SalesDetail.SellDate,6),LEFT(tbl_SalesDetail.SellDate_2,6) , ItemCode , isnull(Tbl_Goods.Name,'') ";
+                }
+                // 태국인 경우
+                else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                {
+                    Tsql = Tsql + " Group By LEFT(tbl_SalesDetail.SellDate,6) ,LEFT(tbl_SalesDetail.SellDate_2,6) , ItemCode , isnull(Tbl_Goods.Name_e,'') ";
+                    Tsql = Tsql + " Order By LEFT(tbl_SalesDetail.SellDate,6),LEFT(tbl_SalesDetail.SellDate_2,6) , ItemCode , isnull(Tbl_Goods.Name_e,'') ";
+                }
+
             }
 
 
             if (combo_Sort.SelectedIndex == 2)
             {
-                Tsql = Tsql + " Group By LEFT(tbl_SalesDetail.SellDate,4) ,LEFT(tbl_SalesDetail.SellDate_2,4) , ItemCode , isnull(Tbl_Goods.Name,'') ";
-                Tsql = Tsql + " Order By LEFT(tbl_SalesDetail.SellDate,4) ,LEFT(tbl_SalesDetail.SellDate_2,4), ItemCode , isnull(Tbl_Goods.Name,'') ";
+                // 한국인 경우
+                if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+                {
+                    Tsql = Tsql + " Group By LEFT(tbl_SalesDetail.SellDate,4) ,LEFT(tbl_SalesDetail.SellDate_2,4) , ItemCode , isnull(Tbl_Goods.Name,'') ";
+                    Tsql = Tsql + " Order By LEFT(tbl_SalesDetail.SellDate,4) ,LEFT(tbl_SalesDetail.SellDate_2,4), ItemCode , isnull(Tbl_Goods.Name,'') ";
+                }
+                // 태국인 경우
+                else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+                {
+                    Tsql = Tsql + " Group By LEFT(tbl_SalesDetail.SellDate,4) ,LEFT(tbl_SalesDetail.SellDate_2,4) , ItemCode , isnull(Tbl_Goods.Name_e,'') ";
+                    Tsql = Tsql + " Order By LEFT(tbl_SalesDetail.SellDate,4) ,LEFT(tbl_SalesDetail.SellDate_2,4), ItemCode , isnull(Tbl_Goods.Name_e,'') ";
+                }
+
             }
 
 
@@ -1382,7 +1427,19 @@ namespace MLM_Program
             Tsql = "Select tbl_SalesDetail.OrderNumber ";
             Tsql = Tsql + " ,tbl_SalesitemDetail.SalesItemIndex ";
             Tsql = Tsql + " ,tbl_SalesDetail.SellDate ";
-            Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " ,tbl_SellType.SellTypeName ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " ,tbl_SellType.SellTypeName_en SellTypeName ";
+            }
+
+
             Tsql = Tsql + " ,ItemCode ";
             Tsql = Tsql + " ,tbl_Goods.Name ";
             Tsql = Tsql + " ,itemPrice ";

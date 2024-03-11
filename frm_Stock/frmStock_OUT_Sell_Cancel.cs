@@ -276,15 +276,37 @@ namespace MLM_Program
 
             Tsql = Tsql + ", tbl_SalesItemDetail.RecordTime ";
 
-            Tsql = Tsql + " , tbl_SalesItemDetail.ItemCode "; 
-            Tsql = Tsql + " , tbl_Goods.Name Item_Name ";
+            Tsql = Tsql + " , tbl_SalesItemDetail.ItemCode ";
+
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " , tbl_Goods.Name Item_Name ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " , tbl_Goods.Name_e Item_Name ";
+            }
+
+
 
             Tsql = Tsql + " , tbl_SalesItemDetail.ItemCount ";
             Tsql = Tsql + " , tbl_StockOutput.ItemCount ";
             Tsql = Tsql + " ,tbl_salesitemdetail.ItemTotalPrice";
             Tsql = Tsql + " ,Isnull(St_Bus.Name,'') as St_B_Name";
 
-            Tsql = Tsql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName SellCodeName  ";
+            }
+            // 태국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                Tsql = Tsql + " , tbl_SellType.SellTypeName_en SellCodeName  ";
+            }
+
 
             //Tsql = Tsql + " , Ch_T." + cls_app_static_var.Base_M_Detail_Ex + " SellStateName ";
             //Tsql = Tsql + " , Ch_T_2." + cls_app_static_var.Base_M_Detail_Ex + " Receive_Method_Name ";

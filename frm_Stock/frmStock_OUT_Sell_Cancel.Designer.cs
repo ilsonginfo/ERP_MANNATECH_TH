@@ -2355,7 +2355,7 @@
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(120, 32);
             this.label48.TabIndex = 0;
-            this.label48.Text = "판매_일자";
+            this.label48.Text = "판매일자";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel8

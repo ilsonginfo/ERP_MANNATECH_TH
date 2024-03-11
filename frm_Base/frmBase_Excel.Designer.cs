@@ -93,9 +93,10 @@
             // 
             // butt_Save
             // 
-            this.butt_Save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(32)))), ((int)(((byte)(32))))); this.butt_Save.ForeColor = System.Drawing.Color.White;
+            this.butt_Save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.butt_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butt_Save.Font = new System.Drawing.Font("돋움", 9F);
+            this.butt_Save.ForeColor = System.Drawing.Color.White;
             this.butt_Save.Location = new System.Drawing.Point(121, 3);
             this.butt_Save.Name = "butt_Save";
             this.butt_Save.Size = new System.Drawing.Size(110, 21);
@@ -192,7 +193,7 @@
             this.MinimizeBox = false;
             this.Name = "frmBase_Excel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Excel 전환";
+            this.Text = "Excel_전환";
             this.Load += new System.EventHandler(this.frmBase_Excel_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBase_Excel_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Base)).EndInit();
