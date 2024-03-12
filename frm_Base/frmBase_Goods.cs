@@ -2803,7 +2803,7 @@ namespace MLM_Program
                             VAT = VAT + 1;
 
                         txtPrice_A_2_2.Text = string.Format(cls_app_static_var.str_Currency_Type, VAT); //.ToString();
-                        VAT = double.Parse(txtPrice2.Text.Replace(",", "").Trim()) - VAT;
+                        VAT = double.Parse(txtPrice_A_2.Text.Replace(",", "").Trim()) - VAT;
                         txtVat_A.Text = string.Format(cls_app_static_var.str_Currency_Type, VAT); //VAT.ToString();
 
                     }
@@ -2922,7 +2922,7 @@ namespace MLM_Program
                     {
                         //VAT = (double.Parse(txtPrice_A_2.Text.Trim()) / 1.1) * 10;
                         //VAT = (double.Parse(txtPrice_A_2.Text.Trim()) * 7) / 107;  // 세금 7%
-                        VAT = double.Parse(txtPrice2.Text.Trim()) / 1.07;  // 세금 7%
+                        VAT = double.Parse(txtPrice_A_2.Text.Trim()) / 1.07;  // 세금 7%
 
                         if (VAT % 10 > 0)
                             SW = 1;
@@ -2949,7 +2949,7 @@ namespace MLM_Program
                         }
 
                         txtPrice_A_2_2.Text = string.Format(cls_app_static_var.str_Currency_Type, VAT); //.ToString();
-                        VAT = double.Parse(txtPrice2.Text.Replace(",", "").Trim()) - VAT;
+                        VAT = double.Parse(txtPrice_A_2.Text.Replace(",", "").Trim()) - VAT;
                         txtVat_A.Text = string.Format(cls_app_static_var.str_Currency_Type, VAT); //VAT.ToString();
 
                     }
