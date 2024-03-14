@@ -1023,6 +1023,37 @@ namespace MLM_Program
 
                     Temp_Connect.Insert_Data(Tsql, base_db_name, Conn, tran);
 
+                    // 태국인 경우
+                    if (cls_User.gid_CountryCode == "TH")
+                    {
+                        Tsql = "INSERT INTO tbl_Goods_Na_item ( ";
+                        Tsql = Tsql + " Na_Code, ItemCode, price, price2, price3, ";
+                        Tsql = Tsql + " price4, price5, price6, price7, price8, ";
+                        Tsql = Tsql + " BV1, BV2, T_ETC, Recordid, Recordtime ";
+
+                        Tsql = Tsql + " ) VALUES ( ";
+
+                        Tsql = Tsql + "'" + cls_User.gid_CountryCode + "'";
+                        Tsql = Tsql + ",'" + txtNcode.Text.Trim() + "'";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",0";
+                        Tsql = Tsql + ",''";
+                        Tsql = Tsql + ",'" + cls_User.gid + "'";
+                        Tsql = Tsql + " , Convert(Varchar(25),GetDate(),21) ";
+                        Tsql = Tsql + " ) ";
+
+
+                        if (Temp_Connect.Insert_Data(Tsql, base_db_name, this.Name.ToString(), this.Text) == false) return;
+                    }
+
                     int SubCnt = 0; string SubCode = "";
                     for (int i = 0; i < dGridView_Base_2.Rows.Count ; i++)
                     {
