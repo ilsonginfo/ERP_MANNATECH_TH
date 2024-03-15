@@ -3831,10 +3831,16 @@ namespace MLM_Program
                 //{
                 //    if (Sales_Cacu_R[t_key].C_Cash_Number != null)
                 //    {
-                        web.Dir_VR_Cash_Receipt_All_Cancel(txt_OrderNumber.Text, t_key);
+                //web.Dir_VR_Cash_Receipt_All_Cancel(txt_OrderNumber.Text, t_key);
                 //    }
                 //}
 
+                // 240315 syhuh - 태국인 경우 현금영수증 처리안하도록 변경.
+                if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) != "TH")
+                {
+                    web.Dir_VR_Cash_Receipt_All_Cancel(txt_OrderNumber.Text, t_key);
+                }
+                
                 if (Sales_Cacu_R[t_key].C_TF == 7)
                 {
                     C_Index = int.Parse(Sales_Cacu_R[t_key].C_index.ToString());
@@ -4434,7 +4440,8 @@ namespace MLM_Program
                 if (cls_User.gid_CountryCode == "TH")
                 {
                     txtPay_R1.Text = txtPay1.Text.Trim();
-                    txtPay_R1.ReadOnly = true;
+                    //txtPay_R1.ReadOnly = true;
+                    txtPay_R1.ReadOnly = false;
                 }
 
 
