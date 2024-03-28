@@ -32,9 +32,15 @@ namespace MLM_Program
         private int Search_Member_Number_Mbid2;
         private string Search_Member_Name;
 
+        private bool mbSearchNation;
 
-        public frmBase_Member_Search()
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="bSearchNation">true: 국가코드에 따른 검색 조건 추가, false: 모든 국가 정보 검색</param>
+        public frmBase_Member_Search(bool bSearchNation = true)
         {
+            mbSearchNation = bSearchNation;
             InitializeComponent();
         }
 
@@ -170,6 +176,11 @@ namespace MLM_Program
             {
                 sb.AppendLine(" And tbl_Memberinfo.Mbid like '%" + Search_Member_Number_Mbid + "%' ");
                 sb.AppendLine(" And Convert(Varchar,tbl_Memberinfo.Mbid2) like '%" + Search_Member_Number_Mbid2.ToString() + "%' ");
+            }
+
+            if (mbSearchNation == true)
+            {
+                cls_NationService.SQL_NationCode(ref sb, "tbl_Memberinfo", " AND ", true);
             }
 
             // Tsql = Tsql + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";

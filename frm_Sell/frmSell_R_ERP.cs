@@ -350,19 +350,131 @@ namespace MLM_Program
 
             mtxtMbid.Focus();
 
-            string[] data_P = { ""
-                               , "CJ대한통운택배", "우체국택배"
-                                , "로젠택배", "롯데택배(구 현대택배)", "한진택배"
-                              };
-            Combo_Rece_Company.Items.AddRange(data_P);
-            Combo_Rece_Company.SelectedIndex = 0;
+            //string[] data_P = { ""
+            //                   , "CJ대한통운택배", "우체국택배"
+            //                    , "로젠택배", "롯데택배(구 현대택배)", "한진택배"
+            //                  };
+            //Combo_Rece_Company.Items.AddRange(data_P);
+            //Combo_Rece_Company.SelectedIndex = 0;
 
-            string[] data_P_2 = { ""
-                               , "단순변심", "주문 수량 과다"
-                                , "배송불만", "기타"
-                              };
-            txt_return_Etc1.Items.AddRange(data_P_2);
-            txt_return_Etc1.SelectedIndex = 0;
+            InitCourierCompany();
+
+            //string[] data_P_2 = { ""
+            //                   , "단순변심", "주문 수량 과다"
+            //                    , "배송불만", "기타"
+            //                  };
+            //txt_return_Etc1.Items.AddRange(data_P_2);
+            //txt_return_Etc1.SelectedIndex = 0;
+
+            InitReturnType();
+
+            InitComboZipCode_TH();
+
+            // 태국 인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                pnlDistrict_TH.Visible = true;
+                pnlProvince_TH.Visible = true;
+                pnlSubDistrict_TH.Visible = true;
+                pnlZipCode_TH.Visible = true;
+                pnlZipCode_KR.Visible = false;
+                txtAddress2.ReadOnly = true;
+                cbSubDistrict_TH_SelectedIndexChanged(this, null);
+            }
+            // 한국 인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                pnlDistrict_TH.Visible = false;
+                pnlProvince_TH.Visible = false;
+                pnlSubDistrict_TH.Visible = false;
+                pnlZipCode_TH.Visible = false;
+                pnlZipCode_KR.Visible = true;
+                txtAddress2.ReadOnly = false;
+                txtAddress2.Clear();
+            }
+        }
+
+        private void InitComboZipCode_TH()
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_State_TH() ORDER BY ZIPCODE_SORT ");
+            sb.AppendLine("SELECT * FROM ufn_Get_ZipCode_Province_TH() ORDER BY MinSubDistrictID ");
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
+
+            cbProvince_TH.DataBindings.Clear();
+            cbProvince_TH.DataSource = ds.Tables["ZipCode_NM"];
+            cbProvince_TH.DisplayMember = "ZipCode_NM";
+            cbProvince_TH.ValueMember = "ProvinceCode";
+
+            //cbZipCode_TH.SelectedIndex = -1;
+            txtZipCode_TH.Text = "";
+            txtAddress2.Text = "";
+            cbDistrict_TH.SelectedIndex = -1;
+            cbProvince_TH.SelectedIndex = -1;
+        }
+
+        private void InitCourierCompany()
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            string sColumnName = "";
+
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                sColumnName = "COMPANY_NAME";
+                sb.AppendLine("SELECT " + sColumnName + " FROM TBL_COURIER_COMPANY WITH(NOLOCK) WHERE Na_Code = '" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "' ");
+            }
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                sColumnName = "COMPANY_NAME_EN";
+                sb.AppendLine("SELECT " + sColumnName + " FROM TBL_COURIER_COMPANY WITH(NOLOCK) WHERE Na_Code = '" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "' ");
+            }
+
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), sColumnName, ds) == false) return;
+
+            if (Temp_conn.DataSet_ReCount <= 0) return;
+
+            Combo_Rece_Company.DataBindings.Clear();
+            Combo_Rece_Company.DataSource = ds.Tables[sColumnName];
+            Combo_Rece_Company.DisplayMember = sColumnName;
+            Combo_Rece_Company.SelectedIndex = -1;
+        }
+
+        private void InitReturnType()
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            string sColumnName = "";
+
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                sColumnName = "RETURN_REASON";
+                sb.AppendLine("SELECT " + sColumnName + " FROM TBL_RETURN_TYPE WITH(NOLOCK) ");
+            }
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                sColumnName = "RETURN_REASON_EN";
+                sb.AppendLine("SELECT " + sColumnName + " FROM TBL_RETURN_TYPE WITH(NOLOCK) ");
+            }
+
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), sColumnName, ds) == false) return;
+
+            if (Temp_conn.DataSet_ReCount <= 0) return;
+            
+            txt_return_Etc1.DataBindings.Clear();
+            txt_return_Etc1.DataSource = ds.Tables[sColumnName];
+            txt_return_Etc1.DisplayMember = sColumnName;
+            txt_return_Etc1.SelectedIndex = -1;
         }
 
         private void frmBase_Resize(object sender, EventArgs e)
@@ -2530,69 +2642,149 @@ namespace MLM_Program
             StringBuilder sb = new StringBuilder();
             string StrSql = "";
 
-            sb.Append(" INSERT INTO TLS_SALES_RETURN ( /**/");
-            sb.Append("    ORDERNUMBER /*주문번호*/");
-            sb.Append("  , MBID2 /*MBID2*/");
-            sb.Append("  , MBID /*MBID*/");
-            sb.Append("  , RETURN_ETC1 /*반품사유*/");
-            sb.Append("  , RETURN_ETC2 /*기타 선택시 반품사유*/");
-            sb.Append("  , RETURN_WAY /*회수 방법 1: 직접배송 2:택배기사 방문*/");
-            sb.Append("  , GETTEL1/*휴대폰 번호*/");
-            sb.Append("  , GETTEL2/*집전화번호*/");
-            sb.Append("  , PASSCOMPNAY /*직접 배송시 택배사*/");
-            sb.Append("  , PSSSNUMBER /*운송장 번호*/");
-            sb.Append("  , PASSSELECT /*0 : 전체 반품 1: 부분 반품*/");
-            sb.Append("  , PASSNAME /*회수자 명*/");
-            sb.Append("  , GET_ZIPCODE /*회수지 우편번호*/");
-            sb.Append("  , GET_ADDRESS1 /*회수지 주소*/");
-            sb.Append("  , GET_ADDRESS2 /*회수지 상세 주소*/"); 
-            sb.Append("  , RETURNSTATUS /*처리상태*/");
-            sb.Append("  , RECORDTIME /*등록일시*/");
-            sb.Append("  , STATUSDATE /*처리시간*/");
-            sb.Append("  , STATUSPERSON /*처리담당자*/");
-            sb.Append(") VALUES (");
-            sb.Append(" '"+  txtOrderNumber.Text+"'");
-            sb.Append(" ,'" +  mtxtMbid.Text + "'");
-            sb.Append(" ,''");
-            sb.Append(" ,'" +  txt_return_Etc1.Text + "'");
-            sb.Append(" ,'" +  txt_return_Etc2.Text + "'");
-            
-            if(radioB_return_way1.Checked == true)
-             {
-                    sb.Append("  ,1");
-             }
-            if(radioB_return_way2.Checked == true)
-             {
-                        sb.Append("  ,2");
-             }
-            sb.Append("  ,'" + txt_getTel1.Text + "'");
-            sb.Append("  ,'" + txt_getTel2.Text + "'");
-            sb.Append("  ,'" + Combo_Rece_Company.Text + "'");
-            sb.Append("  ,'" + txt_PsssNumber.Text + "'");
-            if (radioB_PassSelect0.Checked == true)
+            // 한국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
             {
+                sb.Append(" INSERT INTO TLS_SALES_RETURN ( /**/");
+                sb.Append("    ORDERNUMBER /*주문번호*/");
+                sb.Append("  , MBID2 /*MBID2*/");
+                sb.Append("  , MBID /*MBID*/");
+                sb.Append("  , RETURN_ETC1 /*반품사유*/");
+                sb.Append("  , RETURN_ETC2 /*기타 선택시 반품사유*/");
+                sb.Append("  , RETURN_WAY /*회수 방법 1: 직접배송 2:택배기사 방문*/");
+                sb.Append("  , GETTEL1/*휴대폰 번호*/");
+                sb.Append("  , GETTEL2/*집전화번호*/");
+                sb.Append("  , PASSCOMPNAY /*직접 배송시 택배사*/");
+                sb.Append("  , PSSSNUMBER /*운송장 번호*/");
+                sb.Append("  , PASSSELECT /*0 : 전체 반품 1: 부분 반품*/");
+                sb.Append("  , PASSNAME /*회수자 명*/");
+                sb.Append("  , GET_ZIPCODE /*회수지 우편번호*/");
+                sb.Append("  , GET_ADDRESS1 /*회수지 주소*/");
+                sb.Append("  , GET_ADDRESS2 /*회수지 상세 주소*/");
+                sb.Append("  , RETURNSTATUS /*처리상태*/");
+                sb.Append("  , RECORDTIME /*등록일시*/");
+                sb.Append("  , STATUSDATE /*처리시간*/");
+                sb.Append("  , STATUSPERSON /*처리담당자*/");
+                sb.Append(") VALUES (");
+                sb.Append(" '" + txtOrderNumber.Text + "'");
+                sb.Append(" ,'" + mtxtMbid.Text + "'");
+                sb.Append(" ,''");
+                sb.Append(" ,'" + txt_return_Etc1.Text + "'");
+                sb.Append(" ,'" + txt_return_Etc2.Text + "'");
+
+                if (radioB_return_way1.Checked == true)
+                {
+                    sb.Append("  ,1");
+                }
+                if (radioB_return_way2.Checked == true)
+                {
+                    sb.Append("  ,2");
+                }
+                sb.Append("  ,'" + txt_getTel1.Text + "'");
+                sb.Append("  ,'" + txt_getTel2.Text + "'");
+                sb.Append("  ,'" + Combo_Rece_Company.Text + "'");
+                sb.Append("  ,'" + txt_PsssNumber.Text + "'");
+                if (radioB_PassSelect0.Checked == true)
+                {
+                    sb.Append("  ,0");
+                }
+                if (radioB_PassSelect1.Checked == true)
+                {
+                    sb.Append("  ,1");
+                }
+                sb.Append("  ,'" + txt_PassName.Text + "'");
+                sb.Append("  ,'" + mtxtZip1.Text + "'");
+                sb.Append("  ,'" + txtAddress1.Text + "'");
+                sb.Append("  ,'" + txtAddress2.Text + "'");
+                // if(radioB_Returnstatus1.Checked ==true)
+                //{
+                //sb.Append("  ,1");
+                //}
+                //if(radioB_Returnstatus2.Checked ==true)
+                //{
                 sb.Append("  ,0");
+                //}
+                sb.Append("  , CONVERT(NVARCHAR(25), GETDATE(), 21)");
+                sb.Append("  ,'' ");
+                sb.Append(",'" + cls_User.gid + "'");
+                sb.Append(")");
             }
-            if(radioB_PassSelect1.Checked ==true)
-             {
-                            sb.Append("  ,1");
-             }
-            sb.Append("  ,'" + txt_PassName.Text + "'");
-            sb.Append("  ,'" + mtxtZip1.Text + "'");
-            sb.Append("  ,'" + txtAddress1.Text + "'");
-            sb.Append("  ,'" + txtAddress2.Text + "'");
-            // if(radioB_Returnstatus1.Checked ==true)
-            //{
-            //sb.Append("  ,1");
-            //}
-            //if(radioB_Returnstatus2.Checked ==true)
-            //{
-            sb.Append("  ,0");
-            //}
-            sb.Append("  , CONVERT(NVARCHAR(25), GETDATE(), 21)");
-            sb.Append("  ,'' ");
-            sb.Append(",'" + cls_User.gid + "'");
-            sb.Append(")");
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                sb.Append(" INSERT INTO TLS_SALES_RETURN ( /**/");
+                sb.Append("    ORDERNUMBER /*주문번호*/");
+                sb.Append("  , MBID2 /*MBID2*/");
+                sb.Append("  , MBID /*MBID*/");
+                sb.Append("  , RETURN_ETC1 /*반품사유*/");
+                sb.Append("  , RETURN_ETC2 /*기타 선택시 반품사유*/");
+                sb.Append("  , RETURN_WAY /*회수 방법 1: 직접배송 2:택배기사 방문*/");
+                sb.Append("  , GETTEL1/*휴대폰 번호*/");
+                sb.Append("  , GETTEL2/*집전화번호*/");
+                sb.Append("  , PASSCOMPNAY /*직접 배송시 택배사*/");
+                sb.Append("  , PSSSNUMBER /*운송장 번호*/");
+                sb.Append("  , PASSSELECT /*0 : 전체 반품 1: 부분 반품*/");
+                sb.Append("  , PASSNAME /*회수자 명*/");
+                sb.Append("  , GET_ZIPCODE /*회수지 우편번호*/");
+                sb.Append("  , GET_ADDRESS1 /*회수지 주소*/");
+                sb.Append("  , GET_ADDRESS2 /*회수지 상세 주소*/");
+
+                sb.Append("  , Get_City /*태국도시*/");
+                sb.Append("  , Get_State /*태국주*/");
+
+                sb.Append("  , RETURNSTATUS /*처리상태*/");
+                sb.Append("  , RECORDTIME /*등록일시*/");
+                sb.Append("  , STATUSDATE /*처리시간*/");
+                sb.Append("  , STATUSPERSON /*처리담당자*/");
+                sb.Append(") VALUES (");
+                sb.Append(" '" + txtOrderNumber.Text + "'");
+                sb.Append(" ,'" + mtxtMbid.Text + "'");
+                sb.Append(" ,''");
+                sb.Append(" ,'" + txt_return_Etc1.Text + "'");
+                sb.Append(" ,'" + txt_return_Etc2.Text + "'");
+
+                if (radioB_return_way1.Checked == true)
+                {
+                    sb.Append("  ,1");
+                }
+                if (radioB_return_way2.Checked == true)
+                {
+                    sb.Append("  ,2");
+                }
+                sb.Append("  ,'" + txt_getTel1.Text + "'");
+                sb.Append("  ,'" + txt_getTel2.Text + "'");
+                sb.Append("  ,'" + Combo_Rece_Company.Text + "'");
+                sb.Append("  ,'" + txt_PsssNumber.Text + "'");
+                if (radioB_PassSelect0.Checked == true)
+                {
+                    sb.Append("  ,0");
+                }
+                if (radioB_PassSelect1.Checked == true)
+                {
+                    sb.Append("  ,1");
+                }
+                sb.Append("  ,'" + txt_PassName.Text + "'");
+                //sb.Append("  ,'" + mtxtZip1.Text + "'");
+                sb.Append("  ,'" + txtZipCode_TH.Text + "'");   // 태국 우편번호
+                sb.Append("  ,'" + txtAddress1.Text + "'");
+                sb.Append("  ,'" + txtAddress2.Text + "'");    // 태국 상세주소
+
+                sb.Append("  ,'" + cbDistrict_TH.Text + "'"); // 태국도시
+                sb.Append("  ,'" + cbProvince_TH.SelectedValue.ToString() + "'"); // 태국주
+
+                // if(radioB_Returnstatus1.Checked ==true)
+                //{
+                //sb.Append("  ,1");
+                //}
+                //if(radioB_Returnstatus2.Checked ==true)
+                //{
+                sb.Append("  ,0");
+                //}
+                sb.Append("  , CONVERT(NVARCHAR(25), GETDATE(), 21)");
+                sb.Append("  ,'' ");
+                sb.Append(",'" + cls_User.gid + "'");
+                sb.Append(")");
+            }
+
 
             StrSql = sb.ToString();
             Temp_Connect.Insert_Data(StrSql, "tbl_Memberinfo", Conn, tran, this.Name, this.Text);
@@ -3156,6 +3348,9 @@ namespace MLM_Program
                 t_c_sell.Get_Etc1 = ds.Tables[base_db_name].Rows[fi_cnt]["Get_Etc1"].ToString();
                 t_c_sell.Get_Etc2 = ds.Tables[base_db_name].Rows[fi_cnt]["Get_Etc2"].ToString();
 
+                t_c_sell.Get_state = ds.Tables[base_db_name].Rows[fi_cnt]["Get_state"].ToString();  // 태국 주
+                t_c_sell.Get_city = ds.Tables[base_db_name].Rows[fi_cnt]["Get_city"].ToString();  // 태국 도시
+
                 t_c_sell.Receive_Center = ds.Tables[base_db_name].Rows[fi_cnt]["Receive_center"].ToString();
                 t_c_sell.Receive_Center_Name = ds.Tables[base_db_name].Rows[fi_cnt]["Receive_Center_Name"].ToString();
 
@@ -3189,10 +3384,36 @@ namespace MLM_Program
             txt_PassName.Text = ds.Tables[base_db_name].Rows[0]["Get_Name1"].ToString();
             txt_getTel1.Text = ds.Tables[base_db_name].Rows[0]["Get_Tel1"].ToString();
             txt_getTel2.Text = ds.Tables[base_db_name].Rows[0]["Get_Tel2"].ToString();
-            mtxtZip1.Text = ds.Tables[base_db_name].Rows[0]["Get_ZipCode"].ToString();
+            //mtxtZip1.Text = ds.Tables[base_db_name].Rows[0]["Get_ZipCode"].ToString();
             txtAddress1.Text = ds.Tables[base_db_name].Rows[0]["Get_Address1"].ToString();
             txtAddress2.Text = ds.Tables[base_db_name].Rows[0]["Get_Address2"].ToString();
 
+            // 태국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                //cbProvince_TH.Text = ds.Tables["t_P_table"].Rows[0]["state"].ToString();
+                //cbDistrict_TH.Text = ds.Tables["t_P_table"].Rows[0]["city"].ToString();
+                try
+                {
+                    cbProvince_TH.Text = ds.Tables[base_db_name].Rows[0]["Get_Address2"].ToString().Split(' ')[2];
+                    cbDistrict_TH.Text = ds.Tables[base_db_name].Rows[0]["Get_Address2"].ToString().Split(' ')[1];
+                    cbSubDistrict_TH.Text = ds.Tables[base_db_name].Rows[0]["Get_Address2"].ToString().Split(' ')[0];
+                }
+                catch (Exception)
+                {
+                    cbProvince_TH.Text = "";
+                    cbDistrict_TH.Text = "";
+                    cbSubDistrict_TH.Text = "";
+                }
+
+
+                txtZipCode_TH.Text = ds.Tables[base_db_name].Rows[0]["Get_ZipCode"].ToString().Replace("-", "");
+            }
+            // 한국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                mtxtZip1.Text = ds.Tables[base_db_name].Rows[0]["Get_ZipCode"].ToString().Replace("-", "");
+            }
 
 
             Sales_Rece = T_Sales_Rece;
@@ -3257,6 +3478,63 @@ namespace MLM_Program
                     string itemcount = "0";
                     dGridView_Sell_Item.Rows[i].Cells["Col1"].Value = itemcount;
                 }
+        }
+
+        private void cbProvince_TH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_City_TH('" + cbProvince_TH.Text + "') ORDER BY ZIPCODE_SORT ");
+            sb.AppendLine("SELECT ZIPCODE_NM FROM ufn_Get_ZipCode_District_TH('" + cbProvince_TH.Text + "') ORDER BY MinSubDistrictID ");
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
+
+            cbDistrict_TH.DataBindings.Clear();
+            cbDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
+            cbDistrict_TH.DisplayMember = "ZipCode_NM";
+
+        }
+
+        private void cbDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine("SELECT * FROM dbo.ufn_Get_ZipCode_TH('" + cbDistrict_TH.Text + "') ");
+            sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_SubDistrict_TH('" + cbDistrict_TH.Text + "') ORDER BY MinSubDistrictID ");
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
+
+            cbSubDistrict_TH.DataBindings.Clear();
+            cbSubDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
+            cbSubDistrict_TH.DisplayMember = "ZipCode_NM";
+        }
+
+        private void cbSubDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("SELECT [ZIPCODE_NM] = PostCode FROM TLS_ZIPCODE_CS WITH(NOLOCK) WHERE SubDistrictThaiShort = '" + cbSubDistrict_TH.Text + "' ");
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
+
+            if (Temp_conn.DataSet_ReCount <= 0) return;
+
+            txtZipCode_TH.Text = "";
+            txtZipCode_TH.Text = ds.Tables["ZipCode_NM"].Rows[0][0].ToString();
+
+            //txtAddress2.Text = cbProvince_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.SelectedValue.ToString();
+            txtAddress2.Text = cbSubDistrict_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.Text;
+
+
+            //cbDistrict_TH.DataBindings.Clear();
+            //cbDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
+            //cbDistrict_TH.DisplayMember = "ZipCode_NM";
         }
     }
 

@@ -121,6 +121,22 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dGridView_Sell_Item = new System.Windows.Forms.DataGridView();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.pnlZipCode_TH = new System.Windows.Forms.TableLayoutPanel();
+            this.panel72 = new System.Windows.Forms.Panel();
+            this.txtZipCode_TH = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.pnlSubDistrict_TH = new System.Windows.Forms.TableLayoutPanel();
+            this.panel75 = new System.Windows.Forms.Panel();
+            this.cbSubDistrict_TH = new System.Windows.Forms.ComboBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.pnlDistrict_TH = new System.Windows.Forms.TableLayoutPanel();
+            this.panel74 = new System.Windows.Forms.Panel();
+            this.cbDistrict_TH = new System.Windows.Forms.ComboBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.pnlProvince_TH = new System.Windows.Forms.TableLayoutPanel();
+            this.panel73 = new System.Windows.Forms.Panel();
+            this.cbProvince_TH = new System.Windows.Forms.ComboBox();
+            this.label57 = new System.Windows.Forms.Label();
             this.butt_Save2 = new System.Windows.Forms.Button();
             this.butt_S_Not_check = new System.Windows.Forms.Button();
             this.butt_S_check = new System.Windows.Forms.Button();
@@ -151,7 +167,7 @@
             this.label33 = new System.Windows.Forms.Label();
             this.panel28 = new System.Windows.Forms.Panel();
             this.txtAddress1 = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlZipCode_KR = new System.Windows.Forms.TableLayoutPanel();
             this.label26 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
             this.butt_AddCode = new System.Windows.Forms.Button();
@@ -278,6 +294,14 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Sell_Item)).BeginInit();
             this.panel10.SuspendLayout();
+            this.pnlZipCode_TH.SuspendLayout();
+            this.panel72.SuspendLayout();
+            this.pnlSubDistrict_TH.SuspendLayout();
+            this.panel75.SuspendLayout();
+            this.pnlDistrict_TH.SuspendLayout();
+            this.panel74.SuspendLayout();
+            this.pnlProvince_TH.SuspendLayout();
+            this.panel73.SuspendLayout();
             this.tableLayoutPanel34.SuspendLayout();
             this.panel36.SuspendLayout();
             this.tableLayoutPanel32.SuspendLayout();
@@ -290,7 +314,7 @@
             this.panel32.SuspendLayout();
             this.tableLayoutPanel26.SuspendLayout();
             this.panel28.SuspendLayout();
-            this.tableLayoutPanel25.SuspendLayout();
+            this.pnlZipCode_KR.SuspendLayout();
             this.panel23.SuspendLayout();
             this.tableLayoutPanel21.SuspendLayout();
             this.panel22.SuspendLayout();
@@ -1384,6 +1408,10 @@
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.pnlZipCode_TH);
+            this.panel10.Controls.Add(this.pnlSubDistrict_TH);
+            this.panel10.Controls.Add(this.pnlDistrict_TH);
+            this.panel10.Controls.Add(this.pnlProvince_TH);
             this.panel10.Controls.Add(this.butt_Save2);
             this.panel10.Controls.Add(this.butt_S_Not_check);
             this.panel10.Controls.Add(this.butt_S_check);
@@ -1394,7 +1422,7 @@
             this.panel10.Controls.Add(this.tableLayoutPanel29);
             this.panel10.Controls.Add(this.tableLayoutPanel27);
             this.panel10.Controls.Add(this.tableLayoutPanel26);
-            this.panel10.Controls.Add(this.tableLayoutPanel25);
+            this.panel10.Controls.Add(this.pnlZipCode_KR);
             this.panel10.Controls.Add(this.tableLayoutPanel21);
             this.panel10.Controls.Add(this.tableLayoutPanel20);
             this.panel10.Controls.Add(this.tableLayoutPanel18);
@@ -1412,6 +1440,229 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(1755, 245);
             this.panel10.TabIndex = 0;
+            // 
+            // pnlZipCode_TH
+            // 
+            this.pnlZipCode_TH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.pnlZipCode_TH.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.pnlZipCode_TH.ColumnCount = 2;
+            this.pnlZipCode_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.pnlZipCode_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlZipCode_TH.Controls.Add(this.panel72, 1, 0);
+            this.pnlZipCode_TH.Controls.Add(this.label55, 0, 0);
+            this.pnlZipCode_TH.Location = new System.Drawing.Point(4, 112);
+            this.pnlZipCode_TH.Name = "pnlZipCode_TH";
+            this.pnlZipCode_TH.RowCount = 1;
+            this.pnlZipCode_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlZipCode_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.pnlZipCode_TH.Size = new System.Drawing.Size(300, 37);
+            this.pnlZipCode_TH.TabIndex = 312312371;
+            // 
+            // panel72
+            // 
+            this.panel72.BackColor = System.Drawing.Color.White;
+            this.panel72.Controls.Add(this.txtZipCode_TH);
+            this.panel72.Location = new System.Drawing.Point(126, 4);
+            this.panel72.Margin = new System.Windows.Forms.Padding(2);
+            this.panel72.Name = "panel72";
+            this.panel72.Size = new System.Drawing.Size(169, 28);
+            this.panel72.TabIndex = 0;
+            // 
+            // txtZipCode_TH
+            // 
+            this.txtZipCode_TH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtZipCode_TH.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.txtZipCode_TH.Location = new System.Drawing.Point(2, 3);
+            this.txtZipCode_TH.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.txtZipCode_TH.MaxLength = 50;
+            this.txtZipCode_TH.Name = "txtZipCode_TH";
+            this.txtZipCode_TH.Size = new System.Drawing.Size(165, 22);
+            this.txtZipCode_TH.TabIndex = 9;
+            // 
+            // label55
+            // 
+            this.label55.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label55.ForeColor = System.Drawing.Color.White;
+            this.label55.Location = new System.Drawing.Point(2, 2);
+            this.label55.Margin = new System.Windows.Forms.Padding(0);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(120, 33);
+            this.label55.TabIndex = 0;
+            this.label55.Text = "우편번호";
+            this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pnlSubDistrict_TH
+            // 
+            this.pnlSubDistrict_TH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.pnlSubDistrict_TH.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.pnlSubDistrict_TH.ColumnCount = 2;
+            this.pnlSubDistrict_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.pnlSubDistrict_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlSubDistrict_TH.Controls.Add(this.panel75, 1, 0);
+            this.pnlSubDistrict_TH.Controls.Add(this.label59, 0, 0);
+            this.pnlSubDistrict_TH.Location = new System.Drawing.Point(1387, 77);
+            this.pnlSubDistrict_TH.Name = "pnlSubDistrict_TH";
+            this.pnlSubDistrict_TH.RowCount = 1;
+            this.pnlSubDistrict_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlSubDistrict_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.pnlSubDistrict_TH.Size = new System.Drawing.Size(300, 37);
+            this.pnlSubDistrict_TH.TabIndex = 312312370;
+            // 
+            // panel75
+            // 
+            this.panel75.BackColor = System.Drawing.Color.White;
+            this.panel75.Controls.Add(this.cbSubDistrict_TH);
+            this.panel75.Location = new System.Drawing.Point(126, 4);
+            this.panel75.Margin = new System.Windows.Forms.Padding(2);
+            this.panel75.Name = "panel75";
+            this.panel75.Size = new System.Drawing.Size(169, 28);
+            this.panel75.TabIndex = 0;
+            // 
+            // cbSubDistrict_TH
+            // 
+            this.cbSubDistrict_TH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbSubDistrict_TH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubDistrict_TH.FormattingEnabled = true;
+            this.cbSubDistrict_TH.Location = new System.Drawing.Point(3, 4);
+            this.cbSubDistrict_TH.Name = "cbSubDistrict_TH";
+            this.cbSubDistrict_TH.Size = new System.Drawing.Size(163, 20);
+            this.cbSubDistrict_TH.TabIndex = 204;
+            this.cbSubDistrict_TH.Tag = "tab_Nation";
+            this.cbSubDistrict_TH.SelectedIndexChanged += new System.EventHandler(this.cbSubDistrict_TH_SelectedIndexChanged);
+            // 
+            // label59
+            // 
+            this.label59.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label59.ForeColor = System.Drawing.Color.White;
+            this.label59.Location = new System.Drawing.Point(2, 2);
+            this.label59.Margin = new System.Windows.Forms.Padding(0);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(120, 33);
+            this.label59.TabIndex = 0;
+            this.label59.Text = "태국_SubDistrict";
+            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pnlDistrict_TH
+            // 
+            this.pnlDistrict_TH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.pnlDistrict_TH.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.pnlDistrict_TH.ColumnCount = 2;
+            this.pnlDistrict_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.pnlDistrict_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlDistrict_TH.Controls.Add(this.panel74, 1, 0);
+            this.pnlDistrict_TH.Controls.Add(this.label58, 0, 0);
+            this.pnlDistrict_TH.Location = new System.Drawing.Point(1387, 40);
+            this.pnlDistrict_TH.Name = "pnlDistrict_TH";
+            this.pnlDistrict_TH.RowCount = 1;
+            this.pnlDistrict_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlDistrict_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.pnlDistrict_TH.Size = new System.Drawing.Size(300, 37);
+            this.pnlDistrict_TH.TabIndex = 312312369;
+            // 
+            // panel74
+            // 
+            this.panel74.BackColor = System.Drawing.Color.White;
+            this.panel74.Controls.Add(this.cbDistrict_TH);
+            this.panel74.Location = new System.Drawing.Point(126, 4);
+            this.panel74.Margin = new System.Windows.Forms.Padding(2);
+            this.panel74.Name = "panel74";
+            this.panel74.Size = new System.Drawing.Size(169, 28);
+            this.panel74.TabIndex = 0;
+            // 
+            // cbDistrict_TH
+            // 
+            this.cbDistrict_TH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbDistrict_TH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDistrict_TH.FormattingEnabled = true;
+            this.cbDistrict_TH.Location = new System.Drawing.Point(3, 4);
+            this.cbDistrict_TH.Name = "cbDistrict_TH";
+            this.cbDistrict_TH.Size = new System.Drawing.Size(163, 20);
+            this.cbDistrict_TH.TabIndex = 204;
+            this.cbDistrict_TH.Tag = "tab_Nation";
+            this.cbDistrict_TH.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_TH_SelectedIndexChanged);
+            // 
+            // label58
+            // 
+            this.label58.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label58.ForeColor = System.Drawing.Color.White;
+            this.label58.Location = new System.Drawing.Point(2, 2);
+            this.label58.Margin = new System.Windows.Forms.Padding(0);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(120, 33);
+            this.label58.TabIndex = 0;
+            this.label58.Text = "태국_District";
+            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pnlProvince_TH
+            // 
+            this.pnlProvince_TH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.pnlProvince_TH.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.pnlProvince_TH.ColumnCount = 2;
+            this.pnlProvince_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.pnlProvince_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlProvince_TH.Controls.Add(this.panel73, 1, 0);
+            this.pnlProvince_TH.Controls.Add(this.label57, 0, 0);
+            this.pnlProvince_TH.Location = new System.Drawing.Point(1387, 3);
+            this.pnlProvince_TH.Name = "pnlProvince_TH";
+            this.pnlProvince_TH.RowCount = 1;
+            this.pnlProvince_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlProvince_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.pnlProvince_TH.Size = new System.Drawing.Size(300, 37);
+            this.pnlProvince_TH.TabIndex = 312312368;
+            // 
+            // panel73
+            // 
+            this.panel73.BackColor = System.Drawing.Color.White;
+            this.panel73.Controls.Add(this.cbProvince_TH);
+            this.panel73.Location = new System.Drawing.Point(126, 4);
+            this.panel73.Margin = new System.Windows.Forms.Padding(2);
+            this.panel73.Name = "panel73";
+            this.panel73.Size = new System.Drawing.Size(169, 28);
+            this.panel73.TabIndex = 0;
+            // 
+            // cbProvince_TH
+            // 
+            this.cbProvince_TH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbProvince_TH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProvince_TH.FormattingEnabled = true;
+            this.cbProvince_TH.Location = new System.Drawing.Point(3, 4);
+            this.cbProvince_TH.Name = "cbProvince_TH";
+            this.cbProvince_TH.Size = new System.Drawing.Size(163, 20);
+            this.cbProvince_TH.TabIndex = 204;
+            this.cbProvince_TH.Tag = "tab_Nation";
+            this.cbProvince_TH.SelectedIndexChanged += new System.EventHandler(this.cbProvince_TH_SelectedIndexChanged);
+            // 
+            // label57
+            // 
+            this.label57.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label57.ForeColor = System.Drawing.Color.White;
+            this.label57.Location = new System.Drawing.Point(2, 2);
+            this.label57.Margin = new System.Windows.Forms.Padding(0);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(120, 33);
+            this.label57.TabIndex = 0;
+            this.label57.Text = "태국_Province";
+            this.label57.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // butt_Save2
             // 
@@ -1461,7 +1712,7 @@
             this.butt_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butt_Save.Font = new System.Drawing.Font("돋움", 9F);
             this.butt_Save.ForeColor = System.Drawing.Color.White;
-            this.butt_Save.Location = new System.Drawing.Point(588, 188);
+            this.butt_Save.Location = new System.Drawing.Point(633, 188);
             this.butt_Save.Name = "butt_Save";
             this.butt_Save.Size = new System.Drawing.Size(112, 35);
             this.butt_Save.TabIndex = 312312363;
@@ -1538,7 +1789,7 @@
             this.tableLayoutPanel32.RowCount = 1;
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel32.Size = new System.Drawing.Size(346, 36);
+            this.tableLayoutPanel32.Size = new System.Drawing.Size(389, 36);
             this.tableLayoutPanel32.TabIndex = 312312361;
             // 
             // panel35
@@ -1553,13 +1804,13 @@
             this.panel35.Location = new System.Drawing.Point(126, 4);
             this.panel35.Margin = new System.Windows.Forms.Padding(2);
             this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(216, 28);
+            this.panel35.Size = new System.Drawing.Size(259, 28);
             this.panel35.TabIndex = 15;
             // 
             // radioB_Returnstatus2
             // 
             this.radioB_Returnstatus2.AutoSize = true;
-            this.radioB_Returnstatus2.Location = new System.Drawing.Point(123, 6);
+            this.radioB_Returnstatus2.Location = new System.Drawing.Point(150, 6);
             this.radioB_Returnstatus2.Name = "radioB_Returnstatus2";
             this.radioB_Returnstatus2.Size = new System.Drawing.Size(71, 16);
             this.radioB_Returnstatus2.TabIndex = 55;
@@ -1581,7 +1832,7 @@
             // radioB_Returnstatus1
             // 
             this.radioB_Returnstatus1.AutoSize = true;
-            this.radioB_Returnstatus1.Location = new System.Drawing.Point(52, 6);
+            this.radioB_Returnstatus1.Location = new System.Drawing.Point(65, 6);
             this.radioB_Returnstatus1.Name = "radioB_Returnstatus1";
             this.radioB_Returnstatus1.Size = new System.Drawing.Size(59, 16);
             this.radioB_Returnstatus1.TabIndex = 54;
@@ -1608,7 +1859,7 @@
             this.tableLayoutPanel30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
             this.tableLayoutPanel30.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.tableLayoutPanel30.ColumnCount = 2;
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel30.Controls.Add(this.label30, 0, 0);
             this.tableLayoutPanel30.Controls.Add(this.panel34, 1, 0);
@@ -1616,7 +1867,6 @@
             this.tableLayoutPanel30.Name = "tableLayoutPanel30";
             this.tableLayoutPanel30.RowCount = 1;
             this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel30.Size = new System.Drawing.Size(349, 37);
             this.tableLayoutPanel30.TabIndex = 312312360;
             // 
@@ -1630,7 +1880,7 @@
             this.label30.Location = new System.Drawing.Point(2, 2);
             this.label30.Margin = new System.Windows.Forms.Padding(0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(120, 33);
+            this.label30.Size = new System.Drawing.Size(150, 33);
             this.label30.TabIndex = 0;
             this.label30.Text = "기타선택시 반품사유";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1642,10 +1892,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel34.BackColor = System.Drawing.Color.White;
             this.panel34.Controls.Add(this.txt_return_Etc2);
-            this.panel34.Location = new System.Drawing.Point(126, 4);
+            this.panel34.Location = new System.Drawing.Point(156, 4);
             this.panel34.Margin = new System.Windows.Forms.Padding(2);
             this.panel34.Name = "panel34";
-            this.panel34.Size = new System.Drawing.Size(219, 29);
+            this.panel34.Size = new System.Drawing.Size(189, 29);
             this.panel34.TabIndex = 0;
             // 
             // txt_return_Etc2
@@ -1658,7 +1908,7 @@
             this.txt_return_Etc2.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.txt_return_Etc2.MaxLength = 100;
             this.txt_return_Etc2.Name = "txt_return_Etc2";
-            this.txt_return_Etc2.Size = new System.Drawing.Size(213, 22);
+            this.txt_return_Etc2.Size = new System.Drawing.Size(183, 22);
             this.txt_return_Etc2.TabIndex = 12;
             // 
             // tableLayoutPanel29
@@ -1835,22 +2085,22 @@
             this.txtAddress1.Size = new System.Drawing.Size(465, 22);
             this.txtAddress1.TabIndex = 12;
             // 
-            // tableLayoutPanel25
+            // pnlZipCode_KR
             // 
-            this.tableLayoutPanel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.tableLayoutPanel25.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel25.ColumnCount = 2;
-            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel25.Controls.Add(this.label26, 0, 0);
-            this.tableLayoutPanel25.Controls.Add(this.panel23, 1, 0);
-            this.tableLayoutPanel25.Location = new System.Drawing.Point(4, 112);
-            this.tableLayoutPanel25.Name = "tableLayoutPanel25";
-            this.tableLayoutPanel25.RowCount = 1;
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel25.Size = new System.Drawing.Size(300, 37);
-            this.tableLayoutPanel25.TabIndex = 312312355;
+            this.pnlZipCode_KR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.pnlZipCode_KR.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.pnlZipCode_KR.ColumnCount = 2;
+            this.pnlZipCode_KR.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.pnlZipCode_KR.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlZipCode_KR.Controls.Add(this.label26, 0, 0);
+            this.pnlZipCode_KR.Controls.Add(this.panel23, 1, 0);
+            this.pnlZipCode_KR.Location = new System.Drawing.Point(4, 112);
+            this.pnlZipCode_KR.Name = "pnlZipCode_KR";
+            this.pnlZipCode_KR.RowCount = 1;
+            this.pnlZipCode_KR.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlZipCode_KR.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.pnlZipCode_KR.Size = new System.Drawing.Size(300, 37);
+            this.pnlZipCode_KR.TabIndex = 312312355;
             // 
             // label26
             // 
@@ -1986,7 +2236,7 @@
             // Combo_Rece_Company
             // 
             this.Combo_Rece_Company.FormattingEnabled = true;
-            this.Combo_Rece_Company.Location = new System.Drawing.Point(2, 3);
+            this.Combo_Rece_Company.Location = new System.Drawing.Point(1, 1);
             this.Combo_Rece_Company.Name = "Combo_Rece_Company";
             this.Combo_Rece_Company.Size = new System.Drawing.Size(164, 20);
             this.Combo_Rece_Company.TabIndex = 312312351;
@@ -2131,7 +2381,7 @@
             this.tableLayoutPanel16.RowCount = 1;
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(347, 36);
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(431, 36);
             this.tableLayoutPanel16.TabIndex = 155;
             // 
             // panel19
@@ -2146,13 +2396,13 @@
             this.panel19.Location = new System.Drawing.Point(126, 4);
             this.panel19.Margin = new System.Windows.Forms.Padding(2);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(217, 28);
+            this.panel19.Size = new System.Drawing.Size(301, 28);
             this.panel19.TabIndex = 15;
             // 
             // radioB_return_way2
             // 
             this.radioB_return_way2.AutoSize = true;
-            this.radioB_return_way2.Location = new System.Drawing.Point(123, 6);
+            this.radioB_return_way2.Location = new System.Drawing.Point(174, 6);
             this.radioB_return_way2.Name = "radioB_return_way2";
             this.radioB_return_way2.Size = new System.Drawing.Size(95, 16);
             this.radioB_return_way2.TabIndex = 55;
@@ -2174,7 +2424,7 @@
             // radioB_return_way1
             // 
             this.radioB_return_way1.AutoSize = true;
-            this.radioB_return_way1.Location = new System.Drawing.Point(52, 6);
+            this.radioB_return_way1.Location = new System.Drawing.Point(74, 6);
             this.radioB_return_way1.Name = "radioB_return_way1";
             this.radioB_return_way1.Size = new System.Drawing.Size(71, 16);
             this.radioB_return_way1.TabIndex = 54;
@@ -2917,7 +3167,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(346, 36);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(430, 36);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // panel11
@@ -2932,13 +3182,13 @@
             this.panel11.Location = new System.Drawing.Point(126, 4);
             this.panel11.Margin = new System.Windows.Forms.Padding(2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(216, 28);
+            this.panel11.Size = new System.Drawing.Size(300, 28);
             this.panel11.TabIndex = 15;
             // 
             // radioB_PassSelect1
             // 
             this.radioB_PassSelect1.AutoSize = true;
-            this.radioB_PassSelect1.Location = new System.Drawing.Point(123, 6);
+            this.radioB_PassSelect1.Location = new System.Drawing.Point(174, 6);
             this.radioB_PassSelect1.Name = "radioB_PassSelect1";
             this.radioB_PassSelect1.Size = new System.Drawing.Size(71, 16);
             this.radioB_PassSelect1.TabIndex = 55;
@@ -2960,7 +3210,7 @@
             // radioB_PassSelect0
             // 
             this.radioB_PassSelect0.AutoSize = true;
-            this.radioB_PassSelect0.Location = new System.Drawing.Point(52, 6);
+            this.radioB_PassSelect0.Location = new System.Drawing.Point(74, 6);
             this.radioB_PassSelect0.Name = "radioB_PassSelect0";
             this.radioB_PassSelect0.Size = new System.Drawing.Size(71, 16);
             this.radioB_PassSelect0.TabIndex = 54;
@@ -3353,6 +3603,15 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Sell_Item)).EndInit();
             this.panel10.ResumeLayout(false);
+            this.pnlZipCode_TH.ResumeLayout(false);
+            this.panel72.ResumeLayout(false);
+            this.panel72.PerformLayout();
+            this.pnlSubDistrict_TH.ResumeLayout(false);
+            this.panel75.ResumeLayout(false);
+            this.pnlDistrict_TH.ResumeLayout(false);
+            this.panel74.ResumeLayout(false);
+            this.pnlProvince_TH.ResumeLayout(false);
+            this.panel73.ResumeLayout(false);
             this.tableLayoutPanel34.ResumeLayout(false);
             this.panel36.ResumeLayout(false);
             this.panel36.PerformLayout();
@@ -3371,7 +3630,7 @@
             this.tableLayoutPanel26.ResumeLayout(false);
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
-            this.tableLayoutPanel25.ResumeLayout(false);
+            this.pnlZipCode_KR.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
             this.tableLayoutPanel21.ResumeLayout(false);
@@ -3629,7 +3888,7 @@
         private System.Windows.Forms.TextBox txt_getTel1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RadioButton radioB_PassSelect1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel25;
+        private System.Windows.Forms.TableLayoutPanel pnlZipCode_KR;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Button butt_AddCode;
@@ -3665,5 +3924,21 @@
         private System.Windows.Forms.Button butt_S_Not_check;
         private System.Windows.Forms.Button butt_S_check;
         private System.Windows.Forms.Button butt_Save2;
+        private System.Windows.Forms.TableLayoutPanel pnlSubDistrict_TH;
+        private System.Windows.Forms.Panel panel75;
+        private System.Windows.Forms.ComboBox cbSubDistrict_TH;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.TableLayoutPanel pnlDistrict_TH;
+        private System.Windows.Forms.Panel panel74;
+        private System.Windows.Forms.ComboBox cbDistrict_TH;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TableLayoutPanel pnlProvince_TH;
+        private System.Windows.Forms.Panel panel73;
+        private System.Windows.Forms.ComboBox cbProvince_TH;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TableLayoutPanel pnlZipCode_TH;
+        private System.Windows.Forms.Panel panel72;
+        private System.Windows.Forms.TextBox txtZipCode_TH;
+        private System.Windows.Forms.Label label55;
     }
 }

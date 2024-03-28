@@ -105,14 +105,92 @@ namespace MLM_Program
 
             mtxtMbid.Focus();
 
-            string[] data_P = { ""
-                               , "CJ대한통운택배", "우체국택배"
-                                , "로젠택배", "롯데택배(구 현대택배)", "한진택배"
-                              };
-            Combo_Rece_Company.Items.AddRange(data_P);
-            Combo_Rece_Company.SelectedIndex = 0;
+            //string[] data_P = { ""
+            //                   , "CJ대한통운택배", "우체국택배"
+            //                    , "로젠택배", "롯데택배(구 현대택배)", "한진택배"
+            //                  };
+            //Combo_Rece_Company.Items.AddRange(data_P);
+            //Combo_Rece_Company.SelectedIndex = 0;
+
+            InitCourierCompany();
+
+            InitComboZipCode_TH();
+
+            // 태국 인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                pnlDistrict_TH.Visible = true;
+                pnlProvince_TH.Visible = true;
+                pnlSubDistrict_TH.Visible = true;
+                pnlZipCode_TH.Visible = true;
+                pnlZipCode_KR.Visible = false;
+                txtAddress2.ReadOnly = true;
+                cbSubDistrict_TH_SelectedIndexChanged(this, null);
+            }
+            // 한국 인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                pnlDistrict_TH.Visible = false;
+                pnlProvince_TH.Visible = false;
+                pnlSubDistrict_TH.Visible = false;
+                pnlZipCode_TH.Visible = false;
+                pnlZipCode_KR.Visible = true;
+                txtAddress2.ReadOnly = false;
+                txtAddress2.Clear();
+            }
+        }
+
+        private void InitComboZipCode_TH()
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_State_TH() ORDER BY ZIPCODE_SORT ");
+            sb.AppendLine("SELECT * FROM ufn_Get_ZipCode_Province_TH() ORDER BY MinSubDistrictID ");
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
+
+            cbProvince_TH.DataBindings.Clear();
+            cbProvince_TH.DataSource = ds.Tables["ZipCode_NM"];
+            cbProvince_TH.DisplayMember = "ZipCode_NM";
+            cbProvince_TH.ValueMember = "ProvinceCode";
+
+            //cbZipCode_TH.SelectedIndex = -1;
+            txtZipCode_TH.Text = "";
+            txtAddress2.Text = "";
+            cbDistrict_TH.SelectedIndex = -1;
+            cbProvince_TH.SelectedIndex = -1;
+        }
+
+        private void InitCourierCompany()
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            string sColumnName = "";
+
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                sColumnName = "COMPANY_NAME";
+                sb.AppendLine("SELECT " + sColumnName + " FROM TBL_COURIER_COMPANY WITH(NOLOCK) WHERE Na_Code = '" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "' ");
+            }
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                sColumnName = "COMPANY_NAME_EN";
+                sb.AppendLine("SELECT " + sColumnName + " FROM TBL_COURIER_COMPANY WITH(NOLOCK) WHERE Na_Code = '" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "' ");
+            }
 
 
+            if (Temp_conn.Open_Data_Set(sb.ToString(), sColumnName, ds) == false) return;
+
+            if (Temp_conn.DataSet_ReCount <= 0) return;
+
+            Combo_Rece_Company.DataBindings.Clear();
+            Combo_Rece_Company.DataSource = ds.Tables[sColumnName];
+            Combo_Rece_Company.DisplayMember = sColumnName;
+            Combo_Rece_Company.SelectedIndex = -1;
         }
 
         private void frmBase_Resize(object sender, EventArgs e)
@@ -472,6 +550,9 @@ namespace MLM_Program
                 strSql = strSql + " And return_Etc1 like '%" + txt_return_Etc1.Text.Trim() + "%'";
             if (txt_return_Etc2.Text.Trim() != "")
                 strSql = strSql + " And return_Etc2 like '%" + txt_return_Etc2.Text.Trim() + "%'";
+
+            cls_NationService.SQL_NationCode(ref strSql, "tbl_Memberinfo", " AND ", true);  // 국가 코드 추가.
+
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(strSql);
             Tsql += sb.ToString();
@@ -1787,14 +1868,18 @@ namespace MLM_Program
         {
             DataGridView T_DGv = (DataGridView)sender;
             string select = T_DGv.CurrentRow.Cells[0].Value.ToString();
-            if (select == "")
+            if (T_DGv.CurrentCell.ColumnIndex == 0)
             {
-                T_DGv.CurrentRow.Cells[0].Value = "V";
+                if (select == "")
+                {
+                    T_DGv.CurrentRow.Cells[0].Value = "V";
+                }
+                if (select == "V")
+                {
+                    T_DGv.CurrentRow.Cells[0].Value = "";
+                }
             }
-            if (select == "V")
-            {
-                T_DGv.CurrentRow.Cells[0].Value = "";
-            }
+
             DataGridView dgv = (DataGridView)sender;
 
             txtOrderNumber.Text = dgv.CurrentRow.Cells[1].Value.ToString();
@@ -1826,7 +1911,7 @@ namespace MLM_Program
                 radioB_PassSelect.Checked = false; radioB_PassSelect0.Checked = false; radioB_PassSelect1.Checked = true;
             }
             txt_PassName.Text = dgv.CurrentRow.Cells[12].Value.ToString();
-            mtxtZip1.Text = dgv.CurrentRow.Cells[13].Value.ToString();
+            //mtxtZip1.Text = dgv.CurrentRow.Cells[13].Value.ToString();
             txtAddress1.Text = dgv.CurrentRow.Cells[14].Value.ToString();
             txtAddress2.Text = dgv.CurrentRow.Cells[15].Value.ToString();
             string Returnstatus = dgv.CurrentRow.Cells[16].Value.ToString();
@@ -1842,6 +1927,34 @@ namespace MLM_Program
             mtxtMakDate2.Text = dgv.CurrentRow.Cells[17].Value.ToString();
             mtxtSellDate1.Text = dgv.CurrentRow.Cells[18].Value.ToString();
             mtxtSellDate2.Text = dgv.CurrentRow.Cells[18].Value.ToString();
+
+
+            // 태국인 경우
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                //cbProvince_TH.Text = ds.Tables["t_P_table"].Rows[0]["state"].ToString();
+                //cbDistrict_TH.Text = ds.Tables["t_P_table"].Rows[0]["city"].ToString();
+                try
+                {
+                    cbProvince_TH.Text = dgv.CurrentRow.Cells[15].Value.ToString().Split(' ')[2];
+                    cbDistrict_TH.Text = dgv.CurrentRow.Cells[15].Value.ToString().Split(' ')[1];
+                    cbSubDistrict_TH.Text = dgv.CurrentRow.Cells[15].Value.ToString().Split(' ')[0];
+                }
+                catch (Exception)
+                {
+                    cbProvince_TH.Text = "";
+                    cbDistrict_TH.Text = "";
+                    cbSubDistrict_TH.Text = "";
+                }
+
+
+                txtZipCode_TH.Text = dgv.CurrentRow.Cells[13].Value.ToString();
+            }
+            // 한국인 경우
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                mtxtZip1.Text = dgv.CurrentRow.Cells[13].Value.ToString();
+            }
 
         }
 
@@ -1989,6 +2102,63 @@ namespace MLM_Program
             MessageBox.Show("새로운 반품현황이 저장완료됐습니다.");
             Base_Clear();
 
+        }
+
+        private void cbProvince_TH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_City_TH('" + cbProvince_TH.Text + "') ORDER BY ZIPCODE_SORT ");
+            sb.AppendLine("SELECT ZIPCODE_NM FROM ufn_Get_ZipCode_District_TH('" + cbProvince_TH.Text + "') ORDER BY MinSubDistrictID ");
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
+
+            cbDistrict_TH.DataBindings.Clear();
+            cbDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
+            cbDistrict_TH.DisplayMember = "ZipCode_NM";
+
+        }
+
+        private void cbDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            //sb.AppendLine("SELECT * FROM dbo.ufn_Get_ZipCode_TH('" + cbDistrict_TH.Text + "') ");
+            sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_SubDistrict_TH('" + cbDistrict_TH.Text + "') ORDER BY MinSubDistrictID ");
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
+
+            cbSubDistrict_TH.DataBindings.Clear();
+            cbSubDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
+            cbSubDistrict_TH.DisplayMember = "ZipCode_NM";
+        }
+
+        private void cbSubDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cls_Connect_DB Temp_conn = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("SELECT [ZIPCODE_NM] = PostCode FROM TLS_ZIPCODE_CS WITH(NOLOCK) WHERE SubDistrictThaiShort = '" + cbSubDistrict_TH.Text + "' ");
+
+            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
+
+            if (Temp_conn.DataSet_ReCount <= 0) return;
+
+            txtZipCode_TH.Text = "";
+            txtZipCode_TH.Text = ds.Tables["ZipCode_NM"].Rows[0][0].ToString();
+
+            //txtAddress2.Text = cbProvince_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.SelectedValue.ToString();
+            txtAddress2.Text = cbSubDistrict_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.Text;
+
+
+            //cbDistrict_TH.DataBindings.Clear();
+            //cbDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
+            //cbDistrict_TH.DisplayMember = "ZipCode_NM";
         }
     }
     

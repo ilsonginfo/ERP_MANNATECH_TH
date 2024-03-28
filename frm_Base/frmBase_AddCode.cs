@@ -42,7 +42,7 @@ namespace MLM_Program
             cm.from_control_text_base_chang(this);
             FormLoad_TF = 0;
 
-            string t_url = "https://www.koreavisi.com/common/cs/address/search.do";//cls_app_static_var.AddressURL;
+            string t_url = cls_app_static_var.AddressURL;
 
             webBrowser1.Navigate(t_url);
             webBrowser1.ScriptErrorsSuppressed = true;
