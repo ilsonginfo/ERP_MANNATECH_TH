@@ -5475,11 +5475,22 @@ namespace MLM_Program
 
             if (Check_TextBox_Error() == false) return;
 
+            //240228 윤도연 결제 취소 하려면 취소할 부분 결제 내역을 선택 해야 한다.
+            if (string.IsNullOrWhiteSpace(txt_C_index.Text))
+            {
+                MessageBox.Show("취소할 원판매 결제 내역을 선택 해 주세요.");
+                return;
+            }
+
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
             string OrderNumber_R = txt_OrderNumber_R.Text.Trim();
             int C_index_R = 0;
             string OrderNumber = txt_OrderNumber.Text.Trim();
+
+
+
+
             int C_index = int.Parse(txt_C_index.Text);
 
             if (txt_C_index_Re.Text == "") //추가 일경우에 새로운 입력

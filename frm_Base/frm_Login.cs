@@ -673,7 +673,9 @@ namespace MLM_Program
 
         private void frm_Login_Activated(object sender, EventArgs e)
         {
-           //19-03-11 깜빡임제거 this.Refresh();
+            //19-03-11 깜빡임제거 this.Refresh();
+
+            label3.Text = cls_app_static_var.APP_VER;
 
             if (UpLoad_TF == 0)
             {
@@ -690,7 +692,7 @@ namespace MLM_Program
                 }
                 else
                 {
-                    ProGram_Update_Check();
+                    //ProGram_Update_Check();
                 }
 
             }

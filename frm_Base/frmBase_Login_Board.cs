@@ -14,7 +14,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Login_Board : Form
+    public partial class frmBase_Login_Board : clsForm_Extends
     {
         cls_Grid_Base cgb = new cls_Grid_Base();
         cls_Grid_Base cgb_sale = new cls_Grid_Base();

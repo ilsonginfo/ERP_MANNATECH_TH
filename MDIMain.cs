@@ -2385,6 +2385,8 @@ namespace MLM_Program
 
         private void MDIMain_Load(object sender, EventArgs e)
         {
+            this.Text = this.Text + cls_app_static_var.APP_VER;
+
             string NA_CODE = cls_User.gid_CountryCode;
 
             if (!cls_Connect_DB.LiveFlag)
@@ -3203,7 +3205,9 @@ namespace MLM_Program
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+#if DEBUG
+    return;
+#endif
 
             string Tsql = "Select Count(Take_User_id) , Replace(LEFT(Convert(Varchar(25),GetDate(),21),10),'-','')  ";
             Tsql = Tsql + " From  tbl_User_Note  (nolock) ";

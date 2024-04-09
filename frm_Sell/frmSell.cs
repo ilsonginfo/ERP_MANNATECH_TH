@@ -1302,9 +1302,16 @@ namespace MLM_Program
                 }
                 //소비자는 1 판매원은 기본 0
                 if (ds.Tables[base_db_name].Rows[0]["Sell_Mem_TF"].ToString() == "1")
+                {
                     opt_sell_3.Checked = true;
+                    txt_sell_1.Text = "프리퍼드 커스터머";
+                }
                 else
+                {
                     opt_sell_2.Checked = true;
+                    txt_sell_1.Text = "어소시에이트";
+                }
+                    
 
 
                 t_c_sell.Del_TF = "";
@@ -9759,8 +9766,10 @@ namespace MLM_Program
             StrSql = StrSql + ",Pass_Number= '" + Sales_Rece[SalesItemIndex].Pass_Number + "'";
 
             StrSql = StrSql + ",Get_ZipCode= '" + Sales_Rece[SalesItemIndex].Get_ZipCode.Replace("-", "") + "'";
-            StrSql = StrSql + ",Get_Address1= '" + Sales_Rece[SalesItemIndex].Get_Address1 + "'";
-            StrSql = StrSql + ",Get_Address2= '" + Sales_Rece[SalesItemIndex].Get_Address2 + "'";
+            //StrSql = StrSql + ",Get_Address1= '" + Sales_Rece[SalesItemIndex].Get_Address1 + "'";
+            //StrSql = StrSql + ",Get_Address2= '" + Sales_Rece[SalesItemIndex].Get_Address2 + "'";
+            StrSql = StrSql + ",Get_Address1= '" + Sales_Rece[SalesItemIndex].Get_Address1.Replace("'", "''") + "'";
+            StrSql = StrSql + ",Get_Address2= '" + Sales_Rece[SalesItemIndex].Get_Address2.Replace("'", "''") + "'";
 
             StrSql = StrSql + ",Get_Tel1= '" + Sales_Rece[SalesItemIndex].Get_Tel1 + "'";
             StrSql = StrSql + ",Get_Tel2= '" + Sales_Rece[SalesItemIndex].Get_Tel2 + "'";
@@ -9823,8 +9832,8 @@ namespace MLM_Program
             StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Name2 + "'";
 
             StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_ZipCode.Replace("-", "") + "'";
-            StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Address1 + "'";
-            StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Address2 + "'";
+            StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Address1.Replace("'", "''") + "'";
+            StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Address2.Replace("'", "''") + "'";
 
             StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Tel1 + "'";
             StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Tel2 + "'";

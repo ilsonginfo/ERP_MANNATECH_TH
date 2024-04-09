@@ -2443,6 +2443,16 @@ namespace MLM_Program
             string Tsql = "";
 
             Tsql = " Select C_index, C_Price1, C_Number1, C_Number3 , C_Number2 ,C_Period1,C_Period2, TerminalID";
+            //네이버 부분 취소 일때 요청한 부분 취소 금액만 줘야 하는데 기존 쿼리는 전체 금액을 줘서
+            //부분 취소시 전체 취소가 되는 문제가 발생하여 서브쿼리로 요청한 금액만 가지고 온다.
+            Tsql += ",(Select top 1 abs(C_Price1)";
+            Tsql += " From tbl_Sales_Cacu (nolock)  ";
+            Tsql += " Where OrderNumber = (";
+            Tsql += " select OrderNumber from tbl_salesdetail with(nolock)";
+            Tsql += $" where Re_BaseOrderNumber = '{OrderNumber}')";
+            Tsql += " And C_TF = 7";
+            Tsql += " and tbl_Sales_Cacu.C_index = 1";
+            Tsql += "  ) as realprice";
             Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
             Tsql = Tsql + " Where OrderNumber = '" + OrderNumber + "'";
             Tsql = Tsql + " And   C_TF   = 7 ";
@@ -2464,7 +2474,15 @@ namespace MLM_Program
             string mgr_msg = "";                                                        //취소사유
             string C_Number1 = encrypter.Decrypt(ds.Tables["Card_Cancel"].Rows[0]["C_Number1"].ToString());    //카드번호
             string mall_id = ds.Tables["Card_Cancel"].Rows[0]["TerminalID"].ToString();     //단말기ID
-            ReturnPrice = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString());
+            //ReturnPrice = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString());
+
+            //네이버 부분 취소 실질적으로 해야할 금액
+            ReturnPrice = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["realprice"].ToString());
+            //만약 위에서 금액 못가져 왔을때 처리 하려고 한다.
+            if (ReturnPrice == 0)
+            {
+                ReturnPrice = double.Parse(ds.Tables["Card_Cancel"].Rows[0]["C_Price1"].ToString());
+            }
 
             //str_sendvalue = "mgr_txtype=" + mgr_txtype;
             str_sendvalue = str_sendvalue + "paymentId=" + C_Number3;

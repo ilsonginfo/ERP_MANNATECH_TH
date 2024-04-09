@@ -2305,7 +2305,7 @@
             // m_Base_User
             // 
             this.m_Base_User.Name = "m_Base_User";
-            this.m_Base_User.Size = new System.Drawing.Size(180, 22);
+            this.m_Base_User.Size = new System.Drawing.Size(168, 22);
             this.m_Base_User.Tag = "Base_User";
             this.m_Base_User.Text = "사용자_관리";
             this.m_Base_User.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2313,7 +2313,7 @@
             // m_Base_User_Doc_Log
             // 
             this.m_Base_User_Doc_Log.Name = "m_Base_User_Doc_Log";
-            this.m_Base_User_Doc_Log.Size = new System.Drawing.Size(180, 22);
+            this.m_Base_User_Doc_Log.Size = new System.Drawing.Size(168, 22);
             this.m_Base_User_Doc_Log.Tag = "Base_User_Doc_Log";
             this.m_Base_User_Doc_Log.Text = "사용자_접속_로그";
             this.m_Base_User_Doc_Log.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2321,7 +2321,7 @@
             // m_Base_User_Fa
             // 
             this.m_Base_User_Fa.Name = "m_Base_User_Fa";
-            this.m_Base_User_Fa.Size = new System.Drawing.Size(180, 22);
+            this.m_Base_User_Fa.Size = new System.Drawing.Size(168, 22);
             this.m_Base_User_Fa.Tag = "Base_User_Fa";
             this.m_Base_User_Fa.Text = "즐겨찾기_구성";
             this.m_Base_User_Fa.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2329,7 +2329,7 @@
             // m_Base_User_ETC
             // 
             this.m_Base_User_ETC.Name = "m_Base_User_ETC";
-            this.m_Base_User_ETC.Size = new System.Drawing.Size(180, 22);
+            this.m_Base_User_ETC.Size = new System.Drawing.Size(168, 22);
             this.m_Base_User_ETC.Tag = "Base_User_ETC";
             this.m_Base_User_ETC.Text = "공지_사항";
             this.m_Base_User_ETC.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2337,7 +2337,7 @@
             // m_Base_User_ETC_2
             // 
             this.m_Base_User_ETC_2.Name = "m_Base_User_ETC_2";
-            this.m_Base_User_ETC_2.Size = new System.Drawing.Size(180, 22);
+            this.m_Base_User_ETC_2.Size = new System.Drawing.Size(168, 22);
             this.m_Base_User_ETC_2.Tag = "Base_User_ETC_2";
             this.m_Base_User_ETC_2.Text = "공지_사항_확인";
             this.m_Base_User_ETC_2.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2345,7 +2345,7 @@
             // m_Base_User_Note
             // 
             this.m_Base_User_Note.Name = "m_Base_User_Note";
-            this.m_Base_User_Note.Size = new System.Drawing.Size(180, 22);
+            this.m_Base_User_Note.Size = new System.Drawing.Size(168, 22);
             this.m_Base_User_Note.Tag = "Base_User_Note";
             this.m_Base_User_Note.Text = "쪽지_관리";
             this.m_Base_User_Note.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2353,7 +2353,7 @@
             // m_Base_User_Log
             // 
             this.m_Base_User_Log.Name = "m_Base_User_Log";
-            this.m_Base_User_Log.Size = new System.Drawing.Size(180, 22);
+            this.m_Base_User_Log.Size = new System.Drawing.Size(168, 22);
             this.m_Base_User_Log.Tag = "Base_User_Log";
             this.m_Base_User_Log.Text = "사용자_로그";
             this.m_Base_User_Log.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2362,7 +2362,7 @@
             // 
             this.직원등록ToolStripMenuItem.Enabled = false;
             this.직원등록ToolStripMenuItem.Name = "직원등록ToolStripMenuItem";
-            this.직원등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.직원등록ToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.직원등록ToolStripMenuItem.Tag = "Base_User_Mem";
             this.직원등록ToolStripMenuItem.Text = "직원_등록";
             this.직원등록ToolStripMenuItem.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2371,7 +2371,7 @@
             // 
             this.m_UpDate.Enabled = false;
             this.m_UpDate.Name = "m_UpDate";
-            this.m_UpDate.Size = new System.Drawing.Size(180, 22);
+            this.m_UpDate.Size = new System.Drawing.Size(168, 22);
             this.m_UpDate.Tag = "UpDate";
             this.m_UpDate.Text = "업데이트";
             this.m_UpDate.ToolTipText = "-";
@@ -2381,7 +2381,7 @@
             // m_Base_Config_1
             // 
             this.m_Base_Config_1.Name = "m_Base_Config_1";
-            this.m_Base_Config_1.Size = new System.Drawing.Size(180, 22);
+            this.m_Base_Config_1.Size = new System.Drawing.Size(168, 22);
             this.m_Base_Config_1.Tag = "Base_Config_1";
             this.m_Base_Config_1.Text = "프로그램 설정";
             this.m_Base_Config_1.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2389,12 +2389,12 @@
             // toolStripSeparator31
             // 
             this.toolStripSeparator31.Name = "toolStripSeparator31";
-            this.toolStripSeparator31.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator31.Size = new System.Drawing.Size(165, 6);
             // 
             // 그래프통계ToolStripMenuItem
             // 
             this.그래프통계ToolStripMenuItem.Name = "그래프통계ToolStripMenuItem";
-            this.그래프통계ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.그래프통계ToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.그래프통계ToolStripMenuItem.Tag = "Base_Login_Board";
             this.그래프통계ToolStripMenuItem.Text = "그래프통계";
             this.그래프통계ToolStripMenuItem.Click += new System.EventHandler(this.Ap_Manager_Child);
@@ -2402,7 +2402,7 @@
             // 통계ToolStripMenuItem
             // 
             this.통계ToolStripMenuItem.Name = "통계ToolStripMenuItem";
-            this.통계ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.통계ToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.통계ToolStripMenuItem.Tag = "Base_Login_Board2";
             this.통계ToolStripMenuItem.Text = "수치통계";
             this.통계ToolStripMenuItem.Click += new System.EventHandler(this.Ap_Manager_Child);
