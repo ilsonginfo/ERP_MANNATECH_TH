@@ -351,7 +351,7 @@
             this.BaseInfoMenu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.BaseInfoMenu.Name = "BaseInfoMenu";
             this.BaseInfoMenu.Padding = new System.Windows.Forms.Padding(0);
-            this.BaseInfoMenu.Size = new System.Drawing.Size(150, 48);
+            this.BaseInfoMenu.Size = new System.Drawing.Size(122, 48);
             this.BaseInfoMenu.Text = "기초관리";
             this.BaseInfoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 

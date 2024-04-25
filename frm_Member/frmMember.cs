@@ -18,7 +18,7 @@ using System.Xml;
 
 namespace MLM_Program
 {
-    public partial class frmMember : Form
+    public partial class frmMember : clsForm_Extends
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
 

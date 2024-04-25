@@ -140,6 +140,16 @@ namespace MLM_Program
         }
         private void MDIMain_Shown(object sender, EventArgs e)
         {
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                menuStrip.BackColor = Color.FromArgb(82, 89, 95);
+            }
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                menuStrip.BackColor = Color.Plum;
+                BaseInfoMenu.BackColor = Color.Plum;
+            }
+
             if (Login_Board_TF == 1 && cls_User.gid != cls_User.SuperUserID)
             {
                 frmBase_Login_Board childForm = new frmBase_Login_Board();
