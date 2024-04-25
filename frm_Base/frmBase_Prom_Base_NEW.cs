@@ -2010,8 +2010,8 @@ namespace MLM_Program
                 StrSql = StrSql + ",'" + txtName.Text + "'";
                 StrSql = StrSql + ",'" + my + "'";
                 StrSql = StrSql + ",'" + my2 + "'";
-                StrSql = StrSql + ",'" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "'";
                 StrSql = StrSql + ",'" + Using_FLAG + "'";
+                StrSql = StrSql + ",'" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "'";
                 StrSql = StrSql + ",'" + cls_User.gid + "'";
                 StrSql = StrSql + ",Convert(Varchar(25),GetDate(),21) ";
                 StrSql = StrSql + ")";

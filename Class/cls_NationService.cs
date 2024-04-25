@@ -124,5 +124,15 @@ namespace MLM_Program
             return string.IsNullOrEmpty(countryCode) ? "KR" : countryCode;
         }
 
+        /// <summary>
+        /// 확장 메서드 - gid_CountryCode 가 KR 또는 "" 또는 Null 인 경우 "" 로 자동 지정.
+        /// </summary>
+        /// <param name="countryCode"></param>
+        /// <returns>KR, Null, 공백: 공백(""), 그 외: 해당 국가코드 return</returns>
+        public static string GetCountryCode_WhiteSpace(this string countryCode)
+        {
+            return (string.IsNullOrEmpty(countryCode) || countryCode == "KR" ) ? "" : countryCode;
+        }
+
     }
 }
