@@ -3799,6 +3799,7 @@ namespace MLM_Program
             mtxtMbid.Focus();
             Sell_Mem_TF = "";
             MP_YN = "N";
+            lbJDE_State.Visible = false;
         }
 
 
@@ -5589,6 +5590,7 @@ namespace MLM_Program
             txtZipCode_TH.Text = "";
             cbDistrict_TH.SelectedIndex = -1;
             cbProvince_TH.SelectedIndex = -1;
+            lbJDE_State.Visible = false;
         }
 
 
@@ -11163,6 +11165,27 @@ namespace MLM_Program
                     {
                         chk_HanaMembership.Checked = false;
                     }
+
+                    cls_Connect_DB Temp_Connect3 = new cls_Connect_DB();
+                    string Tsql3 = "SELECT Exi_TF = ISNULL(Exi_TF, '') FROM tbl_SalesDetail WITH(NOLOCK) WHERE ReturnTF = 1 AND OrderNumber = '" + OrderNumber + "'";
+                    DataSet ds3 = new DataSet();
+                    if (Temp_Connect3.Open_Data_Set(Tsql3, "tbl_salesdetail", ds3) == false) return;
+
+                    string sExiTF = "";
+                    if (Temp_Connect3.DataSet_ReCount > 0)
+                    {
+                        sExiTF = ds3.Tables["tbl_salesdetail"].Rows[0][0].ToString();
+                    }
+
+                    if (sExiTF == "Y")
+                    {
+                        lbJDE_State.Visible = true;
+                    }
+                    else
+                    {
+                        lbJDE_State.Visible = false;
+                    }
+
                     cls_Connect_DB Temp_Connect = new cls_Connect_DB();
                     string Tsql = "select sellcode , totalpv from tbl_salesdetail (NOLOCK) where ReturnTF = 1 and ordernumber = '" + OrderNumber + "'";
                     DataSet ds = new DataSet();
