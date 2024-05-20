@@ -892,7 +892,7 @@
             this.SellMenu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SellMenu.Name = "SellMenu";
             this.SellMenu.Padding = new System.Windows.Forms.Padding(0);
-            this.SellMenu.Size = new System.Drawing.Size(122, 48);
+            this.SellMenu.Size = new System.Drawing.Size(150, 48);
             this.SellMenu.Text = "주문관리";
             this.SellMenu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 

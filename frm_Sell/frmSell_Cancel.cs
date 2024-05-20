@@ -2061,7 +2061,6 @@ namespace MLM_Program
             //rbo_ReturnTF_3.Checked = false;
             //rbo_ReturnTF_4.Checked = false;
             //rbo_ReturnTF_5.Checked = false;
-            lbJDE_State.Visible = false;
         }
 
 
@@ -2913,7 +2912,6 @@ namespace MLM_Program
             cls_form_Meth ct = new cls_form_Meth();
             ct.from_control_clear(panel7, txtSellDate);
             //ct.from_control_clear(panel2, txtSellDateRe);            
-            lbJDE_State.Visible = false;
         }
 
 
@@ -3320,26 +3318,6 @@ namespace MLM_Program
                     Item_Grid_Set(); //상품 그리드
                     Cacu_Grid_Set(); //결제 그리드
                     Rece_Grid_Set(); //배송 그리드
-
-                    cls_Connect_DB Temp_Connect3 = new cls_Connect_DB();
-                    string Tsql3 = "SELECT Exi_TF = ISNULL(Exi_TF, '') FROM tbl_SalesDetail WITH(NOLOCK) WHERE ReturnTF = 1 AND OrderNumber = '" + OrderNumber + "'";
-                    DataSet ds3 = new DataSet();
-                    if (Temp_Connect3.Open_Data_Set(Tsql3, "tbl_salesdetail", ds3) == false) return;
-
-                    string sExiTF = "";
-                    if (Temp_Connect3.DataSet_ReCount > 0)
-                    {
-                        sExiTF = ds3.Tables["tbl_salesdetail"].Rows[0][0].ToString();
-                    }
-                    
-                    if (sExiTF == "Y")
-                    {
-                        lbJDE_State.Visible = true;
-                    }
-                    else
-                    {
-                        lbJDE_State.Visible = false;
-                    }
                 }
             }
         }
