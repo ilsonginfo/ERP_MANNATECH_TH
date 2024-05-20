@@ -468,7 +468,8 @@ namespace MLM_Program
             cls_User.gid_CountryCode = "";
 
             cls_User.gid_CountryCode = "KR";
-            
+            cls_User.gid_CountryCode = "TH";
+
         }
 
 //--------------------------------------------//

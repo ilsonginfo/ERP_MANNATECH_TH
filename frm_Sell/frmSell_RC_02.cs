@@ -3973,7 +3973,7 @@ namespace MLM_Program
             StrSql = StrSql + " C_Price1,C_Price2,C_AppDate1,C_AppDate2, ";
             //StrSql = StrSql + " C_CancelTF, C_CancelDate,C_CancelPrice, ";
             StrSql = StrSql + " C_Period1,C_Period2,C_Installment_Period,C_Etc";
-            StrSql = StrSql + " ,Sugi_TF , C_P_Number , C_B_Number ";
+            StrSql = StrSql + " ,Sugi_TF , C_P_Number , C_B_Number, C_CVC ";
             StrSql = StrSql + " ,RecordID,RecordTime ";
             StrSql = StrSql + " ) values(";
 
@@ -4012,6 +4012,7 @@ namespace MLM_Program
             StrSql = StrSql + ",'" + Sales_Cacu_R[C_index].Sugi_TF + "'";
             StrSql = StrSql + ",'" + encrypter.Encrypt(Sales_Cacu_R[C_index].C_P_Number) + "'";
             StrSql = StrSql + ",'" + encrypter.Encrypt(Sales_Cacu_R[C_index].C_B_Number) + "'";
+            StrSql = StrSql + ",'" + Sales_Cacu_R[C_index].C_CVC + "'";
 
             StrSql = StrSql + ",'" + Sales_Cacu_R[C_index].RecordID + "'";
 
@@ -4243,6 +4244,7 @@ namespace MLM_Program
                 t_c_sell.C_Period1 = ds.Tables[base_db_name].Rows[fi_cnt]["C_Period1"].ToString();
                 t_c_sell.C_Period2 = ds.Tables[base_db_name].Rows[fi_cnt]["C_Period2"].ToString();
                 t_c_sell.C_Installment_Period = ds.Tables[base_db_name].Rows[fi_cnt]["C_Installment_Period"].ToString();
+                t_c_sell.C_CVC = ds.Tables[base_db_name].Rows[fi_cnt]["C_CVC"].ToString();
                 t_c_sell.C_Etc = ds.Tables[base_db_name].Rows[fi_cnt]["C_Etc"].ToString();
 
                 t_c_sell.C_Base_Index = int.Parse(ds.Tables[base_db_name].Rows[fi_cnt]["C_Base_Index"].ToString());
@@ -4751,6 +4753,21 @@ namespace MLM_Program
             }
 
 
+            // 태국에서만 비교
+            if (cls_User.gid_CountryCode == "TH" && txt_C_CVC.Text.Trim() == "")
+            {
+                if (cls_User.gid_CountryCode == "TH")
+                {
+                    MessageBox.Show("Please enter your card security code.");
+                }
+                else
+                {
+
+                    MessageBox.Show("카드 보안코드를 입력해 주시기 바랍니다.");
+                }
+                txt_C_CVC.Focus();
+                return;
+            }
 
             if (txt_OrderNumber.Text.Trim() != "")
             {
@@ -5062,6 +5079,7 @@ namespace MLM_Program
             t_c_sell.C_B_Number = "";
             t_c_sell.C_P_Number = "";
             t_c_sell.Sugi_TF = "";
+            t_c_sell.C_CVC = "";
 
             t_c_sell.C_Cash_Send_Nu = "";
             t_c_sell.C_Cash_Send_TF = 0;
@@ -5158,6 +5176,7 @@ namespace MLM_Program
                 t_c_sell.C_Period1 = combo_C_Card_Year.Text.Trim();
                 t_c_sell.C_Period2 = combo_C_Card_Month.Text.Trim();
                 t_c_sell.C_Installment_Period = combo_C_Card_Per.Text.Trim();
+                t_c_sell.C_CVC = txt_C_CVC.Text.Trim();
 
                 t_c_sell.C_B_Number = txt_C_B_Number.Text.Trim();
                 t_c_sell.C_P_Number = txt_C_P_Number.Text.Trim();
@@ -5430,6 +5449,7 @@ namespace MLM_Program
 
                     txt_C_P_Number.Text = Sales_Cacu_R[C_index].C_P_Number.ToString();
                     txt_C_B_Number.Text = Sales_Cacu_R[C_index].C_B_Number.ToString();
+                    txt_C_CVC.Text = Sales_Cacu[C_index].C_CVC?.ToString();
 
                     txt_Sugi_TF.Text = Sales_Cacu_R[C_index].Sugi_TF.ToString();
 
