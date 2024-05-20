@@ -2000,7 +2000,8 @@ namespace MLM_Program
              
                 StrSql = "INSERT INTO JDE_PROC ";
                 StrSql = StrSql + " (";
-                StrSql = StrSql + "  PRO_CODE , PROC_NAME ,  PROC_START_TIME , PROC_END_TIME ,PROC_Using_FLAG ";
+                //StrSql = StrSql + "  PRO_CODE , PROC_NAME ,  PROC_START_TIME , PROC_END_TIME ,PROC_Using_FLAG ";
+                StrSql = StrSql + "  PRO_CODE , PROC_NAME ,  PROC_START_TIME , PROC_END_TIME ,PROC_Using_FLAG, PROC_NA_CODE ";
                 StrSql = StrSql + " , RecordID, RecordTime ";
                 StrSql = StrSql + " ) ";
                 StrSql = StrSql + " Values ";
@@ -2010,6 +2011,7 @@ namespace MLM_Program
                 StrSql = StrSql + ",'" + my + "'";
                 StrSql = StrSql + ",'" + my2 + "'";
                 StrSql = StrSql + ",'" + Using_FLAG + "'";
+                StrSql = StrSql + ",'" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "'";
                 StrSql = StrSql + ",'" + cls_User.gid + "'";
                 StrSql = StrSql + ",Convert(Varchar(25),GetDate(),21) ";
                 StrSql = StrSql + ")";

@@ -18,7 +18,7 @@ using System.Xml;
 
 namespace MLM_Program
 {
-    public partial class frmMember : Form
+    public partial class frmMember : clsForm_Extends
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
 
@@ -4263,7 +4263,8 @@ namespace MLM_Program
                 }
                 else    // 태국 이외 국가시
                 {
-                    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable '" + Mbid + "', " + Mbid2 + "";
+                    //StrSql = " EXEC Usp_Insert_Firstmember_SalesTable '" + Mbid + "', " + Mbid2 + "";
+                    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable " + Mbid2 + "";
                 }
 
                 Temp_Connect.Insert_Data(StrSql, "tbl_SalesitemDetail", this.Name.ToString(), this.Text);

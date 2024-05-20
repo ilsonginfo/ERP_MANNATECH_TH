@@ -20,7 +20,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Update : Form
+    public partial class frmMember_Update : clsForm_Extends
     {
         cls_Grid_Base cgb = new cls_Grid_Base();
 
@@ -1167,7 +1167,7 @@ namespace MLM_Program
                 mtxtBrithDay.Text = BirthDay;
             }
 
-            //소비자는 1 판매원은 기본 0
+            //소비자(프리퍼드커스텀)는 1 판매원(어소시에이트)은 기본 0
             if (ds.Tables[base_db_name].Rows[0]["Sell_Mem_TF"].ToString() == "1")
                 opt_sell_3.Checked = true;
             else
@@ -3659,7 +3659,7 @@ namespace MLM_Program
             if (Check_TextBox_Error() == false) return;
 
             if (check_CC.Checked == true)
-                if (Check_TextBox_CC_Error() == false) return;  //오토쉽 등록 관련 오류를 체크한다.
+                if (Check_TextBox_CC_Error() == false) return;  //부부사업자 등록 관련 오류를 체크한다.
 
             cls_Search_DB csd = new cls_Search_DB();       
 

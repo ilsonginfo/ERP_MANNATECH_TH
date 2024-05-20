@@ -658,8 +658,11 @@ namespace MLM_Program
 
 
         public Boolean Update_Data(string T_query, SqlConnection T_Conn,SqlTransaction  tran, string t_form_name = "", string t_from_text = "")
-        {              
-            Chang_T_query_N(ref T_query);
+        {
+            if (cls_User.gid_CountryCode == "TH")
+            {
+                Chang_T_query_N(ref T_query);
+            }
 
             SqlCommand up_comm = new SqlCommand(T_query, T_Conn, tran);
             up_comm.ExecuteNonQuery();
@@ -988,9 +991,11 @@ namespace MLM_Program
 
         private void Chang_T_query_N (ref string  T_query )
         {
-            // 태국이나 베트남 같은 언어의 경우에는 nvarchar저장시에 N을 붙여줘야 하므로
+            if (cls_User.gid_CountryCode == "TH")
+            {
+                // 태국이나 베트남 같은 언어의 경우에는 nvarchar저장시에 N을 붙여줘야 하므로
                 // 저장되는 쿼리에서 문자 기준으로 쪼개서 N을 붙여줌.
-                if( cls_app_static_var.app_multi_lang_query  ==1 )
+                if ( cls_app_static_var.app_multi_lang_query  ==1 )
                 {                    
                     string[] query = T_query.Split(Convert.ToChar ("'"));
 
@@ -1020,6 +1025,7 @@ namespace MLM_Program
                         i++;
                     }
                 }
+            }
         }       
         
     } // end cls_Connect_DB
@@ -2577,7 +2583,8 @@ namespace MLM_Program
 
                     StrSql = StrSql + ", '" + Fild_Name + "'";
                     StrSql = StrSql + ", '" + Be_Memberinfo[i] + "'";
-                    StrSql = StrSql + ", '" + AfterDetail + "'";
+                    //StrSql = StrSql + ", '" + AfterDetail + "'";
+                    StrSql = StrSql + ", '" + AfterDetail.Replace("'", "''") + "'";
                     StrSql = StrSql + ",'" + cls_User.gid + "'";
                     StrSql = StrSql + ", Convert(Varchar(25),GetDate(),21) ";
                     StrSql = StrSql + ")";

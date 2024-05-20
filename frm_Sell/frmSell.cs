@@ -15,7 +15,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmSell : Form
+    public partial class frmSell : clsForm_Extends
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
 
@@ -1177,10 +1177,10 @@ namespace MLM_Program
                 //strSql += " When  ReturnTF = 3 then '부분반품처리' ";
                 //strSql += " When  ReturnTF = 1 And tbl_SalesDetail.InsuranceNumber = '' Then '재발급요청요망' + ' ' + tbl_SalesDetail.INS_Num_Err  ";
                 //strSql += " When  ReturnTF = 5 And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(취소상태)' ";
-                strSql += " When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail  (nolock)  AS A1 Where A1.Re_BaseOrderNumber <> '' And tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber Order by OrderNumber ) IS NOT NULL And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("취소상태") + "' ";
+                strSql += " When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail  (nolock)  AS A1 Where A1.Re_BaseOrderNumber <> '' And tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber Order by OrderNumber ) IS NOT NULL And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("취소상태") + ")' ";
                 strSql += " When  ReturnTF = 5 And InsuranceNumber_Cancel ='Y' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("취소상태") + "' ";
-                strSql += " When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 2 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("취소요청중") + "' ";
-                strSql += " When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 3 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("부분취소요청중") + "' ";
+                strSql += " When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 2 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("취소요청중") + ")' ";
+                strSql += " When  ReturnTF = 1 And (Select top 1  A1.SellDate From tbl_SalesDetail (nolock) AS A1 Where A1.Re_BaseOrderNumber <> '' And  tbl_SalesDetail.OrderNumber = A1.Re_BaseOrderNumber And ReturnTF = 3 Order by OrderNumber  ) IS NOT NULL And InsuranceNumber_Cancel ='' Then tbl_SalesDetail.InsuranceNumber + '(" + cm._chang_base_caption_search("부분취소요청중") + ")' ";
                 strSql += " When  ReturnTF = 2 then '" + cm._chang_base_caption_search("반품처리") + "' ";
                 strSql += " When  ReturnTF = 3 then '" + cm._chang_base_caption_search("부분반품처리") + "' ";
                 strSql += " When  ReturnTF = 1 And tbl_SalesDetail.InsuranceNumber = '' Then '" + cm._chang_base_caption_search("재발급요청요망") + "' + ' ' + tbl_SalesDetail.INS_Num_Err  ";
@@ -1302,9 +1302,16 @@ namespace MLM_Program
                 }
                 //소비자는 1 판매원은 기본 0
                 if (ds.Tables[base_db_name].Rows[0]["Sell_Mem_TF"].ToString() == "1")
+                {
                     opt_sell_3.Checked = true;
+                    txt_sell_1.Text = "프리퍼드 커스터머";
+                }
                 else
+                {
                     opt_sell_2.Checked = true;
+                    txt_sell_1.Text = "어소시에이트";
+                }
+                    
 
 
                 t_c_sell.Del_TF = "";
@@ -9759,8 +9766,10 @@ namespace MLM_Program
             StrSql = StrSql + ",Pass_Number= '" + Sales_Rece[SalesItemIndex].Pass_Number + "'";
 
             StrSql = StrSql + ",Get_ZipCode= '" + Sales_Rece[SalesItemIndex].Get_ZipCode.Replace("-", "") + "'";
-            StrSql = StrSql + ",Get_Address1= '" + Sales_Rece[SalesItemIndex].Get_Address1 + "'";
-            StrSql = StrSql + ",Get_Address2= '" + Sales_Rece[SalesItemIndex].Get_Address2 + "'";
+            //StrSql = StrSql + ",Get_Address1= '" + Sales_Rece[SalesItemIndex].Get_Address1 + "'";
+            //StrSql = StrSql + ",Get_Address2= '" + Sales_Rece[SalesItemIndex].Get_Address2 + "'";
+            StrSql = StrSql + ",Get_Address1= '" + Sales_Rece[SalesItemIndex].Get_Address1.Replace("'", "''") + "'";
+            StrSql = StrSql + ",Get_Address2= '" + Sales_Rece[SalesItemIndex].Get_Address2.Replace("'", "''") + "'";
 
             StrSql = StrSql + ",Get_Tel1= '" + Sales_Rece[SalesItemIndex].Get_Tel1 + "'";
             StrSql = StrSql + ",Get_Tel2= '" + Sales_Rece[SalesItemIndex].Get_Tel2 + "'";
@@ -9823,8 +9832,8 @@ namespace MLM_Program
             StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Name2 + "'";
 
             StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_ZipCode.Replace("-", "") + "'";
-            StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Address1 + "'";
-            StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Address2 + "'";
+            StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Address1.Replace("'", "''") + "'";
+            StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Address2.Replace("'", "''") + "'";
 
             StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Tel1 + "'";
             StrSql = StrSql + ",'" + Sales_Rece[SalesItemIndex].Get_Tel2 + "'";

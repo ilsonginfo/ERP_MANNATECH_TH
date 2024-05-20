@@ -146,8 +146,8 @@
             // 
             // label3
             // 
-            resources.ApplyResources(this.label3, "label3");
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
             // frm_Login

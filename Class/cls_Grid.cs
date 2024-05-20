@@ -1455,6 +1455,8 @@ namespace MLM_Program
 
         public void Db_Grid_Popup_Make_Sql(TextBox tb, TextBox tb1_Code, string Base_Na_Code, string T_SellDate = "", string And_Sql = "" , int io_TF = 1 , string EtcCode = "")
         {
+            cls_form_Meth cm = new cls_form_Meth();
+
             //cls_Grid_Base_Popup cgb_Pop = new cls_Grid_Base_Popup();
             //DataGridView Popup_gr = new DataGridView();
             //Popup_gr.Name = "Popup_gr";
@@ -1767,25 +1769,54 @@ namespace MLM_Program
 
                 if (tb.Text.Trim() == "")
                 {
-                    Tsql = "Select PROC_NAME , PRO_CODE    ";
-                    Tsql += string.Format(" From JDE_PROC "
-                        , T_SellDate.Replace("-", "").Trim()
-                        , Base_Na_Code
-                        , EtcCode);
-                    Tsql = Tsql + " Where PRO_CODE <> '' ";
-                    if (And_Sql != "") Tsql = Tsql + And_Sql;
+                    //Tsql = "Select PROC_NAME , PRO_CODE    ";
+                    //Tsql += string.Format(" From JDE_PROC "
+                    //    , T_SellDate.Replace("-", "").Trim()
+                    //    , Base_Na_Code
+                    //    , EtcCode);
+                    //Tsql = Tsql + " Where PRO_CODE <> '' ";
+                    //if (And_Sql != "") Tsql = Tsql + And_Sql;
+                    //Tsql = Tsql + " Order by PRO_CODE ";
+
+                    // 240321 - 허성윤 수정. 국가별 구분 추가.
+                    Tsql = "Select DISTINCT PROC_NAME , PRO_CODE ";
+                    Tsql += " FROM JDE_PROC A WITH(NOLOCK) ";
+                    Tsql += " LEFT JOIN ( SELECT B.*, C.Na_Code FROM JDE_PROC_ITEM B WITH(NOLOCK) LEFT JOIN tbl_Goods C WITH(NOLOCK) ON B.ITEMCODE = C.ncode) RES ON A.SEQ = RES.JDE_PROC_SEQ ";
+                    Tsql += " Where PRO_CODE <> '' ";
+                    if (And_Sql != "") { Tsql += And_Sql; }
+                    cls_NationService.SQL_NationCode(ref Tsql, "RES", " AND ", true);
+
                     Tsql = Tsql + " Order by PRO_CODE ";
+
+                    /*
+                    SELECT A.PROC_NAME , A.PRO_CODE 
+                    FROM JDE_PROC A WITH(NOLOCK) 
+                    LEFT JOIN ( SELECT B.*, C.Na_Code FROM JDE_PROC_ITEM B WITH(NOLOCK) LEFT JOIN tbl_Goods C WITH(NOLOCK) ON B.ITEMCODE = C.ncode) RES ON A.SEQ = RES.JDE_PROC_SEQ
+                    Where PRO_CODE <> ''  
+                    AND RES.Na_Code = 'TH'
+                    Order by PRO_CODE 
+                     */
                 }
                 else
                 {
-                    Tsql = "Select PROC_NAME , PRO_CODE  ";
-                    Tsql += string.Format("  From JDE_PROC "
-                          , T_SellDate.Replace("-", "").Trim()
-                          , Base_Na_Code
-                          , EtcCode);
+                    //Tsql = "Select PROC_NAME , PRO_CODE  ";
+                    //Tsql += string.Format("  From JDE_PROC "
+                    //      , T_SellDate.Replace("-", "").Trim()
+                    //      , Base_Na_Code
+                    //      , EtcCode);
+                    //Tsql = Tsql + " Where (PRO_CODE like '%" + tb.Text.Trim() + "%'";
+                    //Tsql = Tsql + " OR    PROC_NAME like '%" + tb.Text.Trim() + "%')";
+                    //if (And_Sql != "") Tsql = Tsql + And_Sql;
+                    //Tsql = Tsql + " Order by PRO_CODE ";
+
+                    // 240321 - 허성윤 수정. 국가별 구분 추가.
+                    Tsql = "Select DISTINCT PROC_NAME , PRO_CODE  ";
+                    Tsql += " FROM JDE_PROC A WITH(NOLOCK) ";
+                    Tsql += " LEFT JOIN ( SELECT B.*, C.Na_Code FROM JDE_PROC_ITEM B WITH(NOLOCK) LEFT JOIN tbl_Goods C WITH(NOLOCK) ON B.ITEMCODE = C.ncode) RES ON A.SEQ = RES.JDE_PROC_SEQ ";
                     Tsql = Tsql + " Where (PRO_CODE like '%" + tb.Text.Trim() + "%'";
                     Tsql = Tsql + " OR    PROC_NAME like '%" + tb.Text.Trim() + "%')";
-                    if (And_Sql != "") Tsql = Tsql + And_Sql;
+                    if (And_Sql != "") { Tsql += And_Sql; }
+                    cls_NationService.SQL_NationCode(ref Tsql, "RES", " AND ", true);
                     Tsql = Tsql + " Order by PRO_CODE ";
                 }
             }
@@ -1943,7 +1974,10 @@ namespace MLM_Program
             //Select Ncode ,T_Name 
 
             if (tb.Name == "txt_promotion")
-                db_grid_Popup_Base(2, "프로모션이름", "프로모션코드", "PROC_NAME", "PRO_CODE", Tsql);
+            {
+                // db_grid_Popup_Base(2, "프로모션이름", "프로모션코드", "PROC_NAME", "PRO_CODE", Tsql);
+                db_grid_Popup_Base(2, cm._chang_base_caption_search("프로모션이름"), cm._chang_base_caption_search("프로모션코드"), "PROC_NAME", "PRO_CODE", Tsql);
+            }
 
             if (tb.Name == "txtSellCode")
             {

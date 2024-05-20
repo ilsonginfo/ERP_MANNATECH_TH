@@ -456,6 +456,8 @@ namespace MLM_Program
 
             Tsql += Environment.NewLine + " , CASE tbl_Memberinfo.IDCARD_CONFIRM_FLAG WHEN 0 THEN 'N' WHEN 1 THEN 'Y' END ";
             Tsql += Environment.NewLine + " , CASE tbl_Memberinfo.BANKBOOK_CONFIRM_FLAG WHEN 0 THEN 'N' WHEN 1 THEN 'Y' END ";
+            Tsql += Environment.NewLine + " , CASE (SELECT COUNT(FILE_SEQ) FROM TLS_FILE WITH(NOLOCK) WHERE GUBUN_1 = 'MEMBER' AND GUBUN_2 = 'IDCARD' AND ORG_SEQ = tbl_Memberinfo.mbid2) WHEN 0 THEN 'N' ELSE 'Y' END "; // 외국 신분증 업로드 상태
+            Tsql += Environment.NewLine + " , CASE (SELECT COUNT(FILE_SEQ) FROM TLS_FILE WITH(NOLOCK) WHERE GUBUN_1 = 'MEMBER' AND GUBUN_2 = 'BANKBOOK' AND ORG_SEQ = tbl_Memberinfo.mbid2) WHEN 0 THEN 'N' ELSE 'Y' END "; // 외국 통장 업로드 상태
 
 
 
@@ -1024,7 +1026,7 @@ namespace MLM_Program
 
         private void dGridView_Base_Header_Reset()
         {
-            cgb.grid_col_Count = 40;
+            cgb.grid_col_Count = 42;
             cgb.basegrid = dGridView_Base;
             cgb.grid_select_mod = DataGridViewSelectionMode.FullRowSelect;
             cgb.grid_Frozen_End_Count = 2;
@@ -1039,6 +1041,7 @@ namespace MLM_Program
                                     , "탈퇴일","기록자", "기록일"   , "이메일" , "이메일수신여부"          // 30
                                     , "SMS수신여부", "_비자만료일", "_라인중지일",""  ,""                 // 35
                                     ,""  ,"" ,"","신분증_인증_상태", "통장_인증_상태"                    // 40
+                                   ,"신분증_업로드_상태", "통장_업로드_상태"
                                     };
 
             string[] g_Col_name = {"mbid2"  , "m_name", "birthday"  , "cpno" , "cpno2"  // 5
@@ -1049,6 +1052,7 @@ namespace MLM_Program
                       , "LeaveDate" ,"기록자", "기록일" , "Email", "AgreeEmail"   // 30
                       , "AgreeSMS", "_VisaEndDate", "_LineStopdate","t2"   ,"t3"   // 35
                       ,"t4"     ,"t5" ,"t6","ID Card status", "Bank account status" // 40
+                      ,"ID Card upload status", "Bank account upload status"
                                     };
 
 
@@ -1056,7 +1060,27 @@ namespace MLM_Program
 
             cgb.grid_col_header_text = g_HeaderText;
             cgb.grid_col_name = g_Col_name;
-            int[] g_Width = { 85, 90,130,0, 130,    // 5
+
+            int[] g_Width;
+
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                g_Width = new int[] { 85, 90,130,0, 130,    // 5
+                100, 120  ,100, 90, 130,            // 10
+                130, 100  ,80 ,cls_app_static_var.save_uging_Pr_Flag  , cls_app_static_var.save_uging_Pr_Flag           // 15
+                , cls_app_static_var.nom_uging_Pr_Flag  , cls_app_static_var.nom_uging_Pr_Flag ,  SizeSD , 60  ,200     // 20
+                 , 90, 0, 90 , 60 , 70  ,   // 25
+                90  , 100   ,120 ,120,120   // 30
+                ,120, 0, 0, 0  , 0, // 35
+                0, 0 , 0, 0, 0  // 40
+                , 0, 0
+                            };
+
+                cgb.grid_col_w = g_Width;
+            }
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                g_Width = new int[] { 85, 90,130,0, 130,    // 5
                 100, 120  ,100, 90, 130,            // 10
                 130, 100  ,80 ,cls_app_static_var.save_uging_Pr_Flag  , cls_app_static_var.save_uging_Pr_Flag           // 15
                 , cls_app_static_var.nom_uging_Pr_Flag  , cls_app_static_var.nom_uging_Pr_Flag ,  SizeSD , 60  ,200     // 20
@@ -1064,8 +1088,23 @@ namespace MLM_Program
                 90  , 100   ,120 ,120,120   // 30
                 ,120, 0, 0, 0  , 0, // 35
                 0, 0 , 0, 100, 100  // 40
+                , 100, 100
                             };
-            cgb.grid_col_w = g_Width;
+
+                cgb.grid_col_w = g_Width;
+            }
+
+            //int[] g_Width = { 85, 90,130,0, 130,    // 5
+            //    100, 120  ,100, 90, 130,            // 10
+            //    130, 100  ,80 ,cls_app_static_var.save_uging_Pr_Flag  , cls_app_static_var.save_uging_Pr_Flag           // 15
+            //    , cls_app_static_var.nom_uging_Pr_Flag  , cls_app_static_var.nom_uging_Pr_Flag ,  SizeSD , 60  ,200     // 20
+            //     , 90, 0, 90 , 60 , 70  ,   // 25
+            //    90  , 100   ,120 ,120,120   // 30
+            //    ,120, 0, 0, 0  , 0, // 35
+            //    0, 0 , 0, 100, 100  // 40
+            //    , 100, 100
+            //                };
+            
 
             Boolean[] g_ReadOnly = { true , true,  true,  true ,true                                     
                                     ,true , true,  true,  true ,true                                     
@@ -1075,6 +1114,7 @@ namespace MLM_Program
                                     ,true , true,  true,  true ,true  
                                     ,true,  true,  true,  true,  true
                               ,  true ,  true ,  true,  true ,  true
+                              , true, true
                                    };
             cgb.grid_col_Lock = g_ReadOnly;
 
@@ -1127,6 +1167,8 @@ namespace MLM_Program
                                ,DataGridViewContentAlignment.MiddleCenter
                                ,DataGridViewContentAlignment.MiddleCenter  //40
 
+                               ,DataGridViewContentAlignment.MiddleCenter
+                               ,DataGridViewContentAlignment.MiddleCenter
                               };
             cgb.grid_col_alignment = g_Alignment;
         }
@@ -1185,6 +1227,8 @@ namespace MLM_Program
                                      //,ds.Tables[base_db_name].Rows[fi_cnt][40]
                                      ,ds.Tables[base_db_name].Rows[fi_cnt][41]  // IDCARD
                                      ,ds.Tables[base_db_name].Rows[fi_cnt][42]  // Bankbook
+                                     ,ds.Tables[base_db_name].Rows[fi_cnt][43]  // IDCARD upload status
+                                     ,ds.Tables[base_db_name].Rows[fi_cnt][44]  // Bankbook upload status
                                  };
 
             gr_dic_text[fi_cnt + 1] = row0;

@@ -32,9 +32,15 @@ namespace MLM_Program
         private int Search_Member_Number_Mbid2;
         private string Search_Member_Name;
 
+        private bool mbSearchNation;
 
-        public frmBase_Member_Search()
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="bSearchNation">true: 국가코드에 따른 검색 조건 추가, false: 모든 국가 정보 검색</param>
+        public frmBase_Member_Search(bool bSearchNation = true)
         {
+            mbSearchNation = bSearchNation;
             InitializeComponent();
         }
 
@@ -142,6 +148,7 @@ namespace MLM_Program
             sb.AppendLine("     When -1 then '직권해지' ");
             sb.AppendLine("     When -100 then '휴먼' END ");
             sb.AppendLine(" ,Case tbl_Memberinfo.LineUserCheck When 1 then '사용' When 0 then '중지' End ");
+            sb.AppendLine(" ,Case tbl_Memberinfo.Sell_Mem_TF When 1 then '프리퍼드커스텀' When 0 then '어소시에이트' End as sell_mem_tf ");
             sb.AppendLine(" From tbl_Memberinfo (nolock) ");
             sb.AppendLine(" LEFT JOIN tbl_Memberinfo Nom (nolock) ON tbl_Memberinfo.Nominid = Nom.Mbid And tbl_Memberinfo.Nominid2 = Nom.Mbid2 ");
             sb.AppendLine(" LEFT JOIN tbl_Business (nolock) ON tbl_Memberinfo.BusinessCode = tbl_Business.NCode And tbl_Memberinfo.Na_code = tbl_Business.Na_code ");
@@ -170,6 +177,11 @@ namespace MLM_Program
             {
                 sb.AppendLine(" And tbl_Memberinfo.Mbid like '%" + Search_Member_Number_Mbid + "%' ");
                 sb.AppendLine(" And Convert(Varchar,tbl_Memberinfo.Mbid2) like '%" + Search_Member_Number_Mbid2.ToString() + "%' ");
+            }
+
+            if (mbSearchNation == true)
+            {
+                cls_NationService.SQL_NationCode(ref sb, "tbl_Memberinfo", " AND ", true);
             }
 
             // Tsql = Tsql + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
@@ -205,27 +217,31 @@ namespace MLM_Program
 
         private void dGridView_Base_Header_Reset()
         {
-            cgb.grid_col_Count = 11;
+            cgb.grid_col_Count = 12;
             cgb.basegrid = dGridView_Base;
             cgb.grid_select_mod = DataGridViewSelectionMode.FullRowSelect;
             cgb.grid_Frozen_End_Count = 2;
             cgb.basegrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            string[] g_HeaderText = { "회원_번호" , "성명" ,"주민번호" , "등록일자"   , "센타명"  
-                                     , "추천인"   , "추천인성명"   ,"전화번호" , "" , "활동_여부"
-                                     , "_중지_여부"
+            //string[] g_HeaderText = { "회원_번호" , "성명" ,"주민번호" , "등록일자"   , "센타명"  
+            //                         , "추천인"   , "추천인성명"   ,"전화번호" , "" , "활동_여부"
+            //                         , "_중지_여부"
+            //                        };
+            string[] g_HeaderText = { "회원_번호" , "성명" ,"주민번호" , "등록일자"   , "회원유형"
+                                     , "센타명"  , "추천인"   , "추천인성명"   ,"전화번호" , ""
+                                     , "활동_여부", "_중지_여부"
                                     };
             cgb.grid_col_header_text = g_HeaderText;
 
-            int[] g_Width = { 100, 100, 130, 100, 130  
-                             ,100, 100, 120, 0, 80  
-                             ,0
+            int[] g_Width = { 100, 100, 130, 100, 130
+                             ,0,100, 100, 120, 0
+                             ,80,0
                             };
             cgb.grid_col_w = g_Width;
 
-            Boolean[] g_ReadOnly = { true , true,  true,  true ,true                                     
-                                    ,true , true,  true,  true ,true                                     
-                                    ,true 
+            Boolean[] g_ReadOnly = { true , true,  true,  true ,true
+                                    ,true , true,  true,  true ,true
+                                    ,true , true
                                    };
             cgb.grid_col_Lock = g_ReadOnly;
 
@@ -242,7 +258,8 @@ namespace MLM_Program
                                ,DataGridViewContentAlignment.MiddleCenter 
                                ,DataGridViewContentAlignment.MiddleCenter //10
 
-                               ,DataGridViewContentAlignment.MiddleCenter                                                               
+                               ,DataGridViewContentAlignment.MiddleCenter
+                               ,DataGridViewContentAlignment.MiddleCenter
                               };
             cgb.grid_col_alignment = g_Alignment;
         }
@@ -253,7 +270,8 @@ namespace MLM_Program
             string[] row0 = { ds.Tables[base_db_name].Rows[fi_cnt][0].ToString()  
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][1].ToString()  
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][2].ToString()
-                                ,ds.Tables[base_db_name].Rows[fi_cnt][3].ToString()  
+                                ,ds.Tables[base_db_name].Rows[fi_cnt][3].ToString()
+                                ,ds.Tables[base_db_name].Rows[fi_cnt][11].ToString()
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][4].ToString() 
  
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][5].ToString()                                  

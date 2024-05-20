@@ -91,8 +91,18 @@ namespace MLM_Program
 
         private void Make_Base_Query(ref string Tsql)
         {
-            Tsql = " SELECT '' as Selected,* from JDE_PROC_Member (nolock) ";
+            //Tsql = " SELECT '' as Selected,* from JDE_PROC_Member (nolock) ";
+            Tsql = " SELECT '' as Selected, JDE_PROC_Member.* from JDE_PROC_Member (nolock) ";
+            Tsql += " LEFT JOIN tbl_Memberinfo ON tbl_Memberinfo.mbid2 = JDE_PROC_Member.MBID2 ";
+            cls_NationService.SQL_NationCode(ref Tsql, "tbl_Memberinfo", " WHERE ", true);
 
+            /*
+            SELECT '' as Selected, JDE_PROC_Member.* from JDE_PROC_Member (nolock) 
+            LEFT JOIN tbl_Memberinfo ON tbl_Memberinfo.mbid2 = JDE_PROC_Member.MBID2
+            WHERE 
+            --tbl_Memberinfo.Na_Code IN ('KR', '')	-- 한국
+            tbl_Memberinfo.Na_Code IN ('TH')	-- 태국
+             */
         }
         private void Base_Grid_Set()
         {

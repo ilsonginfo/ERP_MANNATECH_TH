@@ -19,6 +19,8 @@ namespace MLM_Program
 {
     class cls_app_static_var
     {
+        public static string APP_VER = string.Empty;
+
         internal static int app_multi_lang_query;
 
         internal static System.Reflection.Assembly Assem;

@@ -140,6 +140,16 @@ namespace MLM_Program
         }
         private void MDIMain_Shown(object sender, EventArgs e)
         {
+            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            {
+                menuStrip.BackColor = Color.FromArgb(82, 89, 95);
+            }
+            else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
+            {
+                menuStrip.BackColor = Color.Plum;
+                BaseInfoMenu.BackColor = Color.Plum;
+            }
+
             if (Login_Board_TF == 1 && cls_User.gid != cls_User.SuperUserID)
             {
                 frmBase_Login_Board childForm = new frmBase_Login_Board();
@@ -2385,6 +2395,8 @@ namespace MLM_Program
 
         private void MDIMain_Load(object sender, EventArgs e)
         {
+            this.Text = this.Text + cls_app_static_var.APP_VER;
+
             string NA_CODE = cls_User.gid_CountryCode;
 
             if (!cls_Connect_DB.LiveFlag)
@@ -3203,7 +3215,9 @@ namespace MLM_Program
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+#if DEBUG
+    return;
+#endif
 
             string Tsql = "Select Count(Take_User_id) , Replace(LEFT(Convert(Varchar(25),GetDate(),21),10),'-','')  ";
             Tsql = Tsql + " From  tbl_User_Note  (nolock) ";

@@ -81,6 +81,34 @@ namespace MLM_Program
             ////DateTime dt = DateTime.Parse(ToEndDate.Substring(0, 4) + "-" + ToEndDate.Substring(4, 2) + "-" + ToEndDate.Substring(6, 2));
             ////SDate = dt.AddMonths(-3).ToShortDateString().Replace("-", "")g
 
+#if DEBUG
+
+            //////++++++++++++++테스트++++++++++++++++ +
+
+            cls_app_static_var.app_Company_Name = "menatech";
+            cls_app_static_var.app_FTP_ID = "melong202";
+            cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
+            string User_Id = "IS_Info";
+            string password = "Mannatech)%!$";
+            string Company_DB_Name = "mannatech";
+            cls_app_static_var.app_Company_Name = "menatech";
+
+
+            //++++++++++++++테스트++++++++++++++++ +
+
+            //++++++++++++++라이브++++++++++++++++ +
+
+            //cls_app_static_var.app_Company_Name = "mannatech";
+            //cls_app_static_var.app_FTP_ID = "melong202";
+            //cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
+            //string User_Id = "IS_Info";
+            //string password = "Mannatech)%!$";
+            //string Company_DB_Name = "mannatech";
+            //cls_app_static_var.app_Company_Name = "mannatech_Live";
+            //////++++++++++++++라이브++++++++++++++++ +
+
+            cls_app_static_var.APP_VER = "DEBUG 001";
+#else
             //++++++++++++++라이브++++++++++++++++ +
 
             cls_app_static_var.app_Company_Name = "mannatech";
@@ -91,23 +119,10 @@ namespace MLM_Program
             string Company_DB_Name = "mannatech";
             cls_app_static_var.app_Company_Name = "mannatech_Live";
             //////++++++++++++++라이브++++++++++++++++ +
-
-
-
-
-            //////++++++++++++++테스트++++++++++++++++ +
-
-            //cls_app_static_var.app_Company_Name = "menatech";
-            //cls_app_static_var.app_FTP_ID = "melong202";
-            //cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
-            //string User_Id = "IS_Info";
-            //string password = "Mannatech)%!$";
-            //string Company_DB_Name = "mannatech";
-            //cls_app_static_var.app_Company_Name = "menatech";
-
-            //++++++++++++++테스트++++++++++++++++ +
             ///
 
+            cls_app_static_var.APP_VER = "[RELEASE]240408_001";
+#endif
 
             //++++++++++++++++++++++++++++++++++++++
             //cls_app_static_var.app_Company_Name = "mannatech_JEE";
@@ -159,6 +174,8 @@ namespace MLM_Program
                 MessageBox.Show("Not Found Base DB info.");
                 return;
             }
+
+#if DEBUG
             ////테스트배포때 연다
             //if (cls_app_static_var.app_Company_Name == "menatech")
             //{
@@ -169,13 +186,17 @@ namespace MLM_Program
             ////테스트배포땐닫는다
             //운영 DB아닌 경우 모두 개발기로 인식(업데이트 무시, 메인화면 변경 처리)
             //////매나테크 개발기 UAT
-            //Connect_IP = "218.237.118.12,51433";
-            //if (Connect_IP.Equals("218.237.118.12,51433"))
-            //{
-            //    cls_Connect_DB.LiveFlag = false;
-            //}
+            Connect_IP = "218.237.118.12,51433";
+            if (Connect_IP.Equals("218.237.118.12,51433"))
+            {
+                cls_Connect_DB.LiveFlag = false;
+            }
             //테스트배포땐닫는다
             //////++++++++++++++++++++++++++++++++
+
+#else
+
+#endif
 
             cls_Connect_DB.Conn_Str = "Initial Catalog=" + Company_DB_Name + ";Persist Security Info=True;User ID=" + User_Id + ";Password=" + password + ";Data Source=" + Connect_IP + "";
             cls_Connect_DB.Return_Conn_Str = "Initial Catalog=mannatech_Return_Close;Persist Security Info=True;User ID=" + User_Id + ";Password=" + password + ";Data Source=" + Connect_IP + "";

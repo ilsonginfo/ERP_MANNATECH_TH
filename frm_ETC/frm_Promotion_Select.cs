@@ -253,23 +253,43 @@ namespace MLM_Program
             cls_form_Meth cm = new cls_form_Meth();
             //cm._chang_base_caption_search(m_text);
 
-            Tsql = "Select SEQ  , PROC_NAME, PROC_START_TIME  , PROC_END_TIME , PROC_Using_FLAG ";
-            Tsql += Environment.NewLine + " From [mannatech].[dbo].[JDE_PROC]";
-            
+            //Tsql = "Select SEQ  , PROC_NAME, PROC_START_TIME  , PROC_END_TIME , PROC_Using_FLAG ";
+            //Tsql += Environment.NewLine + " From [mannatech].[dbo].[JDE_PROC]";
+
+            Tsql = "Select DISTINCT A.SEQ, A.PROC_NAME, A.PROC_START_TIME, A.PROC_END_TIME, A.PROC_Using_FLAG ";
+            Tsql += Environment.NewLine + " From [mannatech].[dbo].[JDE_PROC] A WITH(NOLOCK) ";
+            Tsql += Environment.NewLine + " LEFT JOIN JDE_PROC_ITEM B WITH(NOLOCK) ON A.SEQ = B.JDE_PROC_SEQ ";
+            Tsql += Environment.NewLine + " LEFT JOIN tbl_Goods WITH(NOLOCK) ON tbl_Goods.ncode = B.itemcode ";
+
         }
 
 
 
         private void Make_Base_Query_(ref string Tsql)
         {
-            string strSql = " Where SEQ <> ''  ";
+            //string strSql = " Where SEQ <> ''  ";
+            ////// strSql += Environment.NewLine + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
+            ////프로모션명으로검색
+            //if (txtName.Text.Trim() != "")
+            //    strSql += Environment.NewLine + " And PROC_NAME Like '%" + txtName.Text.Trim() + "%'";
+
+            //Tsql = Tsql + strSql;
+            //Tsql = Tsql + " Order by SEQ DESC ";
+
+
+            string strSql = " WHERE A.SEQ <> ''  ";
             //// strSql += Environment.NewLine + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
             //프로모션명으로검색
             if (txtName.Text.Trim() != "")
+            {
                 strSql += Environment.NewLine + " And PROC_NAME Like '%" + txtName.Text.Trim() + "%'";
-
+            }
             Tsql = Tsql + strSql;
+
+            cls_NationService.SQL_NationCode(ref Tsql, "tbl_Goods", " AND ", true);
+
             Tsql = Tsql + " Order by SEQ DESC ";
+
         }
 
         private void Base_Grid_Set()

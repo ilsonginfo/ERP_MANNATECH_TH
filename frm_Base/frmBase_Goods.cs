@@ -321,23 +321,23 @@ namespace MLM_Program
             sb.AppendLine(" , inspection  ");
 
 
-            sb.AppendLine(", Isnull((Select Top 1 price1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.price) Last_price");
-            sb.AppendLine(", Isnull((Select Top 1 price2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.price2) Last_price2");
-            sb.AppendLine(", Isnull((Select Top 1 Except_Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),Except_Sell_VAT_Price) Last_Except_Sell_VAT_Price");
-            sb.AppendLine(", Isnull((Select Top 1 Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),Sell_VAT_Price) Last_Sell_VAT_Price");
-            sb.AppendLine(", Isnull((Select Top 1 price4 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.price4) Last_price4");
-            sb.AppendLine(", Isnull((Select Top 1 BV1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.BV1) Last_BV1");
-            sb.AppendLine(", Isnull((Select Top 1 price6 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.price6) Last_price6");
-            sb.AppendLine(", Isnull((Select Top 1 price7 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.price7) Last_price7");
-            sb.AppendLine(", Isnull((Select Top 1 price5 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.price5) Last_price5");
-            sb.AppendLine(", Isnull((Select Top 1 price8 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.price8) Last_price8");
-            sb.AppendLine(", Isnull((Select Top 1 BV2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.BV2) Last_BV2");
+            sb.AppendLine(", Isnull((Select Top 1 price1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.price) Last_price");
+            sb.AppendLine(", Isnull((Select Top 1 price2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.price2) Last_price2");
+            sb.AppendLine(", Isnull((Select Top 1 Except_Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),Except_Sell_VAT_Price) Last_Except_Sell_VAT_Price");
+            sb.AppendLine(", Isnull((Select Top 1 Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),Sell_VAT_Price) Last_Sell_VAT_Price");
+            sb.AppendLine(", Isnull((Select Top 1 price4 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.price4) Last_price4");
+            sb.AppendLine(", Isnull((Select Top 1 BV1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.BV1) Last_BV1");
+            sb.AppendLine(", Isnull((Select Top 1 price6 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.price6) Last_price6");
+            sb.AppendLine(", Isnull((Select Top 1 price7 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.price7) Last_price7");
+            sb.AppendLine(", Isnull((Select Top 1 price5 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.price5) Last_price5");
+            sb.AppendLine(", Isnull((Select Top 1 price8 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.price8) Last_price8");
+            sb.AppendLine(", Isnull((Select Top 1 BV2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.BV2) Last_BV2");
 
-            sb.AppendLine(" , Isnull (( Select Top 1 price_A_2   From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  price_A_2 ) Last_price_A_2 ");
-            sb.AppendLine(" , Isnull (( Select Top 1 price_A_2_2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  price_A_2_2 ) Last_price_A_2_2 ");
-            sb.AppendLine(" , Isnull (( Select Top 1 Vat_A       From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  Vat_A ) Last_Vat_A ");
-            sb.AppendLine(" , Isnull (( Select Top 1 PV_A        From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  PV_A ) Last_PV_A ");
-            sb.AppendLine(" , Isnull (( Select Top 1 BV_A        From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  BV_A ) Last_BV_A ");
+            sb.AppendLine(" , Isnull (( Select Top 1 price_A_2   From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  price_A_2 ) Last_price_A_2 ");
+            sb.AppendLine(" , Isnull (( Select Top 1 price_A_2_2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  price_A_2_2 ) Last_price_A_2_2 ");
+            sb.AppendLine(" , Isnull (( Select Top 1 Vat_A       From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  Vat_A ) Last_Vat_A ");
+            sb.AppendLine(" , Isnull (( Select Top 1 PV_A        From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  PV_A ) Last_PV_A ");
+            sb.AppendLine(" , Isnull (( Select Top 1 BV_A        From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  BV_A ) Last_BV_A ");
 
             sb.AppendLine(" , Case GoodUse When 0 then 'O' When 1 then 'X' END ");
             sb.AppendLine(" , LEFT(Item_RegTime,4) +'-' + LEFT(RIGHT(Item_RegTime,4),2) + '-' + RIGHT(Item_RegTime,2) ");
@@ -360,7 +360,7 @@ namespace MLM_Program
             sb.AppendLine(" , isnull(tbl_MakeItemCode1.itemname ,'') as MakeItemCode1_itemname");
             sb.AppendLine(" , isnull(tbl_MakeItemCode2.itemcode ,'') as MakeItemCode2_itemcode");
             sb.AppendLine(" , isnull(tbl_MakeItemCode2.itemname ,'') as MakeItemCode2_itemname");
-            sb.AppendLine(", Isnull((Select Top 1 price3 From tbl_Goods_Change Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '' Order by ApplyDate DESC),tbl_Goods.price3) Last_price3");
+            sb.AppendLine(", Isnull((Select Top 1 price3 From tbl_Goods_Change Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode  And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC),tbl_Goods.price3) Last_price3");
             sb.AppendLine(",AutoShip_MaxCount, GeneralSell_YN, AutoShipYN, PrimiumYN,HealthYN,SpecialYN,ItemType");
 
             sb.AppendLine(" From tbl_Goods (nolock) ");
@@ -370,7 +370,8 @@ namespace MLM_Program
             //sb.AppendLine(" LEFT JOIN tbl_Goods_Na_item WITH(NOLOCK) ON tbl_Goods.ncode = tbl_Goods_Na_item.ItemCode ");
 
             //sb.AppendLine(" WHERE tbl_Goods_Na_item.ItemCode IS NULL ");
-            sb.AppendLine(" WHERE tbl_Goods.Na_Code = '" + cls_User.gid_CountryCode + "' ");
+            //sb.AppendLine(" WHERE tbl_Goods.Na_Code = '" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "' ");
+            cls_NationService.SQL_NationCode(ref sb, "tbl_Goods", " WHERE ", true);
 
             if (Ncode != "")
             {
@@ -2114,7 +2115,7 @@ namespace MLM_Program
                     Tsql = Tsql + " From tbl_Goods_Change  (nolock)  ";
                     Tsql = Tsql + " Where upper(Ncode) = '" + ((txtKey.Text).Trim()).ToUpper() + "'";
                     Tsql = Tsql + " And  ApplyDate = '" + (mtxtApplyDate.Text).Trim().Replace("_", "").Replace("-", "") + "'";
-                    Tsql = Tsql + " And  (Na_code = 'KR' OR Na_code = '' ) ";
+                    Tsql = Tsql + " And  (Na_code = '" + cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) + "' OR Na_code = '' ) ";
                     Tsql = Tsql + " Order by ApplyDate DESC ";
 
                     DataSet ds = new DataSet();
@@ -2268,25 +2269,44 @@ namespace MLM_Program
             Tsql = Tsql + " , T_ETC ";
             Tsql = Tsql + " , Up_itemCode ";
 
-            Tsql = Tsql + " , Isnull (( Select Top 1 price1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price) Last_price ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 price2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = ''Order by ApplyDate DESC   ),price2) Last_price2 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 Except_Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),Except_Sell_VAT_Price) Last_Except_Sell_VAT_Price ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),Sell_VAT_Price) Last_Sell_VAT_Price ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 price4 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price4) Last_price4 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 price5 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price5) Last_price5 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 price6 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price6) Last_price6 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 price7 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price7) Last_price7 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 price8 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price8) Last_price8 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 BV1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  BV1 ) Last_BV1 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 BV2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  BV2 ) Last_BV2 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price) Last_price ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price2) Last_price2 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 Except_Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),Except_Sell_VAT_Price) Last_Except_Sell_VAT_Price ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),Sell_VAT_Price) Last_Sell_VAT_Price ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price4 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price4) Last_price4 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price5 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price5) Last_price5 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price6 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price6) Last_price6 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price7 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price7) Last_price7 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price8 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),price8) Last_price8 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 BV1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  BV1 ) Last_BV1 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 BV2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  BV2 ) Last_BV2 ";
 
-            Tsql = Tsql + " , Isnull (( Select Top 1 price_A_2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  price_A_2 ) Last_price_A_2 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 price_A_2_2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  price_A_2_2 ) Last_price_A_2_2 ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 Vat_A From tbl_Goods_Change (nolock)  Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  Vat_A ) Last_Vat_A ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 PV_A From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  PV_A ) Last_PV_A ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 BV_A From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  BV_A ) Last_BV_A ";
-            Tsql = Tsql + " , Isnull (( Select Top 1 price3 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = ''Order by ApplyDate DESC   ),price3) Last_price3 ";
-            
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price_A_2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  price_A_2 ) Last_price_A_2 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price_A_2_2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  price_A_2_2 ) Last_price_A_2_2 ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 Vat_A From tbl_Goods_Change (nolock)  Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  Vat_A ) Last_Vat_A ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 PV_A From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  PV_A ) Last_PV_A ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 BV_A From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '' Order by ApplyDate DESC   ),  BV_A ) Last_BV_A ";
+            //Tsql = Tsql + " , Isnull (( Select Top 1 price3 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = ''Order by ApplyDate DESC   ),price3) Last_price3 ";
+
+            Tsql = Tsql + " , Isnull (( Select Top 1 price1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),price) Last_price ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 price2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),price2) Last_price2 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 Except_Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),Except_Sell_VAT_Price) Last_Except_Sell_VAT_Price ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 Sell_VAT_Price From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),Sell_VAT_Price) Last_Sell_VAT_Price ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 price4 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),price4) Last_price4 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 price5 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),price5) Last_price5 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 price6 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),price6) Last_price6 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 price7 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),price7) Last_price7 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 price8 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),price8) Last_price8 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 BV1 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  BV1 ) Last_BV1 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 BV2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  BV2 ) Last_BV2 ";
+
+            Tsql = Tsql + " , Isnull (( Select Top 1 price_A_2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  price_A_2 ) Last_price_A_2 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 price_A_2_2 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  price_A_2_2 ) Last_price_A_2_2 ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 Vat_A From tbl_Goods_Change (nolock)  Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  Vat_A ) Last_Vat_A ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 PV_A From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  PV_A ) Last_PV_A ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 BV_A From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),  BV_A ) Last_BV_A ";
+            Tsql = Tsql + " , Isnull (( Select Top 1 price3 From tbl_Goods_Change (nolock) Where tbl_Goods_Change.Ncode = tbl_Goods.Ncode And Na_code = '" + cls_NationService.GetCountryCode_WhiteSpace(cls_User.gid_CountryCode) + "' Order by ApplyDate DESC   ),price3) Last_price3 ";
+
             Tsql = Tsql + " , AutoShipYN, GeneralSell_YN,PrimiumYN,HealthYN,SpecialYN";
             Tsql = Tsql + " , isnull(tbl_MakeItemCode1.itemcode ,'') as MakeItemCode1_itemcode";
             Tsql = Tsql + " , isnull(tbl_MakeItemCode1.itemname ,'') as MakeItemCode1_itemname";
