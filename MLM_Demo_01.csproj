@@ -166,6 +166,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Class\cls_menu.cs" />
+    <Compile Include="Class\cls_NationService.cs" />
     <Compile Include="Class\cls_Register.cs" />
     <Compile Include="Class\cls_Sell.cs" />
     <Compile Include="Class\cls_Base_.cs" />
