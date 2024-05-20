@@ -2372,8 +2372,12 @@ namespace MLM_Program
             {
                 SuccessYN = "N";
                 C_Index = int.Parse(dGridView_Base_Cacu.Rows[i].Cells[0].Value.ToString());
+
+                string C_TF = dGridView_Base_Cacu.Rows[i].Cells[9].Value.ToString();
+
+
                 /*카드취소*/
-                if (dGridView_Base_Cacu.Rows[i].Cells[9].Value.ToString() == "3")
+                if (C_TF == "3")
                 {
 
                     if (Before_Order_Check(txt_OrderNumber.Text, C_Index) == true)
@@ -2416,7 +2420,7 @@ namespace MLM_Program
                     }
                 }
                 /*네이버페이*/
-                if (dGridView_Base_Cacu.Rows[i].Cells[9].Value.ToString() == "7")
+                if (C_TF == "7")
                 {
                     string ErrMessage = "";
 
@@ -2440,7 +2444,7 @@ namespace MLM_Program
                     Cls_Web.Dir_VR_Cash_Receipt_All_Cancel(txt_OrderNumber.Text, C_Index);
 
                 ///*가상계좌취소*/
-                if (dGridView_Base_Cacu.Rows[i].Cells[9].Value.ToString() == "5")
+                if (C_TF == "5")
                 {
                     if (VR_Cancel_Chk(txt_OrderNumber.Text, C_Index) == true)       //가상계좌 입금이 되지 않았으면 가상계좌 취소
                     {//안들어왔으면 안들어온놈이라는걸 알린다.

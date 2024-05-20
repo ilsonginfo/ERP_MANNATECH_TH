@@ -2147,6 +2147,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="POVAS_s.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\DataSources\cls_Sell.datasource" />
     <None Include="report\MembershipCardReport.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

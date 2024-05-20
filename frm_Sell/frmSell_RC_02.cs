@@ -572,6 +572,16 @@ namespace MLM_Program
             strSql = strSql + "  When ReturnTF = 4 Then '" + cm._chang_base_caption_search("교환") + "'";
             strSql = strSql + "  When ReturnTF = 3 Then '" + cm._chang_base_caption_search("부분반품") + "'";
             strSql = strSql + "  When ReturnTF = 5 Then '" + cm._chang_base_caption_search("취소") + "'";
+
+            //태국은 좀 더 많음 
+            if (cls_User.gid_CountryCode == "TH")
+            {
+                strSql = strSql + "  When ReturnTF = 8 Then 'PromptPay'";
+                strSql = strSql + "  When ReturnTF = 9 Then 'OnlineBanking'";
+                strSql = strSql + "  When ReturnTF = 10 Then 'MobileBanking'";
+                strSql = strSql + "  When ReturnTF = 5 Then '" + cm._chang_base_caption_search("취소") + "'";
+            }
+
             strSql = strSql + " END ReturnTFName ";
 
 
@@ -637,7 +647,7 @@ namespace MLM_Program
             //// strSql = strSql + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
             strSql = strSql + " And tbl_Memberinfo.BusinessCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode  + "') )";
             strSql = strSql + " And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('" + cls_User.gid_CountryCode + "') )";
-            strSql = strSql + " And (Ga_Order = 0 ) "; //정상내역은 승인 내역만 보여준다.
+            strSql = strSql + " And ((tbl_SalesDetail.ReturnTF = 1 AND tbl_SalesDetail.Ga_Order = 0 ) OR ReturnTF in (2,3,4))"; //정상내역은 승인 내역만 보여준다.
 
             strSql = strSql + " And tbl_SalesDetail.SellCode <> '' ";
 

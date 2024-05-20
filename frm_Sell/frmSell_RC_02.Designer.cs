@@ -1903,7 +1903,7 @@
             // 
             this.button_Cancel.BackColor = System.Drawing.Color.White;
             this.button_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Cancel.Location = new System.Drawing.Point(601, 191);
+            this.button_Cancel.Location = new System.Drawing.Point(601, 154);
             this.button_Cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(125, 28);
@@ -1911,14 +1911,13 @@
             this.button_Cancel.TabStop = false;
             this.button_Cancel.Text = "카드_승인_취소";
             this.button_Cancel.UseVisualStyleBackColor = false;
-            this.button_Cancel.Visible = false;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // button_Ok
             // 
             this.button_Ok.BackColor = System.Drawing.Color.White;
             this.button_Ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Ok.Location = new System.Drawing.Point(481, 191);
+            this.button_Ok.Location = new System.Drawing.Point(481, 154);
             this.button_Ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_Ok.Name = "button_Ok";
             this.button_Ok.Size = new System.Drawing.Size(116, 28);
@@ -1926,7 +1925,6 @@
             this.button_Ok.TabStop = false;
             this.button_Ok.Text = "카드_승인";
             this.button_Ok.UseVisualStyleBackColor = false;
-            this.button_Ok.Visible = false;
             this.button_Ok.Click += new System.EventHandler(this.button_Ok_Click);
             // 
             // tableLayoutPanel29
