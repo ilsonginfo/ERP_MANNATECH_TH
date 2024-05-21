@@ -4259,7 +4259,7 @@ namespace MLM_Program
 
                 if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
                 {
-                    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable_MU '" + Mbid + "', " + Mbid2 + "";
+                    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable_MS '" + Mbid + "', " + Mbid2 + "";
                 }
                 else    // 태국 이외 국가시
                 {
