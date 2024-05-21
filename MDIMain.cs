@@ -146,8 +146,7 @@ namespace MLM_Program
             }
             else if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "TH")
             {
-                menuStrip.BackColor = Color.Plum;
-                BaseInfoMenu.BackColor = Color.Plum;
+                menuStrip.BackColor = Color.FromArgb(45, 52, 54);
             }
 
             if (Login_Board_TF == 1 && cls_User.gid != cls_User.SuperUserID)
