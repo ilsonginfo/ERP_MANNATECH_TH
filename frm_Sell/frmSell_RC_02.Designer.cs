@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.butt_Excel = new System.Windows.Forms.Button();
             this.butt_Delete = new System.Windows.Forms.Button();
@@ -129,6 +129,10 @@
             this.txt_C_Etc = new System.Windows.Forms.TextBox();
             this.tab_Cacu_Sub = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pnl_Card_CVC = new System.Windows.Forms.TableLayoutPanel();
+            this.panel100 = new System.Windows.Forms.Panel();
+            this.txt_C_CVC = new System.Windows.Forms.TextBox();
+            this.label100 = new System.Windows.Forms.Label();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Ok = new System.Windows.Forms.Button();
             this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
@@ -293,10 +297,6 @@
             this.tableLayoutPanel66 = new System.Windows.Forms.TableLayoutPanel();
             this.panel34 = new System.Windows.Forms.Panel();
             this.label69 = new System.Windows.Forms.Label();
-            this.pnl_Card_CVC = new System.Windows.Forms.TableLayoutPanel();
-            this.panel100 = new System.Windows.Forms.Panel();
-            this.txt_C_CVC = new System.Windows.Forms.TextBox();
-            this.label100 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Base)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -333,6 +333,8 @@
             this.tableLayoutPanel35.SuspendLayout();
             this.tab_Cacu_Sub.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.pnl_Card_CVC.SuspendLayout();
+            this.panel100.SuspendLayout();
             this.tableLayoutPanel29.SuspendLayout();
             this.panel79.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -421,8 +423,6 @@
             this.panel36.SuspendLayout();
             this.tableLayoutPanel66.SuspendLayout();
             this.panel34.SuspendLayout();
-            this.pnl_Card_CVC.SuspendLayout();
-            this.panel100.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -724,23 +724,23 @@
             // 
             this.dGridView_Base.BackgroundColor = System.Drawing.Color.White;
             this.dGridView_Base.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle57.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle57.Font = new System.Drawing.Font("돋움", 9F);
-            dataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Base.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle73.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle73.Font = new System.Drawing.Font("돋움", 9F);
+            dataGridViewCellStyle73.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle73.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle73.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle73.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Base.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle73;
             this.dGridView_Base.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle58.Font = new System.Drawing.Font("돋움", 9F);
-            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Base.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle74.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle74.Font = new System.Drawing.Font("돋움", 9F);
+            dataGridViewCellStyle74.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle74.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle74.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle74.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Base.DefaultCellStyle = dataGridViewCellStyle74;
             this.dGridView_Base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridView_Base.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dGridView_Base.Location = new System.Drawing.Point(306, 0);
@@ -992,23 +992,23 @@
             // 
             this.dGridView_Base_Item.BackgroundColor = System.Drawing.Color.White;
             this.dGridView_Base_Item.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle59.Font = new System.Drawing.Font("돋움", 9F);
-            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Base_Item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle75.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle75.Font = new System.Drawing.Font("돋움", 9F);
+            dataGridViewCellStyle75.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle75.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle75.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle75.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Base_Item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle75;
             this.dGridView_Base_Item.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("돋움", 9F);
-            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Base_Item.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle76.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle76.Font = new System.Drawing.Font("돋움", 9F);
+            dataGridViewCellStyle76.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle76.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle76.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle76.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Base_Item.DefaultCellStyle = dataGridViewCellStyle76;
             this.dGridView_Base_Item.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridView_Base_Item.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dGridView_Base_Item.Location = new System.Drawing.Point(0, 0);
@@ -1046,23 +1046,23 @@
             // 
             this.dGridView_Base_Cacu.BackgroundColor = System.Drawing.Color.White;
             this.dGridView_Base_Cacu.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle61.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle61.Font = new System.Drawing.Font("돋움", 9F);
-            dataGridViewCellStyle61.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle61.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle61.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Base_Cacu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle77.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle77.Font = new System.Drawing.Font("돋움", 9F);
+            dataGridViewCellStyle77.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle77.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle77.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle77.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Base_Cacu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle77;
             this.dGridView_Base_Cacu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle62.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle62.Font = new System.Drawing.Font("돋움", 9F);
-            dataGridViewCellStyle62.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle62.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Base_Cacu.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle78.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle78.Font = new System.Drawing.Font("돋움", 9F);
+            dataGridViewCellStyle78.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle78.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle78.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Base_Cacu.DefaultCellStyle = dataGridViewCellStyle78;
             this.dGridView_Base_Cacu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridView_Base_Cacu.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dGridView_Base_Cacu.Location = new System.Drawing.Point(0, 0);
@@ -1906,6 +1906,59 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "카드";
             // 
+            // pnl_Card_CVC
+            // 
+            this.pnl_Card_CVC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(173)))), ((int)(((byte)(142)))));
+            this.pnl_Card_CVC.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.pnl_Card_CVC.ColumnCount = 2;
+            this.pnl_Card_CVC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.pnl_Card_CVC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnl_Card_CVC.Controls.Add(this.panel100, 1, 0);
+            this.pnl_Card_CVC.Controls.Add(this.label100, 0, 0);
+            this.pnl_Card_CVC.Location = new System.Drawing.Point(1, 111);
+            this.pnl_Card_CVC.Name = "pnl_Card_CVC";
+            this.pnl_Card_CVC.RowCount = 1;
+            this.pnl_Card_CVC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnl_Card_CVC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.pnl_Card_CVC.Size = new System.Drawing.Size(248, 36);
+            this.pnl_Card_CVC.TabIndex = 205;
+            // 
+            // panel100
+            // 
+            this.panel100.BackColor = System.Drawing.Color.White;
+            this.panel100.Controls.Add(this.txt_C_CVC);
+            this.panel100.Location = new System.Drawing.Point(126, 4);
+            this.panel100.Margin = new System.Windows.Forms.Padding(2);
+            this.panel100.Name = "panel100";
+            this.panel100.Size = new System.Drawing.Size(117, 28);
+            this.panel100.TabIndex = 15;
+            // 
+            // txt_C_CVC
+            // 
+            this.txt_C_CVC.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.txt_C_CVC.Location = new System.Drawing.Point(4, 3);
+            this.txt_C_CVC.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.txt_C_CVC.MaxLength = 30;
+            this.txt_C_CVC.Name = "txt_C_CVC";
+            this.txt_C_CVC.Size = new System.Drawing.Size(111, 22);
+            this.txt_C_CVC.TabIndex = 0;
+            this.txt_C_CVC.Tag = "-";
+            // 
+            // label100
+            // 
+            this.label100.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label100.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(173)))), ((int)(((byte)(142)))));
+            this.label100.ForeColor = System.Drawing.Color.White;
+            this.label100.Location = new System.Drawing.Point(2, 2);
+            this.label100.Margin = new System.Windows.Forms.Padding(0);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(120, 32);
+            this.label100.TabIndex = 0;
+            this.label100.Text = "카드보안코드";
+            this.label100.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // button_Cancel
             // 
             this.button_Cancel.BackColor = System.Drawing.Color.White;
@@ -2145,7 +2198,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.panel57, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label56, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(250, 111);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(249, 76);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2200,7 +2253,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.panel50, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(1, 2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2332,6 +2385,7 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(238, 36);
             this.tableLayoutPanel9.TabIndex = 7;
+            this.tableLayoutPanel9.Visible = false;
             // 
             // panel55
             // 
@@ -2385,13 +2439,14 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.Controls.Add(this.panel49, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(1, 38);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(516, 141);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(249, 36);
             this.tableLayoutPanel10.TabIndex = 2;
+            this.tableLayoutPanel10.Visible = false;
             // 
             // panel49
             // 
@@ -2461,7 +2516,7 @@
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel11.Controls.Add(this.panel53, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.label25, 0, 0);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(250, 74);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(249, 110);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2524,7 +2579,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.Controls.Add(this.panel54, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.label26, 0, 0);
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(250, 37);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(1, 38);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2614,7 +2669,6 @@
             this.txt_C_Card_Number.Size = new System.Drawing.Size(113, 22);
             this.txt_C_Card_Number.TabIndex = 5;
             this.txt_C_Card_Number.Tag = "-";
-            this.txt_C_Card_Number.Text = "1234123412341234";
             this.txt_C_Card_Number.TextChanged += new System.EventHandler(this.txtData_TextChanged);
             this.txt_C_Card_Number.Enter += new System.EventHandler(this.txtData_Enter);
             this.txt_C_Card_Number.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
@@ -3305,23 +3359,23 @@
             // 
             this.dGridView_Base_Cacu_R.BackgroundColor = System.Drawing.Color.White;
             this.dGridView_Base_Cacu_R.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle63.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle63.Font = new System.Drawing.Font("돋움", 9F);
-            dataGridViewCellStyle63.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle63.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle63.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle63.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Base_Cacu_R.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle79.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle79.Font = new System.Drawing.Font("돋움", 9F);
+            dataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle79.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Base_Cacu_R.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle79;
             this.dGridView_Base_Cacu_R.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle64.Font = new System.Drawing.Font("돋움", 9F);
-            dataGridViewCellStyle64.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Base_Cacu_R.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle80.Font = new System.Drawing.Font("돋움", 9F);
+            dataGridViewCellStyle80.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Base_Cacu_R.DefaultCellStyle = dataGridViewCellStyle80;
             this.dGridView_Base_Cacu_R.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridView_Base_Cacu_R.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dGridView_Base_Cacu_R.Location = new System.Drawing.Point(0, 0);
@@ -4270,59 +4324,6 @@
             this.label69.Text = "교환_반품액";
             this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pnl_Card_CVC
-            // 
-            this.pnl_Card_CVC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(173)))), ((int)(((byte)(142)))));
-            this.pnl_Card_CVC.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.pnl_Card_CVC.ColumnCount = 2;
-            this.pnl_Card_CVC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.pnl_Card_CVC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnl_Card_CVC.Controls.Add(this.panel100, 1, 0);
-            this.pnl_Card_CVC.Controls.Add(this.label100, 0, 0);
-            this.pnl_Card_CVC.Location = new System.Drawing.Point(2, 111);
-            this.pnl_Card_CVC.Name = "pnl_Card_CVC";
-            this.pnl_Card_CVC.RowCount = 1;
-            this.pnl_Card_CVC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnl_Card_CVC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.pnl_Card_CVC.Size = new System.Drawing.Size(248, 36);
-            this.pnl_Card_CVC.TabIndex = 205;
-            // 
-            // panel100
-            // 
-            this.panel100.BackColor = System.Drawing.Color.White;
-            this.panel100.Controls.Add(this.txt_C_CVC);
-            this.panel100.Location = new System.Drawing.Point(126, 4);
-            this.panel100.Margin = new System.Windows.Forms.Padding(2);
-            this.panel100.Name = "panel100";
-            this.panel100.Size = new System.Drawing.Size(117, 28);
-            this.panel100.TabIndex = 15;
-            // 
-            // txt_C_CVC
-            // 
-            this.txt_C_CVC.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txt_C_CVC.Location = new System.Drawing.Point(4, 3);
-            this.txt_C_CVC.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.txt_C_CVC.MaxLength = 30;
-            this.txt_C_CVC.Name = "txt_C_CVC";
-            this.txt_C_CVC.Size = new System.Drawing.Size(111, 22);
-            this.txt_C_CVC.TabIndex = 0;
-            this.txt_C_CVC.Tag = "-";
-            // 
-            // label100
-            // 
-            this.label100.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label100.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(173)))), ((int)(((byte)(142)))));
-            this.label100.ForeColor = System.Drawing.Color.White;
-            this.label100.Location = new System.Drawing.Point(2, 2);
-            this.label100.Margin = new System.Windows.Forms.Padding(0);
-            this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(120, 32);
-            this.label100.TabIndex = 0;
-            this.label100.Text = "카드보안코드";
-            this.label100.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // frmSell_RC_02
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -4395,6 +4396,9 @@
             this.tab_Cacu_Sub.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.pnl_Card_CVC.ResumeLayout(false);
+            this.panel100.ResumeLayout(false);
+            this.panel100.PerformLayout();
             this.tableLayoutPanel29.ResumeLayout(false);
             this.panel79.ResumeLayout(false);
             this.panel79.PerformLayout();
@@ -4522,9 +4526,6 @@
             this.tableLayoutPanel66.ResumeLayout(false);
             this.panel34.ResumeLayout(false);
             this.panel34.PerformLayout();
-            this.pnl_Card_CVC.ResumeLayout(false);
-            this.panel100.ResumeLayout(false);
-            this.panel100.PerformLayout();
             this.ResumeLayout(false);
 
         }
