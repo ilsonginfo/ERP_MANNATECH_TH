@@ -3656,12 +3656,12 @@ namespace MLM_Program
 
             if (txtB1.Text.Trim() == "") txtB1.Text = "0";
             //20240521 구현호 태국은 US아이디 안받는다
-            
-            // 한국인 경우에만
-            if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
-            {
-                if (Check_USA_Error() == false) return;
-            }
+            if (Check_USA_Error() == false) return;
+            //// 한국인 경우에만
+            //if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            //{
+            //    if (Check_USA_Error() == false) return;
+            //}
 
             if (Check_TextBox_Error() == false) return;
 
