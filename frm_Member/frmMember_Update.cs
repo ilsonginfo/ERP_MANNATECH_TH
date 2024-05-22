@@ -3655,7 +3655,14 @@ namespace MLM_Program
             if (MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Base_Edit_Q"), "", MessageBoxButtons.YesNo) == DialogResult.No) return;
 
             if (txtB1.Text.Trim() == "") txtB1.Text = "0";
+            //20240521 구현호 태국은 US아이디 안받는다
             if (Check_USA_Error() == false) return;
+            //// 한국인 경우에만
+            //if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
+            //{
+            //    if (Check_USA_Error() == false) return;
+            //}
+
             if (Check_TextBox_Error() == false) return;
 
             if (check_CC.Checked == true)
@@ -3993,7 +4000,7 @@ namespace MLM_Program
                 
                 if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
                 {
-                    StrSql = " EXEC  Usp_JDE_Update_MK_Customer_TA '" + Mbid2 + "','U' ";
+                    StrSql = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','U' ";
                 }
                 else    // 태국 이외 국가인 경우
                 {

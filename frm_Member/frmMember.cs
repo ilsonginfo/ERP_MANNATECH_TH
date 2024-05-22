@@ -4274,7 +4274,7 @@ namespace MLM_Program
                 string StrSql_JDE_PROCEDUER = "";
                 if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
                 {
-                    StrSql_JDE_PROCEDUER = " EXEC  Usp_JDE_Update_MK_Customer_TA '" + Mbid2 + "','A' ";
+                    StrSql_JDE_PROCEDUER = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','A' ";
                 }
                 else    // 태국 이외 국가시
                 {

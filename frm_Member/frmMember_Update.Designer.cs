@@ -4034,7 +4034,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(1513, 567);
+            this.tabPage2.Size = new System.Drawing.Size(1530, 567);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "결제_내역";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -4066,7 +4066,7 @@
             this.dGridView_Sell_Cacu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dGridView_Sell_Cacu.Name = "dGridView_Sell_Cacu";
             this.dGridView_Sell_Cacu.RowTemplate.Height = 23;
-            this.dGridView_Sell_Cacu.Size = new System.Drawing.Size(1507, 559);
+            this.dGridView_Sell_Cacu.Size = new System.Drawing.Size(1524, 559);
             this.dGridView_Sell_Cacu.TabIndex = 143;
             // 
             // tabPage3
@@ -4076,7 +4076,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(1513, 567);
+            this.tabPage3.Size = new System.Drawing.Size(1530, 567);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "배송_내역";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -4108,7 +4108,7 @@
             this.dGridView_Sell_Rece.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dGridView_Sell_Rece.Name = "dGridView_Sell_Rece";
             this.dGridView_Sell_Rece.RowTemplate.Height = 23;
-            this.dGridView_Sell_Rece.Size = new System.Drawing.Size(1507, 559);
+            this.dGridView_Sell_Rece.Size = new System.Drawing.Size(1524, 559);
             this.dGridView_Sell_Rece.TabIndex = 143;
             // 
             // dGridView_Sell
@@ -6242,7 +6242,6 @@
             // opt_sell_3
             // 
             this.opt_sell_3.AutoSize = true;
-            this.opt_sell_3.Enabled = false;
             this.opt_sell_3.Location = new System.Drawing.Point(144, 9);
             this.opt_sell_3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.opt_sell_3.Name = "opt_sell_3";
@@ -6255,7 +6254,6 @@
             // 
             this.opt_sell_2.AutoSize = true;
             this.opt_sell_2.Checked = true;
-            this.opt_sell_2.Enabled = false;
             this.opt_sell_2.Location = new System.Drawing.Point(2, 9);
             this.opt_sell_2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.opt_sell_2.Name = "opt_sell_2";
