@@ -2907,7 +2907,7 @@ namespace MLM_Program
             t_c_sell.C_Period1 = Sales_Cacu[int.Parse(txt_C_index.Text.Trim())].C_Period1;
             t_c_sell.C_Period2 = Sales_Cacu[int.Parse(txt_C_index.Text.Trim())].C_Period2;
             t_c_sell.C_Installment_Period = Sales_Cacu[int.Parse(txt_C_index.Text.Trim())].C_Installment_Period;
-            t_c_sell.C_CVC = Sales_Cacu[int.Parse(txt_C_CVC.Text.Trim())].C_Installment_Period;
+            t_c_sell.C_CVC = Sales_Cacu[int.Parse(txt_C_index.Text.Trim())].C_CVC;
             
             t_c_sell.Del_TF = "S";
             Sales_Cacu_R[New_C_index] = t_c_sell;
@@ -5678,7 +5678,7 @@ namespace MLM_Program
             t_c_sell.C_Period1 = Sales_Cacu[int.Parse(txt_C_index.Text.Trim())].C_Period1;
             t_c_sell.C_Period2 = Sales_Cacu[int.Parse(txt_C_index.Text.Trim())].C_Period2;
             t_c_sell.C_Installment_Period = Sales_Cacu[int.Parse(txt_C_index.Text.Trim())].C_Installment_Period;
-            t_c_sell.C_CVC = Sales_Cacu[int.Parse(txt_C_CVC.Text.Trim())].C_Installment_Period;
+            t_c_sell.C_CVC = Sales_Cacu[int.Parse(txt_C_index.Text.Trim())].C_CVC;
 
 
             t_c_sell.Del_TF = "S";
