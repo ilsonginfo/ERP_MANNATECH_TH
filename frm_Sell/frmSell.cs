@@ -240,8 +240,8 @@ namespace MLM_Program
             txtSellCode.Text = (cls_User.gid_CountryCode == "TH" ? "Regular_order" : "일반주문");
             //txtCenter2_Code.Text = "50000";
             //txtCenter2.Text = "물류센터";
-            txtCenter2_Code.Text = (cls_User.gid_CountryCode == "TH" ? "999" : "50000");                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
-            txtCenter2.Text = (cls_User.gid_CountryCode == "TH" ? "TH_Center1" : "물류센터");    // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
+            txtCenter2_Code.Text = (cls_User.gid_CountryCode == "TH" ? "540000" : "50000");                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
+            txtCenter2.Text = (cls_User.gid_CountryCode == "TH" ? "Warehouse" : "물류센터");    // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
 
             Data_Set_Form_TF = 0;
 
@@ -731,15 +731,22 @@ namespace MLM_Program
                 txtCenter3.Text = "인천픽업";
                 txtCenter3_Code.Text = "50012";
             }
-
-            // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
-            if (txtCenter2.Text == "TH_Center1" && cls_User.gid_CountryCode == "TH")
+            if (txtCenter2.Text == "Warehouse")
             {
                 txt_Receive_Method.Text = "Delivery";
                 txt_Receive_Method_Code.Text = "2";
-                txtCenter3.Text = "TH_Center1";    // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
-                txtCenter3_Code.Text = "999";                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
+                txtCenter3.Text = "Warehouse";
+                txtCenter3_Code.Text = "540000";
             }
+
+            if (txtCenter2.Text == "StoreFront")
+            {
+                txt_Receive_Method.Text = "Pickup";
+                txt_Receive_Method_Code.Text = "1";
+                txtCenter3.Text = "StoreFront";
+                txtCenter3_Code.Text = "540010";
+            }
+
         }
 
         private bool SetSellCode()
@@ -1523,6 +1530,8 @@ namespace MLM_Program
 
             int Witdh_Mile = cls_app_static_var.Using_Mileage_TF != 0 ? 80 : 0;
             int Witdh_Naver = cls_User.gid_CountryCode == "KR" ? 80 : 0;
+            int Witdh_InsuranceNumber = cls_User.gid_CountryCode == "KR" ? 110 : 0;
+
 
             if (cls_app_static_var.Sell_Union_Flag == "")  //직판특판이 아닌경우 공제번호 필드 안나오게
             {
@@ -1538,7 +1547,7 @@ namespace MLM_Program
             else
             {
 
-                int[] g_Width = {   80, 120, 120, 80, 80
+                int[] g_Width = {   80, Witdh_InsuranceNumber, 120, 80, 80
                                   , 80,  80,  80, 80, 80
                                   , 80,  80,  80, 80, 80
                                   , Witdh_Mile , Witdh_Naver, Witdh_TH_Payment, Witdh_TH_Payment, Witdh_TH_Payment
@@ -1546,6 +1555,7 @@ namespace MLM_Program
                                 };
                 cgb.grid_col_w = g_Width;
             }
+
 
             DataGridViewContentAlignment[] g_Alignment =
                                 {DataGridViewContentAlignment.MiddleLeft
@@ -4521,13 +4531,54 @@ namespace MLM_Program
 
                 if(txt_Receive_Method_Code.Text.Trim() == "")
                 {
-                    MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Not_Input")
-                          + "-" + "배송구분"
-                         + "\n" +
-                         cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    txt_Receive_Method.Focus(); return false;
+                    if (txtCenter2.Text == "물류센터")
+                    {
+                        txt_Receive_Method.Text = "배송";
+                        txt_Receive_Method_Code.Text = "2";
+                        txtCenter3.Text = "물류센터";
+                        txtCenter3_Code.Text = "50000";
+                    }
+                    if (txtCenter2.Text == "서울픽업")
+                    {
+                        txt_Receive_Method.Text = "직접수령";
+                        txt_Receive_Method_Code.Text = "1";
+                        txtCenter3.Text = "서울픽업";
+                        txtCenter3_Code.Text = "50010";
+                    }
+                    if (txtCenter2.Text == "부산픽업")
+                    {
+                        txt_Receive_Method.Text = "직접수령";
+                        txt_Receive_Method_Code.Text = "1";
+                        txtCenter3.Text = "부산픽업";
+                        txtCenter3_Code.Text = "50011";
+                    }
+                    if (txtCenter2.Text == "인천픽업")
+                    {
+                        txt_Receive_Method.Text = "직접수령";
+                        txt_Receive_Method_Code.Text = "1";
+                        txtCenter3.Text = "인천픽업";
+                        txtCenter3_Code.Text = "50012";
+                    }
+                    if (txtCenter2.Text == "Warehouse")
+                    {
+                        txt_Receive_Method.Text = "Delivery";
+                        txt_Receive_Method_Code.Text = "2";
+                        txtCenter3.Text = "Warehouse";
+                        txtCenter3_Code.Text = "540000";
+                    }
+
+                    if (txtCenter2.Text == "StoreFront")
+                    {
+                        txt_Receive_Method.Text = "Pickup";
+                        txt_Receive_Method_Code.Text = "1";
+                        txtCenter3.Text = "StoreFront";
+                        txtCenter3_Code.Text = "540010";
+                    }
+
                 }
-                else if (txt_Receive_Method_Code.Text.Trim() == "1" && txtCenter3_Code.Text.Trim() == "")
+
+
+                if (txt_Receive_Method_Code.Text.Trim() == "1" && txtCenter3_Code.Text.Trim() == "")
                 {
                     MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Not_Input")
                           + "-" + "수령센터"
@@ -4536,11 +4587,7 @@ namespace MLM_Program
                     txtCenter3.Focus(); return false;
                 }
                 else if (txt_Receive_Method_Code.Text.Trim() == "2" && txtCenter3_Code.Text.Trim() == "")
-                {
-                    //txtCenter3.Text = "물류센터";
-                    //txtCenter3_Code.Text = "50000";
-                    txtCenter3.Text = (cls_User.gid_CountryCode == "TH" ? "TH_Center1" : "물류센터");    // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
-                    txtCenter3_Code.Text = (cls_User.gid_CountryCode == "TH" ? "999" : "50000");                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
+                {           // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
                 }
 
             }
@@ -5569,8 +5616,8 @@ namespace MLM_Program
 
             //txtCenter2_Code.Text = "50000";
             //txtCenter2.Text = "물류센터";
-            txtCenter2.Text = (cls_User.gid_CountryCode == "TH" ? "TH_Center1" : "물류센터");    // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
-            txtCenter2_Code.Text = (cls_User.gid_CountryCode == "TH" ? "999" : "50000");                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
+            txtCenter2.Text = (cls_User.gid_CountryCode == "TH" ? "Warehouse" : "물류센터");    // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
+            txtCenter2_Code.Text = (cls_User.gid_CountryCode == "TH" ? "540000" : "50000");                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
 
             mtxtSellDate.Text = cls_User.gid_date_time;
             mtxtSellDate2.Text = cls_User.gid_date_time;
@@ -13087,10 +13134,6 @@ namespace MLM_Program
             Base_Sub_Sum_Cacu();
         }
 
-        private void MtxtSellDate2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void txtSellCode_Code_Leave(object sender, EventArgs e)
         {
@@ -13100,10 +13143,6 @@ namespace MLM_Program
             }
         }
 
-        private void mtxtMbid_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
 
         private void btnGetMemberHPTel_Click(object sender, EventArgs e)
         {
