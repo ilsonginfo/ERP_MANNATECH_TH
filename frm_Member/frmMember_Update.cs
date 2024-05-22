@@ -4000,7 +4000,7 @@ namespace MLM_Program
                 
                 if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
                 {
-                    StrSql = " EXEC  Usp_JDE_Update_MK_Customer_TA '" + Mbid2 + "','U' ";
+                    StrSql = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','U' ";
                 }
                 else    // 태국 이외 국가인 경우
                 {
