@@ -109,19 +109,32 @@ namespace MLM_Program
 
             cls_app_static_var.APP_VER = "DEBUG 001";
 #else
-            //++++++++++++++라이브++++++++++++++++ +
 
-            cls_app_static_var.app_Company_Name = "mannatech";
+
+            //////++++++++++++++테스트++++++++++++++++ +
+
+            cls_app_static_var.app_Company_Name = "menatech";
             cls_app_static_var.app_FTP_ID = "melong202";
             cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
             string User_Id = "IS_Info";
             string password = "Mannatech)%!$";
             string Company_DB_Name = "mannatech";
-            cls_app_static_var.app_Company_Name = "mannatech_Live";
-            //////++++++++++++++라이브++++++++++++++++ +
-            ///
+            cls_app_static_var.app_Company_Name = "menatech";
 
-            cls_app_static_var.APP_VER = "[RELEASE]240408_001";
+
+            ////++++++++++++++라이브++++++++++++++++ +
+
+            //cls_app_static_var.app_Company_Name = "mannatech";
+            //cls_app_static_var.app_FTP_ID = "melong202";
+            //cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
+            //string User_Id = "IS_Info";
+            //string password = "Mannatech)%!$";
+            //string Company_DB_Name = "mannatech";
+            //cls_app_static_var.app_Company_Name = "mannatech_Live";
+            ////////++++++++++++++라이브++++++++++++++++ +
+            /////
+
+            cls_app_static_var.APP_VER = "[RELEASE]240523_UAT";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++
@@ -176,7 +189,7 @@ namespace MLM_Program
             }
 
 #if DEBUG
-            ////테스트배포때 연다
+            //////테스트배포때 연다
             //if (cls_app_static_var.app_Company_Name == "menatech")
             //{
             //    cls_Connect_DB.LiveFlag = false;
@@ -191,11 +204,15 @@ namespace MLM_Program
             {
                 cls_Connect_DB.LiveFlag = false;
             }
-            //테스트배포땐닫는다
+            ////테스트배포땐닫는다
             //////++++++++++++++++++++++++++++++++
 
 #else
-
+            ////테스트배포때 연다
+            if (cls_app_static_var.app_Company_Name == "menatech")
+            {
+                cls_Connect_DB.LiveFlag = false;
+            }
 #endif
 
             cls_Connect_DB.Conn_Str = "Initial Catalog=" + Company_DB_Name + ";Persist Security Info=True;User ID=" + User_Id + ";Password=" + password + ";Data Source=" + Connect_IP + "";

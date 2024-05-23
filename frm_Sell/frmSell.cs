@@ -11967,6 +11967,23 @@ namespace MLM_Program
         {
             if (txt_OrderNumber.Text == "" && InsuranceNumber_Ord_Print_FLAG == "") return;
 
+            switch (cls_User.gid_CountryCode)
+            {
+                case "TH": FastReport_PH_SellOrder();  break;
+                default: FastReport_KR_SellOrder(); break;
+            }
+
+
+        }
+
+        private void FastReport_PH_SellOrder()
+        {
+
+        }
+
+        private void FastReport_KR_SellOrder()
+        {
+
             frmFastReport frm = new frmFastReport();
             frm.Parameter.Add("회원명", txtName.Text);
             frm.Parameter.Add("회원번호", mtxtMbid.Text);
@@ -12006,7 +12023,7 @@ namespace MLM_Program
             frm.Parameter.Add("수령방법", ReceiveMethodName);
             frm.Parameter.Add("주소", FullAddress);
 
-   
+
 
             string BV = "";
             BV = DateTime.Now.ToString("yyyyMM");
@@ -12018,18 +12035,18 @@ namespace MLM_Program
             //if (Temp_Connect2.Open_Data_Set(Tsql2, "tbl_salesdetail", ds2) == false) return;
             //int PV_CV_Check_print = int.Parse(ds2.Tables["tbl_salesdetail"].Rows[0][0].ToString());
 
-      
 
-            double txt_TotalInputPrice_int = double.Parse(txt_TotalInputPrice.Text.Replace(",",""));
+
+            double txt_TotalInputPrice_int = double.Parse(txt_TotalInputPrice.Text.Replace(",", ""));
             double txt_TotalInputPrice_min = txt_TotalInputPrice_int / 11;
             Math.Round(txt_TotalInputPrice_min);
             string txt_TotalInputPrice_min_string = string.Format("{0:###,###,###,###}", txt_TotalInputPrice_min);
-         
+
 
             double txt_TotalInputPrice_min_final = txt_TotalInputPrice_int - txt_TotalInputPrice_min;
             Math.Round(txt_TotalInputPrice_min_final);
             string txt_TotalInputPrice_min_final_string = string.Format("{0:###,###,###,###}", txt_TotalInputPrice_min_final);
-           
+
 
 
             if (chK_PV_CV_Check.Checked == true)
@@ -12043,7 +12060,7 @@ namespace MLM_Program
                 frm.Parameter.Add("총입금액", txt_TotalInputPrice.Text);
                 frm.Parameter.Add("세금", txt_TotalInputPrice_min_string);
                 frm.Parameter.Add("총입금액세금차액", txt_TotalInputPrice_min_final_string);
-                
+
             }
             else
             {
@@ -12067,7 +12084,7 @@ namespace MLM_Program
             Products.Columns.Add("ItemPrice", typeof(int));
             Products.Columns.Add("ItemTotalPrice", typeof(int));
             Products.Columns.Add("ItemPV", typeof(int));
-     
+
             Products.Columns.Add("Etc", typeof(string));
             //추가된 세트아이템 코드
             StringBuilder sb = new StringBuilder();
@@ -12099,11 +12116,11 @@ namespace MLM_Program
                 }
                 else
                 {
-                    Product["ItemPV"] =0;
+                    Product["ItemPV"] = 0;
                     Product["ItemPrice"] = 0;
                     Product["ItemTotalPrice"] = 0;
                 }
-           
+
                 Product["Etc"] = row.Cells["Etc"].Value.ToString();
 
                 Products.Rows.Add(Product);
@@ -12117,10 +12134,10 @@ namespace MLM_Program
 
                     DataRow SetProduct = Products.NewRow();
                     SetProduct["ItemCode"] = SetRow["Sub_Good_Code"].ToString();
-                    SetProduct["Name"] = "ㄴ(SET) " +  SetRow["name"].ToString();
+                    SetProduct["Name"] = "ㄴ(SET) " + SetRow["name"].ToString();
                     SetProduct["ItemCount"] = SetCnt.ToString();
 
-                  
+
                     Products.Rows.Add(SetProduct);
                 }
             }

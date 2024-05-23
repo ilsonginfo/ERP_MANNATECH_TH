@@ -214,7 +214,13 @@ namespace MLM_Program
                 string u_ip, u_computername;
                 Hard_Number(out u_ip, out  u_computername);
 
-                if (u_computername.ToUpper() == "DESKTOP-657BT4V".ToUpper() ||  u_computername.ToUpper() == "LANCE1".ToUpper() || u_computername.ToUpper() == "ilsong-dev".ToUpper() || u_computername.ToUpper() == "JRED-PC" || u_computername.ToUpper() == "DESKTOP-DCOJLJ6" || u_computername.ToUpper() == "DESKTOP-UN61U37" || u_computername.ToUpper() == "design1".ToUpper()
+                if (u_computername.ToUpper() == "DESKTOP-657BT4V".ToUpper() || 
+                    u_computername.ToUpper() == "LANCE1".ToUpper() || 
+                    u_computername.ToUpper() == "ilsong-dev".ToUpper() || 
+                    u_computername.ToUpper() == "JRED-PC" || 
+                    u_computername.ToUpper() == "DESKTOP-DCOJLJ6" ||
+                    u_computername.ToUpper() == "DESKTOP-UN61U37" || 
+                    u_computername.ToUpper() == "design1".ToUpper()
                     || u_computername.ToUpper() == "ilsong-csdev".ToUpper() // syhuh
                     || u_computername.ToUpper() == "LANCE31".ToUpper() // syhuh
                     ) 
@@ -468,7 +474,7 @@ namespace MLM_Program
             cls_User.gid_CountryCode = "";
 
             cls_User.gid_CountryCode = "KR";
-            cls_User.gid_CountryCode = "TH";
+            //cls_User.gid_CountryCode = "TH";
 
         }
 

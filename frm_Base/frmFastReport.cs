@@ -22,6 +22,8 @@ namespace MLM_Program
         {
             거래명세표,
             거래명세표_출고용,
+            거래명세표_TH,
+            거래명세표_출고용_TH,
             회원증명서
         }
         
@@ -48,17 +50,27 @@ namespace MLM_Program
                 this._ReportName = "SellTransactionReport.frx";
                 this.Text = "판매영수증";
             }
-            else if (EShowReport.회원증명서.Equals(Report))
-            {
-                this._ReportName = "MembershipCardReport.frx";
-                this.Text = "회원증명서";
-            }
-            //else if(....){}
             else if (EShowReport.거래명세표_출고용.Equals(Report))
             {
                 this._ReportName = "SellTransactionReport_OnlyStockOutSell.frx";
                 this.Text = "판매영수증_출고용";
             }
+            else if (EShowReport.회원증명서.Equals(Report))
+            {
+                this._ReportName = "MembershipCardReport.frx";
+                this.Text = "회원증명서";
+            }
+            else if (EShowReport.거래명세표_TH.Equals(Report))
+            {
+                this._ReportName = "SellTransactionReport_TH.frx";
+                this.Text = "판매영수증";
+            }
+            else if (EShowReport.거래명세표_출고용_TH.Equals(Report))
+            {
+                this._ReportName = "SellTransactionReport_TH_OnlyStockOutSell.frx";
+                this.Text = "판매영수증_출고용";
+            }
+            //else if(....){}
             //MakeReportToLocal();
         }
 

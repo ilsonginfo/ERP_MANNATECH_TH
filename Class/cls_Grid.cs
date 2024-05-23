@@ -3768,12 +3768,14 @@ namespace MLM_Program
             cls_form_Meth cm = new cls_form_Meth();
 
             Tsql = "Select tbl_Sales_Cacu.C_index ";
-            Tsql = Tsql + " ,Case When C_TF = 1 Then '" + cm._chang_base_caption_search("현금") + "'";
-            Tsql = Tsql + "  When C_TF = 2 Then '" + cm._chang_base_caption_search("무통장") + "'";
-            Tsql = Tsql + "  When C_TF = 3 Then '" + cm._chang_base_caption_search("카드") + "'";
-            Tsql = Tsql + "  When C_TF = 4 Then '" + cm._chang_base_caption_search("마일리지") + "'";
-            Tsql = Tsql + "  When C_TF = 5 Then '" + cm._chang_base_caption_search("가상계좌") + "'";            
-            Tsql = Tsql + " END  C_TF_Name ";
+            //Tsql = Tsql + " ,Case When C_TF = 1 Then '" + cm._chang_base_caption_search("현금") + "'";
+            //Tsql = Tsql + "  When C_TF = 2 Then '" + cm._chang_base_caption_search("무통장") + "'";
+            //Tsql = Tsql + "  When C_TF = 3 Then '" + cm._chang_base_caption_search("카드") + "'";
+            //Tsql = Tsql + "  When C_TF = 4 Then '" + cm._chang_base_caption_search("마일리지") + "'";
+            //Tsql = Tsql + "  When C_TF = 5 Then '" + cm._chang_base_caption_search("가상계좌") + "'";            
+            //Tsql = Tsql + " END  C_TF_Name ";
+            Tsql = Tsql + " , Ch_T." + cls_app_static_var.Base_M_Detail_Ex + " C_TF_Name ";
+
             Tsql = Tsql + " ,tbl_Sales_Cacu.C_Price1  ";
             Tsql = Tsql + " ,tbl_Sales_Cacu.C_AppDate1  ";
             Tsql = Tsql + " ,Case When Isnull(tbl_Bank.bankname , '') <> '' then Isnull(tbl_Bank.bankname , '') ELSE tbl_Sales_Cacu.C_CodeName END ";
@@ -3785,7 +3787,7 @@ namespace MLM_Program
             Tsql = Tsql + " From tbl_Sales_Cacu (nolock) ";
             Tsql = Tsql + " LEFT JOIN tbl_SalesDetail (nolock) ON tbl_SalesDetail.OrderNumber = tbl_Sales_Cacu.OrderNumber ";
             Tsql = Tsql + " LEFT JOIN tbl_BankForCompany (nolock) ON tbl_Sales_Cacu.C_Code = tbl_BankForCompany.BankCode And  tbl_Sales_Cacu.C_Number1 = tbl_BankForCompany.BankAccountNumber And tbl_SalesDetail.Na_Code = tbl_BankForCompany.Na_Code  ";
-
+            Tsql = Tsql + " LEFT JOIN tbl_Base_Change_Detail (NOLOCK) Ch_T ON Ch_T.M_Detail_S = 'tbl_Sales_Cacu' AND Ch_T.M_Detail = tbl_Sales_Cacu.C_TF ";
             Tsql = Tsql + " LEFT JOIN tbl_Bank (nolock) ON Right(tbl_Sales_Cacu.C_Code,2)  = Right(tbl_Bank.Ncode,2)  And tbl_Sales_Cacu.C_TF = 5   ";
             cls_NationService.SQL_BankNationCode(ref Tsql);
 
