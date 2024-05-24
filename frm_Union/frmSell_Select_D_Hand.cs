@@ -11,7 +11,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_D_Hand : Form
+    public partial class frmSell_Select_D_Hand : clsForm_Extends
     {
         
 

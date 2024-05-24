@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmBase_User : Form
+    public partial class frmBase_User : clsForm_Extends
     {
 
         private string base_db_name = "tbl_User";

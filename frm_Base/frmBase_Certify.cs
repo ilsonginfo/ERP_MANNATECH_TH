@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Certify : Form
+    public partial class frmBase_Certify : clsForm_Extends
     {
         public delegate void SendCertifyDele(string SuccessYN, string Message, string Name, string DI, string CI, string BirthDay, string Gender, string NationalInfo, string Age, string VNumber, string AgeCode, string AuthInfo, string RegTime);
         public event SendCertifyDele Send_Certify_Info;

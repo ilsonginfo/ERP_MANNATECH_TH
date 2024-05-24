@@ -34,7 +34,7 @@ namespace MLM_Program
 {
 
 
-    public partial class frmSell_Cancel_dev : Form
+    public partial class frmSell_Cancel_dev : clsForm_Extends
     {
 
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);

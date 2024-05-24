@@ -12,7 +12,7 @@ using System.Management;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Update : Form
+    public partial class frmBase_Update : clsForm_Extends
     {
 
         private int New_Ver = 0;

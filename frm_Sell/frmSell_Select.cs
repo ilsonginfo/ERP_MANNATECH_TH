@@ -15,7 +15,7 @@ using DXGrid = DevExpress.XtraGrid;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select : Form
+    public partial class frmSell_Select : clsForm_Extends
     {
 
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);

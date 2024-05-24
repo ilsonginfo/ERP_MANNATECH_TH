@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Nation : Form
+    public partial class frmBase_Nation : clsForm_Extends
     {
 
         cls_Grid_Base cgb = new cls_Grid_Base();

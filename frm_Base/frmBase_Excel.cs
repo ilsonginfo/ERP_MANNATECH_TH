@@ -13,7 +13,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Excel : Form
+    public partial class frmBase_Excel : clsForm_Extends
     {
         DataGridView Exp_dgv = new DataGridView();
 

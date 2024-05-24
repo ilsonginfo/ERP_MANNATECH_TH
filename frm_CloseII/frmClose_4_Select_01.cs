@@ -13,7 +13,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmClose_4_Select_01 : Form
+    public partial class frmClose_4_Select_01 : clsForm_Extends
     {
        
 

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Auto_Card_Select : Form
+    public partial class frmSell_Auto_Card_Select : clsForm_Extends
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
         

@@ -197,6 +197,7 @@ namespace MLM_Program
                 pnlZipCode_KR.Visible = false;
                 txtAddress2.ReadOnly = true;
                 cbSubDistrict_TH_SelectedIndexChanged(this, null);
+                tlpNaCode.Visible = false;
                 //combo_Se_Code_2.Text = "TH";
             }
             // 태국 이외 버전 인 경우

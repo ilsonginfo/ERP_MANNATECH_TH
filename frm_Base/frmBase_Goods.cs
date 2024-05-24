@@ -11,7 +11,7 @@ using System.Collections;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Goods : Form
+    public partial class frmBase_Goods : clsForm_Extends
     {
         cls_Grid_Base cgb = new cls_Grid_Base();
         cls_Grid_Base cgb_2 = new cls_Grid_Base();

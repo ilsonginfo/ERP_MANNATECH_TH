@@ -11,7 +11,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmMember_TreeView_Nom : Form
+    public partial class frmMember_TreeView_Nom : clsForm_Extends
     {
         
 

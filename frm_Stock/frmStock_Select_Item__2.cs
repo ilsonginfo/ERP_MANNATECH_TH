@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmStock_Select_Item__2 : Form
+    public partial class frmStock_Select_Item__2 : clsForm_Extends
     {
                
         cls_Grid_Base cgb = new cls_Grid_Base();

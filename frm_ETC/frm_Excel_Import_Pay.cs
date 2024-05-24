@@ -13,7 +13,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frm_Excel_Import_Pay : Form
+    public partial class frm_Excel_Import_Pay : clsForm_Extends
     {
 
 

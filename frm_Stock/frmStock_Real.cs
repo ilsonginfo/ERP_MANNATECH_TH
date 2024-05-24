@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmStock_Real : Form
+    public partial class frmStock_Real : clsForm_Extends
     {
        
         

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmClose_Sham_Sell_Down_M : Form
+    public partial class frmClose_Sham_Sell_Down_M : clsForm_Extends
     {
      
 

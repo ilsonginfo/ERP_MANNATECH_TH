@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmStock_IN_Sell_Cancel : Form
+    public partial class frmStock_IN_Sell_Cancel : clsForm_Extends
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
 

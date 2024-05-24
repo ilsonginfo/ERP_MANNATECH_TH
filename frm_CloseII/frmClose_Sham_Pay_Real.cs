@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmClose_Sham_Pay_Real : Form
+    public partial class frmClose_Sham_Pay_Real : clsForm_Extends
     {              
         cls_Grid_Base cgb = new cls_Grid_Base();
         cls_Grid_Base cg_Sub = new cls_Grid_Base();

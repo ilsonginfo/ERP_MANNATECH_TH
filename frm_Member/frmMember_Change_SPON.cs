@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Change_SPON : Form
+    public partial class frmMember_Change_SPON : clsForm_Extends
     {
        
         

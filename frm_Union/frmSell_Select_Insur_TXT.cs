@@ -10,7 +10,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Insur_TXT : Form
+    public partial class frmSell_Select_Insur_TXT : clsForm_Extends
     {
        
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);

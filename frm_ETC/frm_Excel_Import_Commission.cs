@@ -13,7 +13,7 @@ using System.Diagnostics;
 
 namespace MLM_Program
 {
-    public partial class frm_Excel_Import_Commission : Form
+    public partial class frm_Excel_Import_Commission : clsForm_Extends
     {
 
         clsExcel oExcel = null;

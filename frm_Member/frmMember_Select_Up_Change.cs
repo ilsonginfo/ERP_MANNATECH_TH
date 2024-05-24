@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Select_Up_Change : Form
+    public partial class frmMember_Select_Up_Change : clsForm_Extends
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
 

@@ -12,7 +12,7 @@ using System.Net;
 
 namespace MLM_Program
 {
-    public partial class frmSMS_Member_Card : Form
+    public partial class frmSMS_Member_Card : clsForm_Extends
     {
                 
         private int Load_TF = 0;

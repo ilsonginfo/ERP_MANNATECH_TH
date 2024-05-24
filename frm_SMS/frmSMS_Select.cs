@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmSMS_Select : Form
+    public partial class frmSMS_Select : clsForm_Extends
     {
         
 

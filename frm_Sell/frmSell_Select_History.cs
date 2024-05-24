@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_History : Form
+    public partial class frmSell_Select_History : clsForm_Extends
     {
 
 

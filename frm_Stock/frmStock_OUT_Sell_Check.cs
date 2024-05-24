@@ -11,7 +11,7 @@ using System.Drawing.Printing;
 
 namespace MLM_Program
 {
-    public partial class frmStock_OUT_Sell_Check : Form
+    public partial class frmStock_OUT_Sell_Check : clsForm_Extends
     {
        
         

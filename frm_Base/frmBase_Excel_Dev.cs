@@ -13,7 +13,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Excel_Dev : Form
+    public partial class frmBase_Excel_Dev : clsForm_Extends
     {
         DevExpress.XtraGrid.Views.Grid.GridView Exp_dgv = new DevExpress.XtraGrid.Views.Grid.GridView();
 

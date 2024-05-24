@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Mem : Form
+    public partial class frmSell_Select_Mem : clsForm_Extends
     {
      
 

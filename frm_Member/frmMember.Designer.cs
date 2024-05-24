@@ -194,7 +194,7 @@
             this.panel72 = new System.Windows.Forms.Panel();
             this.txtZipCode_TH = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel47 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpNaCode = new System.Windows.Forms.TableLayoutPanel();
             this.panel39 = new System.Windows.Forms.Panel();
             this.combo_Se_2 = new System.Windows.Forms.ComboBox();
             this.combo_Se_Code_2 = new System.Windows.Forms.ComboBox();
@@ -439,7 +439,7 @@
             this.panel73.SuspendLayout();
             this.pnlZipCode_TH.SuspendLayout();
             this.panel72.SuspendLayout();
-            this.tableLayoutPanel47.SuspendLayout();
+            this.tlpNaCode.SuspendLayout();
             this.panel39.SuspendLayout();
             this.tableLayoutPanel45.SuspendLayout();
             this.panel71.SuspendLayout();
@@ -2509,7 +2509,7 @@
             this.panel7.Controls.Add(this.pnlDistrict_TH);
             this.panel7.Controls.Add(this.pnlProvince_TH);
             this.panel7.Controls.Add(this.pnlZipCode_TH);
-            this.panel7.Controls.Add(this.tableLayoutPanel47);
+            this.panel7.Controls.Add(this.tlpNaCode);
             this.panel7.Controls.Add(this.tableLayoutPanel45);
             this.panel7.Controls.Add(this.checkB_SMS_FLAG);
             this.panel7.Controls.Add(this.tableLayoutPanel43);
@@ -2786,22 +2786,22 @@
             this.label55.Text = "*우편번호";
             this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tableLayoutPanel47
+            // tlpNaCode
             // 
-            this.tableLayoutPanel47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.tableLayoutPanel47.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel47.ColumnCount = 2;
-            this.tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel47.Controls.Add(this.panel39, 1, 0);
-            this.tableLayoutPanel47.Controls.Add(this.label54, 0, 0);
-            this.tableLayoutPanel47.Location = new System.Drawing.Point(301, 660);
-            this.tableLayoutPanel47.Name = "tableLayoutPanel47";
-            this.tableLayoutPanel47.RowCount = 1;
-            this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel47.Size = new System.Drawing.Size(300, 38);
-            this.tableLayoutPanel47.TabIndex = 66667;
+            this.tlpNaCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.tlpNaCode.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tlpNaCode.ColumnCount = 2;
+            this.tlpNaCode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tlpNaCode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpNaCode.Controls.Add(this.panel39, 1, 0);
+            this.tlpNaCode.Controls.Add(this.label54, 0, 0);
+            this.tlpNaCode.Location = new System.Drawing.Point(301, 660);
+            this.tlpNaCode.Name = "tlpNaCode";
+            this.tlpNaCode.RowCount = 1;
+            this.tlpNaCode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpNaCode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tlpNaCode.Size = new System.Drawing.Size(300, 38);
+            this.tlpNaCode.TabIndex = 66667;
             // 
             // panel39
             // 
@@ -5362,7 +5362,7 @@
             this.pnlZipCode_TH.ResumeLayout(false);
             this.panel72.ResumeLayout(false);
             this.panel72.PerformLayout();
-            this.tableLayoutPanel47.ResumeLayout(false);
+            this.tlpNaCode.ResumeLayout(false);
             this.panel39.ResumeLayout(false);
             this.tableLayoutPanel45.ResumeLayout(false);
             this.panel71.ResumeLayout(false);
@@ -5754,7 +5754,7 @@
         private System.Windows.Forms.CheckBox checkB_AgreeMarketing;
         private System.Windows.Forms.CheckBox chk_Foreign_s;
         private System.Windows.Forms.CheckBox chk_Foreign_n;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel47;
+        private System.Windows.Forms.TableLayoutPanel tlpNaCode;
         private System.Windows.Forms.Panel panel39;
         private System.Windows.Forms.ComboBox combo_Se_2;
         private System.Windows.Forms.ComboBox combo_Se_Code_2;

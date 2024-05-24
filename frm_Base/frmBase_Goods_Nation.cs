@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Goods_Nation : Form
+    public partial class frmBase_Goods_Nation : clsForm_Extends
     {
         cls_Grid_Base cgb = new cls_Grid_Base();
         cls_Grid_Base cgb_2 = new cls_Grid_Base();

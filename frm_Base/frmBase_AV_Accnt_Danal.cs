@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MLM_Program
 {
-    public partial class frmBase_AV_Accnt_Danal : Form
+    public partial class frmBase_AV_Accnt_Danal : clsForm_Extends
     {
         public delegate void SendAccntDele(string SuccessYN, string Message);
         public event SendAccntDele Send_Accnt_Info;

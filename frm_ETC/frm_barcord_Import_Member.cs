@@ -16,7 +16,7 @@ using System.IO;
 using ExcelDataReader;
 namespace MLM_Program
 {
-    public partial class frm_barcord_Import_Member : Form
+    public partial class frm_barcord_Import_Member : clsForm_Extends
     {
 
         string mbid2;

@@ -14,7 +14,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frm_Excel_Import_Rec : Form
+    public partial class frm_Excel_Import_Rec : clsForm_Extends
     {
         DataSet dsExcels = new DataSet();
         private int Load_TF = 0;

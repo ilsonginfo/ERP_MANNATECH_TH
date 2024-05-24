@@ -24,7 +24,7 @@ namespace MLM_Program
   
 
 
-    public partial class frm_Login : Form
+    public partial class frm_Login : clsForm_Extends
     {
 
 
@@ -474,7 +474,7 @@ namespace MLM_Program
             cls_User.gid_CountryCode = "";
 
             cls_User.gid_CountryCode = "KR";
-            //cls_User.gid_CountryCode = "TH";
+            cls_User.gid_CountryCode = "TH";
 
         }
 

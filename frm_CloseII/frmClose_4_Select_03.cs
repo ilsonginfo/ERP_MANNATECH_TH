@@ -15,7 +15,7 @@ using DXGrid = DevExpress.XtraGrid;
 
 namespace MLM_Program
 {
-    public partial class frmClose_4_Select_03 : Form
+    public partial class frmClose_4_Select_03 : clsForm_Extends
     {
       
 

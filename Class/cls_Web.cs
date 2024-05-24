@@ -3790,34 +3790,40 @@ namespace MLM_Program
                     break;
             }
 
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
-            hwr.Method = "POST"; // 포스트 방식으로 전달                
-            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
-            hwr.UserAgent = "mannatech";
-            Encoding encoding = Encoding.UTF8;
-            byte[] buffer = encoding.GetBytes(str_sendvalue);
-            hwr.ContentLength = buffer.Length;
-
-            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
-            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
-            sendStream.Close(); // sendStream 을 종료한다.
-
-            HttpWebResponse wRes;
             try
             {
-                wRes = (HttpWebResponse)hwr.GetResponse();
-            }
-            catch (Exception ee)
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+                hwr.Method = "POST"; // 포스트 방식으로 전달                
+                hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+                hwr.UserAgent = "mannatech";
+                Encoding encoding = Encoding.UTF8;
+                byte[] buffer = encoding.GetBytes(str_sendvalue);
+                hwr.ContentLength = buffer.Length;
+
+                Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+                sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+                sendStream.Close(); // sendStream 을 종료한다.
+
+                HttpWebResponse wRes;
+                try
+                {
+                    wRes = (HttpWebResponse)hwr.GetResponse();
+                }
+                catch (Exception ee)
+                {
+                    return "-1";
+                }
+
+                Stream respPostStream = wRes.GetResponseStream();
+                StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+                string getstring = null;
+                getstring = readerPost.ReadToEnd().ToString();
+                return SuccessYN = Return_Mail(getstring);
+            }catch(Exception ex)
             {
-                return "-1";
+                return "N";
             }
-
-            Stream respPostStream = wRes.GetResponseStream();
-            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
-
-            string getstring = null;
-            getstring = readerPost.ReadToEnd().ToString();
-            return SuccessYN = Return_Mail(getstring);
         }
 
         private string Return_Mail(string Getstring)

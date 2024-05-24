@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Select_Cafe : Form
+    public partial class frmMember_Select_Cafe : clsForm_Extends
     {
                 
         cls_Grid_Base cgb = new cls_Grid_Base();

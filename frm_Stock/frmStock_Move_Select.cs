@@ -10,7 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MLM_Program
 {
-    public partial class frmStock_Move_Select : Form
+    public partial class frmStock_Move_Select : clsForm_Extends
     {
         
 

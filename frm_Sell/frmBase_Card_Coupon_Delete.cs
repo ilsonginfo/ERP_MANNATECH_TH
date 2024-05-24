@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Card_Coupon_Delete : Form
+    public partial class frmBase_Card_Coupon_Delete : clsForm_Extends
     {
       
 

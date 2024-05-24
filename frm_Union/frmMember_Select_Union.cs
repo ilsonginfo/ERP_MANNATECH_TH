@@ -11,7 +11,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Select_Union : Form
+    public partial class frmMember_Select_Union : clsForm_Extends
     {
 
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);

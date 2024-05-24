@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmStock_Move_Confirm : Form
+    public partial class frmStock_Move_Confirm : clsForm_Extends
     {
         
         cls_Grid_Base cgb = new cls_Grid_Base();

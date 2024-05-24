@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Goods_Sort : Form
+    public partial class frmBase_Goods_Sort : clsForm_Extends
     {
         cls_Grid_Base cgb = new cls_Grid_Base();
         private const string base_db_name = "tbl_MakeItemCode1";

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmBase_User_ETC : Form
+    public partial class frmBase_User_ETC : clsForm_Extends
     {
        
 

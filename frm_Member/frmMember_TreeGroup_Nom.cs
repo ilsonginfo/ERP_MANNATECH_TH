@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 namespace MLM_Program
 {
-    public partial class frmMember_TreeGroup_Nom : Form
+    public partial class frmMember_TreeGroup_Nom : clsForm_Extends
     {
 
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);

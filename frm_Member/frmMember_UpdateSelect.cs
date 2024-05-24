@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MLM_Program
 {
-    public partial class frmMember_UpdateSelect : Form
+    public partial class frmMember_UpdateSelect : clsForm_Extends
     {
         cls_Grid_Base cgb = new cls_Grid_Base();
 

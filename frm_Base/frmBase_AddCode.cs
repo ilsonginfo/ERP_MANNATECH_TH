@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MLM_Program
 {
-    public partial class frmBase_AddCode : Form
+    public partial class frmBase_AddCode : clsForm_Extends
     {
 
         public delegate void SendAddressDele(string AddCode1, string AddCode2, string Address1, string Address2, string Address3);

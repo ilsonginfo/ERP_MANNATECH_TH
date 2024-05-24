@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Down_Save : Form
+    public partial class frmSell_Select_Down_Save : clsForm_Extends
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
 

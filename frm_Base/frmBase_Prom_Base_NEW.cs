@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmBase_Prom_Base_NEW : Form
+    public partial class frmBase_Prom_Base_NEW : clsForm_Extends
     {
      
 

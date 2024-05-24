@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmMileage_IN_OUT : Form
+    public partial class frmMileage_IN_OUT : clsForm_Extends
     {
                
 

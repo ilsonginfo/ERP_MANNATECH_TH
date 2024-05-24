@@ -13,7 +13,7 @@ using System.Net;
 
 namespace MLM_Program
 {
-    public partial class frmSMS_Member : Form
+    public partial class frmSMS_Member : clsForm_Extends
     {
         private int Load_TF = 0;
    

@@ -14,7 +14,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmFastReport : Form
+    public partial class frmFastReport : clsForm_Extends
     {
         private readonly string ReportFolder = Application.StartupPath + @"\report\";
 

@@ -15,7 +15,7 @@ using DXGrid = DevExpress.XtraGrid;
 
 namespace MLM_Program
 {
-    public partial class frmSell_NEXT_GRADE : Form
+    public partial class frmSell_NEXT_GRADE : clsForm_Extends
     {
 
         string mbid2;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Card_App : Form
+    public partial class frmSell_Select_Card_App : clsForm_Extends
     {
         
 

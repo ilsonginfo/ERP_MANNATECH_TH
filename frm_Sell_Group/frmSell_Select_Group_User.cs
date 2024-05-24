@@ -10,7 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Group_User : Form
+    public partial class frmSell_Select_Group_User : clsForm_Extends
     {
        
 

@@ -13,7 +13,7 @@ using System.Xml ;
 
 namespace MLM_Program
 {
-    public partial class frmMember_TreeView : Form
+    public partial class frmMember_TreeView : clsForm_Extends
     {
 
        

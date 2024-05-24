@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmMileage_Move : Form
+    public partial class frmMileage_Move : clsForm_Extends
     {
         
         cls_Grid_Base cgb = new cls_Grid_Base();

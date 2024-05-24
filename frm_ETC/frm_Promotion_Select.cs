@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frm_Promotion_Select : Form
+    public partial class frm_Promotion_Select : clsForm_Extends
     {
 
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);

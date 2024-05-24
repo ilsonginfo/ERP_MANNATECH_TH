@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmMileage_Select_Delete : Form
+    public partial class frmMileage_Select_Delete : clsForm_Extends
     {
          
         cls_Grid_Base cg_Sub = new cls_Grid_Base();        

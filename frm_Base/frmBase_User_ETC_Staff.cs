@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmBase_User_ETC_Staff : Form
+    public partial class frmBase_User_ETC_Staff : clsForm_Extends
     {
         private string base_db_name = "tbl_User_ETC";
         private int Data_Set_Form_TF = 0;

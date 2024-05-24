@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmClose_Member_CutDed_01 : Form
+    public partial class frmClose_Member_CutDed_01 : clsForm_Extends
     {
        
         private const string base_db_name = "tbl_DB";

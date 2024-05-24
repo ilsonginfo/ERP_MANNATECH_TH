@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Update_2 : Form
+    public partial class frmMember_Update_2 : clsForm_Extends
     {
 
         cls_Grid_Base cg_Up_S = new cls_Grid_Base();

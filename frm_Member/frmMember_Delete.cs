@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Delete : Form
+    public partial class frmMember_Delete : clsForm_Extends
     {
                 
         cls_Grid_Base cg_Up_S = new cls_Grid_Base();

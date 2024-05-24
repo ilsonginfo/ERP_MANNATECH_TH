@@ -10,7 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MLM_Program
 {
-    public partial class frmStock_IN_Select : Form
+    public partial class frmStock_IN_Select : clsForm_Extends
     {
         cls_Grid_Base cgb = new cls_Grid_Base();
 

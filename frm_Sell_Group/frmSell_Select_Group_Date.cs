@@ -10,7 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Group_Date : Form
+    public partial class frmSell_Select_Group_Date : clsForm_Extends
     {
 
         public delegate void SendNumberDele(string Send_Number, string Send_Name, string Send_OrderNumber);

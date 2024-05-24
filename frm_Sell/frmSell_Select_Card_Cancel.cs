@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Card_Cancel : Form
+    public partial class frmSell_Select_Card_Cancel : clsForm_Extends
     {
         
 

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmClose_Promo_Select_01 : Form
+    public partial class frmClose_Promo_Select_01 : clsForm_Extends
     {
       
         private const string base_db_name = "tbl_DB";

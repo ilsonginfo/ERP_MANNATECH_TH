@@ -10,7 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MLM_Program
 {
-    public partial class frmStock_Select_Center_Day : Form
+    public partial class frmStock_Select_Center_Day : clsForm_Extends
     {
 
         Series series_Item = new Series();

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmBase_User_Fa : Form
+    public partial class frmBase_User_Fa : clsForm_Extends
     {
 
         public delegate void Take_Far_Memnu_Change_Dele();

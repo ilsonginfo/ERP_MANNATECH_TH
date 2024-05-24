@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Union_Cancel : Form
+    public partial class frmSell_Select_Union_Cancel : clsForm_Extends
     {
 
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);

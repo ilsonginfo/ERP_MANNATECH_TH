@@ -12,7 +12,7 @@ using Microsoft.Office.Interop;
 
 namespace MLM_Program
 {
-    public partial class frmClose_4_Select_04 : Form
+    public partial class frmClose_4_Select_04 : clsForm_Extends
     {
         
 

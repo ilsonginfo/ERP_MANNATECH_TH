@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Save_Change : Form
+    public partial class frmMember_Save_Change : clsForm_Extends
     {
 
         cls_Grid_Base cgb = new cls_Grid_Base();

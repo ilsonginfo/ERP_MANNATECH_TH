@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmClose_Sham_Grade_P : Form
+    public partial class frmClose_Sham_Grade_P : clsForm_Extends
     {
       
 

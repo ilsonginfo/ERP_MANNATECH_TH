@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Select_Auto : Form
+    public partial class frmMember_Select_Auto : clsForm_Extends
     {
 
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);

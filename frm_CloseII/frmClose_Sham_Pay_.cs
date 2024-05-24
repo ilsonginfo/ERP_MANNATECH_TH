@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmClose_Sham_Pay_ : Form
+    public partial class frmClose_Sham_Pay_ : clsForm_Extends
     {
         
 

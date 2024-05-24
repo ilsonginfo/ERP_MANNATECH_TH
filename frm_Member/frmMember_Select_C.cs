@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace MLM_Program
 {
-    public partial class frmMember_Select_C : Form
+    public partial class frmMember_Select_C : clsForm_Extends
     {
        
 

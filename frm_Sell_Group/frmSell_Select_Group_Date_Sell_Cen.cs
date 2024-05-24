@@ -10,7 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Select_Group_Date_Sell_Cen : Form
+    public partial class frmSell_Select_Group_Date_Sell_Cen : clsForm_Extends
     {
   
 

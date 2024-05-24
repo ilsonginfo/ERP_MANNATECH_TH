@@ -14,7 +14,7 @@ using System.IO;
 
 namespace MLM_Program
 {
-    public partial class frmStock_OUT_Sell : Form
+    public partial class frmStock_OUT_Sell : clsForm_Extends
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
 

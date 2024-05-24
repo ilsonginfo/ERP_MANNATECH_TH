@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace MLM_Program
 {
-    public partial class frmSell_Cancel : Form
+    public partial class frmSell_Cancel : clsForm_Extends
     {
  
 

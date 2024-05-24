@@ -13,7 +13,7 @@ namespace MLM_Program
 {
     
 
-    public partial class MDIMain : Form
+    public partial class MDIMain : clsForm_Extends
     {
 
 
