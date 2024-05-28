@@ -417,6 +417,12 @@
     <Compile Include="frm_ETC\frm_Promotion_Select.Designer.cs">
       <DependentUpon>frm_Promotion_Select.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Member\frmMember_TH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Member\frmMember_TH.designer.cs">
+      <DependentUpon>frmMember_TH.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Member\frmMember_Change_SPON.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1613,6 +1619,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Member\frmMember_Select_Cafe_Select.resx">
       <DependentUpon>frmMember_Select_Cafe_Select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Member\frmMember_TH.resx">
+      <DependentUpon>frmMember_TH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Member\frmMember_UpdateSelect.resx">
       <DependentUpon>frmMember_UpdateSelect.cs</DependentUpon>

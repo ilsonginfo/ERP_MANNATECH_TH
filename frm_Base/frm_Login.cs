@@ -610,8 +610,8 @@ namespace MLM_Program
             {
                 pan_Language.Visible = true;
                 cbo_Language.Items.Add("Korean");
-                //cbo_Language.Items.Add("English");
-                cbo_Language.Items.Add("Thai");
+                cbo_Language.Items.Add("English");
+                //cbo_Language.Items.Add("Thai");
                 //cbo_Language.Items.Add("Japanese");
                 cbo_Language.SelectedIndex = 0;
             }

@@ -311,10 +311,19 @@ namespace MLM_Program
             if (tm.Tag.ToString() == "Member")
             {
                 //frmMember_Dev childForm = new frmMember_Dev();
-                frmMember childForm = new frmMember();
-                
+                if (cls_User.gid_CountryCode == "TH")
+                {
+                    frmMember_TH childForm = new frmMember_TH();
+                    Child_Form_Load(childForm);
+                }
+                else
+                {
+                    frmMember childForm = new frmMember();
+                    Child_Form_Load(childForm);
+                }
+
+
                 //childForm.Send_Mem_Number += new frmMember_Dev.SendNumberDele(childForm_Send_Mem_Number);
-                Child_Form_Load(childForm);
             }
 
             if (tm.Tag.ToString() == "Member_Update")

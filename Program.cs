@@ -134,7 +134,7 @@ namespace MLM_Program
             ////////++++++++++++++라이브++++++++++++++++ +
             /////
 
-            cls_app_static_var.APP_VER = "[RELEASE]240524_UAT";
+            cls_app_static_var.APP_VER = "[RELEASE]240527_UAT";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++
@@ -215,8 +215,7 @@ namespace MLM_Program
                 cls_Connect_DB.LiveFlag = false;
             }
             ////테스트배포땐닫는다
-            ///
-            ////테스트배포때 연다
+
             if (cls_app_static_var.app_Company_Name == "menatech")
             {
                 cls_Connect_DB.LiveFlag = false;

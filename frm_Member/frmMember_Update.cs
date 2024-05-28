@@ -111,6 +111,7 @@ namespace MLM_Program
             mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
             mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
 
+
             mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
             mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
             mtxtZip1.Mask = cls_app_static_var.ZipCode_Number_Fromat;
@@ -195,9 +196,10 @@ namespace MLM_Program
                 pnlSubDistrict_TH.Visible = true;
                 pnlZipCode_TH.Visible = true;
                 pnlZipCode_KR.Visible = false;
-                txtAddress2.ReadOnly = true;
                 cbSubDistrict_TH_SelectedIndexChanged(this, null);
                 //combo_Se_Code.Text = "TH";
+                tlpMSADate.Visible = false;
+                tlpNACODE.Visible = false;
                 //combo_Se_Code_2.Text = "TH";
             }
             // 태국 이외 버전 인 경우
@@ -216,6 +218,15 @@ namespace MLM_Program
             combo_Se_Code.Text = cls_User.gid_CountryCode;
             combo_Se_Code_2.Text = cls_User.gid_CountryCode;
 
+            if (cls_User.gid_CountryCode == "TH")
+            {
+                //태국은 입력받을수 있음 
+                mtxtSn.Mask = string.Empty;
+                mtxtSn.ReadOnly = false;
+                mtxtSn.Enabled = true;
+                mtxtSn.Visible = true;
+                mtxtSn.BackColor = Color.White ;
+            }
             mtxtMbid.Focus();
         }
 
@@ -233,7 +244,8 @@ namespace MLM_Program
             cbProvince_TH.DataBindings.Clear();
             cbProvince_TH.DataSource = ds.Tables["ZipCode_NM"];
             cbProvince_TH.DisplayMember = "ZipCode_NM";
-            cbProvince_TH.ValueMember = "ProvinceCode";
+            cbProvince_TH.ValueMember = "ProvinceCode"11f;
+            cbProvince_TH.Font = new Font("Tahoma", );
         }
 
         private void Delete_Base_Data(ref int Delete_Error_Check)
@@ -3052,6 +3064,15 @@ namespace MLM_Program
 
             chk_N.Checked = false; chk_S.Checked = false;
             mtxtSn.Mask = "999999-9999999";
+            if (cls_User.gid_CountryCode == "TH")
+            {
+                //태국은 입력받을수 있음 
+                mtxtSn.Mask = string.Empty;
+                mtxtSn.ReadOnly = false;
+                mtxtSn.Enabled = true;
+                mtxtSn.Visible = true;
+                mtxtSn.BackColor = Color.White;
+            }
 
             mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
 
@@ -3742,6 +3763,7 @@ namespace MLM_Program
                 int Sell_Mem_TF = 0; int Add_TF = 0, Myoffice_TF = 0, RBO_Mem_TF = 0, G8_TF = 0;
                 int BankDocument = 0, CpnoDocument = 0;
                 int For_Kind_TF = 0;
+                string ssn = txtSN_n.Text;
 
                 if (check_BankDocument.Checked == true) BankDocument = 1;
                 if (check_CpnoDocument.Checked == true) CpnoDocument = 1;
@@ -3810,6 +3832,7 @@ namespace MLM_Program
                     //StrSql = StrSql + " ,state = '" + cbProvince_TH.Text.Trim().Replace("-", "") + "'";
                     StrSql = StrSql + " ,city = '" + cbDistrict_TH.Text.Trim().Replace("-", "") + "'";
                     StrSql = StrSql + " ,state = '" + cbProvince_TH.SelectedValue.ToString().Trim().Replace("-", "") + "'";
+                    StrSql = StrSql + $" , cpno = '{ssn}'";
                 }
                 // 그 외 국가 선택시
                 else
@@ -5003,7 +5026,6 @@ namespace MLM_Program
                 pnlSubDistrict_TH.Visible = true;
                 pnlZipCode_TH.Visible = true;
                 pnlZipCode_KR.Visible = false;
-                txtAddress2.ReadOnly = true;
                 cbSubDistrict_TH_SelectedIndexChanged(this, null);
             }
             // 태국 이외 버전 인 경우
@@ -5031,7 +5053,6 @@ namespace MLM_Program
                 pnlSubDistrict_TH.Visible = true;
                 pnlZipCode_TH.Visible = true;
                 pnlZipCode_KR.Visible = false;
-                txtAddress2.ReadOnly = true;
                 cbSubDistrict_TH_SelectedIndexChanged(this, null);
             }
             // 태국 이외 버전 인 경우
@@ -5573,6 +5594,7 @@ namespace MLM_Program
             cbDistrict_TH.DataBindings.Clear();
             cbDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
             cbDistrict_TH.DisplayMember = "ZipCode_NM";
+            cbDistrict_TH.Font = new Font("Tahoma", 11f);
         }
 
         private void cbDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
@@ -5589,6 +5611,7 @@ namespace MLM_Program
             cbSubDistrict_TH.DataBindings.Clear();
             cbSubDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
             cbSubDistrict_TH.DisplayMember = "ZipCode_NM";
+            cbSubDistrict_TH.Font = new Font("Tahoma", 11f);
         }
 
         private void cbSubDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
@@ -5605,6 +5628,7 @@ namespace MLM_Program
 
             txtZipCode_TH.Text = "";
             txtZipCode_TH.Text = ds.Tables["ZipCode_NM"].Rows[0][0].ToString();
+            txtZipCode_TH.Font = new Font("Tahoma", 11f);
 
             txtAddress2.Text = cbSubDistrict_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.Text;
         }

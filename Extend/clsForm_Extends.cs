@@ -50,7 +50,7 @@ namespace MLM_Program
             // 현재 컨트롤의 텍스트가 태국어인지 확인하고 폰트 크기 조정
             if (IsThaiText(control.Text))
             {
-                control.Font = new Font(newFont.FontFamily, newFont.Size + 5); // 태국어인 경우 폰트 크기를 더 크게 설정
+                control.Font = new Font(newFont.FontFamily, newFont.Size ); // 태국어인 경우 폰트 크기를 더 크게 설정
             }
             else
             {

@@ -731,21 +731,21 @@ namespace MLM_Program
                 txtCenter3.Text = "인천픽업";
                 txtCenter3_Code.Text = "50012";
             }
-            if (txtCenter2.Text == "Warehouse")
-            {
-                txt_Receive_Method.Text = "Delivery";
-                txt_Receive_Method_Code.Text = "2";
-                txtCenter3.Text = "Warehouse";
-                txtCenter3_Code.Text = "540000";
-            }
+            //if (txtCenter2.Text == "Warehouse")
+            //{
+            //    txt_Receive_Method.Text = "Delivery";
+            //    txt_Receive_Method_Code.Text = "2";
+            //    txtCenter3.Text = "Warehouse";
+            //    txtCenter3_Code.Text = "540000";
+            //}
 
-            if (txtCenter2.Text == "StoreFront")
-            {
-                txt_Receive_Method.Text = "Pickup";
-                txt_Receive_Method_Code.Text = "1";
-                txtCenter3.Text = "StoreFront";
-                txtCenter3_Code.Text = "540010";
-            }
+            //if (txtCenter2.Text == "StoreFront")
+            //{
+            //    txt_Receive_Method.Text = "Pickup";
+            //    txt_Receive_Method_Code.Text = "1";
+            //    txtCenter3.Text = "StoreFront";
+            //    txtCenter3_Code.Text = "540010";
+            //}
 
         }
 
@@ -5606,18 +5606,36 @@ namespace MLM_Program
             radioB_DESK.Checked = true;
 
             txtSellCode_Code.Text = "01";
-            //txtSellCode.Text = "일반주문";
-            txtSellCode.Text = (cls_User.gid_CountryCode == "TH" ? "Regular_order" : "일반주문");
-            lblSellCode_Code.Text = "01";
-            //lblSellCode.Text = "일반주문";
             txtSellCode.Text = (cls_User.gid_CountryCode == "TH" ? "Regular_order" : "일반주문");
 
             SetSellCode();
 
             //txtCenter2_Code.Text = "50000";
             //txtCenter2.Text = "물류센터";
-            txtCenter2.Text = (cls_User.gid_CountryCode == "TH" ? "Warehouse" : "물류센터");    // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
-            txtCenter2_Code.Text = (cls_User.gid_CountryCode == "TH" ? "540000" : "50000");                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
+
+            txt_Receive_Method.Text = "";
+            txt_Receive_Method_Code.Text = "";
+            txtCenter3.Text = "";
+            txtCenter3_Code.Text = "";
+
+            if (cls_User.gid_CountryCode == "TH")
+            {
+                txtSellCode.Text = "Regular_order";
+                txtCenter2.Text = "Warehouse";   
+                txtCenter2_Code.Text = "540000"; 
+
+                txt_Receive_Method.Text = "Pickup";
+                txt_Receive_Method_Code.Text = "1";
+                txtCenter3.Text = "StoreFront";
+                txtCenter3_Code.Text = "540010";
+            }
+            else
+            {
+                txtSellCode.Text = "일반주문";
+                txtCenter2.Text = "물류센터";  
+                txtCenter2_Code.Text = "50000";
+            }
+
 
             mtxtSellDate.Text = cls_User.gid_date_time;
             mtxtSellDate2.Text = cls_User.gid_date_time;
@@ -5627,10 +5645,6 @@ namespace MLM_Program
             chK_PV_CV_Check.Checked = true;
             txt_Receive_Method.Select();
             Data_Set_Form_TF = 0;
-            txt_Receive_Method.Text = "";
-            txt_Receive_Method_Code.Text = "";
-            txtCenter3.Text = "";
-            txtCenter3_Code.Text = "";
 
             //cbZipCode_TH.SelectedIndex = -1;
             txtZipCode_TH.Text = "";
