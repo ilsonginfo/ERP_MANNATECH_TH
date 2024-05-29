@@ -188,7 +188,7 @@ namespace MLM_Program
                 tableLayoutPanel20.Visible = true;
 
             if (cls_app_static_var.Sell_Union_Flag == "")
-                tableLayoutPanel68.Visible = false;  //조합이 아니면 공제 번호 관련 보여주지 않는다.
+                tlpInsuranceNumber.Visible = false;  //조합이 아니면 공제 번호 관련 보여주지 않는다.
 
             Form_Key_Real_TF = 0;
             radioB_DESK.Checked = true;
@@ -292,7 +292,9 @@ namespace MLM_Program
                 cbSubDistrict_TH.Font = new Font("Tahoma", 11f);
                 cbZipCode_TH.Font = new Font("Tahoma", 11f);
                 txt_Get_Etc1.Font = new Font("Tahoma", 11f);
-                
+                tlpInsuranceNumber.Visible = false;
+                chK_PV_CV_Check.Visible = false;
+
 
             }
             // 태국 이외 버전 인 경우
