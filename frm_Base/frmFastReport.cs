@@ -90,9 +90,14 @@ namespace MLM_Program
             {
                 Print_MembershipCard_Report();
             }
-            else
-            {
 
+            else if (EShowReport.거래명세표_TH.Equals(Report))
+            {
+                Print_Sell_Transaction_Report_TH();
+            }
+            else if (EShowReport.거래명세표_출고용_TH.Equals(Report))
+            {
+                Print_Sell_Transaction_StockOut_Report_TH();
             }
 
         }
@@ -216,6 +221,98 @@ namespace MLM_Program
 
             this.ShowDialog();
 
+        }
+
+        private void Print_Sell_Transaction_Report_TH()
+        {
+            //Report 객체 재생성
+            _report = new Report();
+
+            //Preview 할당 
+            _report.Preview = preview1;
+
+            //레포트 로드
+            _report.Load(ReportFolder + this._ReportName);
+
+            ////Binding
+            _report.RegisterData(BindingDataTables["SalesDetail"], "SalesDetail");
+            _report.GetDataSource("SalesDetail").Enabled = true;
+            ////Binding
+            _report.RegisterData(BindingDataTables["SalesItemDetail"], "SalesItemDetail");
+            _report.GetDataSource("SalesItemDetail").Enabled = true;
+            ////Binding
+            _report.RegisterData(BindingDataTables["SalesRece"], "SalesRece");
+            _report.GetDataSource("SalesRece").Enabled = true;
+            ////Binding
+            _report.RegisterData(BindingDataTables["SalesCacu"], "SalesCacu");
+            _report.GetDataSource("SalesCacu").Enabled = true;
+            ////Binding
+            _report.RegisterData(BindingDataTables["Member"], "Member");
+            _report.GetDataSource("Member").Enabled = true;
+
+            //Show 
+            _report.Prepare();
+            _report.ShowPrepared();
+
+            this.ShowDialog();
+
+            //==========================================================
+            ////다이얼로그 띄우지 않음 
+            //_report.PrintSettings.ShowDialog = false;
+
+            ////preview에게 print요청
+            //preview1.Print();
+
+            ////해제
+            //preview1.Dispose();
+
+            ////폼 닫기 
+            //this.Close();
+            //==========================================================
+        }
+
+        private void Print_Sell_Transaction_StockOut_Report_TH()
+        {
+            //Report 객체 재생성
+            _report = new Report();
+
+            //Preview 할당 
+            _report.Preview = preview1;
+
+            //레포트 로드
+            _report.Load(ReportFolder + this._ReportName);
+
+
+            ////Binding
+            _report.RegisterData(BindingDataTables["SalesDetail"], "SalesDetail");
+            _report.GetDataSource("SalesDetail").Enabled = true;
+            ////Binding
+            _report.RegisterData(BindingDataTables["SalesItemDetail"], "SalesItemDetail");
+            _report.GetDataSource("SalesItemDetail").Enabled = true;
+            //Binding
+            _report.RegisterData(BindingDataTables["SalesCacu"], "SalesCacu");
+            _report.GetDataSource("SalesCacu").Enabled = true;
+
+
+            //Show 
+            _report.Prepare();
+            _report.ShowPrepared();
+
+            this.ShowDialog();
+
+            //==========================================================
+            ////다이얼로그 띄우지 않음 
+            //_report.PrintSettings.ShowDialog = false;
+
+            ////preview에게 print요청
+            //preview1.Print();
+
+            ////해제
+            //preview1.Dispose();
+
+            ////폼 닫기 
+            //this.Close();
+            //==========================================================
         }
 
         private void MakeReportToLocal()

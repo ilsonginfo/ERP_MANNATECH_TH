@@ -2167,6 +2167,12 @@
     <None Include="report\SellTransactionReport_OnlyStockOutSell.frx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="report\SellTransactionReport_TH.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="report\SellTransactionReport_TH_OnlyStockOutSell.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -2251,6 +2257,7 @@
     <None Include="Resources\logo_ico.ico" />
     <None Include="Resources\logo48_new.ico" />
     <None Include="Resources\logo64_new.ico" />
+    <Content Include="report\TH_invoice form_20240523.jpg" />
     <Content Include="Resources\Untitled_1.ico" />
     <None Include="Resources\Untitled_3.ico" />
     <None Include="Resources\Untitled_2.ico" />

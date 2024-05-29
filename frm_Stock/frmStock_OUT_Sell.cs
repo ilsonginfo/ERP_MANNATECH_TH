@@ -121,7 +121,7 @@ namespace MLM_Program
             cfm.button_flat_change(butt_S_check);
             cfm.button_flat_change(butt_S_Not_check);
             cfm.button_flat_change(butt_S_Save);
-            cfm.button_flat_change(button2);
+            cfm.button_flat_change(btnFastReport_Show);
             
         }
 
@@ -2108,7 +2108,20 @@ namespace MLM_Program
 
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnFastReport_Click(object sender, EventArgs e)
+        {
+            if (cls_User.gid_CountryCode == "TH")
+            {
+
+                FastReport_SellTransactionReport_Out_TH();
+               }
+            else
+            {
+                FastReport_SellTransactionReport_Out();
+            }
+        }
+
+        private void FastReport_SellTransactionReport_Out()
         {
             int chk_cnt = 0;
             for (int i = 0; i <= dGridView_Base.Rows.Count - 1; i++)
@@ -2226,9 +2239,9 @@ namespace MLM_Program
                         OrderInfo["TotalPrice"] = string.Format(cls_app_static_var.str_Currency_Type, InputTotalPrice);
                         OrderInfo["InputCard"] = string.Format(cls_app_static_var.str_Currency_Type, InputCard);
                         OrderInfo["InputCash"] = string.Format(cls_app_static_var.str_Currency_Type, InputCash);
-                        OrderInfo["InputPass_Pay"] = grdRow.Cells["InputPass_pay"].Value.ToString().Replace(".0000","");
+                        OrderInfo["InputPass_Pay"] = grdRow.Cells["InputPass_pay"].Value.ToString().Replace(".0000", "");
                         OrderInfo["Receive_Method_Name"] = grdRow.Cells["배송구분"].Value.ToString();
-                       // OrderInfo["Get_ZipCode"] = grdRow.Cells["ZipCode"].Value.ToString();
+                        // OrderInfo["Get_ZipCode"] = grdRow.Cells["ZipCode"].Value.ToString();
                         OrderInfo["Get_Address1"] = grdRow.Cells["배송지"].Value.ToString();
                         OrderInfo["Get_Address2"] = string.Empty;//grdRow.Cells[""].Value.ToString();
                         OrderInfo["Get_Name1"] = grdRow.Cells["수령인명"].Value.ToString();
@@ -2285,6 +2298,188 @@ namespace MLM_Program
             }
         }
 
+        private void FastReport_SellTransactionReport_Out_TH()
+        {
+
+
+            frmFastReport frm = new frmFastReport();
+
+            DataTable dtMember = new DataTable();
+            DataTable dtSalesDetail = new DataTable();
+            DataTable dtSalesItemDetail = new DataTable();
+            DataTable dtSalesCacu = new DataTable();
+            DataTable dtSalesRece = new DataTable();
+
+
+            List<string> lMember = new List<string>();
+            List<string> lSalesDetail = new List<string>();
+            List<string> lSalesItemDetail = new List<string>();
+            List<string> lSalesCacu = new List<string>();
+            List<string> lSalesRece = new List<string>();
+
+            cls_Connect_DB cls_Connect = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            string ReportName = "FastReport";
+
+            foreach (DataGridViewRow GridRow in dGridView_Base.Rows)
+            {
+                if (!GridRow.Cells["Selected"].Value.ToString().Equals("V")) continue;
+
+                string Mbid2 = GridRow.Cells["mbid2"].Value.ToString();
+                string OrderNumber = GridRow.Cells["OrderNumber"].Value.ToString();
+
+                // -- Member 
+                if (lMember.Count == 0)
+                {
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_Memberinfo (NOLOCK) WHERE mbid2 = " + Mbid2, ReportName, ds);
+                    dtMember = ds.Tables[ReportName].Copy();
+                    lMember.Add(Mbid2);
+                }
+                else if (!lMember.Contains(Mbid2))
+                {
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_Memberinfo (NOLOCK) WHERE mbid2 = " + Mbid2, ReportName, ds);
+                    dtMember.Rows.Add(ds.Tables[ReportName].Rows[0].ItemArray);
+                    lMember.Add(Mbid2);
+                }
+                ds = new DataSet();
+
+
+                // -- SalesDetail
+                if (lSalesDetail.Count == 0)
+                {
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesDetail (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, ds);
+                    dtSalesDetail = ds.Tables[ReportName].Copy();
+                    lSalesDetail.Add(OrderNumber);
+
+                }
+                else if (!lSalesDetail.Contains(OrderNumber))
+                {
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesDetail (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, ds);
+                    dtSalesDetail.Rows.Add(ds.Tables[ReportName].Rows[0].ItemArray);
+                    lSalesDetail.Add(OrderNumber);
+                }
+                ds = new DataSet();
+
+
+                // -- SalesItemDetail
+                if (lSalesItemDetail.Count == 0)
+                {
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, ds);
+                    dtSalesItemDetail = ds.Tables[ReportName].Copy();
+                    lSalesItemDetail.Add(OrderNumber);
+                }
+                else if (!lSalesItemDetail.Contains(OrderNumber))
+                {
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, ds);
+                    foreach (DataRow row in ds.Tables[ReportName].Rows)
+                        dtSalesItemDetail.Rows.Add(row.ItemArray);
+                    lSalesItemDetail.Add(OrderNumber);
+                }
+                ds = new DataSet();
+
+
+
+                // -- SalesRece
+                if (lSalesRece.Count == 0)
+                {
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_Sales_Rece (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "' ORDER BY SalesItemIndex DESC ", ReportName, ds);
+                    dtSalesRece = ds.Tables[ReportName].Copy();
+                    lSalesRece.Add(OrderNumber);
+                }
+                else if (!lSalesRece.Contains(OrderNumber))
+                {
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_Sales_Rece (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "' ORDER BY SalesItemIndex DESC ", ReportName, ds);
+                    if (cls_Connect.DataSet_ReCount > 0)
+                    {
+                        dtSalesRece.Rows.Add(ds.Tables[ReportName].Rows[0].ItemArray);
+                        lSalesRece.Add(OrderNumber);
+                    }
+                }
+                ds = new DataSet();
+
+
+                // -- SalesCacu
+                if (lSalesCacu.Count == 0)
+                {
+                    cls_Connect.Open_Data_Set("SELECT top 2 * FROM tbl_Sales_Cacu (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, ds);
+                    dtSalesCacu = ds.Tables[ReportName].Copy();
+                    lSalesCacu.Add(OrderNumber);
+                }
+                if (!lSalesCacu.Contains(OrderNumber))
+                {
+                    cls_Connect.Open_Data_Set("SELECT top 2 * FROM tbl_Sales_Cacu (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, ds);
+
+                    if (ds.Tables[ReportName].Rows.Count > 0)
+                        dtSalesCacu.Rows.Add(ds.Tables[ReportName].Rows[0].ItemArray);
+
+                    lSalesCacu.Add(OrderNumber);
+                }
+                ds = new DataSet();
+
+            }
+
+
+            dtSalesDetail.Columns.Add("Mem_Hptel");
+            dtSalesDetail.Columns.Add("Mem_Email");
+            dtSalesDetail.Columns.Add("Mem_AddCode1");
+            dtSalesDetail.Columns.Add("Mem_Address1");
+            dtSalesDetail.Columns.Add("Mem_Address2");
+            dtSalesDetail.Columns.Add("Rece_Name");
+            dtSalesDetail.Columns.Add("Rece_Tel1");
+            dtSalesDetail.Columns.Add("Rece_Tel2");
+            dtSalesDetail.Columns.Add("Rece_AddCode1");
+            dtSalesDetail.Columns.Add("Rece_Address1");
+            dtSalesDetail.Columns.Add("Rece_Address2");
+            foreach (DataRow row in dtMember.Rows)
+            {
+                row["Address1"] = encrypter.Decrypt(row["Address1"].ToString());
+                row["Address2"] = encrypter.Decrypt(row["Address2"].ToString());
+                row["Email"] = encrypter.Decrypt(row["Email"].ToString());
+                row["hometel"] = encrypter.Decrypt(row["hometel"].ToString());
+                row["hptel"] = encrypter.Decrypt(row["hptel"].ToString());
+            }
+
+            foreach (DataRow row in dtSalesRece.Rows)
+            {
+                row["get_address1"] = encrypter.Decrypt(row["get_address1"].ToString());
+                row["get_address2"] = encrypter.Decrypt(row["get_address2"].ToString());
+                row["Get_Tel1"] = encrypter.Decrypt(row["Get_Tel1"].ToString());
+                row["Get_Tel2"] = encrypter.Decrypt(row["Get_Tel2"].ToString());
+            }
+
+            foreach (DataRow rOrd in dtSalesDetail.Rows)
+            {
+                string OrdNum = rOrd["OrderNumber"].ToString();
+                string Mbid = rOrd["mbid2"].ToString();
+
+                var FindRece = dtSalesRece.Select("OrderNumber='" + OrdNum + "'");
+                if (FindRece.Length > 0)
+                {
+                    rOrd["Rece_Name"] = FindRece[0]["Get_Name1"].ToString();
+                    rOrd["Rece_Tel1"] = FindRece[0]["Get_Tel1"].ToString();
+                    rOrd["Rece_Tel2"] = FindRece[0]["Get_Tel2"].ToString();
+                    rOrd["Rece_AddCode1"] = FindRece[0]["Get_ZipCode"].ToString();
+                    rOrd["Rece_Address1"] = FindRece[0]["get_address1"].ToString();
+                    rOrd["Rece_Address2"] = FindRece[0]["get_address2"].ToString();
+                }
+
+
+                var FindMem = dtMember.Select("mbid2=" + Mbid);
+                if (FindMem.Length > 0)
+                {
+                    rOrd["Mem_Hptel"] = FindMem[0]["Hptel"].ToString();
+                    rOrd["Mem_Email"] = FindMem[0]["Email"].ToString();
+                    rOrd["Mem_AddCode1"] = FindMem[0]["AddCode1"].ToString();
+                    rOrd["Mem_Address1"] = FindMem[0]["Address1"].ToString();
+                    rOrd["Mem_Address2"] = FindMem[0]["Address2"].ToString();
+                }
+            }
+
+            frm.BindingDataTables.Add("SalesDetail", dtSalesDetail);
+            frm.BindingDataTables.Add("SalesItemDetail", dtSalesItemDetail);
+            frm.BindingDataTables.Add("SalesCacu", dtSalesCacu);
+            frm.ShowReport(frmFastReport.EShowReport.거래명세표_출고용_TH);
+        }
 
         private void butt_Print_Click(int tt)
         {

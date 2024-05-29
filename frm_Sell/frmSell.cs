@@ -12041,7 +12041,63 @@ namespace MLM_Program
 
         private void FastReport_PH_SellOrder()
         {
+            if (txt_OrderNumber.Text == "" && InsuranceNumber_Ord_Print_FLAG == "") return;
 
+            frmFastReport frm = new frmFastReport();
+
+            DataTable dtMember = new DataTable();
+            DataTable dtSalesDetail = new DataTable();
+            DataTable dtSalesItemDetail = new DataTable();
+            DataTable dtSalesCacu = new DataTable();
+            DataTable dtSalesRece = new DataTable();
+
+            cls_Connect_DB cls_Connect = new cls_Connect_DB();
+            DataSet ds = new DataSet();
+            string ReportName = "FastReport";
+
+            // -- Member 
+            cls_Connect.Open_Data_Set("SELECT * FROM tbl_Memberinfo (NOLOCK) WHERE mbid2 = " + mtxtMbid.Text.Trim(), ReportName, ds);
+            dtMember = ds.Tables[ReportName].Copy();
+            foreach (DataRow row in dtMember.Rows)
+            {
+                row["Address1"] = encrypter.Decrypt(row["Address1"].ToString());
+                row["Address2"] = encrypter.Decrypt(row["Address2"].ToString());
+                row["Email"] = encrypter.Decrypt(row["Email"].ToString());
+                row["hometel"] = encrypter.Decrypt(row["hometel"].ToString());
+                row["hptel"] = encrypter.Decrypt(row["hptel"].ToString());
+            }
+
+            ds.Clear();
+            // -- SalesDetail
+            cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesDetail (NOLOCK) WHERE OrderNumber = '" + txt_OrderNumber.Text.Trim() + "'", ReportName, ds);
+            dtSalesDetail = ds.Tables[ReportName].Copy();
+            ds.Clear();
+            // -- SalesItemDetail
+            cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + txt_OrderNumber.Text.Trim() + "'", ReportName, ds);
+            dtSalesItemDetail = ds.Tables[ReportName].Copy();
+            ds.Clear();
+            // -- SalesRece
+            cls_Connect.Open_Data_Set("SELECT * FROM tbl_Sales_Rece (NOLOCK) WHERE OrderNumber = '" + txt_OrderNumber.Text.Trim() + "'", ReportName, ds);
+            dtSalesRece = ds.Tables[ReportName].Copy();
+            foreach (DataRow row in dtSalesRece.Rows)
+            {
+                row["get_address1"] = encrypter.Decrypt(row["get_address1"].ToString());
+                row["get_address2"] = encrypter.Decrypt(row["get_address2"].ToString());
+                row["Get_Tel1"] = encrypter.Decrypt(row["Get_Tel1"].ToString());
+                row["Get_Tel2"] = encrypter.Decrypt(row["Get_Tel2"].ToString());
+            }
+            ds.Clear();
+            // -- SalesCacu
+            cls_Connect.Open_Data_Set("SELECT top 0 * FROM tbl_Sales_Cacu (NOLOCK) WHERE OrderNumber = '" + txt_OrderNumber.Text.Trim() + "'", ReportName, ds);
+            dtSalesCacu = ds.Tables[ReportName].Copy();
+            ds.Clear();
+
+            frm.BindingDataTables.Add("Member", dtMember);
+            frm.BindingDataTables.Add("SalesDetail", dtSalesDetail);
+            frm.BindingDataTables.Add("SalesItemDetail", dtSalesItemDetail);
+            frm.BindingDataTables.Add("SalesCacu", dtSalesCacu);
+            frm.BindingDataTables.Add("SalesRece", dtSalesRece);
+            frm.ShowReport(frmFastReport.EShowReport.거래명세표_TH);
         }
 
         private void FastReport_KR_SellOrder()

@@ -208,12 +208,12 @@ namespace MLM_Program
             //////++++++++++++++++++++++++++++++++
 
 #else
-            ////////매나테크 개발기 UAT
-            //Connect_IP = "218.237.118.12,51433";
-            //if (Connect_IP.Equals("218.237.118.12,51433"))
-            //{
-            //    cls_Connect_DB.LiveFlag = false;
-            //}
+            //////매나테크 개발기 UAT
+            Connect_IP = "218.237.118.12,51433";
+            if (Connect_IP.Equals("218.237.118.12,51433"))
+            {
+                cls_Connect_DB.LiveFlag = false;
+            }
             //////테스트배포땐닫는다
             //
             if (cls_app_static_var.app_Company_Name == "menatech")

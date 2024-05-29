@@ -169,7 +169,7 @@
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnFastReport_Show = new System.Windows.Forms.Button();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel26 = new System.Windows.Forms.Panel();
             this.mtxtOutDate = new System.Windows.Forms.MaskedTextBox();
@@ -2158,7 +2158,7 @@
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.button2);
+            this.panel10.Controls.Add(this.btnFastReport_Show);
             this.panel10.Controls.Add(this.prB);
             this.panel10.Controls.Add(this.tableLayoutPanel9);
             this.panel10.Controls.Add(this.button1);
@@ -2177,17 +2177,17 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(901, 41);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(295, 23);
-            this.button2.TabIndex = 185;
-            this.button2.TabStop = false;
-            this.button2.Text = "체크_내역_거래명세서_프린트";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnFastReport_Show.BackColor = System.Drawing.Color.White;
+            this.btnFastReport_Show.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFastReport_Show.Location = new System.Drawing.Point(901, 41);
+            this.btnFastReport_Show.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFastReport_Show.Name = "button2";
+            this.btnFastReport_Show.Size = new System.Drawing.Size(295, 23);
+            this.btnFastReport_Show.TabIndex = 185;
+            this.btnFastReport_Show.TabStop = false;
+            this.btnFastReport_Show.Text = "체크_내역_거래명세서_프린트";
+            this.btnFastReport_Show.UseVisualStyleBackColor = false;
+            this.btnFastReport_Show.Click += new System.EventHandler(this.btnFastReport_Click);
             // 
             // tableLayoutPanel9
             // 
@@ -2579,7 +2579,7 @@
         private System.Windows.Forms.ComboBox combo_Rec;
         private System.Windows.Forms.ComboBox combo_Rec_Code;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnFastReport_Show;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.TextBox txt_P_5;
