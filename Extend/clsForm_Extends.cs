@@ -29,9 +29,9 @@ namespace MLM_Program
         {
             if (!IsInDesignMode)
             {
-                if (cls_User.gid_CountryCode == "TH" && cls_app_static_var.Using_language == "Thai")
+                if (cls_User.gid_CountryCode == "TH" && cls_app_static_var.Using_language == "English")
                 {
-                    ChangeFont_TH(this, new Font("Tahoma", 8.75f));
+                    ChangeFont_TH(this, new Font("Tahoma", 9f));
                     //ChangeFont_TH(this, new Font("Angsana New", 8.75f));
                 }
             }

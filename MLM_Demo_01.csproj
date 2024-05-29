@@ -166,19 +166,25 @@
     <Compile Include="Class\clsExcel.cs" />
     <Compile Include="Class\clsStaticFnc.cs" />
     <Compile Include="Class\cls_Excel.cs" />
+    <Compile Include="Class\cls_form_Meth.cs" />
     <Compile Include="Class\cls_Function.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Class\cls_Grid_Base_info_Put.cs" />
+    <Compile Include="Class\cls_Grid_Base_Popup.cs" />
     <Compile Include="Class\cls_menu.cs" />
     <Compile Include="Class\cls_NationService.cs" />
+    <Compile Include="Class\cls_Pro_Base_Function.cs" />
     <Compile Include="Class\cls_Register.cs" />
     <Compile Include="Class\cls_Sell.cs" />
     <Compile Include="Class\cls_Base_.cs" />
-    <Compile Include="Class\cls_Grid.cs" />
-    <Compile Include="Class\cls_Base.cs" />
+    <Compile Include="Class\cls_Grid_Base.cs" />
+    <Compile Include="Class\cls_app_static_var.cs" />
     <Compile Include="Class\cls_Connect_DB.cs" />
     <Compile Include="Class\cls_Check_Text.cs" />
     <Compile Include="Class\cls_sms.cs" />
+    <Compile Include="Class\cls_User.cs" />
+    <Compile Include="Class\cls_WATCrypt.cs" />
     <Compile Include="Class\cls_Web.cs" />
     <Compile Include="Class\DevGridControlService.cs" />
     <Compile Include="Class\Dictionary.cs" />

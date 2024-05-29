@@ -93,8 +93,6 @@ namespace MLM_Program
             mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;
             mtxtMbid_s.Mask = cls_app_static_var.Member_Number_Fromat;
             mtxtMbid_n.Mask = cls_app_static_var.Member_Number_Fromat;
-            mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.
-            mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.
             txtB1.Text = "0";
 
             mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
@@ -198,6 +196,14 @@ namespace MLM_Program
                 cbSubDistrict_TH_SelectedIndexChanged(this, null);
                 tlpNaCode.Visible = false;
                 //combo_Se_Code_2.Text = "TH";
+                txtAddress1.Font = new Font("Tahoma", 11f);
+                txtAddress2.Font = new Font("Tahoma", 11f);
+                cbProvince_TH.Font = new Font("Tahoma", 11f);
+                cbDistrict_TH.Font = new Font("Tahoma", 11f);
+                cbSubDistrict_TH.Font = new Font("Tahoma", 11f);
+                txtName.Font = new Font("Tahoma", 11f);
+                txtName_Last.Font = new Font("Tahoma", 11f);
+
             }
             // 태국 이외 버전 인 경우
             else

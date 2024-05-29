@@ -107,10 +107,12 @@ namespace MLM_Program
             cls_form_Meth cm = new cls_form_Meth();
             cm.from_control_text_base_chang(this);
             
-            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;            
-            mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
-            mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
-
+            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;
+            if (cls_User.gid_CountryCode != "TH")
+            {
+                mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
+                mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
+            }
 
             mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
             mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
@@ -201,6 +203,20 @@ namespace MLM_Program
                 tlpMSADate.Visible = false;
                 tlpNACODE.Visible = false;
                 //combo_Se_Code_2.Text = "TH";
+
+                //배송지가리기
+                tableLayoutPanel15.Visible = false;
+                tableLayoutPanel16.Visible = false;
+                tableLayoutPanel17.Visible = false;
+                cbProvince_TH.Font = new Font("Tahoma", 11f);
+                cbDistrict_TH.Font = new Font("Tahoma", 11f);
+                cbSubDistrict_TH.Font = new Font("Tahoma", 11f);
+                txtZipCode_TH.Font = new Font("Tahoma", 11f);
+                txtAddress1.Font = new Font("Tahoma", 11f);
+                txtAddress1.Font = new Font("Tahoma", 11f);
+                txtAddress2.Font = new Font("Tahoma", 11f);
+                txtName.Font = new Font("Tahoma", 11f);
+
             }
             // 태국 이외 버전 인 경우
             else
@@ -244,8 +260,8 @@ namespace MLM_Program
             cbProvince_TH.DataBindings.Clear();
             cbProvince_TH.DataSource = ds.Tables["ZipCode_NM"];
             cbProvince_TH.DisplayMember = "ZipCode_NM";
-            cbProvince_TH.ValueMember = "ProvinceCode"11f;
-            cbProvince_TH.Font = new Font("Tahoma", );
+            cbProvince_TH.ValueMember = "ProvinceCode";
+            cbProvince_TH.Font = new Font("Tahoma", 11f);
         }
 
         private void Delete_Base_Data(ref int Delete_Error_Check)

@@ -74,8 +74,10 @@ namespace MLM_Program
             cls_form_Meth cm = new cls_form_Meth();
             cm.from_control_text_base_chang(this);
             
-            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;            
-            mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.                                 
+            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;
+
+            if (cls_User.gid_CountryCode != "TH")
+                mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.                                 
         }
 
 
@@ -1758,7 +1760,9 @@ namespace MLM_Program
 
             Base_Ord_Clear();
 
-            mtxtSn.Mask = "999999-9999999";
+
+            if (cls_User.gid_CountryCode != "TH")
+                mtxtSn.Mask = "999999-9999999";
             idx_Mbid = ""; idx_Mbid2 = 0;
             mtxtMbid.Focus();
         }

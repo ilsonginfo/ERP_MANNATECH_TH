@@ -68,8 +68,10 @@ namespace MLM_Program
             cls_form_Meth cm = new cls_form_Meth();
             cm.from_control_text_base_chang(this);
             
-            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;            
-            mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.      
+            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;
+
+            if (cls_User.gid_CountryCode != "TH")
+             mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.      
 
             mtxtSn.BackColor = cls_app_static_var.txt_Enable_Color;
             txtCenter.BackColor = cls_app_static_var.txt_Enable_Color;
@@ -1995,8 +1997,8 @@ namespace MLM_Program
         {
             ////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
             dGridView_Base_Header_Reset(); //디비그리드 헤더와 기본 셋팅을 한다.
-            cgb.d_Grid_view_Header_Reset();            
-            
+            cgb.d_Grid_view_Header_Reset();
+
             //dGridView_Base_Item_Header_Reset(); //디비그리드 헤더와 기본 셋팅을 한다.
             //cgb_Item.d_Grid_view_Header_Reset();
 
@@ -2012,7 +2014,7 @@ namespace MLM_Program
 
 
 
-            txtName.ReadOnly =false ;
+            txtName.ReadOnly = false;
             txtName.BackColor = SystemColors.Window;
 
             cls_form_Meth ct = new cls_form_Meth();
@@ -2020,7 +2022,9 @@ namespace MLM_Program
 
             Base_Ord_Clear();
 
-            mtxtSn.Mask = "999999-9999999";
+
+            if (cls_User.gid_CountryCode != "TH")
+                mtxtSn.Mask = "999999-9999999";
             idx_Mbid = ""; idx_Mbid2 = 0;
             mtxtMbid.Focus();
         }

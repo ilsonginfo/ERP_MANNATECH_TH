@@ -43,8 +43,12 @@ namespace MLM_Program
             cls_form_Meth cm = new cls_form_Meth();
             cm.from_control_text_base_chang(this);
             
-            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;            
-            mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
+            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;
+            if (cls_User.gid_CountryCode != "TH")
+            {
+                mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
+                //mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
+            }
 
             if (cls_app_static_var.save_uging_Pr_Flag == 0) //후원인 기능 사용하지 마라.
             {               
@@ -1580,10 +1584,14 @@ namespace MLM_Program
             RadioButton trd = (RadioButton)sender;
 
             mtxtSn.Text = "";
-            if (trd.Name == "raButt_IN_1" || trd.Name == "raButt_IN_2")
-                mtxtSn.Mask = "999999-9999999";
-            else
-                mtxtSn.Mask = "999-99-99999";
+
+            if (cls_User.gid_CountryCode != "TH")
+            {
+                if (trd.Name == "raButt_IN_1" || trd.Name == "raButt_IN_2")
+                    mtxtSn.Mask = "999999-9999999";
+                else
+                    mtxtSn.Mask = "999-99-99999";
+            }
 
             mtxtSn.Focus();
         }

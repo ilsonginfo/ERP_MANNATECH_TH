@@ -37,8 +37,10 @@ namespace MLM_Program
             cls_form_Meth cm = new cls_form_Meth();
             cm.from_control_text_base_chang(this);
             
-            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;            
-            mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
+            mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;
+
+            if (cls_User.gid_CountryCode != "TH")
+                mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
 
             //groupB_M.Width = this.Width - groupBox1.Left - groupBox1.Width - 20;
             //groupB_M.Height = groupBox1.Height - groupBox2.Height - 20;
@@ -1503,7 +1505,10 @@ namespace MLM_Program
             opt_sell_2.Checked = true; opt_Bir_TF_1.Checked = true;
             raButt_IN_1.Checked = true;
             chk_N.Checked = false; chk_S.Checked = false;
-            mtxtSn.Mask = "999999-9999999";
+            if (cls_User.gid_CountryCode != "TH")
+            {
+                mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
+            }
             idx_Mbid = ""; idx_Mbid2 = 0;
             mtxtMbid.Focus();
         }

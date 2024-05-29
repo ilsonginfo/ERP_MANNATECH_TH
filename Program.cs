@@ -134,7 +134,7 @@ namespace MLM_Program
             ////////++++++++++++++라이브++++++++++++++++ +
             /////
 
-            cls_app_static_var.APP_VER = "[RELEASE]240527_UAT";
+            cls_app_static_var.APP_VER = "[RELEASE]240529_UAT";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++
@@ -208,14 +208,14 @@ namespace MLM_Program
             //////++++++++++++++++++++++++++++++++
 
 #else
-            //////매나테크 개발기 UAT
-            Connect_IP = "218.237.118.12,51433";
-            if (Connect_IP.Equals("218.237.118.12,51433"))
-            {
-                cls_Connect_DB.LiveFlag = false;
-            }
-            ////테스트배포땐닫는다
-
+            ////////매나테크 개발기 UAT
+            //Connect_IP = "218.237.118.12,51433";
+            //if (Connect_IP.Equals("218.237.118.12,51433"))
+            //{
+            //    cls_Connect_DB.LiveFlag = false;
+            //}
+            //////테스트배포땐닫는다
+            //
             if (cls_app_static_var.app_Company_Name == "menatech")
             {
                 cls_Connect_DB.LiveFlag = false;

@@ -93,8 +93,8 @@ namespace MLM_Program
             mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;
             mtxtMbid_s.Mask = cls_app_static_var.Member_Number_Fromat;
             mtxtMbid_n.Mask = cls_app_static_var.Member_Number_Fromat;
-            mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.
-            mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다.
+                mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
+                mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
             txtB1.Text = "0";
 
             mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;

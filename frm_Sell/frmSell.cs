@@ -283,6 +283,17 @@ namespace MLM_Program
                 pnl_Card_CVC.Visible = true;
 
                 button_Auth.Visible = false;    // 카드 인증 버튼
+
+
+                txtAddress1.Font = new Font("Tahoma", 11f);
+                txtAddress2.Font = new Font("Tahoma", 11f);
+                cbProvince_TH.Font = new Font("Tahoma", 11f);
+                cbDistrict_TH.Font = new Font("Tahoma", 11f);
+                cbSubDistrict_TH.Font = new Font("Tahoma", 11f);
+                cbZipCode_TH.Font = new Font("Tahoma", 11f);
+                txt_Get_Etc1.Font = new Font("Tahoma", 11f);
+                
+
             }
             // 태국 이외 버전 인 경우
             else
@@ -731,21 +742,25 @@ namespace MLM_Program
                 txtCenter3.Text = "인천픽업";
                 txtCenter3_Code.Text = "50012";
             }
-            //if (txtCenter2.Text == "Warehouse")
-            //{
-            //    txt_Receive_Method.Text = "Delivery";
-            //    txt_Receive_Method_Code.Text = "2";
-            //    txtCenter3.Text = "Warehouse";
-            //    txtCenter3_Code.Text = "540000";
-            //}
 
-            //if (txtCenter2.Text == "StoreFront")
-            //{
-            //    txt_Receive_Method.Text = "Pickup";
-            //    txt_Receive_Method_Code.Text = "1";
-            //    txtCenter3.Text = "StoreFront";
-            //    txtCenter3_Code.Text = "540010";
-            //}
+            if (cls_User.gid_CountryCode == "TH")
+            {
+                
+                if ((sender as Control).Name == "txt_Receive_Method")
+                {
+                    if (txt_Receive_Method_Code.Text == "2" && txtCenter3.Text == string.Empty)
+                    {
+                        txtCenter3.Text = "Warehouse";
+                        txtCenter3_Code.Text = "540000";
+                    }
+
+                    if (txt_Receive_Method_Code.Text == "1" && txtCenter3.Text == string.Empty)
+                    {
+                        txtCenter3.Text = "StoreFront";
+                        txtCenter3_Code.Text = "540010";
+                    }
+                }
+            }
 
         }
 
@@ -2734,13 +2749,16 @@ namespace MLM_Program
             }
 
             if (tb.Name == "txt_Receive_Method")
-
-
             {
                 Data_Set_Form_TF = 1;
                 if (tb.Text.Trim() == "")
                 {
                     txt_Receive_Method_Code.Text = "";
+
+                    //2024-05-28 배송을 바꾸면 센터도 초기화되게함 
+                    txtCenter3.Text = "";
+                    txtCenter3_Code.Text = "";
+
                     dGridView_Base_Rece_Item_Header_Reset(); //디비그리드 헤더와 기본 셋팅을 한다.
                     cgb_Rece_Item.d_Grid_view_Header_Reset();
                     Data_Set_Form_TF = 0;
@@ -3050,7 +3068,17 @@ namespace MLM_Program
                 //    Ncod_Text_Set_Data(tb, txt_Receive_Method_Code);
 
                 //SendKeys.Send("{TAB}");
+                if (txtCenter3.Text == string.Empty && txt_Receive_Method_Code.Text == "2")
+                {
+                    txtCenter3.Text = "Warehouse";
+                    txtCenter3_Code.Text = "540000";
+                }
 
+                if (txtCenter2.Text == "StoreFront" && txt_Receive_Method_Code.Text == "1")
+                {
+                    txtCenter3.Text = "StoreFront";
+                    txtCenter3_Code.Text = "540010";
+                }
 
                 Data_Set_Form_TF = 0;
             }
@@ -3180,8 +3208,11 @@ namespace MLM_Program
                 cgb_Pop.Next_Focus_Control = mtxtZip1;
 
             if (tb.Name == "txt_Receive_Method")
+            {
                 cgb_Pop.Next_Focus_Control = txtCenter3;
+                cgb_Pop.basegrid.Disposed += Received_Mtethod_BaseGrid_Disposed_Event;
 
+            }
             if (tb.Name == "txt_ItemCode")
             {
                 if (txtSellCode_Code.Text == "04")
@@ -3233,6 +3264,24 @@ namespace MLM_Program
             }
         }
 
+        private void Received_Mtethod_BaseGrid_Disposed_Event(object sender, EventArgs e)
+        {
+            if (txt_Receive_Method_Code.Text == "2" && txtCenter3.Text == string.Empty)
+            {
+                txtCenter3.Text = "Warehouse";
+                txtCenter3_Code.Text = "540000";
+            }
+
+            if (txt_Receive_Method_Code.Text == "1" && txtCenter3.Text == string.Empty)
+            {
+                txtCenter3.Text = "StoreFront";
+                txtCenter3_Code.Text = "540010";
+            }
+        }
+
+        private void Receive_Method_Select_From_Close_Event(object sender, FormClosedEventArgs e)
+        {
+        }
 
         private void Db_Grid_Popup(TextBox tb, TextBox tb1_Code, string strSql)
         {
@@ -4569,7 +4618,7 @@ namespace MLM_Program
 
                     if (txtCenter2.Text == "StoreFront")
                     {
-                        txt_Receive_Method.Text = "Pickup";
+                        txt_Receive_Method.Text = "Directly received";
                         txt_Receive_Method_Code.Text = "1";
                         txtCenter3.Text = "StoreFront";
                         txtCenter3_Code.Text = "540010";
@@ -5622,12 +5671,12 @@ namespace MLM_Program
             {
                 txtSellCode.Text = "Regular_order";
                 txtCenter2.Text = "Warehouse";   
-                txtCenter2_Code.Text = "540000"; 
+                txtCenter2_Code.Text = "540010"; 
 
-                txt_Receive_Method.Text = "Pickup";
-                txt_Receive_Method_Code.Text = "1";
-                txtCenter3.Text = "StoreFront";
-                txtCenter3_Code.Text = "540010";
+                txt_Receive_Method.Text = "Delivery";
+                txt_Receive_Method_Code.Text = "2";
+                txtCenter3.Text = "Warehouse";
+                txtCenter3_Code.Text = "540000";
             }
             else
             {
