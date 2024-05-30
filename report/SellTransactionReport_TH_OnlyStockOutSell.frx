@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="08/23/2018 13:58:32" ReportInfo.Modified="05/29/2024 16:23:06" ReportInfo.CreatorVersion="2020.2.12.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/23/2018 13:58:32" ReportInfo.Modified="05/30/2024 14:41:52" ReportInfo.CreatorVersion="2020.2.12.0">
   <ScriptText>using System;                                                              using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -120,7 +120,7 @@ namespace FastReport
   }
 }</ScriptText>
   <Dictionary>
-    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqQ29U2wrDgQroyAGUr2M2b35mJAUL+Gf+aBly+hSNhZM8KazQe5WbVGLIl2TwIJkAQUR7gp2tK0bz+pZ7WbSEalasafda/tmUtLvdbg8RMROrHBQuWvM7vn9/HFwpjw1gTQnU8LksHqx7FVS4N0DEDmhhAjSugl2DtNxo40iw8voH9Fk4C2OPG0P5GwCecK6BvkwYJMtg9vrdp3cjj2nKlBQN+WhITLJytjR2+oMm/DI=">
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqQ29U2wrDgQroyAGUr2M2b35mJAUL+Gf+aBly+hSNhZM8KazQe5WbVGLIl2TwIJkAQUR7gp2tK0bz+pZ7WbSEalasafda/tmUtLvdbg8RMROrHBQuWvM7vn9/HFwpjw1gTQnU8LksHqx7FVS4N0DEDmhhAjSugl2DtNxo40iw8voH9Fk4C2OPG0P5GwCecK6BvkwYJMtg9vrdp3cjj2nKlKC68n8+0BkneP8CdfwoOvM=">
       <TableDataSource Name="Table3" Alias="SalesItemDetail" DataType="System.Int32" Enabled="true" SelectCommand="SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber IN ('201901020023','201901070006','201810050012')">
         <Column Name="SalesItemIndex" DataType="System.Int32"/>
         <Column Name="OrderNumber" DataType="System.String"/>
@@ -382,6 +382,8 @@ namespace FastReport
         <TextObject Name="Text43" Left="633.7" Top="415.8" Width="101.95" Height="18.9" Text="[SalesDetail.Rece_AddCode1]" Padding="2, 1, 2, 0" ProcessAt="PageFinished" HorzAlign="Center" Font="Tahoma, 9pt"/>
         <TextObject Name="Text44" Left="501.4" Top="292.95" Width="160.65" Height="18.9" Text="[SalesDetail.M_Name]" Padding="2, 1, 2, 0" ProcessAt="PageFinished" Font="Tahoma, 9pt"/>
         <TextObject Name="Text45" Left="501.4" Top="340.2" Width="160.65" Height="18.9" Text="[SalesDetail.mbid2]" Padding="2, 1, 2, 0" Font="Tahoma, 9pt"/>
+        <TextObject Name="Text46" Left="141.75" Top="207.9" Width="264.6" Height="18.9" Text="[SalesDetail.OrderNumber]" Padding="2, 1, 2, 0" Font="Tahoma, 9pt"/>
+        <TextObject Name="Text47" Left="500.85" Top="207.9" Width="264.6" Height="18.9" Text="[SalesDetail.InsuranceNumber]" Padding="2, 1, 2, 0" Font="Tahoma, 9pt"/>
       </DataBand>
       <GroupFooterBand Name="GroupFooter1" Top="1142" Width="767.34" Height="500.85" Visible="false">
         <TableObject Name="Table2" Left="35.15" Top="141.86" Width="703.96" Height="59.72" ShiftMode="Never" ManualBuildEvent="Table2_ManualBuild" ManualBuildAutoSpans="false">

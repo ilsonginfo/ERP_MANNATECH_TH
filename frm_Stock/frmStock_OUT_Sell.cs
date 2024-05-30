@@ -18,9 +18,9 @@ namespace MLM_Program
     {
         StringEncrypter encrypter = new StringEncrypter(cls_User.con_EncryptKey, cls_User.con_EncryptKeyIV);
 
-        
+
         cls_Grid_Base cgb = new cls_Grid_Base();
-        
+
         private const string base_db_name = "tbl_SalesItemDetail";
         private int Data_Set_Form_TF;
 
@@ -51,12 +51,12 @@ namespace MLM_Program
             //| BindingFlags.SetProperty, null, dGridView_Base_Sub, new object[] { true });
         }
 
-      
+
 
 
         private void frmBase_From_Load(object sender, EventArgs e)
         {
-           
+
             Data_Set_Form_TF = 0;
 
             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -78,7 +78,7 @@ namespace MLM_Program
             mtxtSellDate2.Mask = cls_app_static_var.Date_Number_Fromat;
 
             mtxtOutDate.Mask = cls_app_static_var.Date_Number_Fromat;
-            
+
 
             txt_P_1.BackColor = cls_app_static_var.txt_Enable_Color;
             txt_P_2.BackColor = cls_app_static_var.txt_Enable_Color;
@@ -92,7 +92,7 @@ namespace MLM_Program
             txtCenter3_Code.Text = "";
             mtxtOutDate.Text = "";
 
-            radioB_SellTF2.Checked = true; 
+            radioB_SellTF2.Checked = true;
 
             //grB_Search.Height = mtxtMbid.Top + mtxtMbid.Height + 3;                    
         }
@@ -122,7 +122,7 @@ namespace MLM_Program
             cfm.button_flat_change(butt_S_Not_check);
             cfm.button_flat_change(butt_S_Save);
             cfm.button_flat_change(btnFastReport_Show);
-            
+
         }
 
 
@@ -164,7 +164,7 @@ namespace MLM_Program
 
             }
 
-          
+
 
 
             Button T_bt = butt_Exit;
@@ -190,18 +190,18 @@ namespace MLM_Program
 
         private Boolean Check_TextBox_Error()
         {
-           
+
             cls_Check_Input_Error c_er = new cls_Check_Input_Error();
 
-            if (mtxtMbid.Text.Replace("-", "").Replace("_", "").Trim() != "")               
+            if (mtxtMbid.Text.Replace("-", "").Replace("_", "").Trim() != "")
             {
                 int Ret = 0;
                 Ret = c_er._Member_Nmumber_Split(mtxtMbid);
 
                 if (Ret == -1)
-                {                    
-                    mtxtMbid.Focus();     return false;
-                }   
+                {
+                    mtxtMbid.Focus(); return false;
+                }
             }
 
 
@@ -213,7 +213,7 @@ namespace MLM_Program
                 if (Ret == -1)
                 {
                     mtxtMbid2.Focus(); return false;
-                }   
+                }
             }
 
             if (mtxtSellDate2.Text.Replace("-", "").Trim() != "")
@@ -234,7 +234,7 @@ namespace MLM_Program
                 }
             }
 
-            
+
 
             if (txtMakDate1.Text.Trim() != "")
             {
@@ -259,7 +259,7 @@ namespace MLM_Program
             }
 
 
-                   
+
 
             return true;
         }
@@ -270,21 +270,21 @@ namespace MLM_Program
 
             StringBuilder sb = new StringBuilder();
             sb.Append("Select ''  ");
-            sb.AppendLine( " , tbl_SalesItemDetail.Check_RecordTime ");
-            sb.AppendLine( " , tbl_SalesDetail.OrderNumber  ");
+            sb.AppendLine(" , tbl_SalesItemDetail.Check_RecordTime ");
+            sb.AppendLine(" , tbl_SalesDetail.OrderNumber  ");
 
-            sb.AppendLine( " ,LEFT(tbl_SalesDetail.SellDate,4) +'-' + LEFT(RIGHT(tbl_SalesDetail.SellDate,4),2) + '-' + RIGHT(tbl_SalesDetail.SellDate,2)   ");
-            
+            sb.AppendLine(" ,LEFT(tbl_SalesDetail.SellDate,4) +'-' + LEFT(RIGHT(tbl_SalesDetail.SellDate,4),2) + '-' + RIGHT(tbl_SalesDetail.SellDate,2)   ");
+
             if (cls_app_static_var.Member_Number_1 > 0)
-                sb.AppendLine( ",Case When tbl_SalesDetail.SellCode <> '' Then  tbl_SalesDetail.mbid + '-' + Convert(Varchar,tbl_SalesDetail.mbid2) ELSE  tbl_SalesDetail.mbid End ");
+                sb.AppendLine(",Case When tbl_SalesDetail.SellCode <> '' Then  tbl_SalesDetail.mbid + '-' + Convert(Varchar,tbl_SalesDetail.mbid2) ELSE  tbl_SalesDetail.mbid End ");
             else
-                sb.AppendLine( ",Case When tbl_SalesDetail.SellCode <> '' Then  Convert(varchar,tbl_SalesDetail.mbid2)  ELSE  tbl_SalesDetail.mbid End ");
+                sb.AppendLine(",Case When tbl_SalesDetail.SellCode <> '' Then  Convert(varchar,tbl_SalesDetail.mbid2)  ELSE  tbl_SalesDetail.mbid End ");
 
-            sb.AppendLine( " ,tbl_SalesDetail.M_Name ");
+            sb.AppendLine(" ,tbl_SalesDetail.M_Name ");
 
-            sb.AppendLine( ", tbl_SalesItemDetail.RecordTime ");
+            sb.AppendLine(", tbl_SalesItemDetail.RecordTime ");
 
-            sb.AppendLine( " , tbl_SalesItemDetail.ItemCode "); 
+            sb.AppendLine(" , tbl_SalesItemDetail.ItemCode ");
 
 
             // 한국인 경우
@@ -298,14 +298,14 @@ namespace MLM_Program
                 sb.AppendLine(" , tbl_Goods.Name_e  Item_Name ");
             }
 
-            sb.AppendLine( " , tbl_SalesItemDetail.ItemPrice ");
-            sb.AppendLine( " , tbl_SalesItemDetail.ItemPV ");
+            sb.AppendLine(" , tbl_SalesItemDetail.ItemPrice ");
+            sb.AppendLine(" , tbl_SalesItemDetail.ItemPV ");
 
-            sb.AppendLine( " , tbl_SalesItemDetail.ItemCount ");
-            sb.AppendLine( " , tbl_SalesItemDetail.Send_itemCount1 ");
+            sb.AppendLine(" , tbl_SalesItemDetail.ItemCount ");
+            sb.AppendLine(" , tbl_SalesItemDetail.Send_itemCount1 ");
 
-            sb.AppendLine( " , tbl_SalesItemDetail.ItemTotalPrice ");
-            sb.AppendLine( " , tbl_SalesItemDetail.ItemTotalPV ");
+            sb.AppendLine(" , tbl_SalesItemDetail.ItemTotalPrice ");
+            sb.AppendLine(" , tbl_SalesItemDetail.ItemTotalPV ");
 
             // 한국인 경우
             if (cls_NationService.GetCountryCodeOrDefault(cls_User.gid_CountryCode) == "KR")
@@ -317,45 +317,45 @@ namespace MLM_Program
             {
                 sb.AppendLine(" , Isnull ( tbl_SellType.SellTypeName_en , 'Regular_order' )  SellCodeName  ");
             }
-            
+
 
 
             cls_form_Meth cm = new cls_form_Meth();
-            sb.AppendLine( " ,Case When SellState = 'N_1' Then '" + cm._chang_base_caption_search("정상") + "'");
-            sb.AppendLine( "  When SellState = 'N_3' Then '" + cm._chang_base_caption_search("교환_정상") + "'");
-            sb.AppendLine( "  When SellState = 'R_1' Then '" + cm._chang_base_caption_search("반품") + "'");
-            sb.AppendLine( "  When SellState = 'R_3' Then '" + cm._chang_base_caption_search("교환_반품") + "'");
-            sb.AppendLine( "  When SellState = 'C_1' Then '" + cm._chang_base_caption_search("취소") + "'");
-            sb.AppendLine( " END  SellStateName ");
+            sb.AppendLine(" ,Case When SellState = 'N_1' Then '" + cm._chang_base_caption_search("정상") + "'");
+            sb.AppendLine("  When SellState = 'N_3' Then '" + cm._chang_base_caption_search("교환_정상") + "'");
+            sb.AppendLine("  When SellState = 'R_1' Then '" + cm._chang_base_caption_search("반품") + "'");
+            sb.AppendLine("  When SellState = 'R_3' Then '" + cm._chang_base_caption_search("교환_반품") + "'");
+            sb.AppendLine("  When SellState = 'C_1' Then '" + cm._chang_base_caption_search("취소") + "'");
+            sb.AppendLine(" END  SellStateName ");
 
             //sb.AppendLine( " , Ch_T_2." + cls_app_static_var.Base_M_Detail_Ex + " Receive_Method_Name ");
-            sb.AppendLine( " , '' ");
-            sb.AppendLine( " ,Isnull(tbl_Business.Name,'') as B_Name");
-            sb.AppendLine( " ,Isnull(S_Bus.Name,'') as S_B_Name");
+            sb.AppendLine(" , '' ");
+            sb.AppendLine(" ,Isnull(tbl_Business.Name,'') as B_Name");
+            sb.AppendLine(" ,Isnull(S_Bus.Name,'') as S_B_Name");
 
-            sb.AppendLine( " ,tbl_SalesItemDetail.Salesitemindex  ");
-            sb.AppendLine( " ,tbl_Memberinfo.BusinessCode  ");
-            sb.AppendLine( " ,tbl_SalesDetail.BusCode  ");
+            sb.AppendLine(" ,tbl_SalesItemDetail.Salesitemindex  ");
+            sb.AppendLine(" ,tbl_Memberinfo.BusinessCode  ");
+            sb.AppendLine(" ,tbl_SalesDetail.BusCode  ");
 
 
-            sb.AppendLine( " ,Case When Receive_Method = '1' Then '" + cm._chang_base_caption_search("직접수령") + "'");
-            sb.AppendLine( "  When Receive_Method = '2' Then '" + cm._chang_base_caption_search("배송") + "'");
-            sb.AppendLine( "  When Receive_Method = '3' Then '" + cm._chang_base_caption_search("센타수령") + "'");
-            sb.AppendLine( "  When Receive_Method = '4' Then '" + cm._chang_base_caption_search("본사직접수령") + "'");
-            sb.AppendLine( " ELSE '' ");
-            sb.AppendLine( " END  Receive_Method_Name ");
+            sb.AppendLine(" ,Case When Receive_Method = '1' Then '" + cm._chang_base_caption_search("직접수령") + "'");
+            sb.AppendLine("  When Receive_Method = '2' Then '" + cm._chang_base_caption_search("배송") + "'");
+            sb.AppendLine("  When Receive_Method = '3' Then '" + cm._chang_base_caption_search("센타수령") + "'");
+            sb.AppendLine("  When Receive_Method = '4' Then '" + cm._chang_base_caption_search("본사직접수령") + "'");
+            sb.AppendLine(" ELSE '' ");
+            sb.AppendLine(" END  Receive_Method_Name ");
 
-            sb.AppendLine( " ,Get_ZipCode ");
+            sb.AppendLine(" ,Get_ZipCode ");
             sb.AppendLine(" ,Get_city ");
             sb.AppendLine(" ,Get_state ");
-            sb.AppendLine( " ,Get_Address1 ");
-            sb.AppendLine( " ,Get_Address2 ");
-            sb.AppendLine( " ,Get_Name1 ");
-            sb.AppendLine( " ,Get_Tel1 ");
-            sb.AppendLine( " ,Get_Tel2 ");
+            sb.AppendLine(" ,Get_Address1 ");
+            sb.AppendLine(" ,Get_Address2 ");
+            sb.AppendLine(" ,Get_Name1 ");
+            sb.AppendLine(" ,Get_Tel1 ");
+            sb.AppendLine(" ,Get_Tel2 ");
 
-            sb.AppendLine( " ,tbl_SalesItemDetail.Prom_TF_SORT ");
-            sb.AppendLine( " , tbl_Sales_Rece.Pass_Number ");
+            sb.AppendLine(" ,tbl_SalesItemDetail.Prom_TF_SORT ");
+            sb.AppendLine(" , tbl_Sales_Rece.Pass_Number ");
             sb.AppendLine(" ,tbl_SalesDetail.InputCard ");
             sb.AppendLine(" ,tbl_SalesDetail.InputCash ");
             sb.AppendLine(" ,tbl_SalesDetail.InputPassbook + tbl_SalesDetail.InputPassbook_2 as InputPassbook_2 ");
@@ -363,20 +363,20 @@ namespace MLM_Program
             sb.AppendLine(" ,tbl_SalesDetail.InputPass_Pay ");
 
 
-            sb.AppendLine( " From tbl_SalesItemDetail (nolock) ");
-            sb.AppendLine( " LEFT JOIN tbl_SalesDetail (nolock)  ON tbl_SalesItemDetail.OrderNumber = tbl_SalesDetail.OrderNumber ");
+            sb.AppendLine(" From tbl_SalesItemDetail (nolock) ");
+            sb.AppendLine(" LEFT JOIN tbl_SalesDetail (nolock)  ON tbl_SalesItemDetail.OrderNumber = tbl_SalesDetail.OrderNumber ");
             sb.AppendLine("  LEFT JOIN(");
             sb.AppendLine("     SELECT OrderNumber, Min(SalesItemIndex) SalesItemIndex, Receive_Method , Get_ZipCode , Get_Address1 , Get_Address2 , Get_Name1 , Get_Tel1 , Get_Tel2 , Pass_Number, Get_city, Get_state");
             sb.AppendLine("     FROM tbl_Sales_Rece (nolock)");
             sb.AppendLine("     GROUP BY OrderNumber, Receive_Method , Get_ZipCode  , Get_Address1  , Get_Address2 , Get_Name1 , Get_Tel1 , Get_Tel2 , Pass_Number, Get_city, Get_state");
             sb.AppendLine("     ) tbl_Sales_Rece ON tbl_SalesItemDetail.OrderNumber = tbl_Sales_Rece.OrderNumber");
-            sb.AppendLine( " LEFT JOIN tbl_Memberinfo (nolock) ON tbl_Memberinfo.Mbid = tbl_SalesDetail.Mbid And tbl_Memberinfo.Mbid2 = tbl_SalesDetail.Mbid2 ");            
-            sb.AppendLine( " LEFT JOIN tbl_Business (nolock) ON tbl_Memberinfo.BusinessCode = tbl_Business.NCode ");
-            sb.AppendLine( " LEFT JOIN tbl_Business S_Bus (nolock) ON tbl_SalesDetail.BusCode = S_Bus.NCode ");            
-            sb.AppendLine( " Left Join tbl_Class C1 On tbl_Memberinfo.CurGrade=C1.Grade_Cnt ");            
-            sb.AppendLine( " LEFT JOIN tbl_Base_Change_Detail Ch_T_2 (nolock) ON Ch_T_2.M_Detail_S = 'tbl_Sales_Rece' And  Ch_T_2.M_Detail = Convert(Varchar,tbl_Sales_Rece.Receive_Method) ");
-            sb.AppendLine( " LEFT JOIN tbl_Goods (nolock) ON tbl_Goods.Ncode = tbl_SalesitemDetail.ItemCode ");
-            sb.AppendLine( " LEFT Join tbl_SellType ON tbl_SalesDetail.SellCode = tbl_SellType.SellCode ");
+            sb.AppendLine(" LEFT JOIN tbl_Memberinfo (nolock) ON tbl_Memberinfo.Mbid = tbl_SalesDetail.Mbid And tbl_Memberinfo.Mbid2 = tbl_SalesDetail.Mbid2 ");
+            sb.AppendLine(" LEFT JOIN tbl_Business (nolock) ON tbl_Memberinfo.BusinessCode = tbl_Business.NCode ");
+            sb.AppendLine(" LEFT JOIN tbl_Business S_Bus (nolock) ON tbl_SalesDetail.BusCode = S_Bus.NCode ");
+            sb.AppendLine(" Left Join tbl_Class C1 On tbl_Memberinfo.CurGrade=C1.Grade_Cnt ");
+            sb.AppendLine(" LEFT JOIN tbl_Base_Change_Detail Ch_T_2 (nolock) ON Ch_T_2.M_Detail_S = 'tbl_Sales_Rece' And  Ch_T_2.M_Detail = Convert(Varchar,tbl_Sales_Rece.Receive_Method) ");
+            sb.AppendLine(" LEFT JOIN tbl_Goods (nolock) ON tbl_Goods.Ncode = tbl_SalesitemDetail.ItemCode ");
+            sb.AppendLine(" LEFT Join tbl_SellType ON tbl_SalesDetail.SellCode = tbl_SellType.SellCode ");
 
             sb.AppendLine(" LEFT JOIN (Select T_OrderNumber1 ,Salesitemindex From tbl_SalesItemDetail (nolock) Where ItemCount < 0) RR_1 ");
             sb.AppendLine("     ON RR_1.T_OrderNumber1 = tbl_SalesItemDetail.OrderNumber    And RR_1.Salesitemindex = tbl_SalesItemDetail.Salesitemindex  ");
@@ -398,17 +398,17 @@ namespace MLM_Program
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("  Where tbl_SalesItemDetail.ItemCount - tbl_SalesItemDetail.Send_itemCount1 >0 And tbl_SalesDetail.Ga_Order = 0 And tbl_SalesDetail.ReturnTF <> 5   ");
 
-            sb.AppendLine( " And  tbl_SalesDetail.Ga_Order = 0 ");
+            sb.AppendLine(" And  tbl_SalesDetail.Ga_Order = 0 ");
 
             //sb.AppendLine("  And  tbl_SalesDetail.TotalinputPrice > 0 ");
             sb.AppendLine("  And  (tbl_SalesDetail.TotalinputPrice > 0 OR tbl_SalesDetail.TotalPv > 0 ) ");
 
 
 
-            if (radioB_SellTF2.Checked == true )
-                sb.AppendLine( " And tbl_SalesDetail.SellCode <> '' ");  //진주문만 나오게 한다
+            if (radioB_SellTF2.Checked == true)
+                sb.AppendLine(" And tbl_SalesDetail.SellCode <> '' ");  //진주문만 나오게 한다
             else
-                sb.AppendLine( " And tbl_SalesDetail.SellCode = '' ");  //진주문만 나오게 한다
+                sb.AppendLine(" And tbl_SalesDetail.SellCode = '' ");  //진주문만 나오게 한다
 
             //출고도 하기 전에 반품이 진행 된 내역에 대해서는 안나오게 한다 기본적으로
             //반품시 Salesitemindex는 기본적으로 원판매의 Salesitemindex 를 가져가고  T_OrderNumber1 필드에 원주문에 대한 주문번호를 넣어둠.
@@ -425,19 +425,19 @@ namespace MLM_Program
             string Mbid = ""; int Mbid2 = 0;
             //회원번호1로 검색
             if (
-                (mtxtMbid.Text.Replace("-", "").Replace("_", "").Trim() != "") 
+                (mtxtMbid.Text.Replace("-", "").Replace("_", "").Trim() != "")
                 &&
-                (mtxtMbid2.Text.Replace("-", "").Replace("_", "").Trim() == "") 
+                (mtxtMbid2.Text.Replace("-", "").Replace("_", "").Trim() == "")
                 )
             {
                 cls_Search_DB csb = new cls_Search_DB();
                 if (csb.Member_Nmumber_Split(mtxtMbid.Text, ref Mbid, ref Mbid2) == 1)
                 {
                     if (Mbid != "")
-                        sb.AppendLine( " And tbl_SalesDetail.Mbid ='" + Mbid + "'");
+                        sb.AppendLine(" And tbl_SalesDetail.Mbid ='" + Mbid + "'");
 
                     if (Mbid2 >= 0)
-                        sb.AppendLine( " And tbl_SalesDetail.Mbid2 = " + Mbid2);
+                        sb.AppendLine(" And tbl_SalesDetail.Mbid2 = " + Mbid2);
                 }
 
 
@@ -454,36 +454,36 @@ namespace MLM_Program
                 if (csb.Member_Nmumber_Split(mtxtMbid.Text, ref Mbid, ref Mbid2) == 1)
                 {
                     if (Mbid != "")
-                        sb.AppendLine( " And tbl_SalesDetail.Mbid >='" + Mbid + "'");
+                        sb.AppendLine(" And tbl_SalesDetail.Mbid >='" + Mbid + "'");
 
                     if (Mbid2 >= 0)
-                        sb.AppendLine( " And tbl_SalesDetail.Mbid2 >= " + Mbid2);
+                        sb.AppendLine(" And tbl_SalesDetail.Mbid2 >= " + Mbid2);
                 }
 
                 if (csb.Member_Nmumber_Split(mtxtMbid2.Text, ref Mbid, ref Mbid2) == 1)
                 {
                     if (Mbid != "")
-                        sb.AppendLine( " And tbl_SalesDetail.Mbid <='" + Mbid + "'");
+                        sb.AppendLine(" And tbl_SalesDetail.Mbid <='" + Mbid + "'");
 
                     if (Mbid2 >= 0)
-                        sb.AppendLine( " And tbl_SalesDetail.Mbid2 <= " + Mbid2);
+                        sb.AppendLine(" And tbl_SalesDetail.Mbid2 <= " + Mbid2);
                 }
             }
 
 
             //회원명으로 검색
             if (txtName.Text.Trim() != "")
-                sb.AppendLine( " And tbl_SalesDetail.M_Name Like '%" + txtName.Text.Trim() + "%'");
+                sb.AppendLine(" And tbl_SalesDetail.M_Name Like '%" + txtName.Text.Trim() + "%'");
 
             //가입일자로 검색 -1
             if ((mtxtSellDate1.Text.Replace("-", "").Trim() != "") && (mtxtSellDate2.Text.Replace("-", "").Trim() == ""))
-                sb.AppendLine( " And tbl_SalesDetail.SellDate = '" + mtxtSellDate1.Text.Replace("-", "").Trim() + "'");
+                sb.AppendLine(" And tbl_SalesDetail.SellDate = '" + mtxtSellDate1.Text.Replace("-", "").Trim() + "'");
 
             //가입일자로 검색 -2
             if ((mtxtSellDate1.Text.Replace("-", "").Trim() != "") && (mtxtSellDate2.Text.Replace("-", "").Trim() != ""))
             {
-                sb.AppendLine( " And tbl_SalesDetail.SellDate >= '" + mtxtSellDate1.Text.Replace("-", "").Trim() + "'");
-                sb.AppendLine( " And tbl_SalesDetail.SellDate <= '" + mtxtSellDate2.Text.Replace("-", "").Trim() + "'");
+                sb.AppendLine(" And tbl_SalesDetail.SellDate >= '" + mtxtSellDate1.Text.Replace("-", "").Trim() + "'");
+                sb.AppendLine(" And tbl_SalesDetail.SellDate <= '" + mtxtSellDate2.Text.Replace("-", "").Trim() + "'");
             }
 
 
@@ -500,18 +500,18 @@ namespace MLM_Program
 
 
             if (txt_ItemName_Code2.Text.Trim() != "")
-                sb.AppendLine( " And tbl_SalesitemDetail.ItemCode = '" + txt_ItemName_Code2.Text.Trim() + "'");
+                sb.AppendLine(" And tbl_SalesitemDetail.ItemCode = '" + txt_ItemName_Code2.Text.Trim() + "'");
 
             //센타코드로으로 검색
             if (txtCenter_Code.Text.Trim() != "")
-                sb.AppendLine( " And tbl_Memberinfo.BusinessCode = '" + txtCenter_Code.Text.Trim() + "'");
+                sb.AppendLine(" And tbl_Memberinfo.BusinessCode = '" + txtCenter_Code.Text.Trim() + "'");
 
             if (txtCenter2_Code.Text.Trim() != "")
-                sb.AppendLine( " And tbl_SalesDetail.BusCode = '" + txtCenter2_Code.Text.Trim() + "'");
+                sb.AppendLine(" And tbl_SalesDetail.BusCode = '" + txtCenter2_Code.Text.Trim() + "'");
 
 
             if (txtSellCode_Code.Text.Trim() != "")
-                sb.AppendLine( " And tbl_SalesDetail.SellCode = '" + txtSellCode_Code.Text.Trim() + "'");
+                sb.AppendLine(" And tbl_SalesDetail.SellCode = '" + txtSellCode_Code.Text.Trim() + "'");
 
             //if (txtR_Id_Code.Text.Trim() != "")
             //    sb.AppendLine( " And tbl_SalesDetail.recordid = '" + txtR_Id_Code.Text.Trim() + "'");
@@ -521,26 +521,26 @@ namespace MLM_Program
             //    sb.AppendLine( " And tbl_SalesDetail.SellCode = '" + txtSellCode_Code.Text.Trim() + "'");
 
             if (txtOrderNumber.Text.Trim() != "")
-                sb.AppendLine( " And tbl_SalesDetail.OrderNumber = '" + txtOrderNumber.Text.Trim() + "'");
+                sb.AppendLine(" And tbl_SalesDetail.OrderNumber = '" + txtOrderNumber.Text.Trim() + "'");
 
 
             if (combo_Rec_Code.Text.Trim() != "")
-                sb.AppendLine( " And tbl_Sales_Rece.Receive_Method = " + combo_Rec_Code.Text.Trim()); 
+                sb.AppendLine(" And tbl_Sales_Rece.Receive_Method = " + combo_Rec_Code.Text.Trim());
 
 
 
             if (opt_sell_2.Checked == true)
-                sb.AppendLine( " And (tbl_SalesitemDetail.SellState = 'N_1' OR tbl_SalesitemDetail.SellState = 'N_3' ) ");
+                sb.AppendLine(" And (tbl_SalesitemDetail.SellState = 'N_1' OR tbl_SalesitemDetail.SellState = 'N_3' ) ");
 
             if (opt_sell_3.Checked == true)
-                sb.AppendLine( " And (tbl_SalesitemDetail.SellState = 'R_1' OR tbl_SalesitemDetail.SellState = 'R_3' ) ");
+                sb.AppendLine(" And (tbl_SalesitemDetail.SellState = 'R_1' OR tbl_SalesitemDetail.SellState = 'R_3' ) ");
 
             //if (opt_sell_4.Checked == true)
             //    sb.AppendLine( " And tbl_SalesDetail.ReturnTF = 3 ");
 
             //if (opt_sell_5.Checked == true)
             //    sb.AppendLine( " And tbl_SalesDetail.ReturnTF = 4 ");
-            
+
             //if (opt_Ed_2.Checked == true)
             //    sb.AppendLine( " And tbl_SalesDetail.UnaccMoney = 0 ");
 
@@ -550,10 +550,10 @@ namespace MLM_Program
 
             //if (radioB_SellTF2.Checked == true)
             //{
-                //sb.AppendLine( " And tbl_Memberinfo.BusinessCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )");
-                sb.AppendLine( " And tbl_SalesDetail.BusCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )");
+            //sb.AppendLine( " And tbl_Memberinfo.BusinessCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )");
+            sb.AppendLine(" And tbl_SalesDetail.BusCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )");
 
-                //sb.AppendLine( " And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('" + cls_User.gid_CountryCode + "') )");
+            //sb.AppendLine( " And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('" + cls_User.gid_CountryCode + "') )");
             //}
 
             Tsql = Tsql + sb.ToString();
@@ -568,18 +568,18 @@ namespace MLM_Program
 
 
         private void Base_Grid_Set()
-        {   
-            string Tsql = "";            
+        {
+            string Tsql = "";
             Make_Base_Query(ref Tsql);
 
             Make_Base_Query_(ref Tsql);
 
             //++++++++++++++++++++++++++++++++
-            cls_Connect_DB Temp_Connect = new cls_Connect_DB();                                  
-            
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
             DataSet ds = new DataSet();
             //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
-            if (Temp_Connect.Open_Data_Set(Tsql, base_db_name, ds, this.Name , this.Text,1 ) == false) return;
+            if (Temp_Connect.Open_Data_Set(Tsql, base_db_name, ds, this.Name, this.Text, 1) == false) return;
             int ReCnt = Temp_Connect.DataSet_ReCount;
 
             if (ReCnt == 0) return;
@@ -620,7 +620,7 @@ namespace MLM_Program
                 //txt_P_6.Text = string.Format(cls_app_static_var.str_Currency_Type, Sum_15);
                 //txt_P_7.Text = string.Format(cls_app_static_var.str_Currency_Type, Sum_16);        
             }
-            
+
             cgb.grid_name_obj = gr_dic_text;  //배열을 클래스로 보낸다.
             cgb.db_grid_Obj_Data_Put();
 
@@ -632,107 +632,107 @@ namespace MLM_Program
 
         private void dGridView_Base_Header_Reset()
         {
-            
-            cgb.basegrid = dGridView_Base;            
+
+            cgb.basegrid = dGridView_Base;
             cgb.grid_select_mod = DataGridViewSelectionMode.FullRowSelect;
             cgb.grid_Frozen_End_Count = 4;
             cgb.basegrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
 
             string[] g_HeaderText = {
-        "선택"     , ""           , "주문번호"    ,   "구매_일자"     , "회원_번호"     
-      , "성명"     , "기록일"     , "상품코드"    ,   "상품명"        , "개별단가"  
-      , "_개별PV"  , "구매_수량"  , ""            ,   "총상품액"      , "_총상품PV" 
-      , "구매_종류", "구분"       , ""            ,   "_등록_센타명"   , "_구매_센타명"                                  
-      , ""         , ""           , ""            ,   "배송구분"      , "우편번호" 
+        "선택"     , ""           , "주문번호"    ,   "구매_일자"     , "회원_번호"
+      , "성명"     , "기록일"     , "상품코드"    ,   "상품명"        , "개별단가"
+      , "_개별PV"  , "구매_수량"  , ""            ,   "총상품액"      , "_총상품PV"
+      , "구매_종류", "구분"       , ""            ,   "_등록_센타명"   , "_구매_센타명"
+      , ""         , ""           , ""            ,   "배송구분"      , "우편번호"
       , "태국_도시", "태국_주", "배송지"   , "수령인명"   , "연락처1"
       , "연락처2"  , "_Prom_TF_SORT" , "송장번호" , "카드" , "현금"
       , "가상계좌" , "공제번호", "배송료"  ,
 
-                                    }; 
+                                    };
             string[] g_Cols = {
-        "Selected"   , ""           , "OrderNumber"    , "SellDate"          ,  "mbid2"     
-      , "m_name"     , "RegDatee"   , "Itemcode"       , "ItemName"          , "ItemPrice"  
-      , "_개별PV"    , "ItemCount"  , ""               , "TotalItemPrice"    , "_총상품PV" 
-      , "SellType1"  , "SellType2"  , ""               , "CenterName"        , "OrderCenterName"                                  
-      , ""           , ""           , ""               , "배송구분"          ,  "우편번호" 
+        "Selected"   , ""           , "OrderNumber"    , "SellDate"          ,  "mbid2"
+      , "m_name"     , "RegDatee"   , "Itemcode"       , "ItemName"          , "ItemPrice"
+      , "_개별PV"    , "ItemCount"  , ""               , "TotalItemPrice"    , "_총상품PV"
+      , "SellType1"  , "SellType2"  , ""               , "CenterName"        , "OrderCenterName"
+      , ""           , ""           , ""               , "배송구분"          ,  "우편번호"
       , "City", "State",  "배송지"    , "수령인명"   , "연락처1"
       , "연락처2"           , "_Prom_TF_SORT" , "송장번호"    , "InputCard"  , "InputCash"
       , "InputPassbook_2"   , "InsuranceNumber", "InputPass_pay"
             };
 
-            cgb.grid_col_Count = g_HeaderText.Length;            
+            cgb.grid_col_Count = g_HeaderText.Length;
             cgb.grid_col_header_text = g_HeaderText;
             cgb.grid_col_name = g_Cols;
 
-            int[] g_Width = { 
+            int[] g_Width = {
          70,   0, 120,  90,  90
       ,  90,  10,  90, 130,  80
       ,   0,  80,   0,  80,   0
       ,  90,  80,  0, 0, 0
-      ,   0,   0,   0,  10,  10 
+      ,   0,   0,   0,  10,  10
       ,  50, 50
-      ,  10,  10,  10,  10,   0 
+      ,  10,  10,  10,  10,   0
       ,  10,  50,  50,  50,  50
-      ,  50 
+      ,  50
                             };
             cgb.grid_col_w = g_Width;
 
-            Boolean[] g_ReadOnly = { false , true,  true,  true ,true                                     
-                                    , true , true,  true,  true ,true                                     
-                                    , true , true,  true,  true ,true  
-                                    , true , true,  true,  true ,true                                    
-                                    , true , true,  true,  true ,true                                    
-                                    , true , true,  true,  true ,true          
+            Boolean[] g_ReadOnly = { false , true,  true,  true ,true
                                     , true , true,  true,  true ,true
-                                    ,true, true, true       
+                                    , true , true,  true,  true ,true
+                                    , true , true,  true,  true ,true
+                                    , true , true,  true,  true ,true
+                                    , true , true,  true,  true ,true
+                                    , true , true,  true,  true ,true
+                                    ,true, true, true
                                    };
             cgb.grid_col_Lock = g_ReadOnly;
 
             DataGridViewContentAlignment[] g_Alignment =
-                              {DataGridViewContentAlignment.MiddleCenter  
-                               ,DataGridViewContentAlignment.MiddleLeft 
-                               ,DataGridViewContentAlignment.MiddleLeft 
-                               ,DataGridViewContentAlignment.MiddleCenter  
+                              {DataGridViewContentAlignment.MiddleCenter
+                               ,DataGridViewContentAlignment.MiddleLeft
+                               ,DataGridViewContentAlignment.MiddleLeft
+                               ,DataGridViewContentAlignment.MiddleCenter
                                ,DataGridViewContentAlignment.MiddleCenter      //5 
 
-                               ,DataGridViewContentAlignment.MiddleLeft                              
-                               ,DataGridViewContentAlignment.MiddleLeft                              
+                               ,DataGridViewContentAlignment.MiddleLeft
+                               ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleCenter
                                ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleRight      //10
 
                                ,DataGridViewContentAlignment.MiddleRight
-                               ,DataGridViewContentAlignment.MiddleRight   
-                               ,DataGridViewContentAlignment.MiddleRight 
-                               ,DataGridViewContentAlignment.MiddleRight  
+                               ,DataGridViewContentAlignment.MiddleRight
+                               ,DataGridViewContentAlignment.MiddleRight
+                               ,DataGridViewContentAlignment.MiddleRight
                                ,DataGridViewContentAlignment.MiddleRight    //15  
 
-                               ,DataGridViewContentAlignment.MiddleCenter                           
-                               ,DataGridViewContentAlignment.MiddleCenter                              
+                               ,DataGridViewContentAlignment.MiddleCenter
+                               ,DataGridViewContentAlignment.MiddleCenter
                                ,DataGridViewContentAlignment.MiddleCenter
                                ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleLeft       //20
 
                                ,DataGridViewContentAlignment.MiddleLeft
-                               ,DataGridViewContentAlignment.MiddleCenter                              
+                               ,DataGridViewContentAlignment.MiddleCenter
                                ,DataGridViewContentAlignment.MiddleCenter
                                ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleLeft     //25
 
-                               ,DataGridViewContentAlignment.MiddleLeft      
-                               ,DataGridViewContentAlignment.MiddleLeft 
-                               ,DataGridViewContentAlignment.MiddleLeft 
-                               ,DataGridViewContentAlignment.MiddleLeft 
+                               ,DataGridViewContentAlignment.MiddleLeft
+                               ,DataGridViewContentAlignment.MiddleLeft
+                               ,DataGridViewContentAlignment.MiddleLeft
+                               ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleLeft     //30
 
-                               ,DataGridViewContentAlignment.MiddleLeft      
+                               ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleRight
                                ,DataGridViewContentAlignment.MiddleRight    //35
 
-                               ,DataGridViewContentAlignment.MiddleRight    
+                               ,DataGridViewContentAlignment.MiddleRight
                                ,DataGridViewContentAlignment.MiddleLeft
                                ,DataGridViewContentAlignment.MiddleLeft
 
@@ -752,18 +752,18 @@ namespace MLM_Program
             gr_dic_cell_format[34] = cls_app_static_var.str_Grid_Currency_Type;
             gr_dic_cell_format[35] = cls_app_static_var.str_Grid_Currency_Type;
 
-            cgb.grid_cell_format = gr_dic_cell_format;            
+            cgb.grid_cell_format = gr_dic_cell_format;
         }
 
 
         private void Set_gr_dic(ref DataSet ds, ref Dictionary<int, object[]> gr_dic_text, int fi_cnt)
         {
             object[] row0 = { ds.Tables[base_db_name].Rows[fi_cnt][0]
-                                ,ds.Tables[base_db_name].Rows[fi_cnt][1]                                  
+                                ,ds.Tables[base_db_name].Rows[fi_cnt][1]
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][2]
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][3]
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][4]
- 
+
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][5]
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][6]
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][7]
@@ -771,7 +771,7 @@ namespace MLM_Program
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][9]
 
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][10]
-                                ,ds.Tables[base_db_name].Rows[fi_cnt][11]  
+                                ,ds.Tables[base_db_name].Rows[fi_cnt][11]
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][12]
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][13]
                                 ,ds.Tables[base_db_name].Rows[fi_cnt][14]
@@ -817,8 +817,8 @@ namespace MLM_Program
         }
 
 
-               
-        
+
+
 
         private void txtData_Enter(object sender, EventArgs e)
         {
@@ -878,7 +878,7 @@ namespace MLM_Program
                 e.KeyChar = ch[0];
             }
             if (e.KeyChar == 13)
-            {        
+            {
                 SendKeys.Send("{TAB}");
             }
         }
@@ -1016,7 +1016,7 @@ namespace MLM_Program
             cls_Check_Text T_R = new cls_Check_Text();
 
             //엔터키를 눌럿을 경우에 탭을 다음 으로 옴기기 위한 이벤트 추가
-            T_R.Key_Enter_13 += new Key_13_Event_Handler(T_R_Key_Enter_13);            
+            T_R.Key_Enter_13 += new Key_13_Event_Handler(T_R_Key_Enter_13);
             T_R.Key_Enter_13_Ncode += new Key_13_Ncode_Event_Handler(T_R_Key_Enter_13_Ncode);
 
             TextBox tb = (TextBox)sender;
@@ -1058,7 +1058,7 @@ namespace MLM_Program
             if (Data_Set_Form_TF == 1) return;
             int Sw_Tab = 0;
 
-            if ((sender is TextBox) == false)  return;
+            if ((sender is TextBox) == false) return;
 
             TextBox tb = (TextBox)sender;
             if (tb.TextLength >= tb.MaxLength)
@@ -1125,7 +1125,7 @@ namespace MLM_Program
             }
         }
 
-        
+
 
         void T_R_Key_Enter_13()
         {
@@ -1134,7 +1134,7 @@ namespace MLM_Program
 
 
         void T_R_Key_Enter_13_Ncode(string txt_tag, TextBox tb)
-        {            
+        {
             if (tb.Name == "txtCenter")
             {
                 Data_Set_Form_TF = 1;
@@ -1295,7 +1295,7 @@ namespace MLM_Program
             cgb_Pop.basegrid = Popup_gr;
             cgb_Pop.Base_fr = this;
             cgb_Pop.Base_tb = tb1_Code;  //앞에게 코드
-            cgb_Pop.Base_tb_2 = tb ;    //2번은 명임
+            cgb_Pop.Base_tb_2 = tb;    //2번은 명임
             cgb_Pop.Base_Location_obj = tb;
 
             if (strSql != "")
@@ -1311,7 +1311,7 @@ namespace MLM_Program
 
                 if (tb.Name == "txtCenter2" || tb.Name == "txtCenter3")
                     cgb_Pop.db_grid_Popup_Base(2, "센타_코드", "센타명", "Ncode", "Name", strSql);
-           
+
                 if (tb.Name == "txtSellCode")
                     cgb_Pop.db_grid_Popup_Base(2, "구매_코드", "구매종류", "SellCode", "SellTypeName", strSql);
 
@@ -1325,7 +1325,7 @@ namespace MLM_Program
                     string Tsql;
                     Tsql = "Select Ncode , Name  ";
                     Tsql = Tsql + " From tbl_Business (nolock) ";
-                    Tsql = Tsql + " Where  Ncode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode  + "') )";
+                    Tsql = Tsql + " Where  Ncode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )";
                     Tsql = Tsql + " And  U_TF = 0 "; //사용센타만 보이게 한다 
                     Tsql = Tsql + " Order by Ncode ";
 
@@ -1357,12 +1357,12 @@ namespace MLM_Program
                     string Tsql;
                     Tsql = "Select Ncode , Name  ";
                     Tsql = Tsql + " From tbl_Business (nolock) ";
-                    Tsql = Tsql + " Where  Ncode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode  + "') )";
+                    Tsql = Tsql + " Where  Ncode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )";
                     Tsql = Tsql + " And  U_TF = 0 "; //사용센타만 보이게 한다 
                     Tsql = Tsql + " Order by Ncode ";
 
                     cgb_Pop.db_grid_Popup_Base(2, "센타_코드", "센타명", "Ncode", "Name", Tsql);
-                }                                
+                }
 
                 if (tb.Name == "txtSellCode")
                 {
@@ -1385,7 +1385,7 @@ namespace MLM_Program
                     cgb_Pop.db_grid_Popup_Base(2, "상품_코드", "상품명", "Ncode", "Name", Tsql);
                 }
 
-                
+
 
 
             }
@@ -1397,15 +1397,15 @@ namespace MLM_Program
         {
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
-            string Tsql="";
-            
+            string Tsql = "";
+
             if (tb.Name == "txtCenter")
             {
                 Tsql = "Select  Ncode, Name   ";
                 Tsql = Tsql + " From tbl_Business (nolock) ";
                 Tsql = Tsql + " Where ( Ncode like '%" + tb.Text.Trim() + "%'";
                 Tsql = Tsql + " OR    Name like '%" + tb.Text.Trim() + "%')";
-                Tsql = Tsql + " And  Ncode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode  + "') )";
+                Tsql = Tsql + " And  Ncode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )";
                 Tsql = Tsql + " And  U_TF = 0 "; //사용센타만 보이게 한다 
             }
 
@@ -1433,10 +1433,10 @@ namespace MLM_Program
                 Tsql = Tsql + " From tbl_Business (nolock) ";
                 Tsql = Tsql + " Where ( Ncode like '%" + tb.Text.Trim() + "%'";
                 Tsql = Tsql + " OR    Name like '%" + tb.Text.Trim() + "%')";
-                Tsql = Tsql + " And  Ncode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode  + "') )";
+                Tsql = Tsql + " And  Ncode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode + "') )";
                 Tsql = Tsql + " And  U_TF = 0 "; //사용센타만 보이게 한다 
             }
-          
+
 
             if (tb.Name == "txtSellCode")
             {
@@ -1477,13 +1477,13 @@ namespace MLM_Program
             Button bt = (Button)sender;
 
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            
+
             if (bt.Name == "butt_S_check")
             {
                 dGridView_Base.Visible = false;
                 for (int i = 0; i <= dGridView_Base.Rows.Count - 1; i++)
-                {                   
-                    dGridView_Base.Rows[i].Cells[0].Value = "V";                   
+                {
+                    dGridView_Base.Rows[i].Cells[0].Value = "V";
                 }
                 dGridView_Base.Visible = true;
             }
@@ -1491,10 +1491,10 @@ namespace MLM_Program
 
             else if (bt.Name == "butt_S_Not_check")
             {
-                dGridView_Base.Visible = false ;
+                dGridView_Base.Visible = false;
                 for (int i = 0; i <= dGridView_Base.Rows.Count - 1; i++)
-                {                    
-                     dGridView_Base.Rows[i].Cells[0].Value = "";                    
+                {
+                    dGridView_Base.Rows[i].Cells[0].Value = "";
                 }
                 dGridView_Base.Visible = true;
             }
@@ -1531,11 +1531,11 @@ namespace MLM_Program
                     Base_Grid_Set();  //뿌려주는 곳
                     this.Cursor = System.Windows.Forms.Cursors.Default;
 
-                    
-                }                
+
+                }
             }
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            
+
 
         }
 
@@ -1663,9 +1663,9 @@ namespace MLM_Program
         private void Save_Base_Data(ref int Save_Error_Check)
         {
             Save_Error_Check = 0;
-      
+
             if (MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Base_Save_Q"), "", MessageBoxButtons.YesNo) == DialogResult.No) return;
-            
+
             if (Sub_Check_TextBox_Error() == false) return;
 
             string Out_FL = "001";   //'''---주문출고는 001 임
@@ -1696,15 +1696,15 @@ namespace MLM_Program
                         SalesItemIndex = int.Parse(dGridView_Base.Rows[i].Cells[20].Value.ToString());
                         //Mbid2 = int.Parse(dGridView_Base.Rows[i].Cells[3].Value.ToString());
 
-                        ItemCode = dGridView_Base.Rows[i].Cells[7].Value.ToString();                         
+                        ItemCode = dGridView_Base.Rows[i].Cells[7].Value.ToString();
                         ItemCnt = int.Parse(dGridView_Base.Rows[i].Cells[11].Value.ToString());
-                        Sell_C_Code = dGridView_Base.Rows[i].Cells[22].Value.ToString();  
+                        Sell_C_Code = dGridView_Base.Rows[i].Cells[22].Value.ToString();
 
 
                         Out_Price = int.Parse(dGridView_Base.Rows[i].Cells[9].Value.ToString());
                         Out_Pv = int.Parse(dGridView_Base.Rows[i].Cells[10].Value.ToString());
 
-                        Prom_TF_SORT = dGridView_Base.Rows[i].Cells[29].Value.ToString();  
+                        Prom_TF_SORT = dGridView_Base.Rows[i].Cells[29].Value.ToString();
 
                         if (opt_1.Checked == true)
                         {
@@ -1724,7 +1724,7 @@ namespace MLM_Program
                         //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
                         if (Temp_Connect.Open_Data_Set(StrSql, "t_P_table", ds) == false) return;
                         itemCount = int.Parse(ds.Tables["t_P_table"].Rows[0][0].ToString());
-                        Send_itemCount1 = int.Parse (ds.Tables["t_P_table"].Rows[0][1].ToString()) ;
+                        Send_itemCount1 = int.Parse(ds.Tables["t_P_table"].Rows[0][1].ToString());
 
                         if (Send_itemCount1 + ItemCnt > itemCount)
                         {
@@ -1736,11 +1736,11 @@ namespace MLM_Program
                             MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Stock_Pre") + "\n" +
                             cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
 
-                            string Err_Order = "주문번호 : " + T_Or + "\n"  ;
-                            Err_Order = Err_Order +  "회원번호 : " + Err_Mbid2 + "\n";
+                            string Err_Order = "주문번호 : " + T_Or + "\n";
+                            Err_Order = Err_Order + "회원번호 : " + Err_Mbid2 + "\n";
                             Err_Order = Err_Order + "성명 : " + Err_M_Name + "\n";
                             Err_Order = Err_Order + "의 배송정보가 동일하지 않습니다.(주소,연락처,우편번호) 동일하게 처리후 다시 시도해 주십시요";
-                            MessageBox.Show(Err_Order); 
+                            MessageBox.Show(Err_Order);
 
 
 
@@ -1756,7 +1756,7 @@ namespace MLM_Program
                         StrSql = StrSql + "'" + Out_Date.Substring(2, 6);
                         StrSql = StrSql + "'+ Right('00000' + convert(varchar(8),convert(float,Right( Isnull(Max(Pass_Number2),0),5)) + 1),5)  ";
 
-                        StrSql = StrSql + ",'" + T_Or + "'," + SalesItemIndex  + ",1,'" + T_index + "'";
+                        StrSql = StrSql + ",'" + T_Or + "'," + SalesItemIndex + ",1,'" + T_index + "'";
                         StrSql = StrSql + " From tbl_Sales_PassNumber (nolock) ";
                         StrSql = StrSql + " Where LEFT(Pass_Number2,6) = '" + Out_Date.Substring(2, 6) + "'";
 
@@ -1774,11 +1774,11 @@ namespace MLM_Program
                         ds.Clear();
                         //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
                         //if (Temp_Connect.Open_Data_Set_2(StrSql, "t_P_table", Conn, ds) == false) return;
-                        if (Temp_Connect.Open_Data_Set(StrSql, "t_P_table",  ds) == false) return;
+                        if (Temp_Connect.Open_Data_Set(StrSql, "t_P_table", ds) == false) return;
                         //Out_Index = ds.Tables["t_P_table"].Rows[0][0].ToString();
                         Out_Index = ds.Tables["t_P_table"].Rows[0]["Pass_Number2"].ToString();
 
-                        
+
                         StrSql = "Insert into tbl_StockOutput (";
                         StrSql = StrSql + " Out_Index,Out_FL, Out_Date  ";
                         StrSql = StrSql + " , ItemCode ";
@@ -1790,21 +1790,21 @@ namespace MLM_Program
                         StrSql = StrSql + " ,Base_ItemCount, Sell_C_Code ";
                         StrSql = StrSql + " ,OrderNumber, Salesitemindex ";
 
-                        StrSql = StrSql + " ,SG_TF, SG_Mbid, SG_Mbid2,Out_FL_Code_2 "; 
+                        StrSql = StrSql + " ,SG_TF, SG_Mbid, SG_Mbid2,Out_FL_Code_2 ";
 
-                        StrSql = StrSql + " ,RecordId, RecordTime ";                        
+                        StrSql = StrSql + " ,RecordId, RecordTime ";
                         StrSql = StrSql + " )";
                         StrSql = StrSql + " Values ";
                         StrSql = StrSql + " (";
-                        
+
                         StrSql = StrSql + "'" + Out_Index + "'";   //입고번호
                         StrSql = StrSql + ",'" + Out_FL + "'";   //기타입고 코드 번호
                         StrSql = StrSql + ",'" + Out_Date + "'";       //상품코드
 
                         StrSql = StrSql + ",'" + ItemCode + "'";       //상품코드
-                        StrSql = StrSql + "," + ItemCnt ;      //입고수량
-                        StrSql = StrSql + "," + Out_Price ;       //단위소매가
-                        StrSql = StrSql + "," + Out_Pv ;       //단위소매가
+                        StrSql = StrSql + "," + ItemCnt;      //입고수량
+                        StrSql = StrSql + "," + Out_Price;       //단위소매가
+                        StrSql = StrSql + "," + Out_Pv;       //단위소매가
 
 
                         StrSql = StrSql + "," + Out_Price * ItemCnt;      //총입고금액
@@ -1818,29 +1818,29 @@ namespace MLM_Program
 
                         if (opt_1.Checked == true)
                             StrSql = StrSql + ",'" + Sell_C_Code + "'";  //센타/창고 코드 번호
-                        else                        
+                        else
                             StrSql = StrSql + ",'" + txtCenter3_Code.Text.Trim() + "'";  //센타/창고 코드 번호
 
                         StrSql = StrSql + "," + ItemCnt;      //입고수량
                         StrSql = StrSql + ",'" + Sell_C_Code + "'";       //상품코드
 
                         StrSql = StrSql + ",'" + T_Or + "'";       //상품코드
-                        StrSql = StrSql + "," + SalesItemIndex ;      //입고수량
+                        StrSql = StrSql + "," + SalesItemIndex;      //입고수량
 
-                        StrSql = StrSql + " ,0, '', 0 , '' "  ; 
+                        StrSql = StrSql + " ,0, '', 0 , '' ";
 
                         StrSql = StrSql + ",'" + cls_User.gid + "'";
                         StrSql = StrSql + ",Convert(Varchar(25),GetDate(),21) ";
 
                         StrSql = StrSql + ")";
-                        
+
                         Temp_Connect.Insert_Data(StrSql, base_db_name, Conn, tran);
 
 
                         StrSql = "Update tbl_SalesItemDetail SET ";
                         StrSql = StrSql + " Send_itemCount1 = Send_itemCount1 + " + ItemCnt;
-                        StrSql = StrSql + " Where OrderNumber ='" + T_Or + "'" ;
-                        StrSql = StrSql + " And   SalesItemIndex =  " + SalesItemIndex ;
+                        StrSql = StrSql + " Where OrderNumber ='" + T_Or + "'";
+                        StrSql = StrSql + " And   SalesItemIndex =  " + SalesItemIndex;
 
                         Temp_Connect.Update_Data(StrSql, Conn, tran);
 
@@ -1850,7 +1850,7 @@ namespace MLM_Program
                         {
                             if (OrderNum.ContainsKey(T_Or) == false)
                                 OrderNum[T_Or] = T_Or;
-                        }                            
+                        }
 
                     }
 
@@ -1917,7 +1917,7 @@ namespace MLM_Program
                 txtCenter3_Code.Text = "";
                 mtxtOutDate.Text = "";
 
-                radioB_SellTF2.Checked = true; 
+                radioB_SellTF2.Checked = true;
 
 
                 combo_Se.SelectedIndex = -1;
@@ -1932,7 +1932,7 @@ namespace MLM_Program
                 if (Check_TextBox_Error() == false) return;
 
                 txt_P_1.Text = ""; txt_P_2.Text = ""; txt_P_3.Text = "";
-                txt_P_4.Text =""; //txt_P_5.Text ="" ;txt_P_6.Text ="";
+                txt_P_4.Text = ""; //txt_P_5.Text ="" ;txt_P_6.Text ="";
                 //txt_P_7.Text ="";
 
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
@@ -1942,7 +1942,7 @@ namespace MLM_Program
                 this.Cursor = System.Windows.Forms.Cursors.Default;
 
             }
-           
+
             else if (bt.Name == "butt_Excel")
             {
                 frmBase_Excel e_f = new frmBase_Excel();
@@ -1955,7 +1955,7 @@ namespace MLM_Program
                 this.Close();
             }
 
-            else if (bt.Name  == "butt_Exp")
+            else if (bt.Name == "butt_Exp")
             {
                 if (bt.Text == "...")
                 {
@@ -2065,7 +2065,7 @@ namespace MLM_Program
         private Boolean Sub_Check_Print_TextBox_Error()
         {
             cls_Check_Text T_R = new cls_Check_Text();
-                    
+
             int chk_cnt = 0;
             string B_Or = "";
             string StrSql = "";
@@ -2085,8 +2085,8 @@ namespace MLM_Program
                     if (B_Or != dGridView_Base.Rows[i].Cells[2].Value.ToString())
                     {
                         B_Or = dGridView_Base.Rows[i].Cells[2].Value.ToString();
-                        P_chk_cnt ++ ;                        
-                        
+                        P_chk_cnt++;
+
                     }
 
                     StrSql = "Insert into  tbl_SalesDetail_Print_T Values (" + dGridView_Base.Rows[i].Cells[20].Value.ToString() + ",'" + dGridView_Base.Rows[i].Cells[2].Value.ToString() + "','" + cls_User.gid + "')";
@@ -2114,7 +2114,7 @@ namespace MLM_Program
             {
 
                 FastReport_SellTransactionReport_Out_TH();
-               }
+            }
             else
             {
                 FastReport_SellTransactionReport_Out();
@@ -2437,6 +2437,8 @@ namespace MLM_Program
                 row["Email"] = encrypter.Decrypt(row["Email"].ToString());
                 row["hometel"] = encrypter.Decrypt(row["hometel"].ToString());
                 row["hptel"] = encrypter.Decrypt(row["hptel"].ToString());
+                row["cpno"] = encrypter.Decrypt(row["cpno"].ToString());
+
             }
 
             foreach (DataRow row in dtSalesRece.Rows)
@@ -2473,6 +2475,24 @@ namespace MLM_Program
                     rOrd["Mem_Address1"] = FindMem[0]["Address1"].ToString();
                     rOrd["Mem_Address2"] = FindMem[0]["Address2"].ToString();
                 }
+            }
+
+            //2024-05-30 LinQ 를 사용해서 InsuranceNumber 필드에 cpno 값 넣기! 
+            var joinedData = from Mem in dtMember.AsEnumerable()
+                             join Sales in dtSalesDetail.AsEnumerable()
+                             on new { mbid = Mem.Field<string>("mbid"), mbid2 = Mem.Field<int>("mbid2") }
+                         equals new { mbid = Sales.Field<string>("mbid"), mbid2 = Sales.Field<int>("mbid2") }
+                             select new
+                             {
+                                 OrderNumber = Sales.Field<string>("OrderNumber"),
+                                 Cpno = Mem.Field<string>("cpno"),
+                                 SalesRow = Sales
+                             };
+            
+
+            foreach(var item in joinedData)
+            {
+                item.SalesRow["InsuranceNumber"] = item.Cpno;
             }
 
             frm.BindingDataTables.Add("SalesDetail", dtSalesDetail);

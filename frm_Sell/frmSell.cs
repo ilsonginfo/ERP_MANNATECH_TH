@@ -240,8 +240,8 @@ namespace MLM_Program
             txtSellCode.Text = (cls_User.gid_CountryCode == "TH" ? "Regular_order" : "일반주문");
             //txtCenter2_Code.Text = "50000";
             //txtCenter2.Text = "물류센터";
-            txtCenter2_Code.Text = (cls_User.gid_CountryCode == "TH" ? "540000" : "50000");                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
             txtCenter2.Text = (cls_User.gid_CountryCode == "TH" ? "Warehouse" : "물류센터");    // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
+            txtCenter2_Code.Text = (cls_User.gid_CountryCode == "TH" ? "540000" : "50000");                // to do: 추후 매나테크에서 등록한 센터로 바꿔야함. - 230829 syhuh
 
             Data_Set_Form_TF = 0;
 
@@ -3028,6 +3028,20 @@ namespace MLM_Program
                     txt_Receive_Method_Code.Text = "1";
                     txtCenter3.Text = "인천픽업";
                     txtCenter3_Code.Text = "50012";
+                }
+                if (txtCenter2.Text == "Warehouse")
+                {
+                    txt_Receive_Method.Text = "Delivery";
+                    txt_Receive_Method_Code.Text = "2";
+                    txtCenter3.Text = "Warehouse";
+                    txtCenter3_Code.Text = "540000";
+                }
+                if (txtCenter2.Text == "StoreFront")
+                {
+                    txt_Receive_Method.Text = "Directly recevied";
+                    txt_Receive_Method_Code.Text = "1";
+                    txtCenter3.Text = "StoreFront";
+                    txtCenter3_Code.Text = "540010";
                 }
             }
 
@@ -12034,14 +12048,14 @@ namespace MLM_Program
 
             switch (cls_User.gid_CountryCode)
             {
-                case "TH": FastReport_PH_SellOrder();  break;
+                case "TH": FastReport_TH_SellOrder();  break;
                 default: FastReport_KR_SellOrder(); break;
             }
 
 
         }
 
-        private void FastReport_PH_SellOrder()
+        private void FastReport_TH_SellOrder()
         {
             if (txt_OrderNumber.Text == "" && InsuranceNumber_Ord_Print_FLAG == "") return;
 
@@ -12067,6 +12081,7 @@ namespace MLM_Program
                 row["Email"] = encrypter.Decrypt(row["Email"].ToString());
                 row["hometel"] = encrypter.Decrypt(row["hometel"].ToString());
                 row["hptel"] = encrypter.Decrypt(row["hptel"].ToString());
+                row["cpno"] = encrypter.Decrypt(row["cpno"].ToString());
             }
 
             ds.Clear();

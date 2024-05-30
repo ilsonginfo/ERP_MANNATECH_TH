@@ -2748,7 +2748,7 @@ namespace MLM_Program
 
 
             //admin 하고 프로그램 관리자만. 사용자 관리 메뉴가 보이게 한다.
-            if (cls_User.gid == "admin")
+            if (cls_User.IsAdmin)
             {
                 //ToolStripItem Baes_1_Menu = menuStrip.Items["m_Base_User"]; //사용자 관리 메뉴
                 //우선은 모든 메뉴를 안보이게 한다.

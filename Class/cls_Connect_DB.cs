@@ -2324,7 +2324,7 @@ namespace MLM_Program
                     //if (int.Parse(cls_User.gid_date_time) > int.Parse(PayDate) || LeaveCheck != 0)
 
                     //admin 은 탈퇴후 6개월이랑 상관없이 가입가능하게 설정 변경 2017-03-15 김종국 이사 요청에 의해서 
-                    if (int.Parse(cls_User.gid_date_time) > int.Parse(PayDate)  || cls_User.gid == "admin" )
+                    if (int.Parse(cls_User.gid_date_time) > int.Parse(PayDate)  || cls_User.IsAdmin )
                         TSW = true; //6개월 이후에나 가입이 가능하다.
                     else
                     {

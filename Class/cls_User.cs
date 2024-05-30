@@ -45,6 +45,20 @@ namespace MLM_Program
 
         internal static string uSearch_MemberNumber = "";
         internal static int gid_Cash_V_TF;
+        internal static bool IsAdmin
+        {
+            get
+            {
+                bool Ret = false;
+
+                if (gid.ToLower() == "admin") Ret = true;
+                else if (gid.ToLower() == "admin_th") Ret = true;
+
+                return Ret;
+            }
+        }
+
+
 
     }// end cls_User
 }

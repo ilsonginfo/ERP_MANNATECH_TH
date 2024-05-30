@@ -3779,7 +3779,7 @@ namespace MLM_Program
                 int Sell_Mem_TF = 0; int Add_TF = 0, Myoffice_TF = 0, RBO_Mem_TF = 0, G8_TF = 0;
                 int BankDocument = 0, CpnoDocument = 0;
                 int For_Kind_TF = 0;
-                string ssn = txtSN_n.Text;
+                string ssn = encrypter.Encrypt( mtxtSn.Text);
 
                 if (check_BankDocument.Checked == true) BankDocument = 1;
                 if (check_CpnoDocument.Checked == true) CpnoDocument = 1;
