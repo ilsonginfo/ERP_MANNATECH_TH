@@ -139,6 +139,15 @@ namespace MLM_Program
         const char FS = (char)0x1c;
         const char ETX = (char)0x03;
 
+        public cls_Web()
+        {
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls;
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+        }
+
         /// <summary>
         /// 오토쉽 카드결제 승인 - 태국
         /// </summary>

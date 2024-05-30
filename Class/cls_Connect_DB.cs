@@ -616,10 +616,15 @@ namespace MLM_Program
         private Boolean Query_Exec_God(string T_query, string t_form_name = "", string t_from_text = "", int nvarch_TF = 0)
         {
             Connect_DB(); //DB를 연결하고
-                                  
-            SqlCommand up_comm = new SqlCommand(T_query, Conn);
-            up_comm.ExecuteNonQuery();                       
-            
+
+            try
+            {
+                SqlCommand up_comm = new SqlCommand(T_query, Conn);
+                up_comm.ExecuteNonQuery();
+            }catch(Exception EX)
+            {
+                MessageBox.Show(T_query + Environment.NewLine + EX.Message);
+            }
             Close_DB(); // DB와 연결을 끊는다
             return true;
         }
