@@ -3195,8 +3195,10 @@ namespace MLM_Program
                 cgb_Pop.Next_Focus_Control = txt_ETC1;
 
             if (tb.Name == "txtCenter2")
+            {
                 cgb_Pop.Next_Focus_Control = txt_Receive_Method;
-
+                cgb_Pop.basegrid.Disposed += Center2_BaseGrid_Disposed_Event;
+            }
             if (tb.Name == "txtCenter3")
             {
                 cgb_Pop.Next_Focus_Control = txt_ItemCode;
@@ -3277,6 +3279,24 @@ namespace MLM_Program
             {
                 if (SalesItemDetail != null && txt_Receive_Method_Code.Text != "")
                     Rece_Item_Grid_Set();
+            }
+        }
+
+        private void Center2_BaseGrid_Disposed_Event(object sender, EventArgs e)
+        {
+            if (txtCenter2.Text == "Warehouse")
+            {
+                txt_Receive_Method.Text = "Delivery";
+                txt_Receive_Method_Code.Text = "2";
+                txtCenter3.Text = "Warehouse";
+                txtCenter3_Code.Text = "540000";
+            }
+            if (txtCenter2.Text == "StoreFront")
+            {
+                txt_Receive_Method.Text = "Directly recevied";
+                txt_Receive_Method_Code.Text = "1";
+                txtCenter3.Text = "StoreFront";
+                txtCenter3_Code.Text = "540010";
             }
         }
 

@@ -949,7 +949,7 @@ namespace MLM_Program
             //string cardtype = "";       //개인:0 , 법인:1
             //string password = "";       //비밀번호 앞 2자기
             //string auth_value = "";     //생년월일 6자리
-            //int mbid2 = 0;              //회원번호
+            int mbid2 = 0;              //회원번호
             //string M_name = "";         //회원명           // 필요
             //string Email = "";          //회원메일
             //string HomeTel = "";        //회원전화번호
@@ -980,7 +980,7 @@ namespace MLM_Program
             //cert_type = "1";    //비인증으로 함  2019-04-12 비인증로 하기로함
 
 
-            //mbid2 = int.Parse(ds.Tables["Card_OK"].Rows[0]["mbid2"].ToString());
+            mbid2 = int.Parse(ds.Tables["Card_OK"].Rows[0]["mbid2"].ToString());
             //M_name = ds.Tables["Card_OK"].Rows[0]["M_Name"].ToString();
             //Email = ds.Tables["Card_OK"].Rows[0]["Email"].ToString();
             //HomeTel = ds.Tables["Card_OK"].Rows[0]["hometel"].ToString().Replace("-", "");
@@ -1010,7 +1010,8 @@ namespace MLM_Program
             //str_sendvalue = str_sendvalue + "&EP_product_nm=" + ItemName;             //제품명
             str_sendvalue = str_sendvalue + "&securityCode=" + securityCode;            //카드보안코드(CVC)
             str_sendvalue = str_sendvalue + "&name=" + C_Name;                          //카드 고객명
-
+            str_sendvalue = str_sendvalue + "&orderNumber=" + OrderNumber;
+            str_sendvalue = str_sendvalue + "&mbid2=" + mbid2.ToString();
             string StrSql = "";
             StrSql = "EXEC Usp_Insert_tbl_Sales_Cacu_Card " + C_Index + " ,'" + OrderNumber + "','" + encrypter.Encrypt(card_no) + "','" + expire_date + "','A','','" + cls_User.gid + "'";
             Temp_Connect.Open_Data_Set(StrSql, "Cacu_Card", ds);
