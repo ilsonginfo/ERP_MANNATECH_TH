@@ -5707,7 +5707,7 @@ namespace MLM_Program
             {
                 txtSellCode.Text = "Regular_order";
                 txtCenter2.Text = "Warehouse";   
-                txtCenter2_Code.Text = "540010"; 
+                txtCenter2_Code.Text = "540000"; 
 
                 txt_Receive_Method.Text = "Delivery";
                 txt_Receive_Method_Code.Text = "2";

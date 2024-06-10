@@ -455,6 +455,11 @@ namespace MLM_Program
 
         public bool check_19_nai(string JuminParameter)
         {
+
+            //태국은 민증으로 파악할 수 있는 방법이없음
+            if (cls_User.gid_CountryCode == "TH")
+                return true;
+
             // 주민번호 추출 예:1234111
             string jumin = JuminParameter.Substring(6, 7);
 
@@ -509,6 +514,12 @@ namespace MLM_Program
 
         public bool check_19_nai(string JuminParameter , ref string  BirthDay2  )
         {
+
+            //태국은 민증으로 파악할 수 있는 방법이없음
+            if (cls_User.gid_CountryCode == "TH")
+                return true;
+
+
             // 주민번호 추출 예:1234111
             string jumin = JuminParameter.Substring(6, 7);
 
@@ -585,6 +596,11 @@ namespace MLM_Program
         {
             try
             {
+
+                //태국은 민증으로 파악할 수 있는 방법이없음
+                if (cls_User.gid_CountryCode == "TH")
+                    return 0;
+
                 // 주민번호 추출 예:1234111
                 string jumin = JuminParameter.Substring(6, 1);
 

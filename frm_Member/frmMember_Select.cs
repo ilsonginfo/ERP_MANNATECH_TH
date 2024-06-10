@@ -853,7 +853,7 @@ namespace MLM_Program
 
                 W_M_TF = 0 ;
 
-                if (ds.Tables[base_db_name].Rows[fi_cnt]["Cpno"].ToString() != "")
+                if (cls_User.gid_CountryCode != "TH" && ds.Tables[base_db_name].Rows[fi_cnt]["Cpno"].ToString() != "")
                 {
                     Per_t = ds.Tables[base_db_name].Rows[fi_cnt]["Cpno"].ToString().Replace("-","");
                     string pert = Per_t.Substring(6, 1);

@@ -229,7 +229,27 @@ namespace MLM_Program
                     txtUserID.Text = cls_User.SuperUserID;
                     txtPass.Text = cls_User.SuperUserPassWd;
                 }
+#else
+          //     string u_ip, u_computername;
+          //     Hard_Number(out u_ip, out u_computername);
+          //
+          //     if (u_computername.ToUpper() == "DESKTOP-657BT4V".ToUpper() ||
+          //         u_computername.ToUpper() == "LANCE1".ToUpper() ||
+          //         u_computername.ToUpper() == "ilsong-dev".ToUpper() ||
+          //         u_computername.ToUpper() == "JRED-PC" ||
+          //         u_computername.ToUpper() == "DESKTOP-DCOJLJ6" ||
+          //         u_computername.ToUpper() == "DESKTOP-UN61U37" ||
+          //         u_computername.ToUpper() == "design1".ToUpper()
+          //         || u_computername.ToUpper() == "ilsong-csdev".ToUpper() // syhuh
+          //         || u_computername.ToUpper() == "LANCE31".ToUpper() // syhuh
+          //         )
+          //     {
+          //         txtUserID.Text = cls_User.SuperUserID;
+          //         txtPass.Text = cls_User.SuperUserPassWd;
+          //     }
+
 #endif
+
             }// end if
 
 

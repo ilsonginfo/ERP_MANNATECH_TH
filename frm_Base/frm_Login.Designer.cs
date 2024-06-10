@@ -156,8 +156,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ControlBox = false;
-            this.Controls.Add(this.pan_Language);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.pan_Language);
             this.Controls.Add(this.lbl_ver);
             this.Controls.Add(this.lab_Up);
             this.Controls.Add(this.tbDD);
@@ -170,7 +170,6 @@
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUserID);
-            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "frm_Login";
