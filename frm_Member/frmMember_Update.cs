@@ -5679,9 +5679,12 @@ namespace MLM_Program
                     string sFileExtension = Path.GetExtension(OFD.FileName);    // 파일 확장자
                     long fileSizeInBytes = new FileInfo(OFD.FileName).Length;   // 파일 byte size
 
+#if DEBUG
                     string t_url = "https://uat.mannatech.co.th/common/cs/uploadFile.do";    // uat 버전. 
+#else
+                    string t_url = "https://www.mannatech.co.th/common/cs/uploadFile.do" + T_FileDir;    // live 버전. 
                     //string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
-
+#endif
 
                     // WEB단에서 parameter로 넘겨줄 예정.
                     //string t_url2 = string.Format("/member/{0}/", DateTime.Now.ToString("yyyyMMdd"));
