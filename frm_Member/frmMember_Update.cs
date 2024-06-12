@@ -5682,7 +5682,7 @@ namespace MLM_Program
 #if DEBUG
                     string t_url = "https://uat.mannatech.co.th/common/cs/uploadFile.do";    // uat 버전. 
 #else
-                    string t_url = "https://www.mannatech.co.th/common/cs/uploadFile.do" + T_FileDir;    // live 버전. 
+                    string t_url = "https://www.mannatech.co.th/common/cs/uploadFile.do";    // live 버전. 
                     //string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
 #endif
 
