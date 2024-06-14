@@ -2779,9 +2779,9 @@ namespace MLM_Program
             Strsql = Strsql + " From tbl_Sales_Cacu (nolock) ";
             Strsql = Strsql + " LEFT JOIN tbl_Card (nolock) ON tbl_Sales_Cacu.C_code = tbl_Card.Ncode ";
             Strsql = Strsql + " LEFT JOIN tbl_Bank (nolock) ON tbl_Sales_Cacu.C_code = Right(tbl_Bank.Ncode,2) And len(tbl_Sales_Cacu.C_code) = 2 ";
-            cls_NationService.SQL_BankNationCode(ref Strsql);
+            cls_NationService.SQL_BankNationCode("tbl_Bank", ref Strsql);
             Strsql = Strsql + " LEFT JOIN tbl_Bank BB2 (nolock) ON tbl_Sales_Cacu.C_code = tbl_Bank.Ncode And len(tbl_Sales_Cacu.C_code) = 3 ";
-            cls_NationService.SQL_BankNationCode(ref Strsql);
+            cls_NationService.SQL_BankNationCode("BB2", ref Strsql);
             Strsql = Strsql + " Where tbl_Sales_Cacu.OrderNumber ='" + P_Ordernumber + "'";
             Strsql = Strsql + " And C_Price1 > 0 "; 
 

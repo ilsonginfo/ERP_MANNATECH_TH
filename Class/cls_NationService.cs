@@ -19,6 +19,17 @@ namespace MLM_Program
                 Tsql += " And tbl_Bank.Na_code = 'TH' ";
             }
         }
+        public static void SQL_BankNationCode(string TableName, ref string Tsql)
+        {
+            if (cls_User.gid_CountryCode == "KR" || cls_User.gid_CountryCode == "")
+            {
+                Tsql += $" And {TableName}.Na_code = 'KR' ";
+            }
+            else if (cls_User.gid_CountryCode == "TH")
+            {
+                Tsql += " And {TableName}.Na_code = 'TH' ";
+            }
+        }
 
         public static void SQL_Memberinfo_NationCode(ref string Tsql)
         {

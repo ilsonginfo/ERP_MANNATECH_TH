@@ -636,7 +636,7 @@
             this.txtCenter_Code.MaxLength = 30;
             this.txtCenter_Code.Name = "txtCenter_Code";
             this.txtCenter_Code.Size = new System.Drawing.Size(60, 22);
-            this.txtCenter_Code.TabIndex = 81;
+            this.txtCenter_Code.TabIndex = 0;
             this.txtCenter_Code.TabStop = false;
             // 
             // txtCenter
@@ -647,7 +647,7 @@
             this.txtCenter.MaxLength = 30;
             this.txtCenter.Name = "txtCenter";
             this.txtCenter.Size = new System.Drawing.Size(106, 22);
-            this.txtCenter.TabIndex = 20;
+            this.txtCenter.TabIndex = 1;
             this.txtCenter.Tag = "ncode";
             this.txtCenter.TextChanged += new System.EventHandler(this.txtData_TextChanged);
             this.txtCenter.Enter += new System.EventHandler(this.txtData_Enter);
@@ -1046,7 +1046,7 @@
             this.raButt_IN_2.Location = new System.Drawing.Point(71, 6);
             this.raButt_IN_2.Name = "raButt_IN_2";
             this.raButt_IN_2.Size = new System.Drawing.Size(59, 16);
-            this.raButt_IN_2.TabIndex = 5;
+            this.raButt_IN_2.TabIndex = 1;
             this.raButt_IN_2.Text = "외국인";
             this.raButt_IN_2.UseVisualStyleBackColor = true;
             this.raButt_IN_2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.radioButt_Sn_MouseUp);
@@ -1058,7 +1058,7 @@
             this.raButt_IN_1.Location = new System.Drawing.Point(6, 6);
             this.raButt_IN_1.Name = "raButt_IN_1";
             this.raButt_IN_1.Size = new System.Drawing.Size(59, 16);
-            this.raButt_IN_1.TabIndex = 4;
+            this.raButt_IN_1.TabIndex = 0;
             this.raButt_IN_1.TabStop = true;
             this.raButt_IN_1.Text = "내국인";
             this.raButt_IN_1.UseVisualStyleBackColor = true;
@@ -1454,7 +1454,7 @@
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.label18.Size = new System.Drawing.Size(120, 32);
-            this.label18.TabIndex = 0;
+            this.label18.TabIndex = 1;
             this.label18.Text = "회원번호\r\n※회원가입시 자동생성 됩니다.";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1488,7 +1488,7 @@
             this.raButt_IN_3.Location = new System.Drawing.Point(216, 9);
             this.raButt_IN_3.Name = "raButt_IN_3";
             this.raButt_IN_3.Size = new System.Drawing.Size(59, 16);
-            this.raButt_IN_3.TabIndex = 56;
+            this.raButt_IN_3.TabIndex = 2;
             this.raButt_IN_3.Text = "사업자";
             this.raButt_IN_3.UseVisualStyleBackColor = true;
             this.raButt_IN_3.Visible = false;
@@ -1522,7 +1522,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 33);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 1;
             this.label1.Text = "등록_일자";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1546,7 +1546,7 @@
             this.mtxtRegDate.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.mtxtRegDate.Name = "mtxtRegDate";
             this.mtxtRegDate.Size = new System.Drawing.Size(143, 21);
-            this.mtxtRegDate.TabIndex = 19;
+            this.mtxtRegDate.TabIndex = 0;
             this.mtxtRegDate.Enter += new System.EventHandler(this.txtData_Enter);
             this.mtxtRegDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
             this.mtxtRegDate.Leave += new System.EventHandler(this.txtData_Base_Leave);
@@ -2337,7 +2337,7 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(300, 37);
-            this.tableLayoutPanel13.TabIndex = 1;
+            this.tableLayoutPanel13.TabIndex = 2;
             // 
             // label20
             // 
@@ -2377,7 +2377,7 @@
             this.mtxtBrithDay.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.mtxtBrithDay.Name = "mtxtBrithDay";
             this.mtxtBrithDay.Size = new System.Drawing.Size(143, 21);
-            this.mtxtBrithDay.TabIndex = 3;
+            this.mtxtBrithDay.TabIndex = 0;
             this.mtxtBrithDay.Enter += new System.EventHandler(this.txtData_Enter);
             this.mtxtBrithDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
             this.mtxtBrithDay.Leave += new System.EventHandler(this.txtData_Base_Leave);
@@ -2577,7 +2577,7 @@
             this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel28.Size = new System.Drawing.Size(300, 37);
-            this.tableLayoutPanel28.TabIndex = 0;
+            this.tableLayoutPanel28.TabIndex = 1;
             // 
             // label60
             // 
@@ -2591,7 +2591,7 @@
             this.label60.Margin = new System.Windows.Forms.Padding(0);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(120, 33);
-            this.label60.TabIndex = 0;
+            this.label60.TabIndex = 1;
             this.label60.Text = "태국_이름_끝";
             this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -2612,7 +2612,7 @@
             this.txtName_Last.MaxLength = 30;
             this.txtName_Last.Name = "txtName_Last";
             this.txtName_Last.Size = new System.Drawing.Size(164, 22);
-            this.txtName_Last.TabIndex = 6;
+            this.txtName_Last.TabIndex = 0;
             this.txtName_Last.Enter += new System.EventHandler(this.txtData_Enter);
             this.txtName_Last.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
             this.txtName_Last.Leave += new System.EventHandler(this.txtData_Base_Leave);
@@ -2632,7 +2632,7 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(300, 37);
-            this.tableLayoutPanel9.TabIndex = 66668;
+            this.tableLayoutPanel9.TabIndex = 0;
             // 
             // label19
             // 
@@ -2646,7 +2646,7 @@
             this.label19.Margin = new System.Windows.Forms.Padding(0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(120, 33);
-            this.label19.TabIndex = 1;
+            this.label19.TabIndex = 0;
             this.label19.Text = "태국_이름_시작";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -2667,7 +2667,7 @@
             this.txtName.MaxLength = 30;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(164, 22);
-            this.txtName.TabIndex = 6;
+            this.txtName.TabIndex = 0;
             this.txtName.Enter += new System.EventHandler(this.txtData_Enter);
             this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
             this.txtName.Leave += new System.EventHandler(this.txtData_Base_Leave);
@@ -3072,7 +3072,7 @@
             this.label51.Margin = new System.Windows.Forms.Padding(0);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(120, 33);
-            this.label51.TabIndex = 0;
+            this.label51.TabIndex = 1;
             this.label51.Text = "국적";
             this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -3198,7 +3198,7 @@
             this.radioB_Sex_Y.Location = new System.Drawing.Point(3, 6);
             this.radioB_Sex_Y.Name = "radioB_Sex_Y";
             this.radioB_Sex_Y.Size = new System.Drawing.Size(47, 16);
-            this.radioB_Sex_Y.TabIndex = 17;
+            this.radioB_Sex_Y.TabIndex = 0;
             this.radioB_Sex_Y.TabStop = true;
             this.radioB_Sex_Y.Text = "남성";
             this.radioB_Sex_Y.UseVisualStyleBackColor = true;
@@ -3209,7 +3209,7 @@
             this.radioB_Sex_X.Location = new System.Drawing.Point(71, 6);
             this.radioB_Sex_X.Name = "radioB_Sex_X";
             this.radioB_Sex_X.Size = new System.Drawing.Size(47, 16);
-            this.radioB_Sex_X.TabIndex = 18;
+            this.radioB_Sex_X.TabIndex = 1;
             this.radioB_Sex_X.Text = "여성";
             this.radioB_Sex_X.UseVisualStyleBackColor = true;
             // 
@@ -3224,7 +3224,7 @@
             this.label49.Margin = new System.Windows.Forms.Padding(0);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(120, 33);
-            this.label49.TabIndex = 0;
+            this.label49.TabIndex = 1;
             this.label49.Text = "*성별";
             this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 

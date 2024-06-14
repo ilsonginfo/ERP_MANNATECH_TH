@@ -305,7 +305,7 @@ namespace MLM_Program
             Tsql += Environment.NewLine + " LEFT Join tbl_Memberinfo   (nolock) On tbl_SalesDetail.mbid=tbl_Memberinfo.mbid  And tbl_SalesDetail.mbid2=tbl_Memberinfo.mbid2  ";
             Tsql += Environment.NewLine + " LEFT JOIN tbl_SellType   (nolock) ON tbl_SellType.SellCode = tbl_SalesDetail.SellCode  ";
             //Tsql += Environment.NewLine + " LEFT JOIN tbl_Bank  (nolock) ON tbl_Bank.Ncode =tbl_Sales_Cacu.C_Code And tbl_Bank.Na_Code =tbl_SalesDetail.Na_Code  ";
-            Tsql += Environment.NewLine + " LEFT JOIN tbl_Bank  (nolock) ON tbl_Bank.Ncode =tbl_Sales_Cacu.C_Code ";
+            Tsql += Environment.NewLine + " LEFT JOIN tbl_Bank  (nolock) ON tbl_Bank.Ncode =tbl_Sales_Cacu.C_Code AND tbl_SalesDetail.NA_CODE = TBL_BANK.NA_CODE ";
             cls_NationService.SQL_BankNationCode(ref Tsql);
 
             //Tsql = Tsql + " , Ch_T." + cls_app_static_var.Base_M_Detail_Ex + " ReturnTFName ";        

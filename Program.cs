@@ -135,7 +135,7 @@ namespace MLM_Program
             /////
 
             cls_app_static_var.APP_VER = "[RELEASE]240607_UAT (External Access)";
-            cls_app_static_var.APP_VER = "[RELEASE]240607_LIVE ";
+            cls_app_static_var.APP_VER = "[RELEASE]240610_LIVE ";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++
@@ -217,10 +217,10 @@ namespace MLM_Program
             //}
             //////테스트배포땐닫는다
             ////
-            if (cls_app_static_var.app_Company_Name == "menatech")
-            {
-                cls_Connect_DB.LiveFlag = false;
-            }
+            //if (cls_app_static_var.app_Company_Name == "menatech")
+            //{
+            //    cls_Connect_DB.LiveFlag = false;
+            //}
 #endif
 
             cls_Connect_DB.Conn_Str = "Initial Catalog=" + Company_DB_Name + ";Persist Security Info=True;User ID=" + User_Id + ";Password=" + password + ";Data Source=" + Connect_IP + "";
