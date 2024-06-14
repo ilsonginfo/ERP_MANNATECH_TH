@@ -88,8 +88,11 @@ namespace MLM_Program
             string T_FileDir = ds.Tables[base_db_name].Rows[0]["T_FileDir"].ToString();
 
             //string t_url = "https://www.applicant.im/uImage" + T_FileDir ;
+#if DEBUG
             string t_url = "https://uat.mannatech.co.th/uImage" + T_FileDir;    // uat 버전. 
-            //string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
+#else
+            string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
+#endif
 
 
             webBrowser1.Navigate(t_url);
