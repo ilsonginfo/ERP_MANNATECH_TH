@@ -12099,12 +12099,13 @@ namespace MLM_Program
             sb.AppendLine("from tbl_Goods_Set (NOLOCK)  A");
             sb.AppendLine(" join tbl_goods (NOLOCK) b on a.Sub_Good_Code = b.ncode order by  A.Sub_Good_Code ");
 
+            DataSet dsSetItems = new DataSet();
             DataTable dtSetItems = new DataTable();
             DataRow[] FindRow;
-            if ((new cls_Connect_DB()).Open_Data_Set(sb.ToString(), "SetItems", ds) == false)
+            if ((new cls_Connect_DB()).Open_Data_Set(sb.ToString(), "SetItems", dsSetItems) == false)
                 return;
 
-            dtSetItems = ds.Tables["SetItems"];
+            dtSetItems = dsSetItems.Tables[0];
 
             // -- Member 
             cls_Connect.Open_Data_Set("SELECT * FROM tbl_Memberinfo (NOLOCK) WHERE mbid2 = " + mtxtMbid.Text.Trim(), ReportName, ds);
@@ -12133,10 +12134,10 @@ namespace MLM_Program
             foreach (DataGridViewRow row in dGridView_Base_Item.Rows)
             {
                 DataRow Product = dtSalesItemDetail.NewRow();
-                Product["OrderNumber"] = row.Cells["OrderNumber"].Value.ToString();
+                Product["OrderNumber"] = txt_OrderNumber.Text;
                 Product["SalesItemIndex"] = row.Cells["SalesItemIndex"].Value.ToString();
                 Product["ItemCode"] = row.Cells["Itemcode"].Value.ToString();
-                Product["Name"] = row.Cells["ItemName"].Value.ToString();
+                Product["ItemName"] = row.Cells["ItemName"].Value.ToString();
                 Product["ItemCount"] = row.Cells["ItemCount"].Value.ToString();
 
                 if (chK_PV_CV_Check.Checked == true)
@@ -12164,8 +12165,10 @@ namespace MLM_Program
                     SetCnt = Convert.ToInt32(SetRow["Sub_Good_Cnt"]) * Convert.ToInt32(Product["ItemCount"]);
 
                     DataRow SetProduct = dtSalesItemDetail.NewRow();
+                    SetProduct["OrderNumber"] = txt_OrderNumber.Text;
+                    SetProduct["SalesItemIndex"] = row.Cells["SalesItemIndex"].Value.ToString();
                     SetProduct["ItemCode"] = SetRow["Sub_Good_Code"].ToString();
-                    SetProduct["Name"] = "ㄴ(SET) " + SetRow["name"].ToString();
+                    SetProduct["ItemName"] = "ㄴ(SET) " + SetRow["name"].ToString();
                     SetProduct["ItemCount"] = SetCnt.ToString();
 
 
