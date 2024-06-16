@@ -92,6 +92,7 @@ namespace MLM_Program
             string t_url = "https://uat.mannatech.co.th/uImage" + T_FileDir;    // uat 버전. 
 #else
             string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
+            //string t_url = "https://uat.mannatech.co.th/uImage" + T_FileDir;    // uat 버전. 
 #endif
 
             webBrowser1.Navigate(t_url);

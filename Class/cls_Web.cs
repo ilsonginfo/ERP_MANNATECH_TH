@@ -2912,6 +2912,11 @@ namespace MLM_Program
         /*가상계좌 발행*/
         public string Dir_VR_Account_Approve_OK(string OrderNumber, int C_Index, int mbid2, ref string ErrMessage)
         {
+            //2024-06-16 태국인경우 태울필요가없다.
+            if (cls_User.gid_CountryCode == "TH")
+                return "N";
+
+
             int Ord_SW = 0;
             int Seq_No = 0;
             double Amount = 0;
@@ -3145,6 +3150,10 @@ namespace MLM_Program
         /*가상계좌 취소*/
         public string Dir_VR_Account_Approve_Cancel(string OrderNumber, int C_Index)
         {
+            //2024-06-16 태국인경우 태울필요가없다.
+            if (cls_User.gid_CountryCode == "TH")
+                return string.Empty;
+
             int Ord_SW = 0;
             int Seq_No = 0;
             string str_sendvalue = "";
@@ -3295,6 +3304,11 @@ namespace MLM_Program
         /*현금영수증 취소*/
         public string Dir_VR_Cash_Receipt_All_Cancel(string OrderNumber, int C_Index)
         {
+            //2024-06-16 태국인경우 태울필요가없다.
+            if (cls_User.gid_CountryCode == "TH")
+                return string.Empty;
+
+
             int Ord_SW = 0;
             int Seq_No = 0;
             string str_sendvalue = string.Empty;
@@ -3523,6 +3537,11 @@ namespace MLM_Program
         /*현금영수증 생성 */
         public string Dir_Cash_Receipt_Approve(string OrderNumber, int C_Index, string Send_Number)
         {
+
+            //2024-06-16 태국인경우 태울필요가없다.
+            if (cls_User.gid_CountryCode == "TH")
+                return string.Empty;
+
             int Ord_SW = 0;
             string str_sendvalue = "";
             string _SendNumber = Send_Number;
@@ -3869,51 +3888,51 @@ namespace MLM_Program
         }
 
 
-        /*태국문자전송 신규 모듈*/
-        /*구현호 과장*/
-        public string TH_SMS(int MBID2, string ORDERNUMBER, int C_Index, ref string ErrMessage)
-        {
-            int Ord_SW = 0, Seq_No = 0;
-            string str_sendvalue = "";
-            string SuccessYN = "";
-            //Card_AutoShip_OK_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref Conn, ref tran);
-            TH_SMS_DETAIL(MBID2, ORDERNUMBER, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No);
+        ///*태국문자전송 신규 모듈*/
+        ///*구현호 과장*/
+        //public string TH_SMS(int MBID2, string ORDERNUMBER, int C_Index, ref string ErrMessage)
+        //{
+        //    int Ord_SW = 0, Seq_No = 0;
+        //    string str_sendvalue = "";
+        //    string SuccessYN = "";
+        //    //Card_AutoShip_OK_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref Conn, ref tran);
+        //    TH_SMS_DETAIL(MBID2, ORDERNUMBER, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No);
 
-            if (Ord_SW == 0)
-                return "";
+        //    if (Ord_SW == 0)
+        //        return "";
 
-            string URL = "https://uat.mannatech.co.th/common/cs/sendSMS.do";
+        //    string URL = "https://uat.mannatech.co.th/common/cs/sendSMS.do";
 
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
-            hwr.Method = "POST"; // 포스트 방식으로 전달                
-            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
-            hwr.UserAgent = "mannatech";
-            Encoding encoding = Encoding.UTF8;
-            byte[] buffer = encoding.GetBytes(str_sendvalue);
-            hwr.ContentLength = buffer.Length;
+        //    HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+        //    hwr.Method = "POST"; // 포스트 방식으로 전달                
+        //    hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+        //    hwr.UserAgent = "mannatech";
+        //    Encoding encoding = Encoding.UTF8;
+        //    byte[] buffer = encoding.GetBytes(str_sendvalue);
+        //    hwr.ContentLength = buffer.Length;
 
-            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
-            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
-            sendStream.Close(); // sendStream 을 종료한다.
+        //    Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+        //    sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+        //    sendStream.Close(); // sendStream 을 종료한다.
 
-            HttpWebResponse wRes;
-            try
-            {
-                wRes = (HttpWebResponse)hwr.GetResponse();
-            }
-            catch (Exception ee)
-            {
-                return "-1";
-            }
+        //    HttpWebResponse wRes;
+        //    try
+        //    {
+        //        wRes = (HttpWebResponse)hwr.GetResponse();
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        return "-1";
+        //    }
 
-            Stream respPostStream = wRes.GetResponseStream();
-            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+        //    Stream respPostStream = wRes.GetResponseStream();
+        //    StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
 
-            string getstring = null;
-            getstring = readerPost.ReadToEnd().ToString();
-            return SuccessYN = Return_SMS(getstring);
-            //return SuccessYN;
-        }
+        //    string getstring = null;
+        //    getstring = readerPost.ReadToEnd().ToString();
+        //    return SuccessYN = Return_SMS(getstring);
+        //    //return SuccessYN;
+        //}
 
         //void Card_AutoShip_OK_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No, ref SqlConnection Conn, ref SqlTransaction tran)
         void TH_SMS_DETAIL(int MBID2, string ORDERNUMBER, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No)
