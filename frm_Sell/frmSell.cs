@@ -1817,6 +1817,7 @@ namespace MLM_Program
                                 ,SalesItemDetail[t_key].ItemTotalCV
                                 ,SalesItemDetail[t_key].SellStateName
                                 ,SalesItemDetail[t_key].Etc
+                                ,SalesItemDetail[t_key].SalesItemIndex
                                  };
 
             gr_dic_text[fi_cnt + 1] = row0;
@@ -1828,23 +1829,23 @@ namespace MLM_Program
             cgb_Item.Grid_Base_Arr_Clear();
             cgb_Item.basegrid = dGridView_Base_Item;
             cgb_Item.grid_select_mod = DataGridViewSelectionMode.FullRowSelect;
-            cgb_Item.grid_col_Count = 12;
+            cgb_Item.grid_col_Count = 13;
             cgb_Item.basegrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             string[] g_HeaderText = {
                 ""       , "상품_코드"   , "상품명"    , "주문_수량"    , "개별단가"   , "개별PV"
               , "개별CV"  , "총상품액"    , "총상품PV"   , "총상품CV"
-              , "구분"   , "_비고"
+              , "구분"   , "_비고", "_SalesItemIndex"
                                 };
 
             string[] g_ColsName = {"Col1"  , "ItemCode"   , "ItemName"  , "ItemCount" , "ItemPrice"   , "ItemPV"
                                 , "ItemBV"   , "ItemTotalPrice"    , "ItemTotalPV"  , "ItemTotalBV"
-                                , "Gubun" , "Etc"
+                                , "Gubun" , "Etc", "SalesItemIndex"
                                 };
 
             int[] g_Width = { 0, 90, 160, 80, 80, 70
                              ,90 , 80 , 80, 80
-                             , 70  , 0
+                             , 70  , 0, 0 
                             };
 
             DataGridViewContentAlignment[] g_Alignment =
@@ -1861,6 +1862,7 @@ namespace MLM_Program
                                 ,DataGridViewContentAlignment.MiddleRight
 
                                 ,DataGridViewContentAlignment.MiddleCenter
+                                ,DataGridViewContentAlignment.MiddleLeft
                                 ,DataGridViewContentAlignment.MiddleLeft
                                 };
 
@@ -12091,6 +12093,19 @@ namespace MLM_Program
             DataSet ds = new DataSet();
             string ReportName = "FastReport";
 
+            //추가된 세트아이템 코드
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("select A.Good_Code, A.Sub_Good_Code, B.name, A.Sub_Good_Cnt");
+            sb.AppendLine("from tbl_Goods_Set (NOLOCK)  A");
+            sb.AppendLine(" join tbl_goods (NOLOCK) b on a.Sub_Good_Code = b.ncode order by  A.Sub_Good_Code ");
+
+            DataTable dtSetItems = new DataTable();
+            DataRow[] FindRow;
+            if ((new cls_Connect_DB()).Open_Data_Set(sb.ToString(), "SetItems", ds) == false)
+                return;
+
+            dtSetItems = ds.Tables["SetItems"];
+
             // -- Member 
             cls_Connect.Open_Data_Set("SELECT * FROM tbl_Memberinfo (NOLOCK) WHERE mbid2 = " + mtxtMbid.Text.Trim(), ReportName, ds);
             dtMember = ds.Tables[ReportName].Copy();
@@ -12110,8 +12125,54 @@ namespace MLM_Program
             dtSalesDetail = ds.Tables[ReportName].Copy();
             ds.Clear();
             // -- SalesItemDetail
-            cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + txt_OrderNumber.Text.Trim() + "'", ReportName, ds);
+            cls_Connect.Open_Data_Set("SELECT top 0 * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + txt_OrderNumber.Text.Trim() + "'", ReportName, ds);
             dtSalesItemDetail = ds.Tables[ReportName].Copy();
+
+            //추가된 세트아이템 코드
+            int SetCnt = 0;
+            foreach (DataGridViewRow row in dGridView_Base_Item.Rows)
+            {
+                DataRow Product = dtSalesItemDetail.NewRow();
+                Product["OrderNumber"] = row.Cells["OrderNumber"].Value.ToString();
+                Product["SalesItemIndex"] = row.Cells["SalesItemIndex"].Value.ToString();
+                Product["ItemCode"] = row.Cells["Itemcode"].Value.ToString();
+                Product["Name"] = row.Cells["ItemName"].Value.ToString();
+                Product["ItemCount"] = row.Cells["ItemCount"].Value.ToString();
+
+                if (chK_PV_CV_Check.Checked == true)
+                {
+                    Product["ItemPV"] = row.Cells["ItemPV"].Value.ToString();
+                    Product["ItemPrice"] = row.Cells["ItemPrice"].Value.ToString();
+                    Product["ItemTotalPrice"] = row.Cells["ItemTotalPrice"].Value.ToString();
+                }
+                else
+                {
+                    Product["ItemPV"] = 0;
+                    Product["ItemPrice"] = 0;
+                    Product["ItemTotalPrice"] = 0;
+                }
+
+                Product["Etc"] = row.Cells["Etc"].Value.ToString();
+
+                dtSalesItemDetail.Rows.Add(Product);
+                //--세트아이템 찾아 넣어주기
+                FindRow = dtSetItems.Select("Good_Code = '" + Product["ItemCode"].ToString() + "'");
+                SetCnt = 0;
+
+                foreach (DataRow SetRow in FindRow)
+                {
+                    SetCnt = Convert.ToInt32(SetRow["Sub_Good_Cnt"]) * Convert.ToInt32(Product["ItemCount"]);
+
+                    DataRow SetProduct = dtSalesItemDetail.NewRow();
+                    SetProduct["ItemCode"] = SetRow["Sub_Good_Code"].ToString();
+                    SetProduct["Name"] = "ㄴ(SET) " + SetRow["name"].ToString();
+                    SetProduct["ItemCount"] = SetCnt.ToString();
+
+
+                    dtSalesItemDetail.Rows.Add(SetProduct);
+                }
+            }
+
             ds.Clear();
             // -- SalesRece
             cls_Connect.Open_Data_Set("SELECT * FROM tbl_Sales_Rece (NOLOCK) WHERE OrderNumber = '" + txt_OrderNumber.Text.Trim() + "'", ReportName, ds);
@@ -12240,8 +12301,8 @@ namespace MLM_Program
             Products.Columns.Add("ItemPrice", typeof(int));
             Products.Columns.Add("ItemTotalPrice", typeof(int));
             Products.Columns.Add("ItemPV", typeof(int));
-
             Products.Columns.Add("Etc", typeof(string));
+
             //추가된 세트아이템 코드
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("select A.Good_Code, A.Sub_Good_Code, B.name, A.Sub_Good_Cnt");
@@ -12254,7 +12315,6 @@ namespace MLM_Program
             if ((new cls_Connect_DB()).Open_Data_Set(sb.ToString(), "SetItems", ds) == false)
                 return;
 
-            dtSetItems = ds.Tables["SetItems"];
             int SetCnt = 0;
             //추가된 세트아이템 코드
             foreach (DataGridViewRow row in dGridView_Base_Item.Rows)
