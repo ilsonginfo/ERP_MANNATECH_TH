@@ -58,6 +58,13 @@ namespace MLM_Program
             }
         }
 
+        /// <summary> 태국유저입니까? </summary>
+        internal static bool Is_TH_User
+        {
+            get { return gid_CountryCode == "TH";  }
+        }
+        
+
 
 
     }// end cls_User

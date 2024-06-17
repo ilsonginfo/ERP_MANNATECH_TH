@@ -1068,7 +1068,7 @@
             this.mtxtMbid.Click += new System.EventHandler(this.mtxtMbid_Click);
             this.mtxtMbid.TextChanged += new System.EventHandler(this.mtxtMbid_TextChanged);
             this.mtxtMbid.Enter += new System.EventHandler(this.txtData_Enter);
-            this.mtxtMbid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_KeyPress);
+            this.mtxtMbid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtMbid_KeyPress);
             this.mtxtMbid.Leave += new System.EventHandler(this.txtData_Base_Leave);
             // 
             // mtxtSn

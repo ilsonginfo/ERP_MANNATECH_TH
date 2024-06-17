@@ -844,7 +844,12 @@ namespace MLM_Program
             Data_Set_Form_TF = 0;
         }
 
-        private void MtxtData_KeyPress(object sender, KeyPressEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mtxtMbid_KeyPress(object sender, KeyPressEventArgs e)
         {
             //회원번호 관련칸은 소문자를 다 대문자로 만들어 준다.
             if (e.KeyChar >= 97 && e.KeyChar <= 122)
@@ -872,8 +877,16 @@ namespace MLM_Program
                     string Search_Name = "";
                     reCnt = cds.Member_Name_Search(mtb.Text, ref Search_Name);
 
+
+
                     if (reCnt == 1)
                     {
+                        if (cds.THService_IsNot_TH_Member)
+                        {
+                            MessageBox.Show("Account number is not in Thailand or wrong number");
+                            return;
+                        }
+
                         if (mtb.Name == "mtxtMbid")
                         {
                             txtName.Text = Search_Name;

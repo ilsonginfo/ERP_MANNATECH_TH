@@ -186,7 +186,7 @@ namespace MLM_Program
 
             // Tsql = Tsql + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
             //Tsql = Tsql + " And   tbl_Memberinfo.BusinessCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode  + "') )";
-            //Tsql = Tsql + " And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('" + cls_User.gid_CountryCode + "') )";
+            Tsql = Tsql + " And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('" + cls_User.gid_CountryCode + "') )";
                         
             sb.AppendLine(" Order by tbl_Memberinfo.Mbid, tbl_Memberinfo.Mbid2 ASC ");
 
