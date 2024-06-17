@@ -728,6 +728,7 @@ namespace MLM_Program
                 t_c_sell.InputPassbook = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["InputPassbook"].ToString());
                 t_c_sell.InputCoupon = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["InputCoupon"].ToString());
                 t_c_sell.InputMile = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["InputMile"].ToString());
+                t_c_sell.InputNaver = double.Parse(ds.Tables[base_db_name].Rows[fi_cnt]["InputNaver"].ToString());
                 t_c_sell.InputPass_Pay = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["InputPass_Pay"].ToString());
                 t_c_sell.UnaccMoney = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["UnaccMoney"].ToString());
 

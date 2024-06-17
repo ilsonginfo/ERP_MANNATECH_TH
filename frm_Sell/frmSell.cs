@@ -290,7 +290,6 @@ namespace MLM_Program
                 cbProvince_TH.Font = new Font("Tahoma", 11f);
                 cbDistrict_TH.Font = new Font("Tahoma", 11f);
                 cbSubDistrict_TH.Font = new Font("Tahoma", 11f);
-                cbZipCode_TH.Font = new Font("Tahoma", 11f);
                 txt_Get_Etc1.Font = new Font("Tahoma", 11f);
                 tlpInsuranceNumber.Visible = false;
                 chK_PV_CV_Check.Visible = false;
@@ -12318,6 +12317,7 @@ namespace MLM_Program
             if ((new cls_Connect_DB()).Open_Data_Set(sb.ToString(), "SetItems", ds) == false)
                 return;
 
+            dtSetItems = ds.Tables["SetItems"];
             int SetCnt = 0;
             //추가된 세트아이템 코드
             foreach (DataGridViewRow row in dGridView_Base_Item.Rows)
