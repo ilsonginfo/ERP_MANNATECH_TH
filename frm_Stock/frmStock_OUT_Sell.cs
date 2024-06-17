@@ -2317,6 +2317,20 @@ namespace MLM_Program
             List<string> lSalesCacu = new List<string>();
             List<string> lSalesRece = new List<string>();
 
+            //추가된 세트아이템 코드
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("select A.Good_Code, A.Sub_Good_Code, B.name, A.Sub_Good_Cnt");
+            sb.AppendLine("from tbl_Goods_Set (NOLOCK)  A");
+            sb.AppendLine(" join tbl_goods (NOLOCK) b on a.Sub_Good_Code = b.ncode order by  A.Sub_Good_Code ");
+
+            DataSet dsSetItems = new DataSet();
+            DataTable dtSetItems = new DataTable();
+            DataRow[] FindRow;
+            if ((new cls_Connect_DB()).Open_Data_Set(sb.ToString(), "SetItems", dsSetItems) == false)
+                return;
+
+            dtSetItems = dsSetItems.Tables[0];
+
             cls_Connect_DB cls_Connect = new cls_Connect_DB();
             DataSet ds = new DataSet();
             string ReportName = "FastReport";
@@ -2362,17 +2376,20 @@ namespace MLM_Program
 
 
                 // -- SalesItemDetail
+                DataSet dsTemp_SalesItemIndex = new DataSet();
                 if (lSalesItemDetail.Count == 0)
                 {
-                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, ds);
-                    dtSalesItemDetail = ds.Tables[ReportName].Copy();
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, dsTemp_SalesItemIndex);
+                    dtSalesItemDetail = dsTemp_SalesItemIndex.Tables[ReportName].Clone();
+
+                    FastReport_Item_Setting(ref dtSalesItemDetail, dsTemp_SalesItemIndex, dtSetItems);
+
                     lSalesItemDetail.Add(OrderNumber);
                 }
                 else if (!lSalesItemDetail.Contains(OrderNumber))
                 {
-                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, ds);
-                    foreach (DataRow row in ds.Tables[ReportName].Rows)
-                        dtSalesItemDetail.Rows.Add(row.ItemArray);
+                    cls_Connect.Open_Data_Set("SELECT * FROM tbl_SalesItemDetail (NOLOCK) WHERE OrderNumber = '" + OrderNumber + "'", ReportName, dsTemp_SalesItemIndex);
+                    FastReport_Item_Setting(ref dtSalesItemDetail, dsTemp_SalesItemIndex, dtSetItems);
                     lSalesItemDetail.Add(OrderNumber);
                 }
                 ds = new DataSet();
@@ -2499,6 +2516,49 @@ namespace MLM_Program
             frm.BindingDataTables.Add("SalesItemDetail", dtSalesItemDetail);
             frm.BindingDataTables.Add("SalesCacu", dtSalesCacu);
             frm.ShowReport(frmFastReport.EShowReport.거래명세표_출고용_TH);
+        }
+
+        private void FastReport_Item_Setting(ref DataTable dtMain, DataSet dsItems, DataTable dtSetItems)
+        {
+            //추가된 세트아이템 코드
+            DataRow[] FindRow;
+            int SetCnt = 0;
+            foreach (DataRow row in dsItems.Tables[0].Rows)
+            {
+                DataRow Product = dtMain.NewRow();
+                Product["OrderNumber"] = row["OrderNumber"].ToString();
+                Product["SalesItemIndex"] = row["SalesItemIndex"].ToString();
+                Product["ItemCode"] = row["Itemcode"].ToString();
+                Product["ItemName"] = row["ItemName"].ToString();
+                Product["ItemCount"] = row["ItemCount"].ToString();
+
+                    Product["ItemPV"] = row["ItemPV"].ToString();
+                    Product["ItemPrice"] = row["ItemPrice"].ToString();
+                    Product["ItemTotalPrice"] = row["ItemTotalPrice"].ToString();
+
+                ///Product["Etc"] = row["Etc"].ToString();
+
+                dtMain.Rows.Add(Product);
+                //--세트아이템 찾아 넣어주기
+                FindRow = dtSetItems.Select("Good_Code = '" + Product["ItemCode"].ToString() + "'");
+                SetCnt = 0;
+
+                foreach (DataRow SetRow in FindRow)
+                {
+                    SetCnt = Convert.ToInt32(SetRow["Sub_Good_Cnt"]) * Convert.ToInt32(Product["ItemCount"]);
+
+                    DataRow SetProduct = dtMain.NewRow();
+                    SetProduct["OrderNumber"] = row["OrderNumber"].ToString();
+                    SetProduct["SalesItemIndex"] = row["SalesItemIndex"].ToString();
+                    SetProduct["ItemCode"] = SetRow["Sub_Good_Code"].ToString();
+                    SetProduct["ItemName"] = "ㄴ(SET) " + SetRow["name"].ToString();
+                    SetProduct["ItemCount"] = SetCnt.ToString();
+
+
+                    dtMain.Rows.Add(SetProduct);
+                }
+            }
+
         }
 
         private void butt_Print_Click(int tt)
