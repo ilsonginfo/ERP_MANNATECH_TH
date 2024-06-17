@@ -110,7 +110,8 @@ namespace MLM_Program
 
         private void Base_Grid_Set()
         {
-            
+
+            cls_form_Meth cm = new cls_form_Meth();
 
             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
             dGridView_Base_Header_Reset(); //디비그리드 헤더와 기본 셋팅을 한다.
@@ -143,12 +144,12 @@ namespace MLM_Program
                 sb.AppendLine(" ,tbl_Memberinfo.Nominid2 ");
             sb.AppendLine(" , Isnull(Nom.M_Name,'') ");
             sb.AppendLine(" , tbl_Memberinfo.hptel , '' ");
-            sb.AppendLine(" ,Case tbl_Memberinfo.LeaveCheck When 1 then '활동'");
-            sb.AppendLine("     When 0 then '탈퇴' ");
-            sb.AppendLine("     When -1 then '직권해지' ");
-            sb.AppendLine("     When -100 then '휴먼' END ");
-            sb.AppendLine(" ,Case tbl_Memberinfo.LineUserCheck When 1 then '사용' When 0 then '중지' End ");
-            sb.AppendLine(" ,Case tbl_Memberinfo.Sell_Mem_TF When 1 then '프리퍼드커스텀' When 0 then '어소시에이트' End as sell_mem_tf ");
+            sb.AppendLine($" ,Case tbl_Memberinfo.LeaveCheck When 1 then '{ cm._chang_base_caption_search("활동")}'");
+            sb.AppendLine($"     When 0 then '{ cm._chang_base_caption_search("탈퇴")}' ");
+            sb.AppendLine($"     When -1 then '{cm._chang_base_caption_search("직권해지")}' ");
+            sb.AppendLine($"     When -100 then '{cm._chang_base_caption_search("휴먼")}' END ");
+            sb.AppendLine($" ,Case tbl_Memberinfo.LineUserCheck When 1 then '{cm._chang_base_caption_search("사용")}' When 0 then '{cm._chang_base_caption_search("중지")}' End ");
+            sb.AppendLine($" ,Case tbl_Memberinfo.Sell_Mem_TF When 1 then '{cm._chang_base_caption_search("프리퍼드커스텀")}' When 0 then '{cm._chang_base_caption_search("어소시에이트")}' End as sell_mem_tf ");
             sb.AppendLine(" From tbl_Memberinfo (nolock) ");
             sb.AppendLine(" LEFT JOIN tbl_Memberinfo Nom (nolock) ON tbl_Memberinfo.Nominid = Nom.Mbid And tbl_Memberinfo.Nominid2 = Nom.Mbid2 ");
             sb.AppendLine(" LEFT JOIN tbl_Business (nolock) ON tbl_Memberinfo.BusinessCode = tbl_Business.NCode And tbl_Memberinfo.Na_code = tbl_Business.Na_code ");
@@ -186,7 +187,7 @@ namespace MLM_Program
 
             // Tsql = Tsql + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
             //Tsql = Tsql + " And   tbl_Memberinfo.BusinessCode in ( Select Center_Code From ufn_User_In_Center ('" + cls_User.gid_CenterCode + "','" + cls_User.gid_CountryCode  + "') )";
-            Tsql = Tsql + " And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('" + cls_User.gid_CountryCode + "') )";
+            sb.AppendLine(" And tbl_Memberinfo.Na_Code in ( Select Na_Code From ufn_User_In_Na_Code ('" + cls_User.gid_CountryCode + "') )");
                         
             sb.AppendLine(" Order by tbl_Memberinfo.Mbid, tbl_Memberinfo.Mbid2 ASC ");
 
