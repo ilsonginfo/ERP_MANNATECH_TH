@@ -31,6 +31,7 @@ namespace MLM_Program
             {
                 if (cls_User.gid_CountryCode == "TH" && cls_app_static_var.Using_language == "English")
                 {
+                    this.AutoScaleMode = AutoScaleMode.Inherit;
                     ChangeFont_TH(this, new Font("Tahoma", 9f));
                     //ChangeFont_TH(this, new Font("Angsana New", 8.75f));
                 }

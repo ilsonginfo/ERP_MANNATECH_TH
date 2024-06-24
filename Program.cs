@@ -135,7 +135,7 @@ namespace MLM_Program
             /////
 
             cls_app_static_var.APP_VER = "[RELEASE]240614_UAT (External Access)";
-            cls_app_static_var.APP_VER = "[RELEASE]240617_LIVE 1";
+            cls_app_static_var.APP_VER = "[RELEASE]240624_LIVE 1";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++
@@ -274,12 +274,12 @@ namespace MLM_Program
                         cls_app_static_var.User_Time_Zone = "Korea Standard Time";
                     }
 
-                    if (cls_User.gid_CountryCode == "Ja" || cls_User.gid_CountryCode == "")
+                    if (cls_User.gid_CountryCode == "Ja" )
                     {
                         cls_app_static_var.User_Time_Zone = "Tokyo Standard Time";
                     }
 
-                    if (cls_User.gid_CountryCode == "TH" || cls_User.gid_CountryCode == "")
+                    if (cls_User.gid_CountryCode == "TH" )
                     {
                         cls_app_static_var.User_Time_Zone = "Thailand Standard Time";
                     }

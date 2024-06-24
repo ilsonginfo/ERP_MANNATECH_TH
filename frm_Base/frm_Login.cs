@@ -703,7 +703,7 @@ namespace MLM_Program
         private void frm_Login_Activated(object sender, EventArgs e)
         {
             //19-03-11 깜빡임제거 this.Refresh();
-
+            this.BringToFront();
             label3.Text = cls_app_static_var.APP_VER;
 
             if (UpLoad_TF == 0)

@@ -2432,7 +2432,7 @@ namespace MLM_Program
 
             if (cls_User.gid_CountryCode == "TH")
             {
-                if (cls_app_static_var.Using_language == "Thai")
+                if (cls_app_static_var.Using_language == "English")
                 {
                     this.Text = this.Text + "[Thailand]";
                 }
@@ -2443,7 +2443,7 @@ namespace MLM_Program
             }
             else if (cls_User.gid_CountryCode == "KR")
             {
-                if (cls_app_static_var.Using_language == "Thai")
+                if (cls_app_static_var.Using_language == "English")
                 {
                     this.Text = this.Text + "[Korea]";
                 }
@@ -2606,6 +2606,8 @@ namespace MLM_Program
 
             SetValuesOnSubItems(this.menuStrip.Items.OfType<ToolStripMenuItem>().ToList());
 
+            //2024-06-17 지성경 추가 : 서브메뉴가 하나도없음녀 대메뉴도 가리기
+            TopMenuControl_Visible_Function();
         }
         private void pnlPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -2684,9 +2686,9 @@ namespace MLM_Program
             //우선은 모든 메뉴를 안보이게 한다.
             foreach (ToolStripMenuItem Baes_1_Menu in menuStrip.Items)
             {
-                if (cls_app_static_var.Using_language == "Thai")
+                if (cls_app_static_var.Using_language == "English")
                 {
-                    Baes_1_Menu.Font = new System.Drawing.Font("Arial Unicode MS", 10);
+                    Baes_1_Menu.Font = new System.Drawing.Font("Tahoma", 9);
                 }
                 else
                 {
@@ -2703,9 +2705,9 @@ namespace MLM_Program
                         Baes_1_Menu.DropDownItems[cnt].Visible = false;  //퀵메뉴 제외하고 나머지 메뉴들은 다 안보이게 한다. 우선은...                                                
                         Baes_1_Menu.DropDownItems[cnt].ToolTipText = "-";
 
-                        if (cls_app_static_var.Using_language == "Thai")
+                        if (cls_app_static_var.Using_language == "English")
                         {
-                            Baes_1_Menu.DropDownItems[cnt].Font = new System.Drawing.Font("Arial Unicode MS", 10);
+                            Baes_1_Menu.DropDownItems[cnt].Font = new System.Drawing.Font("Tahoma", 9);
                         }
                         else
                         {
@@ -3927,6 +3929,46 @@ namespace MLM_Program
             //if (menuStrip.BackColor != Color.Purple)
             //    menuStrip.BackColor = Color.Purple;
         }
+
+        /// <summary>
+        /// 2024-06-17 Top Menu 에 Menu Strip 이 하나도 없다면 대메뉴를 가린다.
+        /// </summary>
+        private void TopMenuControl_Visible_Function()
+        {
+            //Top Menu 전체 검색
+            foreach (ToolStripMenuItem TopMenu in menuStrip.Items.OfType<ToolStripMenuItem>().ToList())
+            {
+                int TopMenuDropDownItems_Count = TopMenu.DropDownItems.Count;
+                bool bPass = false;
+                if (TopMenuDropDownItems_Count == 0) continue;
+
+                for (int i = 0; i < TopMenuDropDownItems_Count; i++)
+                {
+                    if(TopMenu.DropDownItems[i] is ToolStripMenuItem)
+                    {
+                        ToolStripMenuItem item = TopMenu.DropDownItems[i] as ToolStripMenuItem;
+                        string item_Name = item.Name;
+
+                        if (cls_app_static_var.Mid_Main_Menu.ContainsKey(item_Name))
+
+                        {
+                            bPass = true ;
+  
+                            break;
+                        }
+
+
+                    }
+                }
+
+                TopMenu.Visible = bPass;
+
+            }
+
+
+        }
+
+        
 
     }
 }// end MLM_Demo_01

@@ -205,8 +205,8 @@ namespace MLM_Program
                 //combo_Se_Code_2.Text = "TH";
 
                 //배송지가리기
-                tableLayoutPanel15.Visible = false;
-                tableLayoutPanel16.Visible = false;
+                pnlRece_Addr2.Visible = false;
+                pnlRece_Addr1.Visible = false;
                 tableLayoutPanel17.Visible = false;
                 cbProvince_TH.Font = new Font("Tahoma", 11f);
                 cbDistrict_TH.Font = new Font("Tahoma", 11f);
@@ -216,6 +216,9 @@ namespace MLM_Program
                 txtAddress1.Font = new Font("Tahoma", 11f);
                 txtAddress2.Font = new Font("Tahoma", 11f);
                 txtName.Font = new Font("Tahoma", 11f);
+
+                pnlSave.Location = pnlRece_Addr1.Location;
+                pnlNomin.Location = new Point( pnlRece_Addr2.Location.X, pnlRece_Addr2.Location.Y - 3);
 
             }
             // 태국 이외 버전 인 경우
