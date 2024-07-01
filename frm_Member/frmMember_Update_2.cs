@@ -47,8 +47,10 @@ namespace MLM_Program
             if (cls_User.gid_CountryCode != "TH")
             {
                 mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
-                //mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
             }
+
+            pnlTH.Visible = cls_User.Is_TH_User;
+
 
             if (cls_app_static_var.save_uging_Pr_Flag == 0) //후원인 기능 사용하지 마라.
             {               
@@ -478,7 +480,13 @@ namespace MLM_Program
                 Tsql = Tsql + " ,tbl_Memberinfo.mbid ";
                 Tsql = Tsql + " ,tbl_Memberinfo.mbid2 ";
                 Tsql = Tsql + " ,tbl_Memberinfo.M_Name ";
-                
+                Tsql = Tsql + " ,tbl_Memberinfo.na_code ";
+                Tsql = Tsql + " ,tbl_Memberinfo.E_name ";
+                Tsql = Tsql + " ,tbl_Memberinfo.E_name_Last ";
+                Tsql = Tsql + " ,tbl_Memberinfo.BirthDay ";
+                Tsql = Tsql + " ,tbl_Memberinfo.BirthDay_M ";
+                Tsql = Tsql + " ,tbl_Memberinfo.BirthDay_D ";
+
                 Tsql = Tsql + ", tbl_Memberinfo.Cpno  AS Cpno";
                 Tsql = Tsql + ", tbl_Memberinfo.WebPassWord";
                 
@@ -606,7 +614,17 @@ namespace MLM_Program
 
             mtxtMbid.Text = ds.Tables[base_db_name].Rows[0]["M_Mbid"].ToString();
             txtName.Text = ds.Tables[base_db_name].Rows[0]["M_Name"].ToString();
+
+            if (ds.Tables[base_db_name].Rows[0]["NA_CODE"].ToString() == "TH")
+            {
+                txtName_C.ReadOnly = true;
+
+                txtName_E_1.Text = ds.Tables[base_db_name].Rows[0]["E_name"].ToString();
+                txtName_E_2.Text = ds.Tables[base_db_name].Rows[0]["E_name_Last"].ToString();
+            }
+
             txtName_C.Text = ds.Tables[base_db_name].Rows[0]["M_Name"].ToString();
+
             mtxtSn.Text = encrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["Cpno"].ToString(), "Cpno");
             txtLineCnt.Text = ds.Tables[base_db_name].Rows[0]["LineCnt"].ToString();
             idx_LineCnt = int.Parse ( ds.Tables[base_db_name].Rows[0]["LineCnt"].ToString()) ;
@@ -671,9 +689,17 @@ namespace MLM_Program
             txtName_n.Text = ds.Tables[base_db_name].Rows[0]["Nomin_Name"].ToString();
             txtSN_n.Text = encrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["Nom_Cpno"].ToString(), "Cpno");
 
-           // txtPassword.Text = encrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["WebPassWord"].ToString());
-                 
-            
+            // txtPassword.Text = encrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["WebPassWord"].ToString());
+
+
+            string BirthDay = ds.Tables[base_db_name].Rows[0]["BirthDay"].ToString();
+            if (BirthDay != "")
+            {
+                BirthDay = BirthDay + "-" + ds.Tables[base_db_name].Rows[0]["BirthDay_M"].ToString();
+                BirthDay = BirthDay + "-" + ds.Tables[base_db_name].Rows[0]["BirthDay_D"].ToString();
+
+                mtxtBrithDay.Text = BirthDay;
+            }
 
             if (ds.Tables[base_db_name].Rows[0]["Saveid"].ToString() != "" && ds.Tables[base_db_name].Rows[0]["Saveid"].ToString().Substring(0, 1) == "*")
                 chk_S.Checked = true;
@@ -2922,6 +2948,37 @@ namespace MLM_Program
                 string StrSql = "";
                 StrSql = "Update tbl_Memberinfo Set ";
                 StrSql = StrSql + "  M_Name  = '" + txtName_C.Text.Trim() + "'";
+                if (cls_User.gid_CountryCode == "TH")   // 태국인 경우
+                {
+                    StrSql = StrSql + " , E_name  = '" + txtName_E_1.Text.Trim() + "'";
+                    StrSql = StrSql + " , E_name_Last  = '" + txtName_E_2.Text.Trim() + "'";
+                }
+
+
+                string BirthDay = ""; string BirthDay_M = ""; string BirthDay_D = ""; int BirthDayTF = 0;
+                if (mtxtBrithDay.Text.Replace("-", "").Trim() != "")
+                {
+                    string[] Sn_t = mtxtBrithDay.Text.Split('-');
+
+                    BirthDay = Sn_t[0];  //생년월일을 년월일로 해서 쪼갠다
+                    BirthDay_M = Sn_t[1]; //웹쪽 관련해서 이렇게 받아들이는데가 많아서
+                    BirthDay_D = Sn_t[2]; //웹쪽 기준에 맞춘거임.
+                }
+                StrSql = StrSql + " ,BirthDay ='" + BirthDay + "'";
+                StrSql = StrSql + " ,BirthDay_M ='" + BirthDay_M + "'";
+                StrSql = StrSql + " ,BirthDay_D ='" + BirthDay_D + "'";
+
+                ////2024-07-01 지성경 : 매나테크가 휴대폰인증이있었던가?
+                //StrSql = StrSql + " ,ipin_ci ='" + txt_IpinCI.Text + "'";
+                //StrSql = StrSql + " ,ipin_ci ='" + txt_IpinDI.Text + "'";
+
+                string Sex_FLAG = "";
+                if (radioB_Sex_Y.Checked == true) Sex_FLAG = "Y";
+                if (radioB_Sex_X.Checked == true) Sex_FLAG = "X";
+
+                StrSql = StrSql + " ,Sex_FLAG ='" + Sex_FLAG + "'";
+
+
                 StrSql = StrSql + " ,bankowner  = '" + txtName_C.Text.Trim() + "'";
                 StrSql = StrSql + " ,For_Kind_TF = " + For_Kind_TF;
                 StrSql = StrSql + " ,Cpno = '" + encrypter.Encrypt(Sn.Trim()) + "'";
@@ -3077,10 +3134,10 @@ namespace MLM_Program
 
         private void butt_Certify_Click(object sender, EventArgs e)
         {
-            frmBase_Certify e_f = new frmBase_Certify();
-            e_f.Send_Certify_Info += new frmBase_Certify.SendCertifyDele(e_f_Send_Certify_Info);
-            e_f.Call_Certify_Info += new frmBase_Certify.Call_Certify_Info_Dele(e_f_Call_Certify_Info);
-            e_f.ShowDialog();
+            //frmBase_Certify e_f = new frmBase_Certify();
+            //e_f.Send_Certify_Info += new frmBase_Certify.SendCertifyDele(e_f_Send_Certify_Info);
+            //e_f.Call_Certify_Info += new frmBase_Certify.Call_Certify_Info_Dele(e_f_Call_Certify_Info);
+            //e_f.ShowDialog();
         }
 
 
@@ -3089,111 +3146,114 @@ namespace MLM_Program
             Callmode = "M";
         }
 
-        private void e_f_Send_Certify_Info(string SuccessYN, string Message, string Name, string DI, string CI, string BirthDay, string Gender, string NationalInfo, string Age, string VNumber, string AgeCode, string AuthInfo, string AuthType)
+        //private void e_f_Send_Certify_Info(string SuccessYN, string Message, string Name, string DI, string CI, string BirthDay, string Gender, string NationalInfo, string Age, string VNumber, string AgeCode, string AuthInfo, string AuthType)
+        //{
+        //    /*
+        //    SuccessYN : 성공여부
+        //    Message : 메세지 
+        //    Name : 실명
+        //    DI : DI값
+        //    CI : CI값
+        //    BirthDay : 생년월일
+        //    Gender : 성  (1:남성, 2:여성)
+        //    NationalInfo : 내/외국인 구분 
+        //    Age : 만 나이
+        //    VNumber : IPIN 데이터 가상주민번호
+        //    AgeCode : IPIN 데이터 연령대코드
+        //    AuthInfo : IPIN 데이터 본인확인수단 (0:공인인증서, 1:카드, 2:핸드폰, 3:대면확인, 4:기타)
+        //    authType : 인증수단	(M:휴대폰, X:공인인증서, I:아이핀)
+        //    */
+        //    if (SuccessYN == "Y")
+        //    {
+        //        if (NationalInfo == "1")
+        //        {
+        //            if (cls_User.gid_CountryCode == "TH")
+        //            {
+        //                MessageBox.Show("As a result of authentication, you have been confirmed as a foreigner.\nPlease register as a foreigner.");
+        //            }
+        //            else
+        //            {
+
+        //                MessageBox.Show("인증결과 외국인으로 확인되었습니다.\n외국인으로 등록하시기 바랍니다.");
+        //            }
+        //            return;
+        //        }
+
+        //        txt_IpinCI.Text = CI;
+        //        txt_IpinDI.Text = DI;
+        //        txtName_C.Text = Name;
+        //        txtName_Accnt.Text = Name;
+        //        mtxtBrithDay.Text = BirthDay;
+        //        if (Gender == "1")
+        //        {
+        //            radioB_Sex_Y.Checked = true;
+        //            radioB_Sex_X.Checked = false;
+        //        }
+        //        else if (Gender == "2")
+        //        {
+        //            radioB_Sex_Y.Checked = false;
+        //            radioB_Sex_X.Checked = true;
+        //        }
+
+        //        Lbl_Certify.Text = "인증확인";
+        //        Lbl_Certify.ForeColor = Color.Blue;
+        //        if (cls_User.gid_CountryCode == "TH")
+        //        {
+        //            MessageBox.Show("Authentication confirmed.");
+        //        }
+        //        else
+        //        {
+
+        //            MessageBox.Show("인증 확인되었습니다.");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Lbl_Certify.Text = "인증미확인";
+        //        Lbl_Certify.ForeColor = Color.Red;
+        //        MessageBox.Show(Message);
+        //    }
+
+        //}
+
+
+
+        //private Boolean Check_Certify_Error()
+        //{
+        //    if (raButt_IN_1.Checked == true)
+        //    {
+        //        if (txt_IpinDI.Text == "")
+        //        {
+        //            if (cls_User.gid_CountryCode == "TH")
+        //            {
+        //                MessageBox.Show("Please proceed after verifying your mobile phone");
+        //            }
+        //            else
+        //            {
+
+        //                MessageBox.Show("휴대폰 인증 후에 진행하시기 바랍니다.");
+        //            }
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
+
+        private void pnlTH_VisibleChanged(object sender, EventArgs e)
         {
-            /*
-            SuccessYN : 성공여부
-            Message : 메세지 
-            Name : 실명
-            DI : DI값
-            CI : CI값
-            BirthDay : 생년월일
-            Gender : 성  (1:남성, 2:여성)
-            NationalInfo : 내/외국인 구분 
-            Age : 만 나이
-            VNumber : IPIN 데이터 가상주민번호
-            AgeCode : IPIN 데이터 연령대코드
-            AuthInfo : IPIN 데이터 본인확인수단 (0:공인인증서, 1:카드, 2:핸드폰, 3:대면확인, 4:기타)
-            authType : 인증수단	(M:휴대폰, X:공인인증서, I:아이핀)
-            */
-            if (SuccessYN == "Y")
+            //2024-07-01 지성경 : 태국패널이 오픈되면 이름의 ReadOnly를 세팅합니다.
+            //태국회원이름은 First 와 Last 로 관리됩니다.
+            txtName_C.ReadOnly = pnlTH.Visible;
+            if(txtName_C.ReadOnly)
             {
-                if (NationalInfo == "1")
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("As a result of authentication, you have been confirmed as a foreigner.\nPlease register as a foreigner.");
-                    }
-                    else
-                    {
 
-                        MessageBox.Show("인증결과 외국인으로 확인되었습니다.\n외국인으로 등록하시기 바랍니다.");
-                    }
-                    return;
-                }
-
-                txt_IpinCI.Text = CI;
-                txt_IpinDI.Text = DI;
-                txtName_C.Text = Name;
-                //txtName_Accnt.Text = Name;
-                mtxtBrithDay.Text = BirthDay;
-                if (Gender == "1")
-                {
-                    radioB_Sex_Y.Checked = true;
-                    radioB_Sex_X.Checked = false;
-                }
-                else if (Gender == "2")
-                {
-                    radioB_Sex_Y.Checked = false;
-                    radioB_Sex_X.Checked = true;
-                }
-
-                Lbl_Certify.Text = "인증확인";
-                Lbl_Certify.ForeColor = Color.Blue;
-                if (cls_User.gid_CountryCode == "TH")
-                {
-                    MessageBox.Show("Authentication confirmed.");
-                }
-                else
-                {
-
-                    MessageBox.Show("인증 확인되었습니다.");
-                }
             }
-            else
-            {
-                Lbl_Certify.Text = "인증미확인";
-                Lbl_Certify.ForeColor = Color.Red;
-                MessageBox.Show(Message);
-            }
-
         }
 
-
-
-        private Boolean Check_Certify_Error()
+        private void TH_Name_TextChangedEvent(object sender, EventArgs e)
         {
-            if (raButt_IN_1.Checked == true)
-            {
-                if (txt_IpinDI.Text == "")
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please proceed after verifying your mobile phone");
-                    }
-                    else
-                    {
-
-                        MessageBox.Show("휴대폰 인증 후에 진행하시기 바랍니다.");
-                    }
-                    return false;
-                }
-            }
-
-            return true;
+            txtName_C.Text = txtName_E_2.Text + " " + txtName_E_1.Text;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
