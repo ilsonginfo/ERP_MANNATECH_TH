@@ -189,8 +189,6 @@ namespace MLM_Program
             {
                 tlpNaCode.Visible = false;
                 //combo_Se_Code_2.Text = "TH";
-                txtAddress1.ReadOnly = true;
-                mtxtZip1.ReadOnly = true;//.Font = new Font("Tahoma", 11f);
                 txtAddress1.Font = new Font("Tahoma", 11f);
                 txtAddress2.Font = new Font("Tahoma", 11f);
                 txtName.Font = new Font("Tahoma", 11f);
@@ -4923,8 +4921,8 @@ namespace MLM_Program
                 txtDistrict.Text = frm.Data.SubDistrictCode;
                 txtProvinceCode.Text = frm.Data.Province_Code;
 
-                txtAddress1.Text = $"{frm.Data.SubDistrict} {frm.Data.District} {frm.Data.Province_Name}";
-                txtAddress2.Focus();
+                txtAddress2.Text = frm.Data.Get_FullAddress;
+                txtAddress1.Focus();
             }
             else
             {

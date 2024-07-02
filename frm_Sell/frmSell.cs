@@ -277,10 +277,7 @@ namespace MLM_Program
 
                 button_Auth.Visible = false;    // 카드 인증 버튼
 
-
-                mtxtZip1.ReadOnly = true;
-                txtAddress1.ReadOnly = true;
-                txtAddress2.Clear();
+                
 
                 txtAddress1.Font = new Font("Tahoma", 11f);
                 txtAddress2.Font = new Font("Tahoma", 11f);
@@ -7875,8 +7872,8 @@ namespace MLM_Program
                         txtDistrict.Text = frm.Data.SubDistrictCode;
                         txtProvinceCode.Text = frm.Data.Province_Code;
 
-                        txtAddress1.Text = frm.Data.Get_FullAddress;
-                        txtAddress2.Focus();
+                        txtAddress2.Text = frm.Data.Get_FullAddress;
+                        txtAddress1.Focus();
                     }
                     else
                     {

@@ -658,7 +658,6 @@
             this.txtAddress1.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.txtAddress1.MaxLength = 40;
             this.txtAddress1.Name = "txtAddress1";
-            this.txtAddress1.ReadOnly = true;
             this.txtAddress1.Size = new System.Drawing.Size(465, 22);
             this.txtAddress1.TabIndex = 12;
             this.txtAddress1.Enter += new System.EventHandler(this.txtData_Enter);

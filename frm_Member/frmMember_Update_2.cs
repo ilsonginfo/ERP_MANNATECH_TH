@@ -481,6 +481,9 @@ namespace MLM_Program
                 Tsql = Tsql + " ,tbl_Memberinfo.mbid2 ";
                 Tsql = Tsql + " ,tbl_Memberinfo.M_Name ";
                 Tsql = Tsql + " ,tbl_Memberinfo.na_code ";
+                Tsql = Tsql + " ,tbl_Memberinfo.SEX_FLAG ";
+                Tsql = Tsql + " ,tbl_Memberinfo.T_Name ";
+                Tsql = Tsql + " ,tbl_Memberinfo.T_Name_Last ";
                 Tsql = Tsql + " ,tbl_Memberinfo.E_name ";
                 Tsql = Tsql + " ,tbl_Memberinfo.E_name_Last ";
                 Tsql = Tsql + " ,tbl_Memberinfo.BirthDay ";
@@ -619,9 +622,19 @@ namespace MLM_Program
             {
                 txtName_C.ReadOnly = true;
 
+                txtName_T_Name.Text = ds.Tables[base_db_name].Rows[0]["T_Name"].ToString();
+                txtName_T_Name_Last.Text = ds.Tables[base_db_name].Rows[0]["T_Name_Last"].ToString();
+
                 txtName_E_1.Text = ds.Tables[base_db_name].Rows[0]["E_name"].ToString();
                 txtName_E_2.Text = ds.Tables[base_db_name].Rows[0]["E_name_Last"].ToString();
             }
+
+            radioB_Sex_X.Checked = radioB_Sex_Y.Checked = false;
+            string SEX_FLAG = ds.Tables[base_db_name].Rows[0]["SEX_FLAG"].ToString();
+            if (SEX_FLAG == "X") radioB_Sex_X.Checked = true;
+            else if (SEX_FLAG == "Y") radioB_Sex_Y.Checked = true;
+
+
 
             txtName_C.Text = ds.Tables[base_db_name].Rows[0]["M_Name"].ToString();
 
@@ -1524,7 +1537,7 @@ namespace MLM_Program
             ct.from_control_clear(this, mtxtMbid);
                         
             raButt_IN_1.Checked = true;          
-            mtxtSn.Mask = "999999-9999999";
+            if(cls_User.Is_TH_User == false) mtxtSn.Mask = "999999-9999999";
             idx_Mbid = ""; idx_Mbid2 = 0; idx_LineCnt = -1;
             idx_Org_Mbid = ""; idx_Org_Mbid2 = -1;
             idx_LineDate = "";
@@ -2950,6 +2963,8 @@ namespace MLM_Program
                 StrSql = StrSql + "  M_Name  = '" + txtName_C.Text.Trim() + "'";
                 if (cls_User.gid_CountryCode == "TH")   // 태국인 경우
                 {
+                    StrSql = StrSql + " , T_name  = '" + txtName_T_Name.Text.Trim() + "'";
+                    StrSql = StrSql + " , T_name_Last  = '" + txtName_T_Name_Last.Text.Trim() + "'";
                     StrSql = StrSql + " , E_name  = '" + txtName_E_1.Text.Trim() + "'";
                     StrSql = StrSql + " , E_name_Last  = '" + txtName_E_2.Text.Trim() + "'";
                 }
@@ -3253,7 +3268,7 @@ namespace MLM_Program
 
         private void TH_Name_TextChangedEvent(object sender, EventArgs e)
         {
-            txtName_C.Text = txtName_E_2.Text + " " + txtName_E_1.Text;
+            txtName_C.Text = txtName_T_Name_Last.Text + " " + txtName_T_Name.Text;
         }
     }
 }

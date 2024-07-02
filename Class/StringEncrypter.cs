@@ -221,7 +221,12 @@ namespace MLM_Program
 
                 if (Cpno_Format != "")
                 {
-                    if (Decrypt_str.Length == 13)
+                    //태국에경우에는 Mask 처리나 Format 을 처리할필요가없다.
+                    if(Cpno_Format.ToLower().Contains("cpno") && cls_User.Is_TH_User )
+                    {
+
+                    }
+                    else if (Decrypt_str.Length == 13)
                     {
                         if (Cpno_Format == "Cpno_D")
                             Decrypt_str = Decrypt_str.Substring(0, 6) + Decrypt_str.Substring(6, 5) + "**";
@@ -267,7 +272,12 @@ namespace MLM_Program
             {
                 if (Cpno_Format != "")
                 {
-                    if (value.Length == 13)
+                    //태국에경우에는 Mask 처리나 Format 을 처리할필요가없다.
+                    if (Cpno_Format.ToLower().Contains("cpno") && cls_User.Is_TH_User)
+                    {
+
+                    }
+                    else if(value.Length == 13)
                     {
                         if (Cpno_Format == "Cpno_D")
                             value = value.Substring(0, 6) + value.Substring(6, 5) + "**";
@@ -332,7 +342,12 @@ namespace MLM_Program
 
                 if (Cpno_Format != "")
                 {
-                    if (Decrypt_str.Length == 13)
+                    //태국에경우에는 Mask 처리나 Format 을 처리할필요가없다.
+                    if (Cpno_Format.ToLower().Contains("cpno") && cls_User.Is_TH_User)
+                    {
+
+                    }
+                    else if (Decrypt_str.Length == 13)
                     {
                         if (Cpno_Format == "Cpno_D")
                             Decrypt_str = Decrypt_str.Substring(0, 6) + Decrypt_str.Substring(6, 5) + "**";
@@ -378,7 +393,12 @@ namespace MLM_Program
                 {
                     if (value.Length == 13)
                     {
-                        if (Cpno_Format == "Cpno_D")
+                        //태국에경우에는 Mask 처리나 Format 을 처리할필요가없다.
+                        if (Cpno_Format.ToLower().Contains("cpno") && cls_User.Is_TH_User)
+                        {
+
+                        }
+                        else if (Cpno_Format == "Cpno_D")
                             value = value.Substring(0, 6) + value.Substring(6, 5) + "**";
                         else if (Cpno_Format == "Cpno_Union")
                             value = value.Substring(0, 7);

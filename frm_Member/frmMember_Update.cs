@@ -207,8 +207,6 @@ namespace MLM_Program
                 txtProvinceCode.Font = new Font("Tahoma", 11f);
                 txtDistrict.Font = new Font("Tahoma", 11f);
                 txtAddress1.Font = new Font("Tahoma", 11f);
-                mtxtZip1.ReadOnly = true;
-                txtAddress1.ReadOnly = true;
                 txtAddress2.Font = new Font("Tahoma", 11f);
                 txtName.Font = new Font("Tahoma", 11f);
 
@@ -219,8 +217,6 @@ namespace MLM_Program
             // 태국 이외 버전 인 경우
             else
             {
-                txtAddress2.ReadOnly = false;
-                txtAddress2.Clear();
                 tabC_Mem.TabPages.Remove(tab_Img);
             }
 
@@ -1081,9 +1077,6 @@ namespace MLM_Program
                 // 태국 국가코드인 경우
                 if (ds.Tables[base_db_name].Rows[0]["Nation_Code"].ToString().Replace("-", "").Trim() == "TH")
                 {
-                    txtAddress1.ReadOnly = true;
-                    mtxtZip1.ReadOnly = true;
-
                     try
                     {
                         txtProvinceCode.Text = ds.Tables[base_db_name].Rows[0]["state"].ToString().Split(' ')[2];
@@ -3137,8 +3130,8 @@ namespace MLM_Program
                         txtDistrict.Text = frm.Data.SubDistrictCode;
                         txtProvinceCode.Text = frm.Data.Province_Code;
 
-                        txtAddress1.Text = $"{frm.Data.SubDistrict} {frm.Data.District} {frm.Data.Province_Name}";
-                        txtAddress2.Focus();
+                        txtAddress2.Text = frm.Data.Get_FullAddress;
+                        txtAddress1.Focus();
                     }
                     else
                     {

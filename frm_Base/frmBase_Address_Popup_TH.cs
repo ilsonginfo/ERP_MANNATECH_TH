@@ -32,7 +32,8 @@ namespace MLM_Program
             {
                 get
                 {
-                    return $"{SubDistrict} {District} {Province_Name}"; 
+            //2024-06-27 따로 뺌            txtAddress2.Text = cbSubDistrict_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.Text;
+                    return SubDistrict + " " + District + " " + Province_Name; 
                 }
             }
 
