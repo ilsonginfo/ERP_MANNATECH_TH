@@ -375,9 +375,9 @@ namespace MLM_Program
                     tb.BackColor = Color.White;
 
                 if (tb.Name == "txtName" && tb.Text != "")
-                    txtName_Accnt.Text = txtName_Last.Text + " " + txtName.Text;
+                    txtName_Accnt.Text = txtName.Text + " " + txtName_Last.Text;
                 if (tb.Name == "txtName_Last" && tb.Text != "")
-                    txtName_Accnt.Text = txtName_Last.Text + " " + txtName.Text;
+                    txtName_Accnt.Text = txtName.Text + " " + txtName_Last.Text;
 
             }
 
@@ -3852,7 +3852,7 @@ namespace MLM_Program
                 sb.AppendLine(") Values ( ");
                 sb.AppendLine("'" + Mbid + "'");
                 sb.AppendLine("," + Mbid2);
-                sb.AppendLine(",'" + txtName_Last.Text + " " + txtName.Text + "'");
+                sb.AppendLine(",'" + txtName.Text + " " +  txtName_Last.Text + "'");
                 sb.AppendLine(",'" + txtName_E_1.Text.Trim() + "'");
                 sb.AppendLine(",'" + txtName_E_2.Text.Trim() + "'");
                 sb.AppendLine(",'" + txtName.Text.Trim() + "'");

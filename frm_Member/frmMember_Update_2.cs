@@ -3268,7 +3268,7 @@ namespace MLM_Program
 
         private void TH_Name_TextChangedEvent(object sender, EventArgs e)
         {
-            txtName_C.Text = txtName_T_Name_Last.Text + " " + txtName_T_Name.Text;
+            txtName_C.Text = txtName_T_Name.Text + " " + txtName_T_Name_Last.Text;
         }
     }
 }

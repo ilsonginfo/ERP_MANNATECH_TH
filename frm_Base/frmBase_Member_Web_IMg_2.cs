@@ -62,12 +62,12 @@ namespace MLM_Program
             //if (Search_Member_Name == "")
             //    StrSql = "select UPLOAD_PATH + UPLOAD_FILE_NM from TLS_FILE with (nolock)";
             //else
-                StrSql = "select UPLOAD_PATH + UPLOAD_FILE_NM  as T_FileDir from TLS_FILE with (nolock) ";
+                StrSql = "select TOP 1 UPLOAD_PATH + UPLOAD_FILE_NM  as T_FileDir from TLS_FILE with (nolock) ";
             StrSql = StrSql + " where  GUBUN_1 = 'MEMBER' ";
             StrSql = StrSql + " and GUBUN_2 = 'BANKBOOK' ";     // BANKBOOK
 
             //StrSql = StrSql + "    AND REG_ID = (SELECT WEBID FROM TBL_MEMBERINFO WHERE MBID2 = " + Search_Member_Number_Mbid2 + ") ORDER BY REG_DATE DESC";
-            StrSql = StrSql + "    AND ORG_SEQ = " + Search_Member_Number_Mbid2 + " ORDER BY REG_DATE DESC";
+            StrSql = StrSql + "    AND ORG_SEQ = " + Search_Member_Number_Mbid2 + " ORDER BY FILE_SEQ DESC";
             DataSet ds = new DataSet();
             //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
             if (Temp_Connect.Open_Data_Set(StrSql, "tbl_Memberinfo", ds, this.Name, this.Text) == false) return;
