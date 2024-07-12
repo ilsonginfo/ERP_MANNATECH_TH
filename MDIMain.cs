@@ -2052,10 +2052,6 @@ namespace MLM_Program
             }
             cls_app_static_var.Member_Number_Fromat = t_Member_Format;
             cls_app_static_var.Tel_Number_Fromat = "999-9999-9999";
-            if(cls_User.Is_TH_User)
-            {
-                cls_app_static_var.Tel_Number_Fromat = "999-999-9999";
-            }
             cls_app_static_var.ZipCode_Number_Fromat = "999999";
             cls_app_static_var.Biz_Number_Fromat = "999-99-99999";
             cls_app_static_var.Date_Number_Fromat = "9999-99-99";

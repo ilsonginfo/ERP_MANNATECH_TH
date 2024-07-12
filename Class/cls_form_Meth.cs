@@ -794,7 +794,7 @@ namespace MLM_Program
             if (T_Num1.Length == 2)
                 T_Num1 = " " + T_Num1;
 
-            if (T_Num2.Length == 3 && cls_User.Is_TH_User == false)
+            if (T_Num2.Length == 3)
                 T_Num2 = " " + T_Num2;
 
             control.Text = string.Format("{0}-{1}-{2}", T_Num1, T_Num2, T_Num3);

@@ -3421,7 +3421,11 @@ namespace MLM_Program
                 }
 
                 //핸드폰번호 - 태국
-                if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length != 10)
+                bool isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 10;
+                if (isTH_CheckingNumber == false)
+                    isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 11;
+
+                if (mtxtTel2.Text.Replace("-", "") == "" || isTH_CheckingNumber == false)
                 {
                     if (cls_User.gid_CountryCode == "TH")
                     {
