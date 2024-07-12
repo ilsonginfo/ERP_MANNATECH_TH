@@ -1084,7 +1084,7 @@ namespace MLM_Program
                 100, 120  ,100, 90, 130,            // 10
                 130, 100  ,80 ,cls_app_static_var.save_uging_Pr_Flag  , cls_app_static_var.save_uging_Pr_Flag           // 15
                 , cls_app_static_var.nom_uging_Pr_Flag  , cls_app_static_var.nom_uging_Pr_Flag ,  SizeSD , 60  ,200     // 20
-                 , 90, 0, 90 , 60 , 70  ,   // 25
+                 , 90, 90, 90 , 60 , 70  ,   // 25
                 90  , 100   ,120 ,120,120   // 30
                 ,120, 0, 0, 0  , 0, // 35
                 0, 0 , 0, 100, 100  // 40

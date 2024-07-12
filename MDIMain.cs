@@ -1992,8 +1992,9 @@ namespace MLM_Program
 
                 //cls_app_static_var.str_Grid_Currency_Type = "###,###,##0.00";            
                 cls_app_static_var.str_Grid_Currency_Type = "###,###,##0.00";
+                cls_app_static_var.Tel_Number_Fromat = "999-999-9999";
             }
-            
+
             cls_app_static_var.Sell_TF_CS_Flag = ""; // "" 빈칸이면 CS에서 입력되는 매출 건은 다 승인으로 표시하고 N이면 다 미승인으로 한다.
                                  
 

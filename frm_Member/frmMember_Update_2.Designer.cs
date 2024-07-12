@@ -98,6 +98,14 @@
             this.tab_Base = new System.Windows.Forms.TabControl();
             this.tab_Name = new System.Windows.Forms.TabPage();
             this.pnlTH = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
+            this.label60 = new System.Windows.Forms.Label();
+            this.panel76 = new System.Windows.Forms.Panel();
+            this.txtName_T_Name_Last = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.txtName_T_Name = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.label18 = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
@@ -178,14 +186,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.txt_D_Remarks = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.txtName_T_Name = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
-            this.label60 = new System.Windows.Forms.Label();
-            this.panel76 = new System.Windows.Forms.Panel();
-            this.txtName_T_Name_Last = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.grB_Line.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Li)).BeginInit();
@@ -212,6 +212,10 @@
             this.tab_Base.SuspendLayout();
             this.tab_Name.SuspendLayout();
             this.pnlTH.SuspendLayout();
+            this.tableLayoutPanel28.SuspendLayout();
+            this.panel76.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.panel21.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
@@ -249,10 +253,6 @@
             this.panel11.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.panel17.SuspendLayout();
-            this.tableLayoutPanel17.SuspendLayout();
-            this.panel19.SuspendLayout();
-            this.tableLayoutPanel28.SuspendLayout();
-            this.panel76.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1166,6 +1166,116 @@
             this.pnlTH.Visible = false;
             this.pnlTH.VisibleChanged += new System.EventHandler(this.pnlTH_VisibleChanged);
             // 
+            // tableLayoutPanel28
+            // 
+            this.tableLayoutPanel28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.tableLayoutPanel28.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel28.ColumnCount = 2;
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel28.Controls.Add(this.label60, 0, 0);
+            this.tableLayoutPanel28.Controls.Add(this.panel76, 1, 0);
+            this.tableLayoutPanel28.Location = new System.Drawing.Point(1, 35);
+            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
+            this.tableLayoutPanel28.RowCount = 1;
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(300, 37);
+            this.tableLayoutPanel28.TabIndex = 1;
+            // 
+            // label60
+            // 
+            this.label60.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label60.ForeColor = System.Drawing.Color.White;
+            this.label60.Location = new System.Drawing.Point(2, 2);
+            this.label60.Margin = new System.Windows.Forms.Padding(0);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(120, 33);
+            this.label60.TabIndex = 1;
+            this.label60.Text = "태국_이름_끝";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel76
+            // 
+            this.panel76.BackColor = System.Drawing.Color.White;
+            this.panel76.Controls.Add(this.txtName_T_Name_Last);
+            this.panel76.Location = new System.Drawing.Point(126, 4);
+            this.panel76.Margin = new System.Windows.Forms.Padding(2);
+            this.panel76.Name = "panel76";
+            this.panel76.Size = new System.Drawing.Size(170, 28);
+            this.panel76.TabIndex = 0;
+            // 
+            // txtName_T_Name_Last
+            // 
+            this.txtName_T_Name_Last.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.txtName_T_Name_Last.Location = new System.Drawing.Point(3, 3);
+            this.txtName_T_Name_Last.MaxLength = 30;
+            this.txtName_T_Name_Last.Name = "txtName_T_Name_Last";
+            this.txtName_T_Name_Last.Size = new System.Drawing.Size(164, 22);
+            this.txtName_T_Name_Last.TabIndex = 0;
+            this.txtName_T_Name_Last.TextChanged += new System.EventHandler(this.TH_Name_TextChangedEvent);
+            this.txtName_T_Name_Last.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
+            this.txtName_T_Name_Last.Leave += new System.EventHandler(this.txtData_Base_Leave);
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.tableLayoutPanel17.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel17.ColumnCount = 2;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Controls.Add(this.label19, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.panel19, 1, 0);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(1, 0);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 1;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(300, 37);
+            this.tableLayoutPanel17.TabIndex = 0;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(2, 2);
+            this.label19.Margin = new System.Windows.Forms.Padding(0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(120, 33);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "태국_이름_시작";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.White;
+            this.panel19.Controls.Add(this.txtName_T_Name);
+            this.panel19.Location = new System.Drawing.Point(126, 4);
+            this.panel19.Margin = new System.Windows.Forms.Padding(2);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(170, 28);
+            this.panel19.TabIndex = 0;
+            // 
+            // txtName_T_Name
+            // 
+            this.txtName_T_Name.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.txtName_T_Name.Location = new System.Drawing.Point(3, 3);
+            this.txtName_T_Name.MaxLength = 30;
+            this.txtName_T_Name.Name = "txtName_T_Name";
+            this.txtName_T_Name.Size = new System.Drawing.Size(164, 22);
+            this.txtName_T_Name.TabIndex = 0;
+            this.txtName_T_Name.TextChanged += new System.EventHandler(this.TH_Name_TextChangedEvent);
+            this.txtName_T_Name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
+            this.txtName_T_Name.Leave += new System.EventHandler(this.txtData_Base_Leave);
+            // 
             // tableLayoutPanel16
             // 
             this.tableLayoutPanel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
@@ -1408,6 +1518,7 @@
             this.DTP_BrithDay.Size = new System.Drawing.Size(21, 21);
             this.DTP_BrithDay.TabIndex = 129;
             this.DTP_BrithDay.TabStop = false;
+            this.DTP_BrithDay.CloseUp += new System.EventHandler(this.DTP_Base_CloseUp);
             // 
             // opt_Bir_TF_1
             // 
@@ -2268,116 +2379,6 @@
             this.txt_D_Remarks.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
             this.txt_D_Remarks.Leave += new System.EventHandler(this.txtData_Base_Leave);
             // 
-            // tableLayoutPanel17
-            // 
-            this.tableLayoutPanel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.tableLayoutPanel17.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel17.ColumnCount = 2;
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.Controls.Add(this.label19, 0, 0);
-            this.tableLayoutPanel17.Controls.Add(this.panel19, 1, 0);
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(1, 0);
-            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
-            this.tableLayoutPanel17.RowCount = 1;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(300, 37);
-            this.tableLayoutPanel17.TabIndex = 0;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label19.Font = new System.Drawing.Font("Angsana New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(2, 2);
-            this.label19.Margin = new System.Windows.Forms.Padding(0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(120, 33);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "태국_이름_시작";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.White;
-            this.panel19.Controls.Add(this.txtName_T_Name);
-            this.panel19.Location = new System.Drawing.Point(126, 4);
-            this.panel19.Margin = new System.Windows.Forms.Padding(2);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(170, 28);
-            this.panel19.TabIndex = 0;
-            // 
-            // txtName_T_Name
-            // 
-            this.txtName_T_Name.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txtName_T_Name.Location = new System.Drawing.Point(3, 3);
-            this.txtName_T_Name.MaxLength = 30;
-            this.txtName_T_Name.Name = "txtName_T_Name";
-            this.txtName_T_Name.Size = new System.Drawing.Size(164, 22);
-            this.txtName_T_Name.TabIndex = 0;
-            this.txtName_T_Name.TextChanged += new System.EventHandler(this.TH_Name_TextChangedEvent);
-            this.txtName_T_Name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
-            this.txtName_T_Name.Leave += new System.EventHandler(this.txtData_Base_Leave);
-            // 
-            // tableLayoutPanel28
-            // 
-            this.tableLayoutPanel28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.tableLayoutPanel28.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel28.ColumnCount = 2;
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel28.Controls.Add(this.label60, 0, 0);
-            this.tableLayoutPanel28.Controls.Add(this.panel76, 1, 0);
-            this.tableLayoutPanel28.Location = new System.Drawing.Point(1, 35);
-            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
-            this.tableLayoutPanel28.RowCount = 1;
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel28.Size = new System.Drawing.Size(300, 37);
-            this.tableLayoutPanel28.TabIndex = 1;
-            // 
-            // label60
-            // 
-            this.label60.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label60.Font = new System.Drawing.Font("Angsana New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label60.ForeColor = System.Drawing.Color.White;
-            this.label60.Location = new System.Drawing.Point(2, 2);
-            this.label60.Margin = new System.Windows.Forms.Padding(0);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(120, 33);
-            this.label60.TabIndex = 1;
-            this.label60.Text = "태국_이름_끝";
-            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // panel76
-            // 
-            this.panel76.BackColor = System.Drawing.Color.White;
-            this.panel76.Controls.Add(this.txtName_T_Name_Last);
-            this.panel76.Location = new System.Drawing.Point(126, 4);
-            this.panel76.Margin = new System.Windows.Forms.Padding(2);
-            this.panel76.Name = "panel76";
-            this.panel76.Size = new System.Drawing.Size(170, 28);
-            this.panel76.TabIndex = 0;
-            // 
-            // txtName_T_Name_Last
-            // 
-            this.txtName_T_Name_Last.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txtName_T_Name_Last.Location = new System.Drawing.Point(3, 3);
-            this.txtName_T_Name_Last.MaxLength = 30;
-            this.txtName_T_Name_Last.Name = "txtName_T_Name_Last";
-            this.txtName_T_Name_Last.Size = new System.Drawing.Size(164, 22);
-            this.txtName_T_Name_Last.TabIndex = 0;
-            this.txtName_T_Name_Last.TextChanged += new System.EventHandler(this.TH_Name_TextChangedEvent);
-            this.txtName_T_Name_Last.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
-            this.txtName_T_Name_Last.Leave += new System.EventHandler(this.txtData_Base_Leave);
-            // 
             // frmMember_Update_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -2430,6 +2431,12 @@
             this.tab_Name.ResumeLayout(false);
             this.tab_Name.PerformLayout();
             this.pnlTH.ResumeLayout(false);
+            this.tableLayoutPanel28.ResumeLayout(false);
+            this.panel76.ResumeLayout(false);
+            this.panel76.PerformLayout();
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
             this.tableLayoutPanel16.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
@@ -2484,12 +2491,6 @@
             this.tableLayoutPanel8.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
-            this.tableLayoutPanel17.ResumeLayout(false);
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            this.tableLayoutPanel28.ResumeLayout(false);
-            this.panel76.ResumeLayout(false);
-            this.panel76.PerformLayout();
             this.ResumeLayout(false);
 
         }
