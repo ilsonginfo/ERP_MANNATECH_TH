@@ -83,7 +83,7 @@ namespace MLM_Program
 
 #if DEBUG
 
-            //////++++++++++++++테스트++++++++++++++++ +
+            //++++++++++++++테스트++++++++++++++++ +
 
             cls_app_static_var.app_Company_Name = "menatech";
             cls_app_static_var.app_FTP_ID = "melong202";
@@ -94,9 +94,9 @@ namespace MLM_Program
             cls_app_static_var.app_Company_Name = "menatech";
 
 
-            //++++++++++++++테스트++++++++++++++++ +
+            //       ++++++++++++++테스트++++++++++++++++ +
 
-            //++++++++++++++라이브++++++++++++++++ +
+            ////++++++++++++++라이브++++++++++++++++ +
 
             //cls_app_static_var.app_Company_Name = "mannatech";
             //cls_app_static_var.app_FTP_ID = "melong202";
@@ -135,7 +135,7 @@ namespace MLM_Program
             /////
 
             cls_app_static_var.APP_VER = "[RELEASE]240614_UAT (External Access)";
-            cls_app_static_var.APP_VER = "[RELEASE]240712_LIVE 1";
+            cls_app_static_var.APP_VER = "[RELEASE]240712_LIVE 3";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++
@@ -193,20 +193,20 @@ namespace MLM_Program
             //////테스트배포때 연다
             //if (cls_app_static_var.app_Company_Name == "menatech")
             //{
-            //    cls_Connect_DB.LiveFlag = false;
+            // cls_Connect_DB.LiveFlag = false;
             //}
             ////테스트배포때 연다
             //++++++++++++++++++++++++++++++++
 
-            ////////테스트배포땐닫는다
-            ///////////운영 DB아닌 경우 모두 개발기로 인식(업데이트 무시, 메인화면 변경 처리)
-            ////////매나테크 개발기 UAT
+            //////테스트배포땐닫는다
+            /////////운영 DB아닌 경우 모두 개발기로 인식(업데이트 무시, 메인화면 변경 처리)
+            //////매나테크 개발기 UAT
             Connect_IP = "218.237.118.12,51433";
             if (Connect_IP.Equals("218.237.118.12,51433"))
             {
                 cls_Connect_DB.LiveFlag = false;
             }
-            //////테스트배포땐닫는다
+            ////////테스트배포땐닫는다
             //////++++++++++++++++++++++++++++++++
 
 #else

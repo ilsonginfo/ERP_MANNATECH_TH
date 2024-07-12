@@ -1324,7 +1324,10 @@ namespace MLM_Program
             //    button_exigo.Visible = true;
 
 
-            txt_Us.Text = ds.Tables[base_db_name].Rows[0]["US_Num"].ToString(); 
+            txt_Us.Text = ds.Tables[base_db_name].Rows[0]["US_Num"].ToString();
+            txtDistrict.Text = ds.Tables[base_db_name].Rows[0]["city"].ToString();
+            txtProvinceCode.Text = ds.Tables[base_db_name].Rows[0]["state"].ToString();
+            
 
 
             txtName.ReadOnly = true;
@@ -3401,7 +3404,7 @@ namespace MLM_Program
             //}
             //우편번호
             // 태국인 경우
-            if (combo_Se_Code_2.Text == "TH")
+            if (cls_User.Is_TH_User)
             {
                 if (txtAddress1.Text.Trim().Length == 0 || mtxtZip1.Text == "")
                 {
@@ -3418,7 +3421,7 @@ namespace MLM_Program
                 }
 
                 //핸드폰번호 - 태국
-                if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length <= 9)
+                if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length != 10)
                 {
                     if (cls_User.gid_CountryCode == "TH")
                     {
