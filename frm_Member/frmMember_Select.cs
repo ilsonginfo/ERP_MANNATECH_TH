@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Reflection;
 
+using System.Threading.Tasks;
+using System.Diagnostics;
+
 namespace MLM_Program
 {
     public partial class frmMember_Select : clsForm_Extends
@@ -747,8 +750,23 @@ namespace MLM_Program
             DataSet ds_MinSellDate = new DataSet();
             //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
             if (Temp_Connect.Open_Data_Set(Tsql_MinSelldate, base_db_name, ds_MinSellDate, this.Name, this.Text) == false) return;
+            List<DataRow> rows = ds.Tables[0].AsEnumerable().ToList();
 
-            foreach(DataRow mainRow in ds.Tables[base_db_name].Rows)
+            // 이걸 사용하면 엄청나게 빠르긴한데 자원을 무쟈게 갉아먹음
+            Parallel.ForEach(rows, row =>
+            {
+                // 각 행에 대한 처리 코드
+                lock (ds.Tables[0].Rows.SyncRoot)
+                {
+                    string r_BankAccnt = row["BankAccnt"].ToString();
+
+                    // 각 배치에 대한 처리 코드
+                    if (r_BankAccnt != string.Empty) row["BankAccnt"] = encrypter.Decrypt(r_BankAccnt);
+                }
+
+            });
+
+            foreach (DataRow mainRow in ds.Tables[base_db_name].Rows)
             {
                 foreach(DataRow subRow in ds_MinSellDate.Tables[base_db_name].Rows)
                 {

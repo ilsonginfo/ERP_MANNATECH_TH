@@ -1992,7 +1992,6 @@ namespace MLM_Program
 
                 //cls_app_static_var.str_Grid_Currency_Type = "###,###,##0.00";            
                 cls_app_static_var.str_Grid_Currency_Type = "###,###,##0.00";
-                cls_app_static_var.Tel_Number_Fromat = "999-999-9999";
             }
 
             cls_app_static_var.Sell_TF_CS_Flag = ""; // "" 빈칸이면 CS에서 입력되는 매출 건은 다 승인으로 표시하고 N이면 다 미승인으로 한다.
@@ -2053,6 +2052,10 @@ namespace MLM_Program
             }
             cls_app_static_var.Member_Number_Fromat = t_Member_Format;
             cls_app_static_var.Tel_Number_Fromat = "999-9999-9999";
+            if(cls_User.Is_TH_User)
+            {
+                cls_app_static_var.Tel_Number_Fromat = "999-999-9999";
+            }
             cls_app_static_var.ZipCode_Number_Fromat = "999999";
             cls_app_static_var.Biz_Number_Fromat = "999-99-99999";
             cls_app_static_var.Date_Number_Fromat = "9999-99-99";
