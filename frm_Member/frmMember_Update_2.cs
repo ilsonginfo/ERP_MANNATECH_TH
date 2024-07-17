@@ -1766,14 +1766,70 @@ namespace MLM_Program
 
             if (tab_Base.SelectedIndex == 0)
             {
+                string Sn = string.Empty;
                 //주민번호체크
-                if (mtxtSn.Text.Replace("-", "").Replace("_", "").Trim() != "")
+                if (mtxtSn.Text.Replace("-", "").Replace("_", "").Trim() == "")
                 {
-                    string Sn = mtxtSn.Text.Replace("-", "").Replace("_", "").Trim();
-                    if (Sn_Number_(Sn, mtxtSn) == false) return false;
+                    MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Not_Input_Err")
+                      + "\n" +
+                      cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                    mtxtSn.Focus(); return false;
+                }
+
+
+                cls_Check_Text T_R = new cls_Check_Text();
+                string me = "";
+
+
+                me = T_R.Text_Null_Check(txtName_T_Name, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+                if (me != "")
+                {
+                    txtName_T_Name.Focus();
+                    txtName_T_Name.Select();
+
+                    MessageBox.Show(me);
+                    return false;
+                }
+                me = T_R.Text_Null_Check(txtName_T_Name_Last, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+                if (me != "")
+                {
+                    txtName_T_Name_Last.Focus();
+                    txtName_T_Name_Last.Select();
+
+                    MessageBox.Show(me);
+                    return false;
+                }
+                me = T_R.Text_Null_Check(txtName_E_1, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+                if (me != "")
+                {
+                    txtName_E_1.Focus();
+                    txtName_E_1.Select();
+
+                    MessageBox.Show(me);
+                    return false;
+                }
+                me = T_R.Text_Null_Check(txtName_E_2, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+                if (me != "")
+                {
+                    txtName_E_2.Focus();
+                    txtName_E_2.Select();
+
+                    MessageBox.Show(me);
+                    return false;
+                }
+
+                //생년월일을 필수 값으로 지정 했음
+                if (mtxtBrithDay.Text.Replace("-", "") == "" || mtxtBrithDay.Text.Replace("-", "").Length != 8)
+                {
+                    me = cls_app_static_var.app_msg_rm.GetString("Msg_Sort_BirthDay") + "\n" +
+                     cls_app_static_var.app_msg_rm.GetString("Msg_txt_Not_Data");
+
+                    MessageBox.Show(me);
+                    mtxtBrithDay.Focus();
+                    return false;
                 }
             }
-            
+
 
 
 

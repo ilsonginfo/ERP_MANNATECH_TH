@@ -3425,8 +3425,29 @@ namespace MLM_Program
                 if (isTH_CheckingNumber == false)
                     isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 11;
 
-                if (mtxtTel2.Text.Replace("-", "") == "" || isTH_CheckingNumber == false)
+                if (isTH_CheckingNumber)
                 {
+                    string[] TelNumbers = mtxtTel2.Text.Replace(" ", "").Split('-');
+                    //뒤가 4자리가 아닌경우 빠꾸처리함
+                    if (TelNumbers[2].Length != 4)
+                    {
+                        if (cls_User.gid_CountryCode == "TH")
+                        {
+                            MessageBox.Show("Please specify your cell phone number.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("핸드폰번호를 지정해주세요");
+                        }
+
+                        mtxtTel2.Focus();
+                        return false;
+                    }
+
+                }
+                else if (mtxtTel2.Text.Replace("-", "") == "" || isTH_CheckingNumber == false)
+                {
+
                     if (cls_User.gid_CountryCode == "TH")
                     {
                         MessageBox.Show("Please specify your cell phone number.");

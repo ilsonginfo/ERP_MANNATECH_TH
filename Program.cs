@@ -135,7 +135,7 @@ namespace MLM_Program
             /////
 
             cls_app_static_var.APP_VER = "[RELEASE]240614_UAT (External Access)";
-            cls_app_static_var.APP_VER = "[RELEASE]240712_LIVE 4";
+            cls_app_static_var.APP_VER = "[RELEASE]240717_LIVE 1";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++

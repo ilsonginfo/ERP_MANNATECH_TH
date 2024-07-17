@@ -628,7 +628,6 @@ namespace MLM_Program
         private void frm_Login_Load(object sender, EventArgs e)
         {
 
-            this.BringToFront();
             if (cls_app_static_var.app_multi_lang_query == 1)
             {
                 pan_Language.Visible = true;
@@ -665,7 +664,7 @@ namespace MLM_Program
                 this.txtPass.Focus();
 
             //lbl_ver.Text  = Assembly.GetEntryAssembly().GetName().Version.ToString();
-
+            this.BringToFront();
         }
 
         private void Connect_User_Get_File()

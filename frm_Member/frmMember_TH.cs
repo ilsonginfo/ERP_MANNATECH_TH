@@ -3202,6 +3202,24 @@ namespace MLM_Program
                 MessageBox.Show(me);
                 return false;
             }
+            me = T_R.Text_Null_Check(txtName_E_1, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+            if (me != "")
+            {
+                txtName_E_1.Focus();
+                txtName_E_1.Select();
+
+                MessageBox.Show(me);
+                return false;
+            }
+            me = T_R.Text_Null_Check(txtName_E_2, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+            if (me != "")
+            {
+                txtName_E_2.Focus();
+                txtName_E_2.Select();
+
+                MessageBox.Show(me);
+                return false;
+            }
 
             if (radioB_Sex_X.Checked == false && radioB_Sex_Y.Checked == false)
             {
@@ -3294,7 +3312,7 @@ namespace MLM_Program
             // 태국인 경우
             if (cls_User.Is_TH_User)
             {
-                if (txtAddress1.Text.Trim().Length == 0 )
+                if (txtAddress1.Text.Trim().Length == 0)
                 {
                     if (cls_User.gid_CountryCode == "TH")
                     {
@@ -3313,8 +3331,28 @@ namespace MLM_Program
                 if (isTH_CheckingNumber == false)
                     isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 11;
 
+                //뒤가 4자리가 아닌경우 빠꾸처리함
+                if (isTH_CheckingNumber)
+                {
+                    string[] TelNumbers = mtxtTel2.Text.Replace(" ", "").Split('-');
+                    if (TelNumbers[2].Length != 4)
+                    {
+                        if (cls_User.gid_CountryCode == "TH")
+                        {
+                            MessageBox.Show("Please specify your cell phone number.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("핸드폰번호를 지정해주세요");
+                        }
+
+                        mtxtTel2.Focus();
+                        return false;
+                    }
+
+                }
                 //핸드폰번호 - 태국
-                if (mtxtTel2.Text.Replace("-", "") == "" || isTH_CheckingNumber == false)
+                else if (mtxtTel2.Text.Replace("-", "") == "" || isTH_CheckingNumber == false)
                 {
                     if (cls_User.gid_CountryCode == "TH")
                     {
@@ -3400,7 +3438,15 @@ namespace MLM_Program
             //    return false;
             //}
 
-
+            Sn = string.Empty;
+            //주민번호체크
+            if (mtxtSn.Text.Replace("-", "").Replace("_", "").Trim() == "")
+            {
+                MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Not_Input_Err")
+                  + "\n" +
+                  cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                mtxtSn.Focus(); return false;
+            }
 
             if (chk_Top_n.Checked == true)
             {
