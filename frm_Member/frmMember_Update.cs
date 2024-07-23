@@ -4037,14 +4037,14 @@ namespace MLM_Program
                 cls_Connect_DB Temp_Connect2 = new cls_Connect_DB();
                 Temp_Connect2.Connect_DB();
                 
-                if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
-                {
+                //if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
+                //{
                     StrSql = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','U' ";
-                }
-                else    // 태국 이외 국가인 경우
-                {
-                    StrSql = " EXEC  Usp_JDE_Update_MK_Customer '" + Mbid2 + "','U' ";
-                }
+                //}
+                //else    // 태국 이외 국가인 경우
+                //{
+                //    StrSql = " EXEC  Usp_JDE_Update_MK_Customer '" + Mbid2 + "','U' ";
+                //}
                 DataSet ds1 = new DataSet();
                 Temp_Connect2.Open_Data_Set(StrSql, "tbl_memberinfo", ds1);
 

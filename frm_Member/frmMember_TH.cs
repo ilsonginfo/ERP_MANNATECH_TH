@@ -4281,29 +4281,29 @@ namespace MLM_Program
                 //{
                 //    string OrderNumber = ds2.Tables["tbl_Sales_OrdNumber"].Rows[0]["OrderNumber"].ToString();
 
-                if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
-                {
+                //if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
+                //{
                     StrSql = " EXEC Usp_Insert_Firstmember_SalesTable_MS '" + Mbid + "', " + Mbid2 + "";
-                }
-                else    // 태국 이외 국가시
-                {
-                    //StrSql = " EXEC Usp_Insert_Firstmember_SalesTable '" + Mbid + "', " + Mbid2 + "";
-                    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable " + Mbid2 + "";
-                }
+                //}
+                //else    // 태국 이외 국가시
+                //{
+                //    //StrSql = " EXEC Usp_Insert_Firstmember_SalesTable '" + Mbid + "', " + Mbid2 + "";
+                //    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable " + Mbid2 + "";
+                //}
 
                 Temp_Connect.Insert_Data(StrSql, "tbl_SalesitemDetail", this.Name.ToString(), this.Text);
                 //}
 
 
                 string StrSql_JDE_PROCEDUER = "";
-                if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
-                {
+                //if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
+                //{
                     StrSql_JDE_PROCEDUER = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','A' ";
-                }
-                else    // 태국 이외 국가시
-                {
-                    StrSql_JDE_PROCEDUER = "EXEC  Usp_JDE_Update_MK_Customer '" + Mbid2 + "','A'";
-                }
+                //}
+                //else    // 태국 이외 국가시
+                //{
+                //    StrSql_JDE_PROCEDUER = "EXEC  Usp_JDE_Update_MK_Customer '" + Mbid2 + "','A'";
+                //}
                     
                 Temp_Connect.Insert_Data(StrSql_JDE_PROCEDUER, "tbl_Memberinfo", Conn, tran);
 
