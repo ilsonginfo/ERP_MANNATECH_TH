@@ -290,7 +290,7 @@ namespace MLM_Program
 
 
 
-        private void MtxtData_KeyPress(object sender, KeyPressEventArgs e)
+        private void mtxtMbid_KeyPress(object sender, KeyPressEventArgs e)
         {
             //회원번호 관련칸은 소문자를 다 대문자로 만들어 준다.
             if (e.KeyChar >= 97 && e.KeyChar <= 122)
@@ -313,6 +313,14 @@ namespace MLM_Program
 
                     if (reCnt == 1)
                     {
+
+                        if (cds.THService_IsNot_TH_Member)
+                        {
+                            MessageBox.Show("Account number is not in Thailand or wrong number");
+                            return;
+                        }
+
+
                         if (mtb.Name == "mtxtMbid")
                         {
                             txtName.Text = Search_Name;
@@ -728,6 +736,7 @@ namespace MLM_Program
                 t_c_sell.InputPassbook = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["InputPassbook"].ToString());
                 t_c_sell.InputCoupon = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["InputCoupon"].ToString());
                 t_c_sell.InputMile = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["InputMile"].ToString());
+                t_c_sell.InputNaver = double.Parse(ds.Tables[base_db_name].Rows[fi_cnt]["InputNaver"].ToString());
                 t_c_sell.InputPass_Pay = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["InputPass_Pay"].ToString());
                 t_c_sell.UnaccMoney = double.Parse (ds.Tables[base_db_name].Rows[fi_cnt]["UnaccMoney"].ToString());
 

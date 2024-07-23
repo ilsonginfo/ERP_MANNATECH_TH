@@ -1120,7 +1120,7 @@ namespace MLM_Program
       
 
 
-        private void Make_Base_Query_item(ref string Tsql)
+        private void Make_Base_Query_item(ref string Tsql, string idx)
         {
             cls_form_Meth cm = new cls_form_Meth();
             //cm._chang_base_caption_search(m_text);
@@ -1129,8 +1129,18 @@ namespace MLM_Program
             Tsql += Environment.NewLine + "  a.JDE_PROC_SEQ   ,  a.ITEMCODE ,  b.name   ,  a.ITEMCOUNT  ,  a.ITEMLIMITCOUNT ,  a.ITEMLIMITCOUNT_COUNTING  , a.SEQ  ";
             Tsql += Environment.NewLine + "  FROM JDE_PROC_ITEM a join tbl_goods b on a.itemcode = b.ncode  ";
 
+            //Tsql = " Select ";
+            //Tsql += Environment.NewLine + " a.JDE_PROC_SEQ   ,  a.ITEMCODE ,  b.name   ,  a.ITEMCOUNT  ,  a.ITEMLIMITCOUNT ,   a.ITEMLIMITCOUNT-c.ItemCount  , a.SEQ  ";
+            //Tsql += Environment.NewLine + " FROM JDE_PROC_ITEM a  (NOLOCK)  join tbl_goods b  (NOLOCK)  on a.itemcode = b.ncode  ";
+            //Tsql += Environment.NewLine + " left JOIN ";
+            //Tsql += Environment.NewLine + " (SELECT itemcode, SUM(ItemCount) ItemCount FROM tbl_SalesItemDetail  (NOLOCK) JOIN tbl_salesdetail  (NOLOCK)  ON tbl_SalesItemDetail.OrderNumber =  tbl_salesdetail.ordernumber ";
+            //Tsql += Environment.NewLine + " WHERE ItemCode IN (SELECT ItemCode FROM JDE_PROC_ITEM(NOLOCK) WHERE JDE_PROC_SEQ = " + idx + " ) AND Ga_Order = 0 AND ReturnTF =1";
+            //Tsql += Environment.NewLine + " GROUP BY ItemCode)c ON a.ITEMCODE = c.ItemCode";
+            //// Tsql += Environment.NewLine + " Left Join ufn_Mem_CurGrade_Mbid_Search ('',0) AS CC_A On CC_A.Mbid = tbl_Memberinfo.Mbid And  CC_A.Mbid2 = tbl_Memberinfo.Mbid2 ";            
 
-            // Tsql += Environment.NewLine + " Left Join ufn_Mem_CurGrade_Mbid_Search ('',0) AS CC_A On CC_A.Mbid = tbl_Memberinfo.Mbid And  CC_A.Mbid2 = tbl_Memberinfo.Mbid2 ";            
+
+
+
         }
 
 
@@ -1148,7 +1158,7 @@ namespace MLM_Program
             string Tsql = string.Empty;
             string Tsql_MinSelldate = string.Empty;
 
-            Make_Base_Query_item(ref Tsql);
+            Make_Base_Query_item(ref Tsql, idx);
 
             Make_Base_Query_item_(ref Tsql, idx);
 

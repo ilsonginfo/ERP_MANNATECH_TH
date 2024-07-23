@@ -866,21 +866,26 @@ namespace MLM_Program
             try
             {
                 wRes = (HttpWebResponse)hwr.GetResponse();
+
+                Stream respPostStream = wRes.GetResponseStream();
+                StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+
+                string getstring = null;
+                getstring = readerPost.ReadToEnd().ToString();
+
+                SuccessYN = Return_Card_Approve_OK_Data_Err_TH(getstring, OrderNumber, C_Index, Seq_No, ref Err_M);
+                return SuccessYN;
+
             }
             catch (Exception ee)
             {
-                return "-1";
+                SuccessYN = "N";
+                Err_M = ee.Message;
+
+                Return_Card_Approval_Fail_DataSet(OrderNumber, C_Index, Seq_No, Err_M);
+                return SuccessYN;
             }
 
-            Stream respPostStream = wRes.GetResponseStream();
-            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
-
-            string getstring = null;
-            getstring = readerPost.ReadToEnd().ToString();
-
-            SuccessYN = Return_Card_Approve_OK_Data_Err_TH(getstring, OrderNumber, C_Index, Seq_No, ref Err_M);
-
-            return SuccessYN;
         }
 
         /// <summary>
@@ -1127,7 +1132,7 @@ namespace MLM_Program
 
         public string Dir_Card_Approve_OK_Err(string OrderNumber, int C_Index, ref string Err_M)
         {
-            
+
             // 태국인 경우
             if (cls_User.gid_CountryCode == "TH")
             {
@@ -1153,29 +1158,30 @@ namespace MLM_Program
             byte[] buffer = encoding.GetBytes(str_sendvalue);
             hwr.ContentLength = buffer.Length;
 
-            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
-            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
-            sendStream.Close(); // sendStream 을 종료한다.
-
+            string getstring = null;
             HttpWebResponse wRes;
+            Stream respPostStream;
             try
             {
+                Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+                sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+                sendStream.Close(); // sendStream 을 종료한다.
+
                 wRes = (HttpWebResponse)hwr.GetResponse();
+                respPostStream = wRes.GetResponseStream();
+                StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+                getstring = readerPost.ReadToEnd().ToString();
+                SuccessYN = Return_Card_Approve_OK_Data_Err(getstring, OrderNumber, C_Index, Seq_No, ref Err_M);
+                return SuccessYN;
             }
             catch (Exception ee)
             {
-                return "-1";
+                SuccessYN = "N";
+                Err_M = ee.Message;
+
+                Return_Card_Approval_Fail_DataSet(OrderNumber, C_Index, Seq_No, Err_M);
+                return SuccessYN;
             }
-
-            Stream respPostStream = wRes.GetResponseStream();
-            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
-
-            string getstring = null;
-            getstring = readerPost.ReadToEnd().ToString();
-
-            SuccessYN = Return_Card_Approve_OK_Data_Err(getstring, OrderNumber, C_Index, Seq_No, ref Err_M);
-
-            return SuccessYN;
         }
 
         void Card_Approve_OK_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No)
@@ -1590,6 +1596,38 @@ namespace MLM_Program
             Temp_Connect.Update_Data(StrSql, "", "", 1);
 
             return SuccessYN;
+        }
+
+        /// <summary>
+        /// 2024-06-24 : 카드취소시에 WebRequestError 가 나면 무조건 DB 에는 C_Price1 값을 0 으로 처리하는 로직 
+        /// </summary>
+        /// <param name="OrderNumber"></param>
+        /// <param name="C_Index"></param>
+        /// <param name="Seq_No"></param>
+        /// <param name="ErrMessage"></param>
+        private void Return_Card_Approval_Fail_DataSet(string OrderNumber, int C_Index, int Seq_No, string ErrMessage)
+        {
+
+            cls_Connect_DB Temp_Connect = new cls_Connect_DB();
+
+            string StrSql = "Update tbl_Sales_Cacu SET ";
+            StrSql = StrSql + " C_Price1  = 0 ";
+            StrSql = StrSql + " , C_Etc = C_Etc + '" + ErrMessage + "'";  //승인 오류시 비고칸에 내역을 넣도록 한다.
+            StrSql = StrSql + " Where OrderNumber ='" + OrderNumber + "'";
+            StrSql = StrSql + " And   C_index = " + C_Index;
+
+            Temp_Connect.Update_Data(StrSql);
+
+
+            StrSql = "Update tbl_Sales_Cacu_Card SET ";
+            StrSql = StrSql + " rStatus = 'N'";
+            StrSql = StrSql + " ,rAuthNo = ''";    //승인번호
+            StrSql = StrSql + " ,rTransactionNo = ''"; //거래번호
+            StrSql = StrSql + " ,C_Number3 = ''";
+            StrSql = StrSql + " ,Return_Date = Convert(Varchar(25),GetDate(),21)";
+            StrSql = StrSql + " Where Seqno  =" + Seq_No;
+            Temp_Connect.Update_Data(StrSql, "", "", 1);
+
         }
 
 
@@ -2912,6 +2950,11 @@ namespace MLM_Program
         /*가상계좌 발행*/
         public string Dir_VR_Account_Approve_OK(string OrderNumber, int C_Index, int mbid2, ref string ErrMessage)
         {
+            //2024-06-16 태국인경우 태울필요가없다.
+            if (cls_User.gid_CountryCode == "TH")
+                return "N";
+
+
             int Ord_SW = 0;
             int Seq_No = 0;
             double Amount = 0;
@@ -3145,6 +3188,10 @@ namespace MLM_Program
         /*가상계좌 취소*/
         public string Dir_VR_Account_Approve_Cancel(string OrderNumber, int C_Index)
         {
+            //2024-06-16 태국인경우 태울필요가없다.
+            if (cls_User.gid_CountryCode == "TH")
+                return string.Empty;
+
             int Ord_SW = 0;
             int Seq_No = 0;
             string str_sendvalue = "";
@@ -3295,6 +3342,11 @@ namespace MLM_Program
         /*현금영수증 취소*/
         public string Dir_VR_Cash_Receipt_All_Cancel(string OrderNumber, int C_Index)
         {
+            //2024-06-16 태국인경우 태울필요가없다.
+            if (cls_User.gid_CountryCode == "TH")
+                return string.Empty;
+
+
             int Ord_SW = 0;
             int Seq_No = 0;
             string str_sendvalue = string.Empty;
@@ -3523,6 +3575,11 @@ namespace MLM_Program
         /*현금영수증 생성 */
         public string Dir_Cash_Receipt_Approve(string OrderNumber, int C_Index, string Send_Number)
         {
+
+            //2024-06-16 태국인경우 태울필요가없다.
+            if (cls_User.gid_CountryCode == "TH")
+                return string.Empty;
+
             int Ord_SW = 0;
             string str_sendvalue = "";
             string _SendNumber = Send_Number;
@@ -3869,51 +3926,51 @@ namespace MLM_Program
         }
 
 
-        /*태국문자전송 신규 모듈*/
-        /*구현호 과장*/
-        public string TH_SMS(int MBID2, string ORDERNUMBER, int C_Index, ref string ErrMessage)
-        {
-            int Ord_SW = 0, Seq_No = 0;
-            string str_sendvalue = "";
-            string SuccessYN = "";
-            //Card_AutoShip_OK_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref Conn, ref tran);
-            TH_SMS_DETAIL(MBID2, ORDERNUMBER, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No);
+        ///*태국문자전송 신규 모듈*/
+        ///*구현호 과장*/
+        //public string TH_SMS(int MBID2, string ORDERNUMBER, int C_Index, ref string ErrMessage)
+        //{
+        //    int Ord_SW = 0, Seq_No = 0;
+        //    string str_sendvalue = "";
+        //    string SuccessYN = "";
+        //    //Card_AutoShip_OK_Data(OrderNumber, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No, ref Conn, ref tran);
+        //    TH_SMS_DETAIL(MBID2, ORDERNUMBER, C_Index, ref Ord_SW, ref str_sendvalue, ref Seq_No);
 
-            if (Ord_SW == 0)
-                return "";
+        //    if (Ord_SW == 0)
+        //        return "";
 
-            string URL = "https://uat.mannatech.co.th/common/cs/sendSMS.do";
+        //    string URL = "https://uat.mannatech.co.th/common/cs/sendSMS.do";
 
-            HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
-            hwr.Method = "POST"; // 포스트 방식으로 전달                
-            hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
-            hwr.UserAgent = "mannatech";
-            Encoding encoding = Encoding.UTF8;
-            byte[] buffer = encoding.GetBytes(str_sendvalue);
-            hwr.ContentLength = buffer.Length;
+        //    HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(URL);
+        //    hwr.Method = "POST"; // 포스트 방식으로 전달                
+        //    hwr.ContentType = @"application/x-www-form-urlencoded; charset=utf-8";
+        //    hwr.UserAgent = "mannatech";
+        //    Encoding encoding = Encoding.UTF8;
+        //    byte[] buffer = encoding.GetBytes(str_sendvalue);
+        //    hwr.ContentLength = buffer.Length;
 
-            Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
-            sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
-            sendStream.Close(); // sendStream 을 종료한다.
+        //    Stream sendStream = hwr.GetRequestStream(); // sendStream 을 생성한다.
+        //    sendStream.Write(buffer, 0, buffer.Length); // 데이터를 전송한다.
+        //    sendStream.Close(); // sendStream 을 종료한다.
 
-            HttpWebResponse wRes;
-            try
-            {
-                wRes = (HttpWebResponse)hwr.GetResponse();
-            }
-            catch (Exception ee)
-            {
-                return "-1";
-            }
+        //    HttpWebResponse wRes;
+        //    try
+        //    {
+        //        wRes = (HttpWebResponse)hwr.GetResponse();
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        return "-1";
+        //    }
 
-            Stream respPostStream = wRes.GetResponseStream();
-            StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
+        //    Stream respPostStream = wRes.GetResponseStream();
+        //    StreamReader readerPost = new StreamReader(respPostStream, Encoding.UTF8);
 
-            string getstring = null;
-            getstring = readerPost.ReadToEnd().ToString();
-            return SuccessYN = Return_SMS(getstring);
-            //return SuccessYN;
-        }
+        //    string getstring = null;
+        //    getstring = readerPost.ReadToEnd().ToString();
+        //    return SuccessYN = Return_SMS(getstring);
+        //    //return SuccessYN;
+        //}
 
         //void Card_AutoShip_OK_Data(string OrderNumber, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No, ref SqlConnection Conn, ref SqlTransaction tran)
         void TH_SMS_DETAIL(int MBID2, string ORDERNUMBER, int C_Index, ref int Ord_SW, ref string str_sendvalue, ref int Seq_No)

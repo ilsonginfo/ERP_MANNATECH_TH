@@ -213,6 +213,12 @@
     <Compile Include="frmBase_Config.Designer.cs">
       <DependentUpon>frmBase_Config.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Base\frmBase_Address_Popup_TH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Base\frmBase_Address_Popup_TH.Designer.cs">
+      <DependentUpon>frmBase_Address_Popup_TH.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Base\frmBase_AV_Accnt.cs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1488,6 +1494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBase_Config.resx">
       <DependentUpon>frmBase_Config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Base\frmBase_Address_Popup_TH.resx">
+      <DependentUpon>frmBase_Address_Popup_TH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Base\frmBase_AV_Accnt.cs.resx" />
     <EmbeddedResource Include="frm_Base\frmBase_AV_Accnt_Danal.resx">

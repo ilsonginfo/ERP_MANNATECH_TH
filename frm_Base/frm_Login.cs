@@ -627,7 +627,7 @@ namespace MLM_Program
 //--------------------------------------------//
         private void frm_Login_Load(object sender, EventArgs e)
         {
-           
+
             if (cls_app_static_var.app_multi_lang_query == 1)
             {
                 pan_Language.Visible = true;
@@ -660,8 +660,11 @@ namespace MLM_Program
 
             Connect_User_Get_File();
 
+            if (this.txtUserID.Text != String.Empty)
+                this.txtPass.Focus();
+
             //lbl_ver.Text  = Assembly.GetEntryAssembly().GetName().Version.ToString();
-            
+            this.BringToFront();
         }
 
         private void Connect_User_Get_File()
@@ -703,7 +706,7 @@ namespace MLM_Program
         private void frm_Login_Activated(object sender, EventArgs e)
         {
             //19-03-11 깜빡임제거 this.Refresh();
-
+            this.BringToFront();
             label3.Text = cls_app_static_var.APP_VER;
 
             if (UpLoad_TF == 0)

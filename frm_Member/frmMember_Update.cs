@@ -188,46 +188,35 @@ namespace MLM_Program
 
             radioB_RBO.Checked = true;
             radioB_G8.Checked = true;
-
-            InitComboZipCode_TH();
+            
             // 태국버전 인 경우
             if (cls_User.gid_CountryCode == "TH")
             {
-                pnlDistrict_TH.Visible = true;
-                pnlProvince_TH.Visible = true;
-                pnlSubDistrict_TH.Visible = true;
-                pnlZipCode_TH.Visible = true;
-                pnlZipCode_KR.Visible = false;
-                cbSubDistrict_TH_SelectedIndexChanged(this, null);
+                butt_AddCode.Text = "Address";
                 //combo_Se_Code.Text = "TH";
                 tlpMSADate.Visible = false;
                 tlpNACODE.Visible = false;
                 //combo_Se_Code_2.Text = "TH";
+                mtxtBrithDay.ReadOnly = true;
+                DTP_BrithDay.Visible = false;
 
                 //배송지가리기
-                tableLayoutPanel15.Visible = false;
-                tableLayoutPanel16.Visible = false;
+                pnlRece_Addr2.Visible = false;
+                pnlRece_Addr1.Visible = false;
                 tableLayoutPanel17.Visible = false;
-                cbProvince_TH.Font = new Font("Tahoma", 11f);
-                cbDistrict_TH.Font = new Font("Tahoma", 11f);
-                cbSubDistrict_TH.Font = new Font("Tahoma", 11f);
-                txtZipCode_TH.Font = new Font("Tahoma", 11f);
-                txtAddress1.Font = new Font("Tahoma", 11f);
+                txtProvinceCode.Font = new Font("Tahoma", 11f);
+                txtDistrict.Font = new Font("Tahoma", 11f);
                 txtAddress1.Font = new Font("Tahoma", 11f);
                 txtAddress2.Font = new Font("Tahoma", 11f);
                 txtName.Font = new Font("Tahoma", 11f);
+
+                pnlSave.Location = pnlRece_Addr1.Location;
+                pnlNomin.Location = new Point( pnlRece_Addr2.Location.X, pnlRece_Addr2.Location.Y - 3);
 
             }
             // 태국 이외 버전 인 경우
             else
             {
-                pnlDistrict_TH.Visible = false;
-                pnlProvince_TH.Visible = false;
-                pnlSubDistrict_TH.Visible = false;
-                pnlZipCode_TH.Visible = false;
-                pnlZipCode_KR.Visible = true;
-                txtAddress2.ReadOnly = false;
-                txtAddress2.Clear();
                 tabC_Mem.TabPages.Remove(tab_Img);
             }
 
@@ -244,24 +233,6 @@ namespace MLM_Program
                 mtxtSn.BackColor = Color.White ;
             }
             mtxtMbid.Focus();
-        }
-
-        private void InitComboZipCode_TH()
-        {
-            cls_Connect_DB Temp_conn = new cls_Connect_DB();
-            DataSet ds = new DataSet();
-            StringBuilder sb = new StringBuilder();
-
-            //sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_State_TH() ORDER BY ZIPCODE_SORT ");
-            sb.AppendLine("SELECT * FROM ufn_Get_ZipCode_Province_TH() ORDER BY MinSubDistrictID ");
-
-            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
-
-            cbProvince_TH.DataBindings.Clear();
-            cbProvince_TH.DataSource = ds.Tables["ZipCode_NM"];
-            cbProvince_TH.DisplayMember = "ZipCode_NM";
-            cbProvince_TH.ValueMember = "ProvinceCode";
-            cbProvince_TH.Font = new Font("Tahoma", 11f);
         }
 
         private void Delete_Base_Data(ref int Delete_Error_Check)
@@ -1093,42 +1064,33 @@ namespace MLM_Program
 
             if (ds.Tables[base_db_name].Rows[0]["state"].ToString().Replace("-", "").Trim() != "")
             {
-                cbProvince_TH.Text = ds.Tables[base_db_name].Rows[0]["state"].ToString();
+                txtProvinceCode.Text = ds.Tables[base_db_name].Rows[0]["state"].ToString();
             }
 
             if (ds.Tables[base_db_name].Rows[0]["city"].ToString().Replace("-", "").Trim() != "")
             {
-                cbDistrict_TH.Text = ds.Tables[base_db_name].Rows[0]["city"].ToString();
+                txtDistrict.Text = ds.Tables[base_db_name].Rows[0]["city"].ToString();
             }
 
-            if (ds.Tables[base_db_name].Rows[0]["Addcode1"].ToString().Replace ("-","").Trim () != "")
+            if (ds.Tables[base_db_name].Rows[0]["Addcode1"].ToString().Replace("-", "").Trim() != "")
             {
                 // 태국 국가코드인 경우
                 if (ds.Tables[base_db_name].Rows[0]["Nation_Code"].ToString().Replace("-", "").Trim() == "TH")
                 {
                     try
                     {
-                        cbProvince_TH.Text = ds.Tables[base_db_name].Rows[0]["Address2"].ToString().Split(' ')[2];
-                        cbDistrict_TH.Text = ds.Tables[base_db_name].Rows[0]["Address2"].ToString().Split(' ')[1];
-                        cbSubDistrict_TH.Text = ds.Tables[base_db_name].Rows[0]["Address2"].ToString().Split(' ')[0];
+                        txtProvinceCode.Text = ds.Tables[base_db_name].Rows[0]["state"].ToString().Split(' ')[2];
+                        txtDistrict.Text = ds.Tables[base_db_name].Rows[0]["city"].ToString().Split(' ')[1];
                     }
                     catch (Exception)
                     {
-                        cbProvince_TH.Text = "";
-                        cbDistrict_TH.Text = "";
-                        cbSubDistrict_TH.Text = "";
+                        txtProvinceCode.Text = "";
+                        txtDistrict.Text = "";
                     }
 
-                    txtZipCode_TH.Text = ds.Tables[base_db_name].Rows[0]["Addcode1"].ToString();
-                    Update();
                 }
-                // 그 외 국가코드인 경우
-                else
-                {
-                    //txtAddCode1.Text = ds.Tables[base_db_name].Rows[0]["Addcode1"].ToString().Substring(0, 3);
-                    //txtAddCode2.Text = ds.Tables[base_db_name].Rows[0]["Addcode1"].ToString().Substring(3, 3);                
-                    mtxtZip1.Text = ds.Tables[base_db_name].Rows[0]["Addcode1"].ToString();
-                }
+
+                mtxtZip1.Text = ds.Tables[base_db_name].Rows[0]["Addcode1"].ToString();
             }
             txtAddress1.Text = decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["Address1"].ToString());
             txtAddress2.Text = decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["Address2"].ToString());
@@ -1362,7 +1324,10 @@ namespace MLM_Program
             //    button_exigo.Visible = true;
 
 
-            txt_Us.Text = ds.Tables[base_db_name].Rows[0]["US_Num"].ToString(); 
+            txt_Us.Text = ds.Tables[base_db_name].Rows[0]["US_Num"].ToString();
+            txtDistrict.Text = ds.Tables[base_db_name].Rows[0]["city"].ToString();
+            txtProvinceCode.Text = ds.Tables[base_db_name].Rows[0]["state"].ToString();
+            
 
 
             txtName.ReadOnly = true;
@@ -3155,11 +3120,36 @@ namespace MLM_Program
 
             else if (bt.Name == "butt_AddCode")
             {
-                frmBase_AddCode e_f = new frmBase_AddCode();
-                e_f.Send_Address_Info += new frmBase_AddCode.SendAddressDele(e_f_Send_Address_Info);
-                e_f.ShowDialog();
+                if (cls_User.Is_TH_User)
+                {
 
-                txtAddress2.Focus();
+                    frmBase_Address_Popup_TH frm = new frmBase_Address_Popup_TH();
+                    frm.BringToFront();
+                    frm.ShowDialog();
+
+                    if (frm.Data.IsOK)
+                    {
+                        mtxtZip1.Text = frm.Data.Zipcode;
+                        txtDistrict.Text = frm.Data.SubDistrictCode;
+                        txtProvinceCode.Text = frm.Data.Province_Code;
+
+                        txtAddress2.Text = frm.Data.Get_FullAddress;
+                        txtAddress1.Focus();
+                    }
+                    else
+                    {
+                        butt_AddCode.Focus();
+                    }
+
+                }
+                else
+                {
+                    frmBase_AddCode e_f = new frmBase_AddCode();
+                    e_f.Send_Address_Info += new frmBase_AddCode.SendAddressDele(e_f_Send_Address_Info);
+                    e_f.ShowDialog();
+
+                    txtAddress2.Focus();
+                }
             }
 
             else if (bt.Name == "butt_AddCode2")
@@ -3414,64 +3404,50 @@ namespace MLM_Program
             //}
             //우편번호
             // 태국인 경우
-            if (combo_Se_Code_2.Text == "TH")
+            if (cls_User.Is_TH_User)
             {
-                if (cbProvince_TH.SelectedIndex < 0)
+                if (txtAddress1.Text.Trim().Length == 0 || mtxtZip1.Text == "")
                 {
                     if (cls_User.gid_CountryCode == "TH")
                     {
-                        MessageBox.Show("Please specify province.");
+                        MessageBox.Show("Please proceed with the address search and enter.");
                     }
                     else
                     {
-                        MessageBox.Show("Province를 지정해주세요");
+                        MessageBox.Show("주소검색을 진행하여 입력하여주십시오.");
                     }
-                    cbProvince_TH.Focus();
-                    return false;
-                }
-                else if (cbDistrict_TH.SelectedIndex < 0)
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify district.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("district를 지정해주세요");
-                    }
-                    cbDistrict_TH.Focus();
-                    return false;
-                }
-                else if (cbSubDistrict_TH.SelectedIndex < 0)
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify subdistrict.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("subdistrict를 지정해주세요");
-                    }
-                    cbDistrict_TH.Focus();
-                    return false;
-                }
-                else if (txtZipCode_TH.Text == "")
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify postal code.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("우편번호를 지정해주세요");
-                    }
-                    txtZipCode_TH.Focus();
+                    butt_AddCode.Focus();
                     return false;
                 }
 
                 //핸드폰번호 - 태국
-                if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length <= 9)
+                bool isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 10;
+                if (isTH_CheckingNumber == false)
+                    isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 11;
+
+                if (isTH_CheckingNumber)
                 {
+                    string[] TelNumbers = mtxtTel2.Text.Replace(" ", "").Split('-');
+                    //뒤가 4자리가 아닌경우 빠꾸처리함
+                    if (TelNumbers[2].Length != 4)
+                    {
+                        if (cls_User.gid_CountryCode == "TH")
+                        {
+                            MessageBox.Show("Please specify your cell phone number.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("핸드폰번호를 지정해주세요");
+                        }
+
+                        mtxtTel2.Focus();
+                        return false;
+                    }
+
+                }
+                else if (mtxtTel2.Text.Replace("-", "") == "" || isTH_CheckingNumber == false)
+                {
+
                     if (cls_User.gid_CountryCode == "TH")
                     {
                         MessageBox.Show("Please specify your cell phone number.");
@@ -3840,21 +3816,17 @@ namespace MLM_Program
                
 
                 StrSql = StrSql + " ,VisaDate = '" + mtxtVisaDay.Text.Replace("-", "").Trim() + "'";                
+                StrSql = StrSql + " ,Addcode1 = '" + mtxtZip1.Text.Trim().Replace("-", "") + "'";
                 // 국가코드 - 태국 선택시
                 if (combo_Se_Code_2.Text == "TH")
                 {
-                    StrSql = StrSql + " ,Addcode1 = '" + txtZipCode_TH.Text.Trim().Replace("-", "") + "'";
                     //StrSql = StrSql + " ,city = '" + cbDistrict_TH.Text.Trim().Replace("-", "") + "'";
                     //StrSql = StrSql + " ,state = '" + cbProvince_TH.Text.Trim().Replace("-", "") + "'";
-                    StrSql = StrSql + " ,city = '" + cbDistrict_TH.Text.Trim().Replace("-", "") + "'";
-                    StrSql = StrSql + " ,state = '" + cbProvince_TH.SelectedValue.ToString().Trim().Replace("-", "") + "'";
+                    StrSql = StrSql + " ,city = '" + txtDistrict.Text.Trim().Replace("-", "") + "'";
+                    StrSql = StrSql + " ,state = '" + txtProvinceCode.Text.Trim().Replace("-", "") + "'";
                     StrSql = StrSql + $" , cpno = '{ssn}'";
                 }
-                // 그 외 국가 선택시
-                else
-                {
-                    StrSql = StrSql + " ,Addcode1 = '" + mtxtZip1.Text.Trim().Replace("-", "") + "'";
-                }
+           
                 StrSql = StrSql + " ,Address1 = '" + txtAddress1.Text.Replace("'", "''").Trim() + "'";
                 StrSql = StrSql + " ,Address2 = '" + txtAddress2.Text.Replace("'", "''").Trim() + "'";
                 StrSql = StrSql + " ,hometel = '" + hometel + "'";
@@ -5033,55 +5005,11 @@ namespace MLM_Program
         private void combo_Se_2_SelectedIndexChanged(object sender, EventArgs e)
         {
             combo_Se_Code_2.SelectedIndex = combo_Se_2.SelectedIndex;
-
-            // 태국버전 인 경우
-            if (combo_Se_Code_2.Text == "TH")
-            {
-                pnlDistrict_TH.Visible = true;
-                pnlProvince_TH.Visible = true;
-                pnlSubDistrict_TH.Visible = true;
-                pnlZipCode_TH.Visible = true;
-                pnlZipCode_KR.Visible = false;
-                cbSubDistrict_TH_SelectedIndexChanged(this, null);
-            }
-            // 태국 이외 버전 인 경우
-            else
-            {
-                pnlDistrict_TH.Visible = false;
-                pnlProvince_TH.Visible = false;
-                pnlSubDistrict_TH.Visible = false;
-                pnlZipCode_TH.Visible = false;
-                pnlZipCode_KR.Visible = true;
-                txtAddress2.ReadOnly = false;
-                txtAddress2.Clear();
-            }
         }
 
         private void combo_Se_Code_2_SelectedIndexChanged(object sender, EventArgs e)
         {
             combo_Se_2.SelectedIndex = combo_Se_Code_2.SelectedIndex;
-
-            // 태국버전 인 경우
-            if (combo_Se_Code_2.Text == "TH")
-            {
-                pnlDistrict_TH.Visible = true;
-                pnlProvince_TH.Visible = true;
-                pnlSubDistrict_TH.Visible = true;
-                pnlZipCode_TH.Visible = true;
-                pnlZipCode_KR.Visible = false;
-                cbSubDistrict_TH_SelectedIndexChanged(this, null);
-            }
-            // 태국 이외 버전 인 경우
-            else
-            {
-                pnlDistrict_TH.Visible = false;
-                pnlProvince_TH.Visible = false;
-                pnlSubDistrict_TH.Visible = false;
-                pnlZipCode_TH.Visible = false;
-                pnlZipCode_KR.Visible = true;
-                txtAddress2.ReadOnly = false;
-                txtAddress2.Clear();
-            }
         }
 
         private void button_Web_img_Click(object sender, EventArgs e)
@@ -5596,59 +5524,7 @@ namespace MLM_Program
             }
         }
 
-        private void cbProvince_TH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cls_Connect_DB Temp_conn = new cls_Connect_DB();
-            DataSet ds = new DataSet();
-            StringBuilder sb = new StringBuilder();
-
-            //sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_City_TH('" + cbProvince_TH.Text + "') ORDER BY ZIPCODE_SORT ");
-            sb.AppendLine("SELECT ZIPCODE_NM FROM ufn_Get_ZipCode_District_TH('" + cbProvince_TH.Text + "') ORDER BY MinSubDistrictID ");
-
-            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
-
-            cbDistrict_TH.DataBindings.Clear();
-            cbDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
-            cbDistrict_TH.DisplayMember = "ZipCode_NM";
-            cbDistrict_TH.Font = new Font("Tahoma", 11f);
-        }
-
-        private void cbDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cls_Connect_DB Temp_conn = new cls_Connect_DB();
-            DataSet ds = new DataSet();
-            StringBuilder sb = new StringBuilder();
-
-            //sb.AppendLine("SELECT * FROM dbo.ufn_Get_ZipCode_TH('" + cbDistrict_TH.Text + "') ");
-            sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_SubDistrict_TH('" + cbDistrict_TH.Text + "') ORDER BY MinSubDistrictID ");
-
-            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
-
-            cbSubDistrict_TH.DataBindings.Clear();
-            cbSubDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
-            cbSubDistrict_TH.DisplayMember = "ZipCode_NM";
-            cbSubDistrict_TH.Font = new Font("Tahoma", 11f);
-        }
-
-        private void cbSubDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cls_Connect_DB Temp_conn = new cls_Connect_DB();
-            DataSet ds = new DataSet();
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("SELECT [ZIPCODE_NM] = PostCode FROM TLS_ZIPCODE_CS WITH(NOLOCK) WHERE SubDistrictThaiShort = '" + cbSubDistrict_TH.Text + "' ");
-
-            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
-
-            if (Temp_conn.DataSet_ReCount <= 0) return;
-
-            txtZipCode_TH.Text = "";
-            txtZipCode_TH.Text = ds.Tables["ZipCode_NM"].Rows[0][0].ToString();
-            txtZipCode_TH.Font = new Font("Tahoma", 11f);
-
-            txtAddress2.Text = cbSubDistrict_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.Text;
-        }
-
+ 
         private void button_Web_img_Upload_Click(object sender, EventArgs e)
         {
             UploadFileData(EWebImageType.IDCARD);
@@ -5658,6 +5534,7 @@ namespace MLM_Program
         {
             UploadFileData(EWebImageType.BANKBOOK);
         }
+
 
         private void UploadFileData(EWebImageType inputImgType)
         {
@@ -5683,7 +5560,7 @@ namespace MLM_Program
                     string t_url = "https://uat.mannatech.co.th/common/cs/uploadFile.do";    // uat 버전. 
 #else
                     string t_url = "https://www.mannatech.co.th/common/cs/uploadFile.do";    // live 버전. 
-                    //string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
+                    //string t_url = "https://uat.mannatech.co.th/common/cs/uploadFile.do";    // uat 버전. 
 #endif
 
                     // WEB단에서 parameter로 넘겨줄 예정.

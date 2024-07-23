@@ -83,8 +83,8 @@ namespace MLM_Program
 
 #if DEBUG
 
-            ////////++++++++++++++테스트++++++++++++++++ +
-            //
+            //++++++++++++++테스트++++++++++++++++ +
+
             //cls_app_static_var.app_Company_Name = "menatech";
             //cls_app_static_var.app_FTP_ID = "melong202";
             //cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
@@ -92,9 +92,9 @@ namespace MLM_Program
             //string password = "Mannatech)%!$";
             //string Company_DB_Name = "mannatech";
             //cls_app_static_var.app_Company_Name = "menatech";
-            //
-            //
-            ////++++++++++++++테스트++++++++++++++++ +
+
+
+            //       ++++++++++++++테스트++++++++++++++++ +
 
             //++++++++++++++라이브++++++++++++++++ +
 
@@ -135,7 +135,7 @@ namespace MLM_Program
             /////
 
             cls_app_static_var.APP_VER = "[RELEASE]240614_UAT (External Access)";
-            cls_app_static_var.APP_VER = "[RELEASE]240614_LIVE ";
+            cls_app_static_var.APP_VER = "[RELEASE]240718_LIVE 1";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++
@@ -193,19 +193,20 @@ namespace MLM_Program
             //////테스트배포때 연다
             //if (cls_app_static_var.app_Company_Name == "menatech")
             //{
-            //    cls_Connect_DB.LiveFlag = false;
+            cls_Connect_DB.LiveFlag = false;
             //}
             ////테스트배포때 연다
             //++++++++++++++++++++++++++++++++
-            //테스트배포땐닫는다
-            ///////운영 DB아닌 경우 모두 개발기로 인식(업데이트 무시, 메인화면 변경 처리)
-            ////매나테크 개발기 UAT
+
+            //////테스트배포땐닫는다
+            /////////운영 DB아닌 경우 모두 개발기로 인식(업데이트 무시, 메인화면 변경 처리)
+            //////매나테크 개발기 UAT
             //Connect_IP = "218.237.118.12,51433";
             //if (Connect_IP.Equals("218.237.118.12,51433"))
-            {
-                cls_Connect_DB.LiveFlag = false;
-            }
-            //테스트배포땐닫는다
+            //{
+            //    cls_Connect_DB.LiveFlag = false;
+            //}
+            ////////테스트배포땐닫는다
             //////++++++++++++++++++++++++++++++++
 
 #else
@@ -273,12 +274,12 @@ namespace MLM_Program
                         cls_app_static_var.User_Time_Zone = "Korea Standard Time";
                     }
 
-                    if (cls_User.gid_CountryCode == "Ja" || cls_User.gid_CountryCode == "")
+                    if (cls_User.gid_CountryCode == "Ja" )
                     {
                         cls_app_static_var.User_Time_Zone = "Tokyo Standard Time";
                     }
 
-                    if (cls_User.gid_CountryCode == "TH" || cls_User.gid_CountryCode == "")
+                    if (cls_User.gid_CountryCode == "TH" )
                     {
                         cls_app_static_var.User_Time_Zone = "Thailand Standard Time";
                     }

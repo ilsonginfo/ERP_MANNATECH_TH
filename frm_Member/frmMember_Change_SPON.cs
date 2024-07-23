@@ -1454,7 +1454,6 @@ namespace MLM_Program
             sb.AppendLine(" A.REG_DATE AS REG_DATE2,  ");
             sb.AppendLine(" B.REG_DATE AS REG_DATE3,  ");
             sb.AppendLine(" A.STATUS AS STATUS1 ,  ");
-            //sb.AppendLine(" B.STATUS AS STATUS2  ");
             sb.AppendLine(" B.STATUS AS STATUS2,  ");   // 240307 태국 구분 관련 추가 - syhuh
             sb.AppendLine(" C.Na_Code  ");  // 240307 태국 구분 관련 추가 - syhuh
             sb.AppendLine(" FROM  (SELECT * FROM  TBL_MEMBER_CHANGE_SPON WHERE GUBUN = 'N') A   ");
@@ -1485,7 +1484,6 @@ namespace MLM_Program
             sb.AppendLine("A.REG_DATE AS REG_DATE2,  ");
             sb.AppendLine("A.REG_DATE AS REG_DATE3,  ");
             sb.AppendLine("A.STATUS AS STATUS1 ,  ");
-            //sb.AppendLine("A.STATUS AS STATUS2 ");
             sb.AppendLine("A.STATUS AS STATUS2, ");     // 240307 태국 구분 관련 추가 - syhuh
             sb.AppendLine("C.Na_Code ");    // 240307 태국 구분 관련 추가 - syhuh
             sb.AppendLine("FROM TBL_MEMBER_CHANGE_SPON A  ");

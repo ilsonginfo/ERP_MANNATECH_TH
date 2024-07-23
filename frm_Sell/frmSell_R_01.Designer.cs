@@ -2191,7 +2191,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmSell_R_01";
-            this.Text = "반품_접수_등록및_취소";
+            this.Text = "반품_등록_취소";
             this.Activated += new System.EventHandler(this.frm_Base_Activated);
             this.Load += new System.EventHandler(this.frmBase_From_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBase_From_KeyDown);

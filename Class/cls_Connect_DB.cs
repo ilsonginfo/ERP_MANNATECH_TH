@@ -1039,6 +1039,19 @@ namespace MLM_Program
 
     class cls_Search_DB
     {
+        /// <summary>
+        /// 2024-06-17 지성경 : 찾은 회원의 Na_Code를 가져옴 
+        /// </summary>
+        private string Search_OK_Mem_NationCode = string.Empty;
+
+        /// <summary>
+        /// 2024-06-17 지성경 : 로그인한사람은 태국계정인데, 확인한 회원은 태국사람인가요?
+        /// </summary>
+        public bool THService_IsNot_TH_Member
+        {
+            get { return cls_User.Is_TH_User && Search_OK_Mem_NationCode != "TH"; }
+        }
+
 
         private Dictionary<int, string> Be_Memberinfo = new Dictionary<int, string>() ;
 
@@ -1053,7 +1066,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select M_Name  ";
+            Tsql = "Select M_Name, Na_Code  ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
             if (Mbid.Length  == 0 )
                 Tsql = Tsql + " Where Convert(Varchar,Mbid2) like '%" + Mbid2.ToString () + "%' ";
@@ -1077,8 +1090,10 @@ namespace MLM_Program
             if (ReCnt == 0)
                 Search_Name = "";
             else if (ReCnt == 1)
-                Search_Name = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString();
-                
+            {
+                Search_Name = ds.Tables["tbl_Memberinfo"].Rows[0]["M_Name"].ToString();
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
+            }  
             return ReCnt;            
             //++++++++++++++++++++++++++++++++
         }
@@ -1097,7 +1112,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select Mbid2, M_Name  ";
+            Tsql = "Select Mbid2, M_Name, Na_Code ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
          
             Tsql = Tsql + " Where hptel like '%" + Search_Member.ToString() + "%' ";
@@ -1116,6 +1131,7 @@ namespace MLM_Program
             {
                 Mbid2 = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString();
                 Search_Name = ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString();
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
             }
             return ReCnt;
             //++++++++++++++++++++++++++++++++
@@ -1135,7 +1151,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select Mbid2, M_Name  ";
+            Tsql = "Select Mbid2, M_Name, Na_Code  ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
 
             Tsql = Tsql + " Where Birthday + '-' + Birthday_M + '-' + Birthday_D ='" + Search_Member.ToString() + "' ";
@@ -1154,6 +1170,7 @@ namespace MLM_Program
             {
                 Mbid2 = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString();
                 Search_Name = ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString();
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
             }
             return ReCnt;
             //++++++++++++++++++++++++++++++++
@@ -1170,7 +1187,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select M_Name  ";
+            Tsql = "Select M_Name, Na_Code  ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
             if (Mbid.Length == 0)
                 Tsql = Tsql + " Where Convert(Varchar,Mbid2) like '%" + Mbid2.ToString() + "%' ";
@@ -1194,8 +1211,10 @@ namespace MLM_Program
             if (ReCnt == 0)
                 Search_Name = "";
             else if (ReCnt == 1)
+            {
                 Search_Name = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString();
-
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
+            }
             return ReCnt;
             //++++++++++++++++++++++++++++++++
         }
@@ -1418,7 +1437,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select Mbid, Mbid2  ";
+            Tsql = "Select Mbid, Mbid2, Na_Code  ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
             Tsql = Tsql + " Where tbl_Memberinfo.M_name like '%" + Search_Name + "%' ";
             //// Tsql = Tsql + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
@@ -1433,12 +1452,16 @@ namespace MLM_Program
             if (ReCnt == 0)
                 Member_Number = "";
             else if (ReCnt == 1)
-                if (cls_app_static_var.Member_Number_1 > 0 )
-                    Member_Number = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString() + "-" + 
-                                    ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString()  ;
+            {
+                if (cls_app_static_var.Member_Number_1 > 0)
+                    Member_Number = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString() + "-" +
+                                    ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString();
                 else
                     Member_Number = ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString();
 
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
+
+            }
             return ReCnt;
             //++++++++++++++++++++++++++++++++
         }
@@ -1449,7 +1472,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select Mbid, Mbid2  ";
+            Tsql = "Select Mbid, Mbid2, Na_Code  ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
             Tsql = Tsql + " Where tbl_Memberinfo.Webid like '%" + Search_Name + "%' ";
             //// Tsql = Tsql + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
@@ -1464,12 +1487,15 @@ namespace MLM_Program
             if (ReCnt == 0)
                 Member_Number = "";
             else if (ReCnt == 1)
+            {
                 if (cls_app_static_var.Member_Number_1 > 0)
                     Member_Number = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString() + "-" +
                                     ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString();
                 else
                     Member_Number = ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString();
 
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
+            }
             return ReCnt;
             //++++++++++++++++++++++++++++++++
         }
@@ -1480,7 +1506,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select Mbid, Mbid2  ";
+            Tsql = "Select Mbid, Mbid2, Na_Code  ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
             Tsql = Tsql + " Where tbl_Memberinfo.M_name like '%" + Search_Name + "%' ";
             //// Tsql = Tsql + " And  tbl_Memberinfo.Full_Save_TF  = 1 ";
@@ -1495,12 +1521,16 @@ namespace MLM_Program
             if (ReCnt == 0)
                 Member_Number = "";
             else if (ReCnt == 1)
+            {
                 if (cls_app_static_var.Member_Number_1 > 0)
                     Member_Number = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString() + "-" +
                                     ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString();
                 else
                     Member_Number = ds.Tables["tbl_Memberinfo"].Rows[0][1].ToString();
 
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
+
+            }
             return ReCnt;
             //++++++++++++++++++++++++++++++++
         }
@@ -1519,7 +1549,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select M_Name  ";
+            Tsql = "Select M_Name, Na_Code  ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
             if (Mbid.Length == 0)
                 Tsql = Tsql + " Where Mbid2 = " + Mbid2.ToString();
@@ -1540,8 +1570,10 @@ namespace MLM_Program
             if (ReCnt == 0)
                 Search_Name = "";
             else if (ReCnt == 1)
+            {
                 Search_Name = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString();
-
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
+            }
             return Search_Name;
             //++++++++++++++++++++++++++++++++
         }
@@ -1558,7 +1590,7 @@ namespace MLM_Program
             //++++++++++++++++++++++++++++++++
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             string Tsql;
-            Tsql = "Select M_Name  ";
+            Tsql = "Select M_Name, Na_Code  ";
             Tsql = Tsql + " From tbl_Memberinfo  (nolock)  ";
             if (Mbid.Length == 0)
                 Tsql = Tsql + " Where Mbid2 = " + Mbid2.ToString();
@@ -1577,8 +1609,10 @@ namespace MLM_Program
             if (ReCnt == 0)
                 Search_Name = "";
             else if (ReCnt == 1)
+            {
                 Search_Name = ds.Tables["tbl_Memberinfo"].Rows[0][0].ToString();
-
+                Search_OK_Mem_NationCode = ds.Tables["tbl_Memberinfo"].Rows[0]["Na_Code"].ToString();
+            }
             return Search_Name;
             //++++++++++++++++++++++++++++++++
         }

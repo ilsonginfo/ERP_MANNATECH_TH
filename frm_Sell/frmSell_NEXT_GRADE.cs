@@ -301,7 +301,10 @@ namespace MLM_Program
 
             if(combo_tblLeadershipLevel.Text == "")
             {
-                if (MessageBox.Show("비교직급없이 검색됩니다." + "\n" + "검색하시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show(
+                    //**"비교직급없이 검색됩니다." + "\n" + "검색하시겠습니까?"
+                    cls_app_static_var.Base_Label["Q_BP_SEARCH_OPTION_YN1"]
+                    , "", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     return false;
                 }
@@ -375,7 +378,7 @@ namespace MLM_Program
         private void Make_Base_Query(ref string Tsql)
         {
 
-            Tsql = "EXEC [Usp_Web_Next_Grade_ERP] '', '"+ mtxtMbid.Text + "', '"+grade+"', ''" + Environment.NewLine;
+            Tsql = "EXEC [Usp_Web_Next_Grade_ERP_20240718] '', '" + mtxtMbid.Text + "', '"+grade+"', '', '" + cls_User.gid_CountryCode + "'";
 
         }
 
@@ -554,13 +557,13 @@ namespace MLM_Program
             string[] g_HeaderText = {
 
                                  "항목",
-                                 "현재 달성 현황"   , "다음 목표 직급"    ,"상태"    
+                                 "현재달성현황"   , "다음목표직급"    ,"상태"    
                                     };
 
 
             string[] g_Cols = {
                                    "항목",
-                                "현재 달성 현황"   , "다음 목표 직급"     , "상태"
+                                "현재달성현황"   , "다음목표직급"     , "상태"
                                     };
 
             cgb.grid_col_header_text = g_HeaderText;
@@ -570,7 +573,7 @@ namespace MLM_Program
             if (cls_app_static_var.Sell_Union_Flag == "")
             {
                 int[] g_Width = {
-                  130,
+                  200,
                   130, 90,  90
                                 };
                 cgb.grid_col_w = g_Width;
@@ -1972,7 +1975,8 @@ namespace MLM_Program
 
             if(mtxtSellDate.Text == "")  //웹아이디 필수값으로넣는다
             {
-                MessageBox.Show("실적월을 제대로 기입해주세요.");
+                string Msg = cls_app_static_var.Base_Label["INFO_WARRING_SELECT_BP_DATE"];
+                MessageBox.Show(Msg);
                 return false;
             }
             //if (txt_PsssNumber.Text == "")  //웹아이디 필수값으로넣는다
@@ -1988,7 +1992,11 @@ namespace MLM_Program
             cgb_item.d_Grid_view_Header_Reset();
 
 
-            if (MessageBox.Show("실적월 입력(해당날짜월)의 회원실적데이터를 엑셀로 다운로드 받습니다.." + "\n"+"다운로드 하시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.No) return;
+            if (MessageBox.Show(
+                //** "실적월 입력(해당날짜월)의 회원실적데이터를 엑셀로 다운로드 받습니다." 
+                //** + "\n"+"다운로드 하시겠습니까?"
+                cls_app_static_var.Base_Label["Q_EXCEL_EXPORT_SELECT_BP"]
+                , "", MessageBoxButtons.YesNo) == DialogResult.No) return;
             if (Check_TextBox_ETC_Error() == false) return;
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             Temp_Connect.Connect_DB();
@@ -1996,7 +2004,7 @@ namespace MLM_Program
             SqlTransaction tran = Conn.BeginTransaction();
 
             StringBuilder sb = new StringBuilder();
-            string StrSql = "exec Usp_ERP_Next_Grade_Member '"+  mtxtSellDate.Text.ToString().Substring(0,7).Replace("-","") + "'";
+            string StrSql = "exec Usp_ERP_Next_Grade_Member_20240718 '"+  mtxtSellDate.Text.ToString().Substring(0,7).Replace("-","") + "', '" + cls_User.gid_CountryCode + "'";
             DataSet ds2 = new DataSet();
             if (Temp_Connect.Open_Data_Set(StrSql, "tbl_Memberinfo", ds2) == false) return;
             int ReCnt2 = Temp_Connect.DataSet_ReCount;
@@ -2019,7 +2027,7 @@ namespace MLM_Program
             tran.Commit();
 
             this.Base_Button_Click(butt_Excel, null);
-            MessageBox.Show("전체회원실적이 다운완료됐습니다.");
+            MessageBox.Show(cls_app_static_var.Base_Label["INFO_OK_DOWNLOAD_COMPLETE_BP_LIST"]);
             Base_Clear();
 
         }

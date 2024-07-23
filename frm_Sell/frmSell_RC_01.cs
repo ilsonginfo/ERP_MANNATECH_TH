@@ -394,6 +394,13 @@ namespace MLM_Program
 
                     if (reCnt == 1)
                     {
+
+                        if (cds.THService_IsNot_TH_Member)
+                        {
+                            MessageBox.Show("Account number is not in Thailand or wrong number");
+                            return;
+                        }
+
                         if (mtb.Name == "mtxtMbid")
                         {
                             txtName.Text = Search_Name;
