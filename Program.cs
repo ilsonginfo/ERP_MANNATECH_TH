@@ -8,7 +8,7 @@ using System.IO;
 using System.Resources;
 using System.Data;
 using System.Management;
-
+using System.Diagnostics;
 
 namespace MLM_Program
 {
@@ -85,29 +85,29 @@ namespace MLM_Program
 
             //++++++++++++++테스트++++++++++++++++ +
 
-            //cls_app_static_var.app_Company_Name = "menatech";
-            //cls_app_static_var.app_FTP_ID = "melong202";
-            //cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
-            //string User_Id = "IS_Info";
-            //string password = "Mannatech)%!$";
-            //string Company_DB_Name = "mannatech";
-            //cls_app_static_var.app_Company_Name = "menatech";
+            cls_app_static_var.app_Company_Name = "menatech";
+            cls_app_static_var.app_FTP_ID = "melong202";
+            cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
+            string User_Id = "IS_Info";
+            string password = "Mannatech)%!$";
+            string Company_DB_Name = "mannatech";
+            cls_app_static_var.app_Company_Name = "menatech";
 
 
             //       ++++++++++++++테스트++++++++++++++++ +
 
             //++++++++++++++라이브++++++++++++++++ +
 
-            cls_app_static_var.app_Company_Name = "mannatech";
-            cls_app_static_var.app_FTP_ID = "melong202";
-            cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
-            string User_Id = "IS_Info";
-            string password = "Mannatech)%!$";
-            string Company_DB_Name = "mannatech";
-            cls_app_static_var.app_Company_Name = "mannatech_Live";
+            //cls_app_static_var.app_Company_Name = "mannatech";
+            //cls_app_static_var.app_FTP_ID = "melong202";
+            //cls_app_static_var.app_FTP_PW = "rladudtn!&&1";
+            //string User_Id = "IS_Info";
+            //string password = "Mannatech)%!$";
+            //string Company_DB_Name = "mannatech";
+            //cls_app_static_var.app_Company_Name = "mannatech_Live";
             ////++++++++++++++라이브++++++++++++++++ +
 
-            cls_app_static_var.APP_VER = "live DEBUG 001";
+            cls_app_static_var.APP_VER = "live DEBUG 002";
 #else
 
 
@@ -135,7 +135,7 @@ namespace MLM_Program
             /////
 
             cls_app_static_var.APP_VER = "[RELEASE]240614_UAT (External Access)";
-            cls_app_static_var.APP_VER = "[RELEASE]240718_LIVE 1";
+            cls_app_static_var.APP_VER = "[RELEASE]240724_LIVE 1";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++
@@ -223,6 +223,8 @@ namespace MLM_Program
             //    cls_Connect_DB.LiveFlag = false;
             //}
 #endif
+            Debug.WriteLine($"Compny{cls_app_static_var.app_Company_Name} IP:{Connect_IP}");
+
 
             cls_Connect_DB.Conn_Str = "Initial Catalog=" + Company_DB_Name + ";Persist Security Info=True;User ID=" + User_Id + ";Password=" + password + ";Data Source=" + Connect_IP + "";
             cls_Connect_DB.Return_Conn_Str = "Initial Catalog=mannatech_Return_Close;Persist Security Info=True;User ID=" + User_Id + ";Password=" + password + ";Data Source=" + Connect_IP + "";

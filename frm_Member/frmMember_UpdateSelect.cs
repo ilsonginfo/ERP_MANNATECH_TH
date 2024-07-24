@@ -104,8 +104,18 @@ namespace MLM_Program
             mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
             mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
 
-            mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
-            mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
+            mtxtTel1.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
+            mtxtTel1.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
+
+            mtxtTel2.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
+            mtxtTel2.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
+
+            mtxtTel2_C.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
+            mtxtTel2_C.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
+
+
+            //mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
+            //mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
             mtxtZip1.Mask = cls_app_static_var.ZipCode_Number_Fromat;
             mtxtZip2.Mask = cls_app_static_var.ZipCode_Number_Fromat;
 
@@ -117,7 +127,7 @@ namespace MLM_Program
             mtxtVisaDay.Mask = cls_app_static_var.Date_Number_Fromat;
 
             mtxtBrithDayC.Mask = cls_app_static_var.Date_Number_Fromat;
-            mtxtTel2_C.Mask = cls_app_static_var.Tel_Number_Fromat;
+            //mtxtTel2_C.Mask = cls_app_static_var.Tel_Number_Fromat;
 
             txtB1.Text = "0"; 
             //Reset_Chart_Total();
@@ -1023,7 +1033,9 @@ namespace MLM_Program
                 //txtTel_1.Text = tel[0].ToString ();
                 //txtTel_2.Text = tel[1].ToString();
                 //txtTel_3.Text = tel[2].ToString();
-                new cls_form_Meth().Home_Number_Setting(ds.Tables[base_db_name].Rows[0]["hometel"].ToString(), mtxtTel1);
+                //new cls_form_Meth().Home_Number_Setting(ds.Tables[base_db_name].Rows[0]["hometel"].ToString(), mtxtTel1);
+
+                clsStaticFnc.Set_MakedTel(mtxtTel1, ds.Tables[base_db_name].Rows[0]["hometel"].ToString());
 
                 // T_tel = decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["hometel"].ToString());
             }
@@ -1034,8 +1046,8 @@ namespace MLM_Program
                 //txtTel2_1.Text = tel[0].ToString();
                 //txtTel2_2.Text = tel[1].ToString();
                 //txtTel2_3.Text = tel[2].ToString();
-
-                mtxtTel2.Text = decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["hptel"].ToString());
+                clsStaticFnc.Set_MakedTel(mtxtTel2, decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["hptel"].ToString()));
+                //mtxtTel2.Text = decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["hptel"].ToString());
             }
 
 
@@ -1227,7 +1239,8 @@ namespace MLM_Program
                 else if (ds.Tables[base_db_name].Rows[0]["C_For_Kind_TF"].ToString() == "1")
                     raButt_IN_2_C.Checked = true;
 
-                mtxtTel2_C.Text = ds.Tables[0].Rows[0]["C_hptel"].ToString();
+                //mtxtTel2_C.Text = ds.Tables[0].Rows[0]["C_hptel"].ToString();
+                clsStaticFnc.Set_MakedTel(mtxtTel2_C, ds.Tables[base_db_name].Rows[0]["C_hptel"].ToString());
                 txtEmail_C.Text = ds.Tables[0].Rows[0]["C_Email"].ToString();
             }
 
@@ -2299,12 +2312,19 @@ namespace MLM_Program
 
                     if (mtb.Name == "mtxtTel1")
                     {
+                        //전화번호 형식으로 먼저 만들어준다.
+                        clsStaticFnc.Set_MakedTel(mtb, string.Empty);
+
                         if (Sn_Number_(Sn, mtb, "Tel") == true)
                             SendKeys.Send("{TAB}");
                     }
 
                     if (mtb.Name == "mtxtTel2")
                     {
+                        //전화번호 형식으로 먼저 만들어준다.
+                        clsStaticFnc.Set_MakedTel(mtb, string.Empty);
+
+
                         if (Sn_Number_(Sn, mtb, "Tel") == true)
                             SendKeys.Send("{TAB}");
                         //20191015구현호핸드폰으로 조회

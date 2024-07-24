@@ -37,9 +37,16 @@
             this.dGridView_Base = new System.Windows.Forms.DataGridView();
             this.butt_Search = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.butt_imgSave = new System.Windows.Forms.Button();
+            this.butt_rightTurn = new System.Windows.Forms.Button();
+            this.butt_leftTurn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Base)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -130,19 +137,74 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.Location = new System.Drawing.Point(0, 1661);
             this.webBrowser1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(18, 16);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(824, 788);
+            this.webBrowser1.Size = new System.Drawing.Size(196, 127);
             this.webBrowser1.TabIndex = 60;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.butt_imgSave);
+            this.panel1.Controls.Add(this.butt_rightTurn);
+            this.panel1.Controls.Add(this.butt_leftTurn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 829);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1104, 59);
+            this.panel1.TabIndex = 64;
+            // 
+            // butt_imgSave
+            // 
+            this.butt_imgSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.butt_imgSave.Location = new System.Drawing.Point(1012, 7);
+            this.butt_imgSave.Name = "butt_imgSave";
+            this.butt_imgSave.Size = new System.Drawing.Size(80, 40);
+            this.butt_imgSave.TabIndex = 2;
+            this.butt_imgSave.Text = "SaveImage";
+            this.butt_imgSave.UseVisualStyleBackColor = true;
+            this.butt_imgSave.Click += new System.EventHandler(this.butt_imgSave_Click);
+            // 
+            // butt_rightTurn
+            // 
+            this.butt_rightTurn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.butt_rightTurn.Location = new System.Drawing.Point(911, 7);
+            this.butt_rightTurn.Name = "butt_rightTurn";
+            this.butt_rightTurn.Size = new System.Drawing.Size(80, 40);
+            this.butt_rightTurn.TabIndex = 1;
+            this.butt_rightTurn.Text = "Left 90˚";
+            this.butt_rightTurn.UseVisualStyleBackColor = true;
+            this.butt_rightTurn.Click += new System.EventHandler(this.butt_rightTurn_Click);
+            // 
+            // butt_leftTurn
+            // 
+            this.butt_leftTurn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.butt_leftTurn.Location = new System.Drawing.Point(810, 7);
+            this.butt_leftTurn.Name = "butt_leftTurn";
+            this.butt_leftTurn.Size = new System.Drawing.Size(80, 40);
+            this.butt_leftTurn.TabIndex = 0;
+            this.butt_leftTurn.Text = "Right -90˚";
+            this.butt_leftTurn.UseVisualStyleBackColor = true;
+            this.butt_leftTurn.Click += new System.EventHandler(this.butt_leftTurn_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1104, 888);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 63;
+            this.pictureBox1.TabStop = false;
             // 
             // frmBase_Member_Web_IMg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 788);
+            this.ClientSize = new System.Drawing.Size(1104, 888);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.butt_Search);
             this.Controls.Add(this.tableLayoutPanel3);
@@ -158,6 +220,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Base)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -171,5 +235,10 @@
         private System.Windows.Forms.DataGridView dGridView_Base;
         private System.Windows.Forms.Button butt_Search;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button butt_imgSave;
+        private System.Windows.Forms.Button butt_rightTurn;
+        private System.Windows.Forms.Button butt_leftTurn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

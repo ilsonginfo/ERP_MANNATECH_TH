@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Resources;
+using System.Diagnostics;
 
 namespace MLM_Program
 {
@@ -1485,7 +1486,9 @@ namespace MLM_Program
 
         private void Child_Form_Load(Form childForm)
         {
-        
+            Debug.WriteLine(childForm.Name);
+
+
             if (Quick_Menu_TF == 0)
             {
                 //Mdi_Middle_Send_Number = "";
@@ -2052,6 +2055,7 @@ namespace MLM_Program
             }
             cls_app_static_var.Member_Number_Fromat = t_Member_Format;
             cls_app_static_var.Tel_Number_Fromat = "999-9999-9999";
+
             cls_app_static_var.ZipCode_Number_Fromat = "999999";
             cls_app_static_var.Biz_Number_Fromat = "999-99-99999";
             cls_app_static_var.Date_Number_Fromat = "9999-99-99";

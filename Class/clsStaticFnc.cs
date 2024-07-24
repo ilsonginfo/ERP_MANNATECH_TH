@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MLM_Program
 {
@@ -15,6 +17,74 @@ namespace MLM_Program
 
     class clsStaticFnc
     {
+        /// <summary>
+        /// 전화 번호 입력 받을때 마스킹 해제
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void Tel_Enter(object sender, EventArgs e)
+        {
+            MaskedTextBox tb = (MaskedTextBox)sender;
+
+            string str = tb.Text.Replace("-", string.Empty).Trim();
+            str = str.Replace(" ", string.Empty);
+
+
+            Debug.WriteLine($"text:{tb.Text},{str},Length:{str.Length},Masking:{tb.Mask}");
+
+
+            tb.Mask = string.Empty;
+            tb.Text = str;
+        }
+        /// <summary>
+        /// 전화번호 입력 후 마스킹 다시 해주기... 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void Tel_Leave(object sender, EventArgs e)
+        {
+            MaskedTextBox tb = (MaskedTextBox)sender;
+
+            Set_MakedTel(tb, string.Empty);
+        }
+
+        public static void Set_MakedTel(MaskedTextBox tb,string strInput)
+        {
+            string str = string.Empty;
+            if (string.IsNullOrWhiteSpace(strInput))
+            {
+                str = tb.Text.Replace("-", string.Empty).Trim();
+            }
+            else
+            {
+                str = strInput.Replace("-", string.Empty).Trim();
+            }
+
+            Debug.WriteLine(str);
+
+            switch (str.Length)
+            {
+                case 8:
+                    tb.Mask = "99-999-999";
+                    break;
+                case 9:
+                    tb.Mask = "99-999-9999";
+                    break;
+                case 10:
+                    tb.Mask = "999-999-9999";
+                    break;
+                case 11:
+                    tb.Mask = "999-9999-9999";
+                    break;
+                case 12:
+                    tb.Mask = "9999-9999-9999";
+                    break;
+            }
+            tb.Text = str;
+
+            Debug.WriteLine($"text:{tb.Text},Length:{tb.Text.Replace("-", string.Empty).Trim().Length},Masking:{tb.Mask}");
+
+        }
 
 
 

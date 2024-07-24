@@ -183,6 +183,7 @@ namespace MLM_Program
         internal static string SMS_smsDeptID; 
 
         internal static string Tel_Number_Fromat;   //전화번호 관련해서 어떤 형식을 가질건지 마스크텍스트 관련해서 셋팅을 잡기 위함.
+
         internal static string ZipCode_Number_Fromat;   //우편번호 관련해서 어떤 형식을 가질건지 마스크텍스트 관련해서 셋팅을 잡기 위함.
         internal static string Biz_Number_Fromat;   //사업자번호 관련해서 어떤 형식을 가질건지 마스크텍스트 관련해서 셋팅을 잡기 위함.
         internal static string Date_Number_Fromat;   //날짜 관련해서 어떤 형식을 가질건지 마스크텍스트 관련해서 셋팅을 잡기 위함.

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 
 namespace MLM_Program
 {
@@ -279,11 +280,16 @@ namespace MLM_Program
 
         private bool Number_in_Check(string sn_Number , int SaRiSu )
         {
+
+            Debug.WriteLine(sn_Number);
+
             string [] sn = sn_Number.Split('-');
             if (sn.Length >= SaRiSu)
             {
                 for (int i = 0; i <= sn.Length - 1; i++)
                 {
+                    Debug.WriteLine($"for i={i}-{sn[i]}");
+
                     if (num_check(sn[i]) == "")
                     {
                         return false;

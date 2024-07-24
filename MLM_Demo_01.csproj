@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\ArchiveManager.cs" />
+    <Compile Include="Class\clsCarImg_Up.cs" />
     <Compile Include="Class\clsCommissionDetail.cs" />
     <Compile Include="Class\clsEncryption.cs" />
     <Compile Include="Class\clsExcel.cs" />

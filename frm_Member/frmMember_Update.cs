@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 
 //using System.Net.Http;
 //using System.Threading.Tasks;
@@ -100,9 +101,9 @@ namespace MLM_Program
             tabC_Mem.TabPages.Remove(tabP_Ded_New);
             tabC_Mem.TabPages.Remove(tabP_Ded_New_Month);
             tabC_Mem.TabPages.Remove(tab_SaveDefault);
-            
 
 
+            Debug.WriteLine($"CountryCode:{cls_User.gid_CountryCode} Is_TH_User :{cls_User.Is_TH_User}");
 
             cls_form_Meth cm = new cls_form_Meth();
             cm.from_control_text_base_chang(this);
@@ -114,8 +115,17 @@ namespace MLM_Program
                 mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
             }
 
-            mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
-            mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
+            mtxtTel1.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
+            mtxtTel1.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
+
+            mtxtTel2.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
+            mtxtTel2.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
+
+            mtxtTel2_C.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
+            mtxtTel2_C.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
+
+            //mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
+            //mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
             mtxtZip1.Mask = cls_app_static_var.ZipCode_Number_Fromat;
             mtxtZip2.Mask = cls_app_static_var.ZipCode_Number_Fromat;
 
@@ -127,7 +137,7 @@ namespace MLM_Program
             mtxtVisaDay.Mask = cls_app_static_var.Date_Number_Fromat;
 
             mtxtBrithDayC.Mask = cls_app_static_var.Date_Number_Fromat;
-            mtxtTel2_C.Mask = cls_app_static_var.Tel_Number_Fromat;
+            //mtxtTel2_C.Mask = cls_app_static_var.Tel_Number_Fromat;
 
             txtB1.Text = "0"; 
             //Reset_Chart_Total();
@@ -439,6 +449,9 @@ namespace MLM_Program
             {
                 mtxtMbid.Text = Send_Number;
                 Set_Form_Date(mtxtMbid.Text, "m");
+
+                Tab_Img_Activate();
+
             }
          
 
@@ -489,6 +502,9 @@ namespace MLM_Program
                 MaskedTextBox tb = (MaskedTextBox)sender;
                 if (tb.ReadOnly == false)
                     tb.BackColor = Color.White;
+
+
+
             }
         }
 
@@ -498,6 +514,7 @@ namespace MLM_Program
 
         private void MtxtData_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             //회원번호 관련칸은 소문자를 다 대문자로 만들어 준다.
             if (e.KeyChar >= 97 && e.KeyChar <= 122)
             {
@@ -1107,9 +1124,11 @@ namespace MLM_Program
                 //txtTel_1.Text = tel[0].ToString ();
                 //txtTel_2.Text = tel[1].ToString();
                 //txtTel_3.Text = tel[2].ToString();
-                cfm.Home_Number_Setting(ds.Tables[base_db_name].Rows[0]["hometel"].ToString(), mtxtTel1);
+                //cfm.Home_Number_Setting(ds.Tables[base_db_name].Rows[0]["hometel"].ToString(), mtxtTel1);
 
-               // T_tel = decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["hometel"].ToString());
+                clsStaticFnc.Set_MakedTel(mtxtTel1, ds.Tables[base_db_name].Rows[0]["hometel"].ToString());
+
+                // T_tel = decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["hometel"].ToString());
             }
 
             if (decrypter.Decrypt(ds.Tables[base_db_name].Rows[0]["hptel"].ToString()).Replace("-", "").Trim() != "")
@@ -1118,7 +1137,8 @@ namespace MLM_Program
                 //txtTel2_1.Text = tel[0].ToString();
                 //txtTel2_2.Text = tel[1].ToString();
                 //txtTel2_3.Text = tel[2].ToString();
-                cfm.Home_Number_Setting(ds.Tables[base_db_name].Rows[0]["hptel"].ToString(), mtxtTel2);
+                clsStaticFnc.Set_MakedTel(mtxtTel2, ds.Tables[base_db_name].Rows[0]["hptel"].ToString());
+                //cfm.Home_Number_Setting(ds.Tables[base_db_name].Rows[0]["hptel"].ToString(), mtxtTel2);
             }
 
 
@@ -1313,7 +1333,9 @@ namespace MLM_Program
                 else if (ds.Tables[base_db_name].Rows[0]["C_For_Kind_TF"].ToString() == "1")
                     raButt_IN_2_C.Checked = true;
 
-                mtxtTel2_C.Text = ds.Tables[0].Rows[0]["C_hptel"].ToString();
+                //mtxtTel2_C.Text = ds.Tables[0].Rows[0]["C_hptel"].ToString();
+                clsStaticFnc.Set_MakedTel(mtxtTel2_C, ds.Tables[base_db_name].Rows[0]["C_hptel"].ToString());
+
                 txtEmail_C.Text = ds.Tables[0].Rows[0]["C_Email"].ToString();
             }
 
@@ -2277,7 +2299,7 @@ namespace MLM_Program
         private void MtxtData_Temp_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
+            //mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
 
             if (e.KeyChar == 13)
             {
@@ -3055,8 +3077,8 @@ namespace MLM_Program
                 mtxtSn.BackColor = Color.White;
             }
 
-            mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
-
+            mtxtTel1.Mask = string.Empty;
+            mtxtTel2.Mask = string.Empty;
 
             idx_Mbid = ""; idx_Mbid2 = 0;
             idx_Password = "";
@@ -3425,11 +3447,14 @@ namespace MLM_Program
                 if (isTH_CheckingNumber == false)
                     isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 11;
 
+
+
+
                 if (isTH_CheckingNumber)
                 {
                     string[] TelNumbers = mtxtTel2.Text.Replace(" ", "").Split('-');
-                    //뒤가 4자리가 아닌경우 빠꾸처리함
-                    if (TelNumbers[2].Length != 4)
+                    //뒤가 4자리가 아닌경우 빠꾸처리함 --> 그냥 배열3개 안만들어졌으면 빠꾸로 합시다.
+                    if (TelNumbers.Length != 3)
                     {
                         if (cls_User.gid_CountryCode == "TH")
                         {
@@ -5014,8 +5039,8 @@ namespace MLM_Program
 
         private void button_Web_img_Click(object sender, EventArgs e)
         {
-            frmBase_Member_Web_IMg e_f = new frmBase_Member_Web_IMg();
-            e_f.Call_searchNumber_Info += new frmBase_Member_Web_IMg.Call_searchNumber_Info_Dele(e_f_Send_Mem_Mbid_Info);
+            frmBase_Member_Web_IMg e_f = new frmBase_Member_Web_IMg("IDCARD", idx_Mbid2);
+            //e_f.Call_searchNumber_Info += new frmBase_Member_Web_IMg.Call_searchNumber_Info_Dele(e_f_Send_Mem_Mbid_Info);
 
             e_f.ShowDialog();
 
@@ -5029,10 +5054,10 @@ namespace MLM_Program
 
         private void button_Web_book_Click(object sender, EventArgs e)
         {
-            frmBase_Member_Web_IMg_2 e_f2 = new frmBase_Member_Web_IMg_2();
-            e_f2.Call_searchNumber_Info += new frmBase_Member_Web_IMg_2.Call_searchNumber_Info_Dele(e_f_Send_Mem_Mbid_Info_2);
+            frmBase_Member_Web_IMg e_f = new frmBase_Member_Web_IMg("BANKBOOK", idx_Mbid2);
+            //e_f2.Call_searchNumber_Info += new frmBase_Member_Web_IMg_2.Call_searchNumber_Info_Dele(e_f_Send_Mem_Mbid_Info_2);
 
-            e_f2.ShowDialog();
+            e_f.ShowDialog();
 
             SendKeys.Send("{TAB}");
         }
