@@ -288,5 +288,30 @@ namespace MLM_Program
             return toDateTime(row, sColumnName, DateTime.MinValue);
         }
 
+        /// <summary>
+        /// 현재 파일이 이미지 인지 체크        /// 
+        /// </summary>
+        /// <param name="sFile">파일명</param>
+        /// <returns>True=이미지 false면 이미지 아님</returns>
+        public static bool isImage(string sFile)
+        {
+            bool bReturn = false;
+
+            string[] sImage = new string[] { ".bmp", ".jpg", ".gif", ".png", ".tiff" };
+
+            string extend = Path.GetExtension(sFile);
+
+            foreach (string sEx in sImage)
+            {
+                if (extend.ToLower() == sEx)
+                {
+                    bReturn = true;
+                    break;
+                }
+            }
+
+            return bReturn;
+        }
+
     }
 }

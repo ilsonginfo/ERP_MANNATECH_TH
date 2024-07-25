@@ -115,35 +115,47 @@ namespace MLM_Program
 
             //string t_url = "https://www.applicant.im/uImage" + T_FileDir ;
 #if DEBUG
-            //string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
-                                                                                string t_url = "https://uat.mannatech.co.th/uImage" + T_FileDir;    // uat 버전. 
+            string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
+            //string t_url = "https://uat.mannatech.co.th/uImage" + T_FileDir;    // uat 버전. 
 #else
             string t_url = "https://www.mannatech.co.th/uImage" + T_FileDir;    // live 버전. 
             //string t_url = "https://uat.mannatech.co.th/uImage" + T_FileDir;    // uat 버전. 
 #endif
 
+            pictureBox1.Dock = DockStyle.None;
+            panel1.Dock = DockStyle.None;
+            webBrowser1.Dock = DockStyle.None;
 
-            Image oImage = GetUrlImage(t_url);
+            pictureBox1.Visible = false;
+            panel1.Visible = false;
+            webBrowser1.Visible = false;
 
-
-
-            if (oImage != null)
+            if (clsStaticFnc.isImage(sFileName))
             {
-                Bitmap bitmap = new Bitmap(GetUrlImage(t_url));
-                this.pictureBox1.Image = bitmap;
+                Debug.WriteLine(t_url);
+                Image oImage = GetUrlImage(t_url);
+
+                if (oImage != null)
+                {
+                    Bitmap bitmap = new Bitmap(GetUrlImage(t_url));
+                    this.pictureBox1.Image = bitmap;
+                }
+                else
+                {
+                    this.Close();
+                }
+                pictureBox1.Visible = true;
+                panel1.Visible = true;
+                pictureBox1.Dock = DockStyle.Fill;
+                panel1.Dock = DockStyle.Bottom;
             }
             else
             {
-                this.Close();
+                webBrowser1.Visible = true;
+                webBrowser1.Dock = DockStyle.Fill;
+                webBrowser1.Navigate(t_url);
             }
-
-            
-            //webBrowser1.Navigate(t_url);
-
-            
-            
-                                   
-        }
+    }
 
 
 
@@ -173,13 +185,22 @@ namespace MLM_Program
 
                     MessageBox.Show("이미지 불러오기가 실패하였습니다.");
                 }
-
-
-                
-                
                 return null;
             }
 
+            catch (Exception ex)
+            {
+                if (cls_User.gid_CountryCode == "TH")
+                {
+                    MessageBox.Show("Image loading failed.");
+                }
+                else
+                {
+
+                    MessageBox.Show("이미지 불러오기가 실패하였습니다.");
+                }
+                return null;
+            }
 
         }
 
