@@ -4004,8 +4004,11 @@ namespace MLM_Program
 
                 Chang_Mem_Address_R(Mbid, Mbid2, Temp_Connect, Conn, tran);
 
-              
-                
+
+                StrSql = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','U' ";
+                Temp_Connect.Insert_Data(StrSql, "tbl_memberinfo", Conn, tran, this.Name, this.Text);
+
+
                 tran.Commit();
                 Save_Error_Check = 1;
                 MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Base_Edit"));
@@ -4025,26 +4028,8 @@ namespace MLM_Program
                 //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
         
 
-
-
-
                 csd.tbl_Memberinfo_Mod(mtxtMbid.Text.Trim());
                 csd_R.tbl_Memberinfo_Mod(mtxtMbid.Text.Trim(), "R", "tbl_Memberinfo_Address", " And Sort_Add = 'R' ");
-
-                cls_Connect_DB Temp_Connect2 = new cls_Connect_DB();
-                Temp_Connect2.Connect_DB();
-                
-                //if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
-                //{
-                    StrSql = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','U' ";
-                //}
-                //else    // 태국 이외 국가인 경우
-                //{
-                //    StrSql = " EXEC  Usp_JDE_Update_MK_Customer '" + Mbid2 + "','U' ";
-                //}
-                DataSet ds1 = new DataSet();
-                Temp_Connect2.Open_Data_Set(StrSql, "tbl_memberinfo", ds1);
-
             }
 
             catch (Exception)

@@ -3903,7 +3903,7 @@ namespace MLM_Program
                 sb.AppendLine(") Values ( ");
                 sb.AppendLine("'" + Mbid + "'");
                 sb.AppendLine("," + Mbid2);
-                sb.AppendLine(",'" + txtName.Text + " " +  txtName_Last.Text + "'");
+                sb.AppendLine(",'" + txtName.Text + " " + txtName_Last.Text + "'");
                 sb.AppendLine(",'" + txtName_E_1.Text.Trim() + "'");
                 sb.AppendLine(",'" + txtName_E_2.Text.Trim() + "'");
                 sb.AppendLine(",'" + txtName.Text.Trim() + "'");
@@ -4024,7 +4024,7 @@ namespace MLM_Program
                 }
                 if (txtBank_Code.Text == "999")
                 {
-                    sb.AppendLine( " ,  1 ");
+                    sb.AppendLine(" ,  1 ");
                 }
                 else
                 {
@@ -4262,7 +4262,13 @@ namespace MLM_Program
                     #endregion
                 }
 
+                //MS 타입의 주문데이터 만들기
+                StrSql = " EXEC Usp_Insert_Firstmember_SalesTable_MS '" + Mbid + "', " + Mbid2 + "";
+                Temp_Connect.Insert_Data(StrSql, "tbl_SalesitemDetail", Conn,tran, this.Name.ToString(), this.Text);
 
+                //MK Customer 에 데이터 넣기
+                string StrSql_JDE_PROCEDUER = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','A' ";
+                Temp_Connect.Insert_Data(StrSql_JDE_PROCEDUER, "tbl_Memberinfo", Conn, tran, this.Name.ToString(), this.Text);
 
 
                 tran.Commit();
@@ -4273,64 +4279,6 @@ namespace MLM_Program
                 MessageBox.Show(cm._chang_base_caption_search("회원_번호") + ":" + mtxtMbid.Text.Trim()
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Base_Save"));
-
-
-
-                cls_Connect_DB Temp_Connect2 = new cls_Connect_DB();
-                Temp_Connect2.Connect_DB();
-
-
-                //20200810 회원가입 완료시 땡처리 주문넣기
-                //주문번호생성
-                //StrSql = "select left(replace(Convert(Varchar(25), GetDate(), 21),'-',''),8) , mbid2 from tbl_memberinfo (nolock) where mbid2 = '" + Mbid2 + "'  ";
-
-
-                //DataSet ds1 = new DataSet();
-                ////테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
-                //Temp_Connect2.Open_Data_Set(StrSql, "tbl_memberinfo", ds1);
-                //int ReCnt2 = Temp_Connect2.DataSet_ReCount;
-                //today = ds1.Tables["tbl_memberinfo"].Rows[0][0].ToString();
-
-
-                //StrSql = "EXEC Usp_Insert_Tbl_Sales_OrderNumber_CS '', '" + Mbid2 + "', '" + today + "', '01'";
-                //DataSet ds2 = new DataSet();
-
-
-                //Temp_Connect2.Open_Data_Set(StrSql, "tbl_Sales_OrdNumber", ds2);
-                //int ReCnt3 = Temp_Connect2.DataSet_ReCount;
-
-
-                //if (ReCnt3 > 0)
-                //{
-                //    string OrderNumber = ds2.Tables["tbl_Sales_OrdNumber"].Rows[0]["OrderNumber"].ToString();
-
-                //if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
-                //{
-                    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable_MS '" + Mbid + "', " + Mbid2 + "";
-                //}
-                //else    // 태국 이외 국가시
-                //{
-                //    //StrSql = " EXEC Usp_Insert_Firstmember_SalesTable '" + Mbid + "', " + Mbid2 + "";
-                //    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable " + Mbid2 + "";
-                //}
-
-                Temp_Connect.Insert_Data(StrSql, "tbl_SalesitemDetail", this.Name.ToString(), this.Text);
-                //}
-
-
-                string StrSql_JDE_PROCEDUER = "";
-                //if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
-                //{
-                    StrSql_JDE_PROCEDUER = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','A' ";
-                //}
-                //else    // 태국 이외 국가시
-                //{
-                //    StrSql_JDE_PROCEDUER = "EXEC  Usp_JDE_Update_MK_Customer '" + Mbid2 + "','A'";
-                //}
-                    
-                Temp_Connect.Insert_Data(StrSql_JDE_PROCEDUER, "tbl_Memberinfo", Conn, tran);
-
-
             }
             catch (Exception)
             {
