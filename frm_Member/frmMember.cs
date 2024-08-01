@@ -93,12 +93,10 @@ namespace MLM_Program
             mtxtMbid.Mask = cls_app_static_var.Member_Number_Fromat;
             mtxtMbid_s.Mask = cls_app_static_var.Member_Number_Fromat;
             mtxtMbid_n.Mask = cls_app_static_var.Member_Number_Fromat;
-                mtxtSn.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
-                mtxtSn_C.Mask = "999999-9999999"; //기본 셋팅은 주민번호이다. 
             txtB1.Text = "0";
 
             mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
-            mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
+            //2024.07.31 더이상 사용되지않음 mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
             mtxtZip1.Mask = cls_app_static_var.ZipCode_Number_Fromat;
 
 
@@ -186,28 +184,20 @@ namespace MLM_Program
                 button1.Visible = true;
             }
 
-            InitComboZipCode_TH();
             // 태국버전 인 경우
             if (cls_User.gid_CountryCode == "TH")
             {
-                pnlDistrict_TH.Visible = true;
-                pnlProvince_TH.Visible = true;
-                pnlSubDistrict_TH.Visible = true;
-                pnlZipCode_TH.Visible = true;
-                pnlZipCode_KR.Visible = false;
-                txtAddress2.ReadOnly = true;
-                cbSubDistrict_TH_SelectedIndexChanged(this, null);
                 tlpNaCode.Visible = false;
                 //combo_Se_Code_2.Text = "TH";
+                txtAddress1.Font = new Font("Tahoma", 11f);
+                txtAddress2.Font = new Font("Tahoma", 11f);
+                txtName.Font = new Font("Tahoma", 11f);
+                txtName_Last.Font = new Font("Tahoma", 11f);
+
             }
             // 태국 이외 버전 인 경우
             else
             {
-                pnlDistrict_TH.Visible = false;
-                pnlProvince_TH.Visible = false;
-                pnlSubDistrict_TH.Visible = false;
-                pnlZipCode_TH.Visible = false;
-                pnlZipCode_KR.Visible = true;
                 txtAddress2.ReadOnly = false;
                 txtAddress2.Clear();
             }
@@ -232,8 +222,8 @@ namespace MLM_Program
 
             //combo_C_Card_Per.Items.AddRange(data_P);
 
-
-
+            mtxtTel1.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
+            mtxtTel1.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
 
         }
 
@@ -254,7 +244,6 @@ namespace MLM_Program
             cfm.button_flat_change(butt_Delete);
             cfm.button_flat_change(butt_Excel);
             cfm.button_flat_change(butt_Exit);
-            cfm.button_flat_change(butt_AddCode);
 
             cfm.button_flat_change(butt_AddCode2);
             cfm.button_flat_change(butt_AddCodeT1);
@@ -386,7 +375,9 @@ namespace MLM_Program
                     tb.BackColor = Color.White;
 
                 if (tb.Name == "txtName" && tb.Text != "")
-                    txtName_Accnt.Text = tb.Text;
+                    txtName_Accnt.Text = txtName.Text + " " + txtName_Last.Text;
+                if (tb.Name == "txtName_Last" && tb.Text != "")
+                    txtName_Accnt.Text = txtName.Text + " " + txtName_Last.Text;
 
             }
 
@@ -1672,8 +1663,8 @@ namespace MLM_Program
             cgb_Pop.Base_tb_2 = tb;    //2번은 명임
             cgb_Pop.Base_Location_obj = tb;
 
-            if (tb.Name == "txtCenter")
-                cgb_Pop.Next_Focus_Control = butt_AddCode;
+            //if (tb.Name == "txtCenter")
+            //    cgb_Pop.Next_Focus_Control = butt_AddCode;
 
             if (tb.Name == "txtBank")
                 cgb_Pop.Next_Focus_Control = txtName_Accnt;
@@ -1704,7 +1695,7 @@ namespace MLM_Program
                 if (tb.Name == "txtCenter")
                 {
                     cgb_Pop.db_grid_Popup_Base(2, "센타_코드", "센타명", "Ncode", "Name", strSql);
-                    cgb_Pop.Next_Focus_Control = butt_AddCode;
+                    //cgb_Pop.Next_Focus_Control = butt_AddCode;
                 }
 
                 if (tb.Name == "txtR_Id")
@@ -1731,7 +1722,7 @@ namespace MLM_Program
                     Tsql = Tsql + " Order by Ncode ";
 
                     cgb_Pop.db_grid_Popup_Base(2, "센타_코드", "센타명", "Ncode", "Name", Tsql);
-                    cgb_Pop.Next_Focus_Control = butt_AddCode;
+                   // cgb_Pop.Next_Focus_Control = butt_AddCode;
                 }
 
                 if (tb.Name == "txtR_Id")
@@ -2038,7 +2029,7 @@ namespace MLM_Program
             opt_sell_2.Checked = true; opt_Bir_TF_1.Checked = true;
             raButt_IN_1.Checked = true;
 
-            mtxtSn.Mask = "999999-9999999";
+            //mtxtSn.Mask = "999999-9999999";
             mtxtRegDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             chk_Top_n.Checked = false; chk_Top_s.Checked = false;
             check_Auto.Checked = false;
@@ -2148,7 +2139,7 @@ namespace MLM_Program
                     //    new cls_sms().Congratulations_Membership(Mbid2);
                     //}
                     //태국한해서 전송
-                    if (combo_Se_Code_2.Text == "TH")
+                    //if (combo_Se_Code_2.Text == "TH")
                     {
                         new cls_sms().SMS_JoinMember_TH(Mbid2);
                         // Mail 호출 - 회원가입
@@ -2223,7 +2214,7 @@ namespace MLM_Program
                 mtxtZip_Auto.Text = mtxtZip1.Text;
 
                 txtName_Auto.Text = txtName.Text;
-                mtxtTel_Auto.Text = mtxtTel2.Text;
+                //mtxtTel_Auto.Text = mtxtTel2.Text;
 
                 txtAddress2_Auto.Focus();
             }
@@ -3196,6 +3187,36 @@ namespace MLM_Program
             me = T_R.Text_Null_Check(txtName, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
             if (me != "")
             {
+                txtName.Focus();
+                txtName.Select();
+
+                MessageBox.Show(me);
+                return false;
+            }
+            me = T_R.Text_Null_Check(txtName_Last, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+            if (me != "")
+            {
+                txtName_Last.Focus();
+                txtName_Last.Select();
+
+                MessageBox.Show(me);
+                return false;
+            }
+            me = T_R.Text_Null_Check(txtName_E_1, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+            if (me != "")
+            {
+                txtName_E_1.Focus();
+                txtName_E_1.Select();
+
+                MessageBox.Show(me);
+                return false;
+            }
+            me = T_R.Text_Null_Check(txtName_E_2, "Msg_Sort_M_Name"); //성명을 필히 넣어야 합니다.
+            if (me != "")
+            {
+                txtName_E_2.Focus();
+                txtName_E_2.Select();
+
                 MessageBox.Show(me);
                 return false;
             }
@@ -3214,20 +3235,20 @@ namespace MLM_Program
                 return false;
             }
 
-            if (txtName_Accnt.Text != "" && txtName_Accnt.Text.Trim() != txtName.Text.Trim())
-            {
-                if (cls_User.gid_CountryCode == "TH")
-                {
-                    if (MessageBox.Show("The member name you entered and the account holder name are not the same. Would you like to proceed?", "", MessageBoxButtons.YesNo) == DialogResult.No)
-                        return false;
-                }
-                else
-                {
+            //if (txtName_Accnt.Text != "" && txtName_Accnt.Text.Trim() != txtName.Text.Trim())
+            //{
+            //    if (cls_User.gid_CountryCode == "TH")
+            //    {
+            //        if (MessageBox.Show("The member name you entered and the account holder name are not the same. Would you like to proceed?", "", MessageBoxButtons.YesNo) == DialogResult.No)
+            //            return false;
+            //    }
+            //    else
+            //    {
 
-                    if (MessageBox.Show("입력하신 회원명과 예금주명이 동일하지 않습니다. 계속 진행하시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.No)
-                        return false;
-                }
-            }
+            //        if (MessageBox.Show("입력하신 회원명과 예금주명이 동일하지 않습니다. 계속 진행하시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.No)
+            //            return false;
+            //    }
+            //}
 
             //생년월일을 주민벚호 기준으로 넣는다.
             if (mtxtBrithDay.Text.Replace("-", "") == "" || mtxtBrithDay.Text.Replace("-", "").Length != 8)
@@ -3289,109 +3310,112 @@ namespace MLM_Program
             }
             //우편번호
             // 태국인 경우
-            if (combo_Se_Code_2.Text == "TH")
+            if (cls_User.Is_TH_User)
             {
-                if (cbProvince_TH.SelectedIndex < 0)
+                if (txtAddress1.Text.Trim().Length == 0)
                 {
                     if (cls_User.gid_CountryCode == "TH")
                     {
-                        MessageBox.Show("Please specify province.");
+                        MessageBox.Show("Please proceed with the address search and enter.");
                     }
                     else
                     {
-                        MessageBox.Show("Province를 지정해주세요");
+                        MessageBox.Show("주소검색을 진행하여 입력하여주십시오.");
                     }
-                    cbProvince_TH.Focus();
-                    return false;
-                }
-                else if (cbDistrict_TH.SelectedIndex < 0)
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify district.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("district를 지정해주세요");
-                    }
-                    cbDistrict_TH.Focus();
-                    return false;
-                }
-                else if (cbSubDistrict_TH.SelectedIndex < 0)
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify subdistrict.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("subdistrict를 지정해주세요");
-                    }
-                    cbDistrict_TH.Focus();
-                    return false;
-                }
-                else if (txtZipCode_TH.Text == "")
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify postal code.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("우편번호를 지정해주세요");
-                    }
-                    txtZipCode_TH.Focus();
+                    btnAddressTH.Focus();
                     return false;
                 }
 
                 //핸드폰번호 - 태국
-                if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length <= 9)
+                string HPTel_0_1 = mtxtHPTel_0_1.Text.Trim();
+                string HPTel_0_2 = mtxtHPTel_0_2.Text.Trim();
+                string HPTel_0_3 = mtxtHPTel_0_3.Text.Trim();
+                if(HPTel_0_1.Length < 2)
                 {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify your cell phone number.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("핸드폰번호를 지정해주세요");
-                    }
-                    mtxtTel2.Focus();
-                    return false;
-                }
-            }
-            // 그 외 국가인 경우
-            else
-            {
-                if (mtxtZip1.Text == "")
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify postal code.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("우편번호를 지정해주세요");
-                    }
-                    mtxtZip1.Focus();
+                    MessageBox.Show("Please specify your cell phone number." + Environment.NewLine +
+                        "The first digit of your cell phone number must be at least 2 digits.");
+                    mtxtHPTel_0_1.Focus();
                     return false;
                 }
 
-                //핸드폰번호 - 한국
-                if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length != 11)
+                if (HPTel_0_2.Length < 3)
                 {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify your cell phone number.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("핸드폰번호를 지정해주세요");
-                    }
-                    mtxtTel2.Focus();
+                    MessageBox.Show("Please specify your cell phone number." + Environment.NewLine +
+                        "The middle digit of your cell phone number must be at least 3 digits.");
+                    mtxtHPTel_0_2.Focus();
                     return false;
                 }
 
+
+                if (HPTel_0_3.Length < 3)
+                {
+                    MessageBox.Show("Please specify your cell phone number." + Environment.NewLine +
+                         "The last part of your cell phone number must be at least 3 digits long");
+                    mtxtHPTel_0_3.Focus();
+                    return false;
+                }
+
+
+                string HPTel = HPTel_0_1 + HPTel_0_2 + HPTel_0_3;
+
+                bool isTH_CheckingNumber = HPTel.Length == 10;
+                if (isTH_CheckingNumber == false)
+                    isTH_CheckingNumber = HPTel.Length == 11;
+
+                //10자리나 11자리가 아닌경우
+                if (isTH_CheckingNumber == false)
+                {
+                    if (cls_User.gid_CountryCode == "TH")
+                    {
+                        MessageBox.Show("Please specify your cell phone number." + Environment.NewLine +
+                            "The phone number you entered is not 10 or 11 digits long");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("핸드폰번호를 지정해주세요" + Environment.NewLine +
+                            "입력하신 번호는 10자리 혹은 11자리가 아닙니다.");
+                    }
+
+                    mtxtHPTel_0_1.Focus();
+                    return false;
+                }
+                
+
             }
+            //-- 2024.07.31 태국만 사용하는 폼 // 그 외 국가인 경우
+            //-- 2024.07.31 태국만 사용하는 폼 else
+            //-- 2024.07.31 태국만 사용하는 폼 {
+            //-- 2024.07.31 태국만 사용하는 폼     if (mtxtZip1.Text == "")
+            //-- 2024.07.31 태국만 사용하는 폼     {
+            //-- 2024.07.31 태국만 사용하는 폼         if (cls_User.gid_CountryCode == "TH")
+            //-- 2024.07.31 태국만 사용하는 폼         {
+            //-- 2024.07.31 태국만 사용하는 폼             MessageBox.Show("Please specify postal code.");
+            //-- 2024.07.31 태국만 사용하는 폼         }
+            //-- 2024.07.31 태국만 사용하는 폼         else
+            //-- 2024.07.31 태국만 사용하는 폼         {
+            //-- 2024.07.31 태국만 사용하는 폼             MessageBox.Show("우편번호를 지정해주세요");
+            //-- 2024.07.31 태국만 사용하는 폼         }
+            //-- 2024.07.31 태국만 사용하는 폼         mtxtZip1.Focus();
+            //-- 2024.07.31 태국만 사용하는 폼         return false;
+            //-- 2024.07.31 태국만 사용하는 폼     }
+            //  -- 2024.07.31 태국만 사용하는 폼 
+            //-- 2024.07.31 태국만 사용하는 폼     //핸드폰번호 - 한국
+            //-- 2024.07.31 태국만 사용하는 폼     if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length != 11)
+            //-- 2024.07.31 태국만 사용하는 폼     {
+            //-- 2024.07.31 태국만 사용하는 폼         if (cls_User.gid_CountryCode == "TH")
+            //-- 2024.07.31 태국만 사용하는 폼         {
+            //-- 2024.07.31 태국만 사용하는 폼             MessageBox.Show("Please specify your cell phone number.");
+            //-- 2024.07.31 태국만 사용하는 폼         }
+            //-- 2024.07.31 태국만 사용하는 폼         else
+            //-- 2024.07.31 태국만 사용하는 폼         {
+            //-- 2024.07.31 태국만 사용하는 폼             MessageBox.Show("핸드폰번호를 지정해주세요");
+            //-- 2024.07.31 태국만 사용하는 폼         }
+            //-- 2024.07.31 태국만 사용하는 폼         mtxtTel2.Focus();
+            //-- 2024.07.31 태국만 사용하는 폼         return false;
+            //-- 2024.07.31 태국만 사용하는 폼     }
+            //  -- 2024.07.31 태국만 사용하는 폼 
+            //-- 2024.07.31 태국만 사용하는 폼 }
 
 
 
@@ -3431,7 +3455,15 @@ namespace MLM_Program
             //    return false;
             //}
 
-
+            Sn = string.Empty;
+            //주민번호체크
+            if (mtxtSn.Text.Replace("-", "").Replace("_", "").Trim() == "")
+            {
+                MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Not_Input_Err")
+                  + "\n" +
+                  cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                mtxtSn.Focus(); return false;
+            }
 
             if (chk_Top_n.Checked == true)
             {
@@ -3516,14 +3548,13 @@ namespace MLM_Program
         /// <summary> 동일인물이있는가? </summary>
         private Boolean Check_Duplication_Error()
         {
-            //20180807 현재는 CI_DI를 필수적으로 받지않으닌까! 
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("SELECT isnull(count(*), 0) cnt");
             sb.AppendLine("FROM tbl_memberinfo (nolock) ");
             sb.AppendLine("WHERE LeaveCheck = 1 ");
-            // sb.AppendLine(string.Format("and Email = '{0}'", txtEmail.Text));
-            sb.AppendLine(string.Format("and M_Name = '{0}'", txtName.Text));
+            sb.AppendLine(string.Format("and T_Name = '{0}'", txtName.Text));
+            sb.AppendLine(string.Format("and T_Name_Last = '{0}'", txtName_Last.Text));
             sb.AppendLine(string.Format("and (BirthDay+BirthDay_M+BirthDay_D) = '{0}'", mtxtBrithDay.Text.Replace("-", "")));
 
             DataSet ds = new DataSet();
@@ -3548,6 +3579,12 @@ namespace MLM_Program
 
         private Boolean Check_Duplication_Error1()
         {
+
+            string HPTel_0_1 = mtxtHPTel_0_1.Text.Trim();
+            string HPTel_0_2 = mtxtHPTel_0_2.Text.Trim();
+            string HPTel_0_3 = mtxtHPTel_0_3.Text.Trim();
+            string HPTel = string.Format("{0}-{1}-{2}", HPTel_0_1, HPTel_0_2, HPTel_0_3);
+
             //핸드폰중복체크
             //20180807 현재는 CI_DI를 필수적으로 받지않으닌까! 
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
@@ -3555,9 +3592,9 @@ namespace MLM_Program
             sb.AppendLine("SELECT isnull(count(*), 0) cnt");
             sb.AppendLine("FROM tbl_memberinfo (nolock) ");
             sb.AppendLine("WHERE LeaveCheck = 1 ");
-            // sb.AppendLine(string.Format("and Email = '{0}'", txtEmail.Text));
-            sb.AppendLine(string.Format("and M_Name = '{0}'", txtName.Text));
-            sb.AppendLine(string.Format("and hptel = '{0}'", mtxtTel2.Text));
+            sb.AppendLine(string.Format("and T_Name = '{0}'", txtName.Text));
+            sb.AppendLine(string.Format("and T_Name_Last = '{0}'", txtName_Last.Text));
+            sb.AppendLine(string.Format("and hptel = '{0}'", HPTel));
 
             DataSet ds = new DataSet();
             if (Temp_Connect.Open_Data_Set(sb.ToString(), "Check_Join", ds, this.Name, this.Text) == false) return false;
@@ -3588,7 +3625,8 @@ namespace MLM_Program
             sb.AppendLine("FROM tbl_memberinfo (NOLOCK) ");
             sb.AppendLine("WHERE LeaveCheck = 1 ");
             // sb.AppendLine(string.Format("and Email = '{0}'", txtEmail.Text));
-            sb.AppendLine(string.Format("and M_Name = '{0}'", txtName.Text));
+            sb.AppendLine(string.Format("and T_Name = '{0}'", txtName.Text));
+            sb.AppendLine(string.Format("and T_Name_Last = '{0}'", txtName_Last.Text));
             sb.AppendLine(string.Format("and hometel = '{0}'", mtxtTel1.Text.Replace("-", "")));
 
             DataSet ds = new DataSet();
@@ -3609,11 +3647,38 @@ namespace MLM_Program
 
             return true;
         }
+
+        private bool CheckBox_NominSave_ID_Check()
+        {
+            if (mtxtMbid_n.Text.Replace("_", "").Length > 0 && txtName_n.Text.Trim() == string.Empty)
+            {   
+                //MtxtData_KeyPress(mtxtMbid_n, new KeyPressEventArgs((char)13));
+                string MessageText = cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Nomin") + Environment.NewLine 
+                    + cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action");
+
+                MessageBox.Show(MessageText);
+                mtxtMbid_n.Focus();
+                return false;
+            }
+
+            else if (mtxtMbid_s.Text.Replace("_", "").Length > 0 && txtName_s.Text.Trim() == string.Empty)
+            {
+                string MessageText = cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Save") + Environment.NewLine
+                    + cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action");
+
+                MessageBox.Show(MessageText);
+                mtxtMbid_s.Focus();
+                //MtxtData_KeyPress(mtxtMbid_s, new KeyPressEventArgs((char)13));
+                return false;
+            }
+            return true;
+        }
+
         //저장 버튼을 눌럿을때 실행되는 메소드 실질적인 변경 작업이 이루어진다.
         private void Save_Base_Data(ref int Save_Error_Check)
         {
             //if (Check_Certify_Error() == false) return; //회원 핸드폰인증이 되지않으면 탈출
-
+            if (CheckBox_NominSave_ID_Check() == false) return;
             if (Check_Duplication_Error() == false) return; //생년월일 동명이인 중복값있으면 탈출
             if (Check_Duplication_Error1() == false) return; //핸드폰 동명이인 중복값있으면 탈출 
                                                              //집전화는 선택 if (Check_Duplication_Error2() == false) return; //집전화 동명이인 중복값있으면 탈출 
@@ -3667,11 +3732,16 @@ namespace MLM_Program
 
 
 
+                string HPTel_0_1 = mtxtHPTel_0_1.Text.Trim();
+                string HPTel_0_2 = mtxtHPTel_0_2.Text.Trim();
+                string HPTel_0_3 = mtxtHPTel_0_3.Text.Trim();
+                hptel = string.Format("{0}-{1}-{2}", HPTel_0_1, HPTel_0_2, HPTel_0_3);
+
 
                 if (mtxtTel1.Text.Replace("-", "").Trim() != "") hometel = mtxtTel1.Text;
-                if (mtxtTel2.Text.Replace("-", "").Trim() != "") hptel = mtxtTel2.Text;
+                //if (mtxtTel2.Text.Replace("-", "").Trim() != "") hptel = mtxtTel2.Text;
 
-                t_Sn = mtxtSn.Text.Replace("-", "").Replace("_", "").Trim();
+                t_Sn = mtxtSn.Text.Replace("_", "").Trim();
 
                 if (check_BankDocument.Checked == true) BankDocument = 1;
                 if (check_CpnoDocument.Checked == true) CpnoDocument = 1;
@@ -3774,7 +3844,7 @@ namespace MLM_Program
                 StringBuilder sb = new StringBuilder();
                 string StrSql = "";
 
-                string sAddressCode = (combo_Se_Code_2.Text == "TH") ? txtZipCode_TH.Text : mtxtZip1.Text.Replace("-", "");  // 태국이면 태국코드, 그 외 한국코드
+                string sAddressCode = mtxtZip1.Text.Replace("-", "");  // 태국이면 태국코드, 그 외 한국코드
 
                 sb.Append("Insert into tbl_Memberinfo ");
                 sb.Append(" (");
@@ -3783,6 +3853,8 @@ namespace MLM_Program
                 sb.Append(" , m_name ");
                 sb.Append(" , e_name ");
                 sb.Append(" , E_name_Last ");
+                sb.Append(" , t_name ");
+                sb.Append(" , t_name_Last ");
                 sb.Append(" , email ");
                 sb.Append(" , Cpno ");
                 sb.AppendLine(" , addcode1 ");
@@ -3859,9 +3931,11 @@ namespace MLM_Program
                 sb.AppendLine(") Values ( ");
                 sb.AppendLine("'" + Mbid + "'");
                 sb.AppendLine("," + Mbid2);
-                sb.AppendLine(",'" + txtName.Text.Trim() + "'");
+                sb.AppendLine(",'" + txtName.Text + " " + txtName_Last.Text + "'");
                 sb.AppendLine(",'" + txtName_E_1.Text.Trim() + "'");
                 sb.AppendLine(",'" + txtName_E_2.Text.Trim() + "'");
+                sb.AppendLine(",'" + txtName.Text.Trim() + "'");
+                sb.AppendLine(",'" + txtName_Last.Text.Trim() + "'");
                 sb.AppendLine(",'" + txtEmail.Text.Trim() + "'");
                 sb.AppendLine(", dbo.ENCRYPT_AES256('" + t_Sn.Trim() + "') ");
                 //sb.AppendLine(",'" + mtxtZip1.Text.Replace("-", "") + "'");
@@ -3978,7 +4052,7 @@ namespace MLM_Program
                 }
                 if (txtBank_Code.Text == "999")
                 {
-                    sb.AppendLine( " ,  1 ");
+                    sb.AppendLine(" ,  1 ");
                 }
                 else
                 {
@@ -3989,8 +4063,8 @@ namespace MLM_Program
                 {
                     //sb.AppendLine(", '" + cbDistrict_TH.Text + "'");
                     //sb.AppendLine(", '" + cbProvince_TH.Text + "'");
-                    sb.AppendLine(", '" + cbDistrict_TH.Text + "'");
-                    sb.AppendLine(", '" + cbProvince_TH.SelectedValue.ToString() + "'");
+                    sb.AppendLine(", '" + txtDistrict.Text + "'");
+                    sb.AppendLine(", '" + txtProvinceCode.Text + "'");
                 }
 
                 sb.AppendLine(")");
@@ -4216,7 +4290,13 @@ namespace MLM_Program
                     #endregion
                 }
 
+                //MS 타입의 주문데이터 만들기
+                StrSql = " EXEC Usp_Insert_Firstmember_SalesTable_MS '" + Mbid + "', " + Mbid2 + "";
+                Temp_Connect.Insert_Data(StrSql, "tbl_SalesitemDetail", Conn,tran, this.Name.ToString(), this.Text);
 
+                //MK Customer 에 데이터 넣기
+                string StrSql_JDE_PROCEDUER = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','A' ";
+                Temp_Connect.Insert_Data(StrSql_JDE_PROCEDUER, "tbl_Memberinfo", Conn, tran, this.Name.ToString(), this.Text);
 
 
                 tran.Commit();
@@ -4227,64 +4307,6 @@ namespace MLM_Program
                 MessageBox.Show(cm._chang_base_caption_search("회원_번호") + ":" + mtxtMbid.Text.Trim()
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Base_Save"));
-
-
-
-                cls_Connect_DB Temp_Connect2 = new cls_Connect_DB();
-                Temp_Connect2.Connect_DB();
-
-
-                //20200810 회원가입 완료시 땡처리 주문넣기
-                //주문번호생성
-                //StrSql = "select left(replace(Convert(Varchar(25), GetDate(), 21),'-',''),8) , mbid2 from tbl_memberinfo (nolock) where mbid2 = '" + Mbid2 + "'  ";
-
-
-                //DataSet ds1 = new DataSet();
-                ////테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
-                //Temp_Connect2.Open_Data_Set(StrSql, "tbl_memberinfo", ds1);
-                //int ReCnt2 = Temp_Connect2.DataSet_ReCount;
-                //today = ds1.Tables["tbl_memberinfo"].Rows[0][0].ToString();
-
-
-                //StrSql = "EXEC Usp_Insert_Tbl_Sales_OrderNumber_CS '', '" + Mbid2 + "', '" + today + "', '01'";
-                //DataSet ds2 = new DataSet();
-
-
-                //Temp_Connect2.Open_Data_Set(StrSql, "tbl_Sales_OrdNumber", ds2);
-                //int ReCnt3 = Temp_Connect2.DataSet_ReCount;
-
-
-                //if (ReCnt3 > 0)
-                //{
-                //    string OrderNumber = ds2.Tables["tbl_Sales_OrdNumber"].Rows[0]["OrderNumber"].ToString();
-
-                //if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
-                //{
-                    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable_MS '" + Mbid + "', " + Mbid2 + "";
-                //}
-                //else    // 태국 이외 국가시
-                //{
-                //    //StrSql = " EXEC Usp_Insert_Firstmember_SalesTable '" + Mbid + "', " + Mbid2 + "";
-                //    StrSql = " EXEC Usp_Insert_Firstmember_SalesTable " + Mbid2 + "";
-                //}
-
-                Temp_Connect.Insert_Data(StrSql, "tbl_SalesitemDetail", this.Name.ToString(), this.Text);
-                //}
-
-
-                string StrSql_JDE_PROCEDUER = "";
-                //if (combo_Se_Code_2.Text == "TH")   // 태국인 경우
-                //{
-                    StrSql_JDE_PROCEDUER = " EXEC  Usp_JDE_Update_MK_Customer_TH '" + Mbid2 + "','A' ";
-                //}
-                //else    // 태국 이외 국가시
-                //{
-                //    StrSql_JDE_PROCEDUER = "EXEC  Usp_JDE_Update_MK_Customer '" + Mbid2 + "','A'";
-                //}
-                    
-                Temp_Connect.Insert_Data(StrSql_JDE_PROCEDUER, "tbl_Memberinfo", Conn, tran);
-
-
             }
             catch (Exception)
             {
@@ -4816,22 +4838,6 @@ namespace MLM_Program
 
         }
 
-        private void InitComboZipCode_TH()
-        {
-            cls_Connect_DB Temp_conn = new cls_Connect_DB();
-            DataSet ds = new DataSet();
-            StringBuilder sb = new StringBuilder();
-
-            //sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_State_TH() ORDER BY ZIPCODE_SORT ");
-            sb.AppendLine("SELECT * FROM ufn_Get_ZipCode_Province_TH() ORDER BY MinSubDistrictID ");
-
-            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
-
-            cbProvince_TH.DataBindings.Clear();
-            cbProvince_TH.DataSource = ds.Tables["ZipCode_NM"];
-            cbProvince_TH.DisplayMember = "ZipCode_NM";
-            cbProvince_TH.ValueMember = "ProvinceCode";
-        }
 
         private void InitCombo()
         {
@@ -4918,114 +4924,41 @@ namespace MLM_Program
             combo_Se_Code_2.SelectedIndex = combo_Se_2.SelectedIndex;
             combo_Se.SelectedIndex = combo_Se_2.SelectedIndex;
 
-            // 태국버전 인 경우
-            if (combo_Se_Code_2.Text == "TH")
-            {
-                pnlDistrict_TH.Visible = true;
-                pnlProvince_TH.Visible = true;
-                pnlSubDistrict_TH.Visible = true;
-                pnlZipCode_TH.Visible = true;
-                pnlZipCode_KR.Visible = false;
-                txtAddress2.ReadOnly = true;
-                cbSubDistrict_TH_SelectedIndexChanged(this, null);
-            }
-            // 태국 이외 버전 인 경우
-            else
-            {
-                pnlDistrict_TH.Visible = false;
-                pnlProvince_TH.Visible = false;
-                pnlSubDistrict_TH.Visible = false;
-                pnlZipCode_TH.Visible = false;
-                pnlZipCode_KR.Visible = true;
-                txtAddress2.ReadOnly = false;
-                txtAddress2.Clear();
-            }
         }
 
         private void combo_Se_Code_2_SelectedIndexChanged(object sender, EventArgs e)
         {
             combo_Se_2.SelectedIndex = combo_Se_Code_2.SelectedIndex;
             combo_Se_Code.SelectedIndex = combo_Se_Code_2.SelectedIndex;
+        }
 
-            // 태국버전 인 경우
-            if (combo_Se_Code_2.Text == "TH")
+        private void btnAddressTH_Click(object sender, EventArgs e)
+        {
+            mtxtZip1.Text = "";
+            txtDistrict.Text = "";
+            txtProvinceCode.Text = "";
+
+            frmBase_Address_Popup_TH frm = new frmBase_Address_Popup_TH();
+            frm.BringToFront();
+            frm.ShowDialog();
+
+            if (frm.Data.IsOK)
             {
-                pnlDistrict_TH.Visible = true;
-                pnlProvince_TH.Visible = true;
-                pnlSubDistrict_TH.Visible = true;
-                pnlZipCode_TH.Visible = true;
-                pnlZipCode_KR.Visible = false;
-                txtAddress2.ReadOnly = true;
-                cbSubDistrict_TH_SelectedIndexChanged(this, null);
+                mtxtZip1.Text = frm.Data.Zipcode;
+                txtDistrict.Text = frm.Data.SubDistrictCode;
+                txtProvinceCode.Text = frm.Data.Province_Code;
+
+                txtAddress2.Text = frm.Data.Get_FullAddress;
+                txtAddress1.Focus();
             }
-            // 태국 이외 버전 인 경우
             else
             {
-                pnlDistrict_TH.Visible = false;
-                pnlProvince_TH.Visible = false;
-                pnlSubDistrict_TH.Visible = false;
-                pnlZipCode_TH.Visible = false;
-                pnlZipCode_KR.Visible = true;
-                txtAddress2.ReadOnly = false;
-                txtAddress2.Clear();
+                mtxtZip1.Text = "";
+                txtAddress1.Text = "";
+                btnAddressTH.Focus();
             }
-        }
-
-        private void cbProvince_TH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cls_Connect_DB Temp_conn = new cls_Connect_DB();
-            DataSet ds = new DataSet();
-            StringBuilder sb = new StringBuilder();
-
-            //sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_City_TH('" + cbProvince_TH.Text + "') ORDER BY ZIPCODE_SORT ");
-            sb.AppendLine("SELECT ZIPCODE_NM FROM ufn_Get_ZipCode_District_TH('" + cbProvince_TH.Text + "') ORDER BY MinSubDistrictID ");
-
-            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
-
-            cbDistrict_TH.DataBindings.Clear();
-            cbDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
-            cbDistrict_TH.DisplayMember = "ZipCode_NM";
-
-        }
-
-        private void cbDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cls_Connect_DB Temp_conn = new cls_Connect_DB();
-            DataSet ds = new DataSet();
-            StringBuilder sb = new StringBuilder();
-
-            //sb.AppendLine("SELECT * FROM dbo.ufn_Get_ZipCode_TH('" + cbDistrict_TH.Text + "') ");
-            sb.AppendLine("SELECT ZIPCODE_NM FROM dbo.ufn_Get_ZipCode_SubDistrict_TH('" + cbDistrict_TH.Text + "') ORDER BY MinSubDistrictID ");
-
-            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
-
-            cbSubDistrict_TH.DataBindings.Clear();
-            cbSubDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
-            cbSubDistrict_TH.DisplayMember = "ZipCode_NM";
-        }
-
-        private void cbSubDistrict_TH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cls_Connect_DB Temp_conn = new cls_Connect_DB();
-            DataSet ds = new DataSet();
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("SELECT [ZIPCODE_NM] = PostCode FROM TLS_ZIPCODE_CS WITH(NOLOCK) WHERE SubDistrictThaiShort = '" + cbSubDistrict_TH.Text + "' ");
-
-            if (Temp_conn.Open_Data_Set(sb.ToString(), "ZipCode_NM", ds) == false) return;
-
-            if (Temp_conn.DataSet_ReCount <= 0) return;
-
-            txtZipCode_TH.Text = "";
-            txtZipCode_TH.Text = ds.Tables["ZipCode_NM"].Rows[0][0].ToString();
-
-            //txtAddress2.Text = cbProvince_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.SelectedValue.ToString();
-            txtAddress2.Text = cbSubDistrict_TH.Text + " " + cbDistrict_TH.Text + " " + cbProvince_TH.Text;
 
 
-            //cbDistrict_TH.DataBindings.Clear();
-            //cbDistrict_TH.DataSource = ds.Tables["ZipCode_NM"];
-            //cbDistrict_TH.DisplayMember = "ZipCode_NM";
         }
     }
 

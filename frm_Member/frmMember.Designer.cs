@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mtxtMbid = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.butt_Excel = new System.Windows.Forms.Button();
@@ -42,13 +42,11 @@
             this.butt_Clear = new System.Windows.Forms.Button();
             this.butt_Save = new System.Windows.Forms.Button();
             this.butt_Exit = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.mtxtMbid_s = new System.Windows.Forms.MaskedTextBox();
             this.mtxtMbid_n = new System.Windows.Forms.MaskedTextBox();
             this.DTP_RegDate = new System.Windows.Forms.DateTimePicker();
             this.txtCenter_Code = new System.Windows.Forms.TextBox();
             this.txtCenter = new System.Windows.Forms.TextBox();
-            this.butt_AddCode = new System.Windows.Forms.Button();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtAddress1 = new System.Windows.Forms.TextBox();
             this.txtBank_Code = new System.Windows.Forms.TextBox();
@@ -81,13 +79,13 @@
             this.tbl_save = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.chk_Top_s = new System.Windows.Forms.CheckBox();
             this.chk_Foreign_s = new System.Windows.Forms.CheckBox();
+            this.chk_Top_s = new System.Windows.Forms.CheckBox();
             this.tbl_nom = new System.Windows.Forms.TableLayoutPanel();
             this.label31 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.chk_Top_n = new System.Windows.Forms.CheckBox();
             this.chk_Foreign_n = new System.Windows.Forms.CheckBox();
+            this.chk_Top_n = new System.Windows.Forms.CheckBox();
             this.opt_Bir_TF_2 = new System.Windows.Forms.RadioButton();
             this.opt_Bir_TF_1 = new System.Windows.Forms.RadioButton();
             this.grB_Line = new System.Windows.Forms.GroupBox();
@@ -104,9 +102,6 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel17 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.raButt_IN_3 = new System.Windows.Forms.RadioButton();
@@ -123,6 +118,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
             this.mtxtZip1 = new System.Windows.Forms.MaskedTextBox();
+            this.btnAddressTH = new System.Windows.Forms.Button();
             this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
             this.label25 = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
@@ -133,10 +129,11 @@
             this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
             this.label29 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
-            this.mtxtTel2 = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel33 = new System.Windows.Forms.TableLayoutPanel();
             this.label33 = new System.Windows.Forms.Label();
             this.panel27 = new System.Windows.Forms.Panel();
+            this.txtProvinceCode = new System.Windows.Forms.TextBox();
+            this.txtDistrict = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel34 = new System.Windows.Forms.TableLayoutPanel();
             this.label36 = new System.Windows.Forms.Label();
             this.panel28 = new System.Windows.Forms.Panel();
@@ -178,22 +175,19 @@
             this.mtxtEdDate = new System.Windows.Forms.MaskedTextBox();
             this.panel38 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.pnlSubDistrict_TH = new System.Windows.Forms.TableLayoutPanel();
-            this.panel75 = new System.Windows.Forms.Panel();
-            this.cbSubDistrict_TH = new System.Windows.Forms.ComboBox();
-            this.label59 = new System.Windows.Forms.Label();
-            this.pnlDistrict_TH = new System.Windows.Forms.TableLayoutPanel();
-            this.panel74 = new System.Windows.Forms.Panel();
-            this.cbDistrict_TH = new System.Windows.Forms.ComboBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.pnlProvince_TH = new System.Windows.Forms.TableLayoutPanel();
-            this.panel73 = new System.Windows.Forms.Panel();
-            this.cbProvince_TH = new System.Windows.Forms.ComboBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.pnlZipCode_TH = new System.Windows.Forms.TableLayoutPanel();
-            this.panel72 = new System.Windows.Forms.Panel();
-            this.txtZipCode_TH = new System.Windows.Forms.TextBox();
-            this.label55 = new System.Windows.Forms.Label();
+            this.butt_Certify = new System.Windows.Forms.Button();
+            this.tlpCPNO = new System.Windows.Forms.TableLayoutPanel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.mtxtSn = new System.Windows.Forms.MaskedTextBox();
+            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
+            this.label60 = new System.Windows.Forms.Label();
+            this.panel76 = new System.Windows.Forms.Panel();
+            this.txtName_Last = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.tlpNaCode = new System.Windows.Forms.TableLayoutPanel();
             this.panel39 = new System.Windows.Forms.Panel();
             this.combo_Se_2 = new System.Windows.Forms.ComboBox();
@@ -225,7 +219,6 @@
             this.checkB_Third_Person_Agree = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel65 = new System.Windows.Forms.TableLayoutPanel();
             this.Lbl_Certify = new System.Windows.Forms.Label();
-            this.butt_Certify = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.tableLayoutPanel39 = new System.Windows.Forms.TableLayoutPanel();
             this.label44 = new System.Windows.Forms.Label();
@@ -296,10 +289,6 @@
             this.label43 = new System.Windows.Forms.Label();
             this.tab_Day = new System.Windows.Forms.TabPage();
             this.tab_Hide = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.mtxtSn = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.txtAddress2_Auto = new System.Windows.Forms.TextBox();
@@ -375,6 +364,11 @@
             this.txt_C_B_Number = new System.Windows.Forms.TextBox();
             this.txt_Auto_Date = new System.Windows.Forms.TextBox();
             this.dGridView_Good = new System.Windows.Forms.DataGridView();
+            this.mtxtHPTel_0_2 = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtHPTel_0_3 = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtHPTel_0_1 = new System.Windows.Forms.MaskedTextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel27.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -389,8 +383,6 @@
             this.panel15.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel17.SuspendLayout();
-            this.tableLayoutPanel28.SuspendLayout();
-            this.panel18.SuspendLayout();
             this.panel21.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -431,14 +423,12 @@
             this.tableLayoutPanel19.SuspendLayout();
             this.panel37.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.pnlSubDistrict_TH.SuspendLayout();
-            this.panel75.SuspendLayout();
-            this.pnlDistrict_TH.SuspendLayout();
-            this.panel74.SuspendLayout();
-            this.pnlProvince_TH.SuspendLayout();
-            this.panel73.SuspendLayout();
-            this.pnlZipCode_TH.SuspendLayout();
-            this.panel72.SuspendLayout();
+            this.tlpCPNO.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.tableLayoutPanel28.SuspendLayout();
+            this.panel76.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.tlpNaCode.SuspendLayout();
             this.panel39.SuspendLayout();
             this.tableLayoutPanel45.SuspendLayout();
@@ -484,8 +474,6 @@
             this.panel55.SuspendLayout();
             this.tab_Day.SuspendLayout();
             this.tab_Hide.SuspendLayout();
-            this.tableLayoutPanel29.SuspendLayout();
-            this.panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Good)).BeginInit();
             this.SuspendLayout();
             // 
@@ -588,25 +576,9 @@
             this.butt_Exit.UseVisualStyleBackColor = false;
             this.butt_Exit.Click += new System.EventHandler(this.Base_Button_Click);
             // 
-            // txtName
-            // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txtName.Location = new System.Drawing.Point(3, 3);
-            this.txtName.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.txtName.MaxLength = 30;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(164, 22);
-            this.txtName.TabIndex = 2;
-            this.txtName.Enter += new System.EventHandler(this.txtData_Enter);
-            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
-            this.txtName.Leave += new System.EventHandler(this.txtData_Base_Leave);
-            // 
             // mtxtMbid_s
             // 
-            this.mtxtMbid_s.Location = new System.Drawing.Point(3, 19);
+            this.mtxtMbid_s.Location = new System.Drawing.Point(3, 35);
             this.mtxtMbid_s.Name = "mtxtMbid_s";
             this.mtxtMbid_s.Size = new System.Drawing.Size(113, 21);
             this.mtxtMbid_s.TabIndex = 24;
@@ -618,7 +590,7 @@
             // 
             // mtxtMbid_n
             // 
-            this.mtxtMbid_n.Location = new System.Drawing.Point(3, 19);
+            this.mtxtMbid_n.Location = new System.Drawing.Point(3, 34);
             this.mtxtMbid_n.Name = "mtxtMbid_n";
             this.mtxtMbid_n.Size = new System.Drawing.Size(113, 21);
             this.mtxtMbid_n.TabIndex = 22;
@@ -646,7 +618,7 @@
             this.txtCenter_Code.MaxLength = 30;
             this.txtCenter_Code.Name = "txtCenter_Code";
             this.txtCenter_Code.Size = new System.Drawing.Size(60, 22);
-            this.txtCenter_Code.TabIndex = 81;
+            this.txtCenter_Code.TabIndex = 0;
             this.txtCenter_Code.TabStop = false;
             // 
             // txtCenter
@@ -657,24 +629,12 @@
             this.txtCenter.MaxLength = 30;
             this.txtCenter.Name = "txtCenter";
             this.txtCenter.Size = new System.Drawing.Size(106, 22);
-            this.txtCenter.TabIndex = 20;
+            this.txtCenter.TabIndex = 1;
             this.txtCenter.Tag = "ncode";
             this.txtCenter.TextChanged += new System.EventHandler(this.txtData_TextChanged);
             this.txtCenter.Enter += new System.EventHandler(this.txtData_Enter);
             this.txtCenter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
             this.txtCenter.Leave += new System.EventHandler(this.txtData_Base_Leave);
-            // 
-            // butt_AddCode
-            // 
-            this.butt_AddCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.butt_AddCode.Location = new System.Drawing.Point(93, 1);
-            this.butt_AddCode.Name = "butt_AddCode";
-            this.butt_AddCode.Size = new System.Drawing.Size(75, 26);
-            this.butt_AddCode.TabIndex = 11;
-            this.butt_AddCode.TabStop = false;
-            this.butt_AddCode.Text = "우편_번호";
-            this.butt_AddCode.UseVisualStyleBackColor = true;
-            this.butt_AddCode.Click += new System.EventHandler(this.Base_Button_Click);
             // 
             // txtAddress2
             // 
@@ -921,7 +881,7 @@
             this.txtSN_s.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtSN_s.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSN_s.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txtSN_s.Location = new System.Drawing.Point(193, 19);
+            this.txtSN_s.Location = new System.Drawing.Point(193, 35);
             this.txtSN_s.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.txtSN_s.MaxLength = 4;
             this.txtSN_s.Name = "txtSN_s";
@@ -936,7 +896,7 @@
             this.txtSN_n.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtSN_n.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSN_n.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txtSN_n.Location = new System.Drawing.Point(193, 19);
+            this.txtSN_n.Location = new System.Drawing.Point(193, 34);
             this.txtSN_n.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.txtSN_n.MaxLength = 4;
             this.txtSN_n.Name = "txtSN_n";
@@ -949,7 +909,7 @@
             // txtName_n
             // 
             this.txtName_n.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txtName_n.Location = new System.Drawing.Point(116, 19);
+            this.txtName_n.Location = new System.Drawing.Point(116, 34);
             this.txtName_n.MaxLength = 30;
             this.txtName_n.Name = "txtName_n";
             this.txtName_n.Size = new System.Drawing.Size(77, 22);
@@ -962,7 +922,7 @@
             // txtName_s
             // 
             this.txtName_s.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txtName_s.Location = new System.Drawing.Point(116, 19);
+            this.txtName_s.Location = new System.Drawing.Point(116, 35);
             this.txtName_s.MaxLength = 30;
             this.txtName_s.Name = "txtName_s";
             this.txtName_s.Size = new System.Drawing.Size(77, 22);
@@ -1056,7 +1016,7 @@
             this.raButt_IN_2.Location = new System.Drawing.Point(71, 6);
             this.raButt_IN_2.Name = "raButt_IN_2";
             this.raButt_IN_2.Size = new System.Drawing.Size(59, 16);
-            this.raButt_IN_2.TabIndex = 5;
+            this.raButt_IN_2.TabIndex = 1;
             this.raButt_IN_2.Text = "외국인";
             this.raButt_IN_2.UseVisualStyleBackColor = true;
             this.raButt_IN_2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.radioButt_Sn_MouseUp);
@@ -1068,7 +1028,7 @@
             this.raButt_IN_1.Location = new System.Drawing.Point(6, 6);
             this.raButt_IN_1.Name = "raButt_IN_1";
             this.raButt_IN_1.Size = new System.Drawing.Size(59, 16);
-            this.raButt_IN_1.TabIndex = 4;
+            this.raButt_IN_1.TabIndex = 0;
             this.raButt_IN_1.TabStop = true;
             this.raButt_IN_1.Text = "내국인";
             this.raButt_IN_1.UseVisualStyleBackColor = true;
@@ -1083,12 +1043,12 @@
             this.tbl_save.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tbl_save.Controls.Add(this.label4, 0, 0);
             this.tbl_save.Controls.Add(this.panel5, 1, 0);
-            this.tbl_save.Location = new System.Drawing.Point(1, 567);
+            this.tbl_save.Location = new System.Drawing.Point(1, 542);
             this.tbl_save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbl_save.Name = "tbl_save";
             this.tbl_save.RowCount = 1;
             this.tbl_save.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tbl_save.Size = new System.Drawing.Size(601, 50);
+            this.tbl_save.Size = new System.Drawing.Size(601, 65);
             this.tbl_save.TabIndex = 22;
             // 
             // label4
@@ -1102,7 +1062,7 @@
             this.label4.Location = new System.Drawing.Point(2, 2);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(290, 46);
+            this.label4.Size = new System.Drawing.Size(290, 61);
             this.label4.TabIndex = 0;
             this.label4.Text = "*후원인_회원번호/성명/주민번호";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1113,28 +1073,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.chk_Top_s);
             this.panel5.Controls.Add(this.chk_Foreign_s);
             this.panel5.Controls.Add(this.mtxtMbid_s);
             this.panel5.Controls.Add(this.txtSN_s);
             this.panel5.Controls.Add(this.txtName_s);
+            this.panel5.Controls.Add(this.chk_Top_s);
             this.panel5.Location = new System.Drawing.Point(296, 4);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(301, 42);
+            this.panel5.Size = new System.Drawing.Size(301, 57);
             this.panel5.TabIndex = 0;
-            // 
-            // chk_Top_s
-            // 
-            this.chk_Top_s.AutoSize = true;
-            this.chk_Top_s.Location = new System.Drawing.Point(129, 3);
-            this.chk_Top_s.Name = "chk_Top_s";
-            this.chk_Top_s.Size = new System.Drawing.Size(90, 16);
-            this.chk_Top_s.TabIndex = 143;
-            this.chk_Top_s.TabStop = false;
-            this.chk_Top_s.Text = "후원_최상위";
-            this.chk_Top_s.UseVisualStyleBackColor = true;
-            this.chk_Top_s.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chk_Top_MouseUp);
             // 
             // chk_Foreign_s
             // 
@@ -1148,6 +1096,18 @@
             this.chk_Foreign_s.UseVisualStyleBackColor = true;
             this.chk_Foreign_s.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chk_Top_MouseUp);
             // 
+            // chk_Top_s
+            // 
+            this.chk_Top_s.AutoSize = true;
+            this.chk_Top_s.Location = new System.Drawing.Point(3, 19);
+            this.chk_Top_s.Name = "chk_Top_s";
+            this.chk_Top_s.Size = new System.Drawing.Size(90, 16);
+            this.chk_Top_s.TabIndex = 143;
+            this.chk_Top_s.TabStop = false;
+            this.chk_Top_s.Text = "후원_최상위";
+            this.chk_Top_s.UseVisualStyleBackColor = true;
+            this.chk_Top_s.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chk_Top_MouseUp);
+            // 
             // tbl_nom
             // 
             this.tbl_nom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
@@ -1157,12 +1117,12 @@
             this.tbl_nom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tbl_nom.Controls.Add(this.label31, 0, 0);
             this.tbl_nom.Controls.Add(this.panel11, 1, 0);
-            this.tbl_nom.Location = new System.Drawing.Point(1, 517);
+            this.tbl_nom.Location = new System.Drawing.Point(1, 477);
             this.tbl_nom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbl_nom.Name = "tbl_nom";
             this.tbl_nom.RowCount = 1;
             this.tbl_nom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tbl_nom.Size = new System.Drawing.Size(601, 50);
+            this.tbl_nom.Size = new System.Drawing.Size(601, 65);
             this.tbl_nom.TabIndex = 21;
             // 
             // label31
@@ -1176,7 +1136,7 @@
             this.label31.Location = new System.Drawing.Point(2, 2);
             this.label31.Margin = new System.Windows.Forms.Padding(0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(290, 46);
+            this.label31.Size = new System.Drawing.Size(290, 61);
             this.label31.TabIndex = 0;
             this.label31.Text = "*추천인_회원번호/성명/주민번호";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1187,28 +1147,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel11.BackColor = System.Drawing.Color.White;
-            this.panel11.Controls.Add(this.chk_Top_n);
             this.panel11.Controls.Add(this.chk_Foreign_n);
             this.panel11.Controls.Add(this.txtName_n);
             this.panel11.Controls.Add(this.mtxtMbid_n);
             this.panel11.Controls.Add(this.txtSN_n);
+            this.panel11.Controls.Add(this.chk_Top_n);
             this.panel11.Location = new System.Drawing.Point(296, 4);
             this.panel11.Margin = new System.Windows.Forms.Padding(2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(301, 42);
+            this.panel11.Size = new System.Drawing.Size(301, 57);
             this.panel11.TabIndex = 0;
-            // 
-            // chk_Top_n
-            // 
-            this.chk_Top_n.AutoSize = true;
-            this.chk_Top_n.Location = new System.Drawing.Point(129, 3);
-            this.chk_Top_n.Name = "chk_Top_n";
-            this.chk_Top_n.Size = new System.Drawing.Size(90, 16);
-            this.chk_Top_n.TabIndex = 142;
-            this.chk_Top_n.TabStop = false;
-            this.chk_Top_n.Text = "추천_최상위";
-            this.chk_Top_n.UseVisualStyleBackColor = true;
-            this.chk_Top_n.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chk_Top_MouseUp);
             // 
             // chk_Foreign_n
             // 
@@ -1221,6 +1169,18 @@
             this.chk_Foreign_n.Text = "추천_외국조직회원";
             this.chk_Foreign_n.UseVisualStyleBackColor = true;
             this.chk_Foreign_n.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chk_Top_MouseUp);
+            // 
+            // chk_Top_n
+            // 
+            this.chk_Top_n.AutoSize = true;
+            this.chk_Top_n.Location = new System.Drawing.Point(3, 19);
+            this.chk_Top_n.Name = "chk_Top_n";
+            this.chk_Top_n.Size = new System.Drawing.Size(90, 16);
+            this.chk_Top_n.TabIndex = 142;
+            this.chk_Top_n.TabStop = false;
+            this.chk_Top_n.Text = "추천_최상위";
+            this.chk_Top_n.UseVisualStyleBackColor = true;
+            this.chk_Top_n.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chk_Top_MouseUp);
             // 
             // opt_Bir_TF_2
             // 
@@ -1250,7 +1210,7 @@
             // 
             this.grB_Line.BackColor = System.Drawing.Color.Transparent;
             this.grB_Line.Controls.Add(this.dGridView_Li);
-            this.grB_Line.Location = new System.Drawing.Point(1, 654);
+            this.grB_Line.Location = new System.Drawing.Point(1, 643);
             this.grB_Line.Name = "grB_Line";
             this.grB_Line.Size = new System.Drawing.Size(299, 180);
             this.grB_Line.TabIndex = 141;
@@ -1261,23 +1221,23 @@
             // 
             this.dGridView_Li.BackgroundColor = System.Drawing.Color.White;
             this.dGridView_Li.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Li.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Li.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dGridView_Li.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Li.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Li.DefaultCellStyle = dataGridViewCellStyle16;
             this.dGridView_Li.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridView_Li.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dGridView_Li.Location = new System.Drawing.Point(3, 17);
@@ -1291,23 +1251,23 @@
             // 
             this.dGridView_Base.BackgroundColor = System.Drawing.Color.White;
             this.dGridView_Base.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Base.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Base.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dGridView_Base.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Base.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Base.DefaultCellStyle = dataGridViewCellStyle18;
             this.dGridView_Base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridView_Base.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dGridView_Base.Location = new System.Drawing.Point(3, 3);
@@ -1464,55 +1424,9 @@
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.label18.Size = new System.Drawing.Size(120, 32);
-            this.label18.TabIndex = 0;
+            this.label18.TabIndex = 1;
             this.label18.Text = "회원번호\r\n※회원가입시 자동생성 됩니다.";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tableLayoutPanel28
-            // 
-            this.tableLayoutPanel28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.tableLayoutPanel28.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel28.ColumnCount = 2;
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel28.Controls.Add(this.panel18, 1, 0);
-            this.tableLayoutPanel28.Controls.Add(this.label19, 0, 0);
-            this.tableLayoutPanel28.Location = new System.Drawing.Point(1, 40);
-            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
-            this.tableLayoutPanel28.RowCount = 1;
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel28.Size = new System.Drawing.Size(300, 36);
-            this.tableLayoutPanel28.TabIndex = 0;
-            // 
-            // panel18
-            // 
-            this.panel18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel18.BackColor = System.Drawing.Color.White;
-            this.panel18.Controls.Add(this.txtName);
-            this.panel18.Location = new System.Drawing.Point(126, 4);
-            this.panel18.Margin = new System.Windows.Forms.Padding(2);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(170, 28);
-            this.panel18.TabIndex = 0;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label19.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Bold);
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(2, 2);
-            this.label19.Margin = new System.Windows.Forms.Padding(0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(120, 32);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "*성명";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel20
             // 
@@ -1544,7 +1458,7 @@
             this.raButt_IN_3.Location = new System.Drawing.Point(216, 9);
             this.raButt_IN_3.Name = "raButt_IN_3";
             this.raButt_IN_3.Size = new System.Drawing.Size(59, 16);
-            this.raButt_IN_3.TabIndex = 56;
+            this.raButt_IN_3.TabIndex = 2;
             this.raButt_IN_3.Text = "사업자";
             this.raButt_IN_3.UseVisualStyleBackColor = true;
             this.raButt_IN_3.Visible = false;
@@ -1578,7 +1492,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 33);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 1;
             this.label1.Text = "등록_일자";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1602,7 +1516,7 @@
             this.mtxtRegDate.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.mtxtRegDate.Name = "mtxtRegDate";
             this.mtxtRegDate.Size = new System.Drawing.Size(143, 21);
-            this.mtxtRegDate.TabIndex = 19;
+            this.mtxtRegDate.TabIndex = 0;
             this.mtxtRegDate.Enter += new System.EventHandler(this.txtData_Enter);
             this.mtxtRegDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
             this.mtxtRegDate.Leave += new System.EventHandler(this.txtData_Base_Leave);
@@ -1616,7 +1530,7 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Controls.Add(this.label23, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.panel22, 1, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(1, 617);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(1, 606);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1711,8 +1625,8 @@
             // panel23
             // 
             this.panel23.BackColor = System.Drawing.Color.White;
-            this.panel23.Controls.Add(this.butt_AddCode);
             this.panel23.Controls.Add(this.mtxtZip1);
+            this.panel23.Controls.Add(this.btnAddressTH);
             this.panel23.Location = new System.Drawing.Point(126, 4);
             this.panel23.Margin = new System.Windows.Forms.Padding(2);
             this.panel23.Name = "panel23";
@@ -1729,6 +1643,19 @@
             this.mtxtZip1.Enter += new System.EventHandler(this.txtData_Enter);
             this.mtxtZip1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
             this.mtxtZip1.Leave += new System.EventHandler(this.txtData_Base_Leave);
+            // 
+            // btnAddressTH
+            // 
+            this.btnAddressTH.BackColor = System.Drawing.Color.White;
+            this.btnAddressTH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddressTH.Location = new System.Drawing.Point(94, 0);
+            this.btnAddressTH.Name = "btnAddressTH";
+            this.btnAddressTH.Size = new System.Drawing.Size(72, 26);
+            this.btnAddressTH.TabIndex = 66668;
+            this.btnAddressTH.TabStop = false;
+            this.btnAddressTH.Text = "Address";
+            this.btnAddressTH.UseVisualStyleBackColor = false;
+            this.btnAddressTH.Click += new System.EventHandler(this.btnAddressTH_Click);
             // 
             // tableLayoutPanel30
             // 
@@ -1864,26 +1791,16 @@
             // panel26
             // 
             this.panel26.BackColor = System.Drawing.Color.White;
-            this.panel26.Controls.Add(this.mtxtTel2);
+            this.panel26.Controls.Add(this.label57);
+            this.panel26.Controls.Add(this.mtxtHPTel_0_1);
+            this.panel26.Controls.Add(this.mtxtHPTel_0_3);
+            this.panel26.Controls.Add(this.mtxtHPTel_0_2);
+            this.panel26.Controls.Add(this.label55);
             this.panel26.Location = new System.Drawing.Point(126, 4);
             this.panel26.Margin = new System.Windows.Forms.Padding(2);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(170, 28);
             this.panel26.TabIndex = 0;
-            // 
-            // mtxtTel2
-            // 
-            this.mtxtTel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mtxtTel2.Location = new System.Drawing.Point(3, 3);
-            this.mtxtTel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.mtxtTel2.Name = "mtxtTel2";
-            this.mtxtTel2.Size = new System.Drawing.Size(164, 21);
-            this.mtxtTel2.TabIndex = 8;
-            this.mtxtTel2.Enter += new System.EventHandler(this.txtData_Enter);
-            this.mtxtTel2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
-            this.mtxtTel2.Leave += new System.EventHandler(this.txtData_Base_Leave);
             // 
             // tableLayoutPanel33
             // 
@@ -1894,7 +1811,7 @@
             this.tableLayoutPanel33.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel33.Controls.Add(this.label33, 0, 0);
             this.tableLayoutPanel33.Controls.Add(this.panel27, 1, 0);
-            this.tableLayoutPanel33.Location = new System.Drawing.Point(1, 369);
+            this.tableLayoutPanel33.Location = new System.Drawing.Point(1, 329);
             this.tableLayoutPanel33.Name = "tableLayoutPanel33";
             this.tableLayoutPanel33.RowCount = 1;
             this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1923,12 +1840,44 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel27.BackColor = System.Drawing.Color.White;
+            this.panel27.Controls.Add(this.txtProvinceCode);
+            this.panel27.Controls.Add(this.txtDistrict);
             this.panel27.Controls.Add(this.txtAddress1);
             this.panel27.Location = new System.Drawing.Point(126, 4);
             this.panel27.Margin = new System.Windows.Forms.Padding(2);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(471, 29);
             this.panel27.TabIndex = 0;
+            // 
+            // txtProvinceCode
+            // 
+            this.txtProvinceCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProvinceCode.Enabled = false;
+            this.txtProvinceCode.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.txtProvinceCode.Location = new System.Drawing.Point(177, 3);
+            this.txtProvinceCode.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.txtProvinceCode.MaxLength = 40;
+            this.txtProvinceCode.Name = "txtProvinceCode";
+            this.txtProvinceCode.Size = new System.Drawing.Size(117, 22);
+            this.txtProvinceCode.TabIndex = 14;
+            this.txtProvinceCode.Visible = false;
+            // 
+            // txtDistrict
+            // 
+            this.txtDistrict.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDistrict.Enabled = false;
+            this.txtDistrict.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.txtDistrict.Location = new System.Drawing.Point(83, 3);
+            this.txtDistrict.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.txtDistrict.MaxLength = 40;
+            this.txtDistrict.Name = "txtDistrict";
+            this.txtDistrict.Size = new System.Drawing.Size(117, 22);
+            this.txtDistrict.TabIndex = 13;
+            this.txtDistrict.Visible = false;
             // 
             // tableLayoutPanel34
             // 
@@ -1939,7 +1888,7 @@
             this.tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel34.Controls.Add(this.label36, 0, 0);
             this.tableLayoutPanel34.Controls.Add(this.panel28, 1, 0);
-            this.tableLayoutPanel34.Location = new System.Drawing.Point(1, 406);
+            this.tableLayoutPanel34.Location = new System.Drawing.Point(1, 366);
             this.tableLayoutPanel34.Name = "tableLayoutPanel34";
             this.tableLayoutPanel34.RowCount = 1;
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1984,7 +1933,7 @@
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel16.Controls.Add(this.label27, 0, 0);
             this.tableLayoutPanel16.Controls.Add(this.panel29, 1, 0);
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(300, 444);
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(300, 404);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 1;
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2026,7 +1975,7 @@
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel17.Controls.Add(this.label34, 0, 0);
             this.tableLayoutPanel17.Controls.Add(this.panel30, 1, 0);
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(1, 443);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(1, 403);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 1;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2083,13 +2032,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label37.Font = new System.Drawing.Font("Angsana New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label37.ForeColor = System.Drawing.Color.White;
             this.label37.Location = new System.Drawing.Point(2, 2);
             this.label37.Margin = new System.Windows.Forms.Padding(0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(120, 33);
             this.label37.TabIndex = 0;
-            this.label37.Text = "*영문_Last_Name";
+            this.label37.Text = "영문_이름_끝";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel31
@@ -2125,13 +2075,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label38.Font = new System.Drawing.Font("Angsana New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label38.ForeColor = System.Drawing.Color.White;
             this.label38.Location = new System.Drawing.Point(2, 2);
             this.label38.Margin = new System.Windows.Forms.Padding(0);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(120, 33);
             this.label38.TabIndex = 0;
-            this.label38.Text = "*영문_First_Name";
+            this.label38.Text = "영문_이름_시작";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel32
@@ -2153,7 +2104,7 @@
             this.tableLayoutPanel37.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel37.Controls.Add(this.label39, 0, 0);
             this.tableLayoutPanel37.Controls.Add(this.panel33, 1, 0);
-            this.tableLayoutPanel37.Location = new System.Drawing.Point(1, 480);
+            this.tableLayoutPanel37.Location = new System.Drawing.Point(1, 440);
             this.tableLayoutPanel37.Name = "tableLayoutPanel37";
             this.tableLayoutPanel37.RowCount = 1;
             this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2256,7 +2207,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel6, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(300, 4);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(302, 646);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2299,7 +2250,7 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.panel34, 1, 0);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(301, 619);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(301, 608);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2391,7 +2342,7 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(300, 37);
-            this.tableLayoutPanel13.TabIndex = 3;
+            this.tableLayoutPanel13.TabIndex = 2;
             // 
             // label20
             // 
@@ -2431,7 +2382,7 @@
             this.mtxtBrithDay.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.mtxtBrithDay.Name = "mtxtBrithDay";
             this.mtxtBrithDay.Size = new System.Drawing.Size(143, 21);
-            this.mtxtBrithDay.TabIndex = 3;
+            this.mtxtBrithDay.TabIndex = 0;
             this.mtxtBrithDay.Enter += new System.EventHandler(this.txtData_Enter);
             this.mtxtBrithDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtData_Temp_KeyPress);
             this.mtxtBrithDay.Leave += new System.EventHandler(this.txtData_Base_Leave);
@@ -2505,10 +2456,10 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.pnlSubDistrict_TH);
-            this.panel7.Controls.Add(this.pnlDistrict_TH);
-            this.panel7.Controls.Add(this.pnlProvince_TH);
-            this.panel7.Controls.Add(this.pnlZipCode_TH);
+            this.panel7.Controls.Add(this.butt_Certify);
+            this.panel7.Controls.Add(this.tlpCPNO);
+            this.panel7.Controls.Add(this.tableLayoutPanel28);
+            this.panel7.Controls.Add(this.tableLayoutPanel9);
             this.panel7.Controls.Add(this.tlpNaCode);
             this.panel7.Controls.Add(this.tableLayoutPanel45);
             this.panel7.Controls.Add(this.checkB_SMS_FLAG);
@@ -2523,8 +2474,6 @@
             this.panel7.Controls.Add(this.panel67);
             this.panel7.Controls.Add(this.tableLayoutPanel30);
             this.panel7.Controls.Add(this.tableLayoutPanel65);
-            this.panel7.Controls.Add(this.butt_Certify);
-            this.panel7.Controls.Add(this.tableLayoutPanel28);
             this.panel7.Controls.Add(this.button5);
             this.panel7.Controls.Add(this.tableLayoutPanel39);
             this.panel7.Controls.Add(this.button_Acc_Reg);
@@ -2560,231 +2509,182 @@
             this.panel7.Size = new System.Drawing.Size(605, 908);
             this.panel7.TabIndex = 0;
             // 
-            // pnlSubDistrict_TH
+            // butt_Certify
             // 
-            this.pnlSubDistrict_TH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.pnlSubDistrict_TH.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.pnlSubDistrict_TH.ColumnCount = 2;
-            this.pnlSubDistrict_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.pnlSubDistrict_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlSubDistrict_TH.Controls.Add(this.panel75, 1, 0);
-            this.pnlSubDistrict_TH.Controls.Add(this.label59, 0, 0);
-            this.pnlSubDistrict_TH.Location = new System.Drawing.Point(300, 331);
-            this.pnlSubDistrict_TH.Name = "pnlSubDistrict_TH";
-            this.pnlSubDistrict_TH.RowCount = 1;
-            this.pnlSubDistrict_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlSubDistrict_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.pnlSubDistrict_TH.Size = new System.Drawing.Size(300, 37);
-            this.pnlSubDistrict_TH.TabIndex = 15;
+            this.butt_Certify.BackColor = System.Drawing.Color.White;
+            this.butt_Certify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butt_Certify.Location = new System.Drawing.Point(535, 706);
+            this.butt_Certify.Name = "butt_Certify";
+            this.butt_Certify.Size = new System.Drawing.Size(93, 26);
+            this.butt_Certify.TabIndex = 66669;
+            this.butt_Certify.TabStop = false;
+            this.butt_Certify.Text = "휴대폰 인증";
+            this.butt_Certify.UseVisualStyleBackColor = false;
+            this.butt_Certify.Visible = false;
             // 
-            // panel75
+            // tlpCPNO
             // 
-            this.panel75.BackColor = System.Drawing.Color.White;
-            this.panel75.Controls.Add(this.cbSubDistrict_TH);
-            this.panel75.Location = new System.Drawing.Point(126, 4);
-            this.panel75.Margin = new System.Windows.Forms.Padding(2);
-            this.panel75.Name = "panel75";
-            this.panel75.Size = new System.Drawing.Size(169, 28);
-            this.panel75.TabIndex = 0;
+            this.tlpCPNO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.tlpCPNO.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tlpCPNO.ColumnCount = 2;
+            this.tlpCPNO.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpCPNO.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpCPNO.Controls.Add(this.label22, 0, 0);
+            this.tlpCPNO.Controls.Add(this.panel19, 1, 0);
+            this.tlpCPNO.Location = new System.Drawing.Point(301, 259);
+            this.tlpCPNO.Name = "tlpCPNO";
+            this.tlpCPNO.RowCount = 1;
+            this.tlpCPNO.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpCPNO.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tlpCPNO.Size = new System.Drawing.Size(299, 37);
+            this.tlpCPNO.TabIndex = 1024;
             // 
-            // cbSubDistrict_TH
+            // label22
             // 
-            this.cbSubDistrict_TH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbSubDistrict_TH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSubDistrict_TH.FormattingEnabled = true;
-            this.cbSubDistrict_TH.Location = new System.Drawing.Point(3, 4);
-            this.cbSubDistrict_TH.Name = "cbSubDistrict_TH";
-            this.cbSubDistrict_TH.Size = new System.Drawing.Size(163, 20);
-            this.cbSubDistrict_TH.TabIndex = 204;
-            this.cbSubDistrict_TH.Tag = "tab_Nation";
-            this.cbSubDistrict_TH.SelectedIndexChanged += new System.EventHandler(this.cbSubDistrict_TH_SelectedIndexChanged);
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(2, 2);
+            this.label22.Margin = new System.Windows.Forms.Padding(0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(120, 33);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "주민번호";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label59
+            // panel19
             // 
-            this.label59.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel19.BackColor = System.Drawing.Color.White;
+            this.panel19.Controls.Add(this.mtxtSn);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(126, 4);
+            this.panel19.Margin = new System.Windows.Forms.Padding(2);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(169, 29);
+            this.panel19.TabIndex = 15;
+            // 
+            // mtxtSn
+            // 
+            this.mtxtSn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label59.ForeColor = System.Drawing.Color.White;
-            this.label59.Location = new System.Drawing.Point(2, 2);
-            this.label59.Margin = new System.Windows.Forms.Padding(0);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(120, 33);
-            this.label59.TabIndex = 0;
-            this.label59.Text = "*태국_SubDistrict";
-            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.mtxtSn.Location = new System.Drawing.Point(3, 3);
+            this.mtxtSn.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.mtxtSn.Name = "mtxtSn";
+            this.mtxtSn.Size = new System.Drawing.Size(163, 21);
+            this.mtxtSn.TabIndex = 9;
             // 
-            // pnlDistrict_TH
+            // tableLayoutPanel28
             // 
-            this.pnlDistrict_TH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.pnlDistrict_TH.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.pnlDistrict_TH.ColumnCount = 2;
-            this.pnlDistrict_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.pnlDistrict_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlDistrict_TH.Controls.Add(this.panel74, 1, 0);
-            this.pnlDistrict_TH.Controls.Add(this.label58, 0, 0);
-            this.pnlDistrict_TH.Location = new System.Drawing.Point(300, 294);
-            this.pnlDistrict_TH.Name = "pnlDistrict_TH";
-            this.pnlDistrict_TH.RowCount = 1;
-            this.pnlDistrict_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlDistrict_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.pnlDistrict_TH.Size = new System.Drawing.Size(300, 37);
-            this.pnlDistrict_TH.TabIndex = 15;
+            this.tableLayoutPanel28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.tableLayoutPanel28.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel28.ColumnCount = 2;
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel28.Controls.Add(this.label60, 0, 0);
+            this.tableLayoutPanel28.Controls.Add(this.panel76, 1, 0);
+            this.tableLayoutPanel28.Location = new System.Drawing.Point(301, 41);
+            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
+            this.tableLayoutPanel28.RowCount = 1;
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(300, 37);
+            this.tableLayoutPanel28.TabIndex = 1;
             // 
-            // panel74
+            // label60
             // 
-            this.panel74.BackColor = System.Drawing.Color.White;
-            this.panel74.Controls.Add(this.cbDistrict_TH);
-            this.panel74.Location = new System.Drawing.Point(126, 4);
-            this.panel74.Margin = new System.Windows.Forms.Padding(2);
-            this.panel74.Name = "panel74";
-            this.panel74.Size = new System.Drawing.Size(169, 28);
-            this.panel74.TabIndex = 0;
-            // 
-            // cbDistrict_TH
-            // 
-            this.cbDistrict_TH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label60.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbDistrict_TH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDistrict_TH.FormattingEnabled = true;
-            this.cbDistrict_TH.Location = new System.Drawing.Point(3, 4);
-            this.cbDistrict_TH.Name = "cbDistrict_TH";
-            this.cbDistrict_TH.Size = new System.Drawing.Size(163, 20);
-            this.cbDistrict_TH.TabIndex = 204;
-            this.cbDistrict_TH.Tag = "tab_Nation";
-            this.cbDistrict_TH.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_TH_SelectedIndexChanged);
+            this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label60.Font = new System.Drawing.Font("Angsana New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label60.ForeColor = System.Drawing.Color.White;
+            this.label60.Location = new System.Drawing.Point(2, 2);
+            this.label60.Margin = new System.Windows.Forms.Padding(0);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(120, 33);
+            this.label60.TabIndex = 1;
+            this.label60.Text = "태국_이름_끝";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label58
+            // panel76
             // 
-            this.label58.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel76.BackColor = System.Drawing.Color.White;
+            this.panel76.Controls.Add(this.txtName_Last);
+            this.panel76.Location = new System.Drawing.Point(126, 4);
+            this.panel76.Margin = new System.Windows.Forms.Padding(2);
+            this.panel76.Name = "panel76";
+            this.panel76.Size = new System.Drawing.Size(170, 28);
+            this.panel76.TabIndex = 0;
+            // 
+            // txtName_Last
+            // 
+            this.txtName_Last.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.txtName_Last.Location = new System.Drawing.Point(3, 3);
+            this.txtName_Last.MaxLength = 30;
+            this.txtName_Last.Name = "txtName_Last";
+            this.txtName_Last.Size = new System.Drawing.Size(164, 22);
+            this.txtName_Last.TabIndex = 0;
+            this.txtName_Last.Enter += new System.EventHandler(this.txtData_Enter);
+            this.txtName_Last.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
+            this.txtName_Last.Leave += new System.EventHandler(this.txtData_Base_Leave);
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.tableLayoutPanel9.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.label19, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.panel18, 1, 0);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(2, 39);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(300, 37);
+            this.tableLayoutPanel9.TabIndex = 0;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label58.ForeColor = System.Drawing.Color.White;
-            this.label58.Location = new System.Drawing.Point(2, 2);
-            this.label58.Margin = new System.Windows.Forms.Padding(0);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(120, 33);
-            this.label58.TabIndex = 0;
-            this.label58.Text = "*태국_District";
-            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
+            this.label19.Font = new System.Drawing.Font("Angsana New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(2, 2);
+            this.label19.Margin = new System.Windows.Forms.Padding(0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(120, 33);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "태국_이름_시작";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pnlProvince_TH
+            // panel18
             // 
-            this.pnlProvince_TH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.pnlProvince_TH.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.pnlProvince_TH.ColumnCount = 2;
-            this.pnlProvince_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.pnlProvince_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlProvince_TH.Controls.Add(this.panel73, 1, 0);
-            this.pnlProvince_TH.Controls.Add(this.label57, 0, 0);
-            this.pnlProvince_TH.Location = new System.Drawing.Point(300, 258);
-            this.pnlProvince_TH.Name = "pnlProvince_TH";
-            this.pnlProvince_TH.RowCount = 1;
-            this.pnlProvince_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlProvince_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.pnlProvince_TH.Size = new System.Drawing.Size(300, 37);
-            this.pnlProvince_TH.TabIndex = 15;
+            this.panel18.BackColor = System.Drawing.Color.White;
+            this.panel18.Controls.Add(this.txtName);
+            this.panel18.Location = new System.Drawing.Point(126, 4);
+            this.panel18.Margin = new System.Windows.Forms.Padding(2);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(170, 28);
+            this.panel18.TabIndex = 0;
             // 
-            // panel73
+            // txtName
             // 
-            this.panel73.BackColor = System.Drawing.Color.White;
-            this.panel73.Controls.Add(this.cbProvince_TH);
-            this.panel73.Location = new System.Drawing.Point(126, 4);
-            this.panel73.Margin = new System.Windows.Forms.Padding(2);
-            this.panel73.Name = "panel73";
-            this.panel73.Size = new System.Drawing.Size(169, 28);
-            this.panel73.TabIndex = 0;
-            // 
-            // cbProvince_TH
-            // 
-            this.cbProvince_TH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbProvince_TH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProvince_TH.FormattingEnabled = true;
-            this.cbProvince_TH.Location = new System.Drawing.Point(3, 4);
-            this.cbProvince_TH.Name = "cbProvince_TH";
-            this.cbProvince_TH.Size = new System.Drawing.Size(163, 20);
-            this.cbProvince_TH.TabIndex = 204;
-            this.cbProvince_TH.Tag = "tab_Nation";
-            this.cbProvince_TH.SelectedIndexChanged += new System.EventHandler(this.cbProvince_TH_SelectedIndexChanged);
-            // 
-            // label57
-            // 
-            this.label57.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label57.ForeColor = System.Drawing.Color.White;
-            this.label57.Location = new System.Drawing.Point(2, 2);
-            this.label57.Margin = new System.Windows.Forms.Padding(0);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(120, 33);
-            this.label57.TabIndex = 0;
-            this.label57.Text = "*태국_Province";
-            this.label57.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pnlZipCode_TH
-            // 
-            this.pnlZipCode_TH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.pnlZipCode_TH.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.pnlZipCode_TH.ColumnCount = 2;
-            this.pnlZipCode_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.pnlZipCode_TH.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlZipCode_TH.Controls.Add(this.panel72, 1, 0);
-            this.pnlZipCode_TH.Controls.Add(this.label55, 0, 0);
-            this.pnlZipCode_TH.Location = new System.Drawing.Point(1, 294);
-            this.pnlZipCode_TH.Name = "pnlZipCode_TH";
-            this.pnlZipCode_TH.RowCount = 1;
-            this.pnlZipCode_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlZipCode_TH.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.pnlZipCode_TH.Size = new System.Drawing.Size(300, 37);
-            this.pnlZipCode_TH.TabIndex = 15;
-            // 
-            // panel72
-            // 
-            this.panel72.BackColor = System.Drawing.Color.White;
-            this.panel72.Controls.Add(this.txtZipCode_TH);
-            this.panel72.Location = new System.Drawing.Point(126, 4);
-            this.panel72.Margin = new System.Windows.Forms.Padding(2);
-            this.panel72.Name = "panel72";
-            this.panel72.Size = new System.Drawing.Size(169, 28);
-            this.panel72.TabIndex = 0;
-            // 
-            // txtZipCode_TH
-            // 
-            this.txtZipCode_TH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtZipCode_TH.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txtZipCode_TH.Location = new System.Drawing.Point(2, 3);
-            this.txtZipCode_TH.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.txtZipCode_TH.MaxLength = 50;
-            this.txtZipCode_TH.Name = "txtZipCode_TH";
-            this.txtZipCode_TH.Size = new System.Drawing.Size(165, 22);
-            this.txtZipCode_TH.TabIndex = 9;
-            this.txtZipCode_TH.Enter += new System.EventHandler(this.txtData_Enter);
-            this.txtZipCode_TH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
-            this.txtZipCode_TH.Leave += new System.EventHandler(this.txtData_Base_Leave);
-            // 
-            // label55
-            // 
-            this.label55.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label55.ForeColor = System.Drawing.Color.White;
-            this.label55.Location = new System.Drawing.Point(2, 2);
-            this.label55.Margin = new System.Windows.Forms.Padding(0);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(120, 33);
-            this.label55.TabIndex = 0;
-            this.label55.Text = "*우편번호";
-            this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.txtName.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.txtName.Location = new System.Drawing.Point(3, 3);
+            this.txtName.MaxLength = 30;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(164, 22);
+            this.txtName.TabIndex = 0;
+            this.txtName.Enter += new System.EventHandler(this.txtData_Enter);
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtData_KeyPress);
+            this.txtName.Leave += new System.EventHandler(this.txtData_Base_Leave);
             // 
             // tlpNaCode
             // 
@@ -2795,13 +2695,14 @@
             this.tlpNaCode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpNaCode.Controls.Add(this.panel39, 1, 0);
             this.tlpNaCode.Controls.Add(this.label54, 0, 0);
-            this.tlpNaCode.Location = new System.Drawing.Point(301, 660);
+            this.tlpNaCode.Location = new System.Drawing.Point(315, 749);
             this.tlpNaCode.Name = "tlpNaCode";
             this.tlpNaCode.RowCount = 1;
             this.tlpNaCode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpNaCode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpNaCode.Size = new System.Drawing.Size(300, 38);
             this.tlpNaCode.TabIndex = 66667;
+            this.tlpNaCode.Visible = false;
             // 
             // panel39
             // 
@@ -2922,7 +2823,7 @@
             this.checkB_SMS_FLAG.Checked = true;
             this.checkB_SMS_FLAG.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkB_SMS_FLAG.ForeColor = System.Drawing.Color.Black;
-            this.checkB_SMS_FLAG.Location = new System.Drawing.Point(476, 270);
+            this.checkB_SMS_FLAG.Location = new System.Drawing.Point(300, 823);
             this.checkB_SMS_FLAG.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkB_SMS_FLAG.Name = "checkB_SMS_FLAG";
             this.checkB_SMS_FLAG.Size = new System.Drawing.Size(111, 16);
@@ -2959,7 +2860,7 @@
             this.label51.Margin = new System.Windows.Forms.Padding(0);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(120, 33);
-            this.label51.TabIndex = 0;
+            this.label51.TabIndex = 1;
             this.label51.Text = "국적";
             this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -2972,7 +2873,7 @@
             this.tab_Nation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tab_Nation.Controls.Add(this.panel8, 1, 0);
             this.tab_Nation.Controls.Add(this.label3, 0, 0);
-            this.tab_Nation.Location = new System.Drawing.Point(300, 699);
+            this.tab_Nation.Location = new System.Drawing.Point(314, 781);
             this.tab_Nation.Name = "tab_Nation";
             this.tab_Nation.RowCount = 1;
             this.tab_Nation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -3039,7 +2940,7 @@
             this.checkB_EMail_FLAG.Checked = true;
             this.checkB_EMail_FLAG.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkB_EMail_FLAG.ForeColor = System.Drawing.Color.Black;
-            this.checkB_EMail_FLAG.Location = new System.Drawing.Point(476, 298);
+            this.checkB_EMail_FLAG.Location = new System.Drawing.Point(300, 839);
             this.checkB_EMail_FLAG.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkB_EMail_FLAG.Name = "checkB_EMail_FLAG";
             this.checkB_EMail_FLAG.Size = new System.Drawing.Size(116, 16);
@@ -3057,7 +2958,7 @@
             this.tableLayoutPanel42.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel42.Controls.Add(this.panel66, 1, 0);
             this.tableLayoutPanel42.Controls.Add(this.label49, 0, 0);
-            this.tableLayoutPanel42.Location = new System.Drawing.Point(300, 41);
+            this.tableLayoutPanel42.Location = new System.Drawing.Point(302, 3);
             this.tableLayoutPanel42.Name = "tableLayoutPanel42";
             this.tableLayoutPanel42.RowCount = 1;
             this.tableLayoutPanel42.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -3085,7 +2986,7 @@
             this.radioB_Sex_Y.Location = new System.Drawing.Point(3, 6);
             this.radioB_Sex_Y.Name = "radioB_Sex_Y";
             this.radioB_Sex_Y.Size = new System.Drawing.Size(47, 16);
-            this.radioB_Sex_Y.TabIndex = 17;
+            this.radioB_Sex_Y.TabIndex = 0;
             this.radioB_Sex_Y.TabStop = true;
             this.radioB_Sex_Y.Text = "남성";
             this.radioB_Sex_Y.UseVisualStyleBackColor = true;
@@ -3096,7 +2997,7 @@
             this.radioB_Sex_X.Location = new System.Drawing.Point(71, 6);
             this.radioB_Sex_X.Name = "radioB_Sex_X";
             this.radioB_Sex_X.Size = new System.Drawing.Size(47, 16);
-            this.radioB_Sex_X.TabIndex = 18;
+            this.radioB_Sex_X.TabIndex = 1;
             this.radioB_Sex_X.Text = "여성";
             this.radioB_Sex_X.UseVisualStyleBackColor = true;
             // 
@@ -3111,7 +3012,7 @@
             this.label49.Margin = new System.Windows.Forms.Padding(0);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(120, 33);
-            this.label49.TabIndex = 0;
+            this.label49.TabIndex = 1;
             this.label49.Text = "*성별";
             this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -3121,7 +3022,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_IpinCI.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txt_IpinCI.Location = new System.Drawing.Point(532, 306);
+            this.txt_IpinCI.Location = new System.Drawing.Point(170, 829);
             this.txt_IpinCI.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.txt_IpinCI.MaxLength = 30;
             this.txt_IpinCI.Name = "txt_IpinCI";
@@ -3136,7 +3037,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_IpinDI.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.txt_IpinDI.Location = new System.Drawing.Point(489, 302);
+            this.txt_IpinDI.Location = new System.Drawing.Point(109, 869);
             this.txt_IpinDI.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.txt_IpinDI.MaxLength = 0;
             this.txt_IpinDI.Name = "txt_IpinDI";
@@ -3149,7 +3050,7 @@
             // 
             this.panel67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
             this.panel67.Controls.Add(this.panel68);
-            this.panel67.Location = new System.Drawing.Point(301, 221);
+            this.panel67.Location = new System.Drawing.Point(301, 222);
             this.panel67.Margin = new System.Windows.Forms.Padding(2);
             this.panel67.Name = "panel67";
             this.panel67.Size = new System.Drawing.Size(297, 37);
@@ -3196,7 +3097,7 @@
             this.tableLayoutPanel65.ColumnCount = 1;
             this.tableLayoutPanel65.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel65.Controls.Add(this.Lbl_Certify, 0, 0);
-            this.tableLayoutPanel65.Location = new System.Drawing.Point(403, 303);
+            this.tableLayoutPanel65.Location = new System.Drawing.Point(29, 869);
             this.tableLayoutPanel65.Name = "tableLayoutPanel65";
             this.tableLayoutPanel65.RowCount = 1;
             this.tableLayoutPanel65.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3215,20 +3116,6 @@
             this.Lbl_Certify.TabIndex = 0;
             this.Lbl_Certify.Text = "인증미확인";
             this.Lbl_Certify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // butt_Certify
-            // 
-            this.butt_Certify.BackColor = System.Drawing.Color.White;
-            this.butt_Certify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.butt_Certify.Location = new System.Drawing.Point(305, 299);
-            this.butt_Certify.Name = "butt_Certify";
-            this.butt_Certify.Size = new System.Drawing.Size(93, 26);
-            this.butt_Certify.TabIndex = 1039;
-            this.butt_Certify.TabStop = false;
-            this.butt_Certify.Text = "휴대폰 인증";
-            this.butt_Certify.UseVisualStyleBackColor = false;
-            this.butt_Certify.Visible = false;
-            this.butt_Certify.Click += new System.EventHandler(this.butt_Certify_Click);
             // 
             // button5
             // 
@@ -4153,7 +4040,6 @@
             // 
             // tab_Hide
             // 
-            this.tab_Hide.Controls.Add(this.tableLayoutPanel29);
             this.tab_Hide.Controls.Add(this.tableLayoutPanel12);
             this.tab_Hide.Controls.Add(this.panel38);
             this.tab_Hide.Controls.Add(this.panel63);
@@ -4167,59 +4053,6 @@
             this.tab_Hide.TabIndex = 3;
             this.tab_Hide.Text = "숨겨진 컨트롤";
             this.tab_Hide.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel29
-            // 
-            this.tableLayoutPanel29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.tableLayoutPanel29.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel29.ColumnCount = 2;
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel29.Controls.Add(this.label22, 0, 0);
-            this.tableLayoutPanel29.Controls.Add(this.panel19, 1, 0);
-            this.tableLayoutPanel29.Location = new System.Drawing.Point(580, 423);
-            this.tableLayoutPanel29.Name = "tableLayoutPanel29";
-            this.tableLayoutPanel29.RowCount = 1;
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel29.Size = new System.Drawing.Size(291, 37);
-            this.tableLayoutPanel29.TabIndex = 1024;
-            // 
-            // label22
-            // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(144)))), ((int)(((byte)(176)))));
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(2, 2);
-            this.label22.Margin = new System.Windows.Forms.Padding(0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(120, 33);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "주민번호";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.White;
-            this.panel19.Controls.Add(this.mtxtSn);
-            this.panel19.Location = new System.Drawing.Point(126, 4);
-            this.panel19.Margin = new System.Windows.Forms.Padding(2);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(161, 28);
-            this.panel19.TabIndex = 15;
-            // 
-            // mtxtSn
-            // 
-            this.mtxtSn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mtxtSn.Location = new System.Drawing.Point(3, 3);
-            this.mtxtSn.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.mtxtSn.Name = "mtxtSn";
-            this.mtxtSn.Size = new System.Drawing.Size(155, 21);
-            this.mtxtSn.TabIndex = 9;
             // 
             // tableLayoutPanel15
             // 
@@ -5217,40 +5050,85 @@
             // dGridView_Good
             // 
             this.dGridView_Good.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Good.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Good.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dGridView_Good.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Good.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Good.DefaultCellStyle = dataGridViewCellStyle20;
             this.dGridView_Good.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGridView_Good.Location = new System.Drawing.Point(3, 17);
             this.dGridView_Good.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dGridView_Good.Name = "dGridView_Good";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Good.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Good.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dGridView_Good.RowTemplate.Height = 23;
             this.dGridView_Good.Size = new System.Drawing.Size(1456, 452);
             this.dGridView_Good.TabIndex = 9;
             this.dGridView_Good.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridView_Good_CellEndEdit);
             this.dGridView_Good.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dGridView_Good_EditingControlShowing);
+            // 
+            // mtxtHPTel_0_2
+            // 
+            this.mtxtHPTel_0_2.Location = new System.Drawing.Point(60, 4);
+            this.mtxtHPTel_0_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.mtxtHPTel_0_2.Mask = "0000";
+            this.mtxtHPTel_0_2.Name = "mtxtHPTel_0_2";
+            this.mtxtHPTel_0_2.Size = new System.Drawing.Size(44, 21);
+            this.mtxtHPTel_0_2.TabIndex = 1;
+            // 
+            // mtxtHPTel_0_3
+            // 
+            this.mtxtHPTel_0_3.Location = new System.Drawing.Point(115, 4);
+            this.mtxtHPTel_0_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.mtxtHPTel_0_3.Mask = "0000";
+            this.mtxtHPTel_0_3.Name = "mtxtHPTel_0_3";
+            this.mtxtHPTel_0_3.Size = new System.Drawing.Size(44, 21);
+            this.mtxtHPTel_0_3.TabIndex = 2;
+            // 
+            // mtxtHPTel_0_1
+            // 
+            this.mtxtHPTel_0_1.Location = new System.Drawing.Point(5, 4);
+            this.mtxtHPTel_0_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.mtxtHPTel_0_1.Mask = "0000";
+            this.mtxtHPTel_0_1.Name = "mtxtHPTel_0_1";
+            this.mtxtHPTel_0_1.Size = new System.Drawing.Size(44, 21);
+            this.mtxtHPTel_0_1.TabIndex = 0;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(49, 8);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(11, 12);
+            this.label55.TabIndex = 3;
+            this.label55.Text = "-";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(104, 8);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(11, 12);
+            this.label57.TabIndex = 4;
+            this.label57.Text = "-";
             // 
             // frmMember
             // 
@@ -5289,9 +5167,6 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
-            this.tableLayoutPanel28.ResumeLayout(false);
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -5353,15 +5228,15 @@
             this.panel37.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.pnlSubDistrict_TH.ResumeLayout(false);
-            this.panel75.ResumeLayout(false);
-            this.pnlDistrict_TH.ResumeLayout(false);
-            this.panel74.ResumeLayout(false);
-            this.pnlProvince_TH.ResumeLayout(false);
-            this.panel73.ResumeLayout(false);
-            this.pnlZipCode_TH.ResumeLayout(false);
-            this.panel72.ResumeLayout(false);
-            this.panel72.PerformLayout();
+            this.tlpCPNO.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.tableLayoutPanel28.ResumeLayout(false);
+            this.panel76.ResumeLayout(false);
+            this.panel76.PerformLayout();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.tlpNaCode.ResumeLayout(false);
             this.panel39.ResumeLayout(false);
             this.tableLayoutPanel45.ResumeLayout(false);
@@ -5425,9 +5300,6 @@
             this.panel55.PerformLayout();
             this.tab_Day.ResumeLayout(false);
             this.tab_Hide.ResumeLayout(false);
-            this.tableLayoutPanel29.ResumeLayout(false);
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Good)).EndInit();
             this.ResumeLayout(false);
 
@@ -5442,13 +5314,11 @@
         private System.Windows.Forms.Button butt_Clear;
         private System.Windows.Forms.Button butt_Save;
         private System.Windows.Forms.Button butt_Exit;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.MaskedTextBox mtxtMbid_s;
         private System.Windows.Forms.MaskedTextBox mtxtMbid_n;
         private System.Windows.Forms.DateTimePicker DTP_RegDate;
         private System.Windows.Forms.TextBox txtCenter_Code;
         private System.Windows.Forms.TextBox txtCenter;
-        private System.Windows.Forms.Button butt_AddCode;
         private System.Windows.Forms.TextBox txtAddress2;
         private System.Windows.Forms.TextBox txtAddress1;
         private System.Windows.Forms.TextBox txtBank_Code;
@@ -5499,9 +5369,6 @@
         private System.Windows.Forms.CheckBox check_Cpno_Multi;
         private System.Windows.Forms.CheckBox check_Cpno_Err;
         private System.Windows.Forms.CheckBox check_Cpno;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel28;
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label18;
@@ -5539,7 +5406,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel33;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Panel panel27;
-        private System.Windows.Forms.MaskedTextBox mtxtTel2;
         private System.Windows.Forms.MaskedTextBox mtxtTel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel35;
         private System.Windows.Forms.Label label37;
@@ -5637,7 +5503,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel65;
         private System.Windows.Forms.Label Lbl_Certify;
-        private System.Windows.Forms.Button butt_Certify;
         private System.Windows.Forms.TabPage tab_Hide;
         private System.Windows.Forms.Panel panel66;
         private System.Windows.Forms.RadioButton radioB_Sex_Y;
@@ -5665,7 +5530,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel43;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.CheckBox checkB_Third_Person_Agree;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
+        private System.Windows.Forms.TableLayoutPanel tlpCPNO;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.MaskedTextBox mtxtSn;
@@ -5759,21 +5624,22 @@
         private System.Windows.Forms.ComboBox combo_Se_2;
         private System.Windows.Forms.ComboBox combo_Se_Code_2;
         private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TableLayoutPanel pnlDistrict_TH;
-        private System.Windows.Forms.Panel panel74;
-        private System.Windows.Forms.ComboBox cbDistrict_TH;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.TableLayoutPanel pnlProvince_TH;
-        private System.Windows.Forms.Panel panel73;
-        private System.Windows.Forms.ComboBox cbProvince_TH;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel28;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Panel panel76;
+        private System.Windows.Forms.TextBox txtName_Last;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnAddressTH;
+        private System.Windows.Forms.Button butt_Certify;
+        private System.Windows.Forms.TextBox txtDistrict;
+        private System.Windows.Forms.TextBox txtProvinceCode;
+        private System.Windows.Forms.MaskedTextBox mtxtHPTel_0_3;
+        private System.Windows.Forms.MaskedTextBox mtxtHPTel_0_2;
+        private System.Windows.Forms.MaskedTextBox mtxtHPTel_0_1;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.TableLayoutPanel pnlZipCode_TH;
-        private System.Windows.Forms.Panel panel72;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TableLayoutPanel pnlSubDistrict_TH;
-        private System.Windows.Forms.Panel panel75;
-        private System.Windows.Forms.ComboBox cbSubDistrict_TH;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.TextBox txtZipCode_TH;
     }
 }

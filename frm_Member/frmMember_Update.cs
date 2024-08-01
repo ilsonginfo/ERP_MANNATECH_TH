@@ -117,9 +117,7 @@ namespace MLM_Program
 
             mtxtTel1.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
             mtxtTel1.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
-
-            mtxtTel2.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
-            mtxtTel2.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
+           
 
             mtxtTel2_C.Enter += new EventHandler(clsStaticFnc.Tel_Enter);
             mtxtTel2_C.Leave += new EventHandler(clsStaticFnc.Tel_Leave);
@@ -1137,7 +1135,32 @@ namespace MLM_Program
                 //txtTel2_1.Text = tel[0].ToString();
                 //txtTel2_2.Text = tel[1].ToString();
                 //txtTel2_3.Text = tel[2].ToString();
+                MaskedTextBox mtxtTel2 = new MaskedTextBox()
+                {
+                    Name = "mtxtTemp", Text = string.Empty
+                };
+
                 clsStaticFnc.Set_MakedTel(mtxtTel2, ds.Tables[base_db_name].Rows[0]["hptel"].ToString());
+
+                string[] tel = mtxtTel2.Text.Split('-');
+                if (tel.Length == 3)
+                {
+                    mtxtHPTel_0_1.Text = tel[0].ToString();
+                    mtxtHPTel_0_2.Text = tel[1].ToString();
+                    mtxtHPTel_0_3.Text = tel[2].ToString();
+                }
+                else if (tel.Length == 2)
+                {
+
+                    mtxtHPTel_0_2.Text = tel[0].ToString();
+                    mtxtHPTel_0_3.Text = tel[1].ToString();
+                }
+                else if (tel.Length == 1)
+                {
+
+                    mtxtHPTel_0_3.Text = tel[0].ToString();
+                }
+
                 //cfm.Home_Number_Setting(ds.Tables[base_db_name].Rows[0]["hptel"].ToString(), mtxtTel2);
             }
 
@@ -3078,7 +3101,7 @@ namespace MLM_Program
             }
 
             mtxtTel1.Mask = string.Empty;
-            mtxtTel2.Mask = string.Empty;
+//            mtxtTel2.Mask = string.Empty;
 
             idx_Mbid = ""; idx_Mbid2 = 0;
             idx_Password = "";
@@ -3360,13 +3383,14 @@ namespace MLM_Program
             //    return false;
             //}
 
-            Sn = mtxtTel2.Text.Replace("-", "").Replace("_", "").Trim();
-            if (Sn_Number_1(Sn, mtxtTel2, "HpTel") == false)
-            {
-                mtxtTel2.Focus();
-                return false;
-            }
+            //Sn = mtxtTel2.Text.Replace("-", "").Replace("_", "").Trim();
+            //if (Sn_Number_1(Sn, mtxtTel2, "HpTel") == false)
+            //{
+            //    mtxtTel2.Focus();
+            //    return false;
+            //}
 
+        
 
 
             // 태국인 경우
@@ -3443,45 +3467,57 @@ namespace MLM_Program
                 }
 
                 //핸드폰번호 - 태국
-                bool isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 10;
-                if (isTH_CheckingNumber == false)
-                    isTH_CheckingNumber = mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length == 11;
-
-
-
-
-                if (isTH_CheckingNumber)
+                string HPTel_0_1 = mtxtHPTel_0_1.Text.Trim();
+                string HPTel_0_2 = mtxtHPTel_0_2.Text.Trim();
+                string HPTel_0_3 = mtxtHPTel_0_3.Text.Trim();
+                if (HPTel_0_1.Length < 2)
                 {
-                    string[] TelNumbers = mtxtTel2.Text.Replace(" ", "").Split('-');
-                    //뒤가 4자리가 아닌경우 빠꾸처리함 --> 그냥 배열3개 안만들어졌으면 빠꾸로 합시다.
-                    if (TelNumbers.Length != 3)
-                    {
-                        if (cls_User.gid_CountryCode == "TH")
-                        {
-                            MessageBox.Show("Please specify your cell phone number.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("핸드폰번호를 지정해주세요");
-                        }
-
-                        mtxtTel2.Focus();
-                        return false;
-                    }
-
+                    MessageBox.Show("Please specify your cell phone number." + Environment.NewLine +
+                        "The first digit of your cell phone number must be at least 2 digits.");
+                    mtxtHPTel_0_1.Focus();
+                    return false;
                 }
-                else if (mtxtTel2.Text.Replace("-", "") == "" || isTH_CheckingNumber == false)
-                {
 
+                if (HPTel_0_2.Length < 3)
+                {
+                    MessageBox.Show("Please specify your cell phone number." + Environment.NewLine +
+                        "The middle digit of your cell phone number must be at least 3 digits.");
+                    mtxtHPTel_0_2.Focus();
+                    return false;
+                }
+
+
+                if (HPTel_0_3.Length < 3)
+                {
+                    MessageBox.Show("Please specify your cell phone number." + Environment.NewLine +
+                         "The last part of your cell phone number must be at least 3 digits long");
+                    mtxtHPTel_0_3.Focus();
+                    return false;
+                }
+
+
+                string HPTel = HPTel_0_1 + HPTel_0_2 + HPTel_0_3;
+
+                bool isTH_CheckingNumber = HPTel.Length == 10;
+                if (isTH_CheckingNumber == false)
+                    isTH_CheckingNumber = HPTel.Length == 11;
+
+                //10자리나 11자리가 아닌경우
+                if (isTH_CheckingNumber == false)
+                {
                     if (cls_User.gid_CountryCode == "TH")
                     {
-                        MessageBox.Show("Please specify your cell phone number.");
+                        MessageBox.Show("Please specify your cell phone number." + Environment.NewLine +
+                            "The phone number you entered is not 10 or 11 digits long");
+
                     }
                     else
                     {
-                        MessageBox.Show("핸드폰번호를 지정해주세요");
+                        MessageBox.Show("핸드폰번호를 지정해주세요" + Environment.NewLine +
+                            "입력하신 번호는 10자리 혹은 11자리가 아닙니다.");
                     }
-                    mtxtTel2.Focus();
+
+                    mtxtHPTel_0_1.Focus();
                     return false;
                 }
             }
@@ -3502,20 +3538,20 @@ namespace MLM_Program
                     return false;
                 }
 
-                //핸드폰번호 - 한국
-                if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length != 11)
-                {
-                    if (cls_User.gid_CountryCode == "TH")
-                    {
-                        MessageBox.Show("Please specify your cell phone number.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("핸드폰번호를 지정해주세요");
-                    }
-                    mtxtTel2.Focus();
-                    return false;
-                }
+                ////핸드폰번호 - 한국
+                //if (mtxtTel2.Text.Replace("-", "") == "" || mtxtTel2.Text.Replace(" ", "").Replace("-", "").Length != 11)
+                //{
+                //    if (cls_User.gid_CountryCode == "TH")
+                //    {
+                //        MessageBox.Show("Please specify your cell phone number.");
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("핸드폰번호를 지정해주세요");
+                //    }
+                //    mtxtTel2.Focus();
+                //    return false;
+                //}
 
             }
             ////이메일
@@ -3655,6 +3691,11 @@ namespace MLM_Program
 
         private Boolean Check_Duplication_Error1()
         {
+            string HPTel_0_1 = mtxtHPTel_0_1.Text.Trim();
+            string HPTel_0_2 = mtxtHPTel_0_2.Text.Trim();
+            string HPTel_0_3 = mtxtHPTel_0_3.Text.Trim();
+            string HPTel = string.Format("{0}-{1}-{2}", HPTel_0_1, HPTel_0_2, HPTel_0_3);
+
             //핸드폰중복체크
             //20180807 현재는 CI_DI를 필수적으로 받지않으닌까! 
             cls_Connect_DB Temp_Connect = new cls_Connect_DB();
@@ -3664,13 +3705,37 @@ namespace MLM_Program
             sb.AppendLine("WHERE LeaveCheck = 1 ");
             // sb.AppendLine(string.Format("and Email = '{0}'", txtEmail.Text));
             sb.AppendLine(string.Format("and M_Name = '{0}'", txtName.Text));
-            sb.AppendLine(string.Format("and hptel = '{0}'", mtxtTel2.Text));
+            sb.AppendLine(string.Format("and hptel = '{0}'", HPTel));
 
             DataSet ds = new DataSet();
             if (Temp_Connect.Open_Data_Set(sb.ToString(), "Check_Join", ds, this.Name, this.Text) == false) return false;
             if (Temp_Connect.DataSet_ReCount == 0) return true;
 
             int RowValue = 0;
+            if (int.TryParse(ds.Tables["Check_Join"].Rows[0][0].ToString(), out RowValue))
+            {
+                if (RowValue > 0)
+                {
+                    MessageBox.Show(string.Format("{0}님 이름과 핸드폰번호로 중복 체크 결과 {1}명이있는것을 확인했습니다."
+                        , txtName.Text
+                        , RowValue));
+                    return false;
+                }
+            }
+
+            sb = new StringBuilder();
+            sb.AppendLine("SELECT isnull(count(*), 0) cnt");
+            sb.AppendLine("FROM tbl_memberinfo ");
+            sb.AppendLine("WHERE LeaveCheck = 1 ");
+            // sb.AppendLine(string.Format("and Email = '{0}'", txtEmail.Text));
+            sb.AppendLine(string.Format("and M_Name = '{0}'", txtName.Text));
+            sb.AppendLine(string.Format("and hptel = '{0}'", HPTel.Replace("-", String.Empty)));
+
+             ds = new DataSet();
+            if (Temp_Connect.Open_Data_Set(sb.ToString(), "Check_Join", ds, this.Name, this.Text) == false) return false;
+            if (Temp_Connect.DataSet_ReCount == 0) return true;
+
+             RowValue = 0;
             if (int.TryParse(ds.Tables["Check_Join"].Rows[0][0].ToString(), out RowValue))
             {
                 if (RowValue > 0)
@@ -3785,8 +3850,13 @@ namespace MLM_Program
                 if (check_BankDocument.Checked == true) BankDocument = 1;
                 if (check_CpnoDocument.Checked == true) CpnoDocument = 1;
 
-                if (mtxtTel1.Text.Replace("-", "").Trim() != "") hometel = mtxtTel1.Text.Replace(" ", ""); 
-                if (mtxtTel2.Text.Replace("-", "").Trim() != "") hptel = mtxtTel2.Text.Replace(" ", "");
+                if (mtxtTel1.Text.Replace("-", "").Trim() != "") hometel = mtxtTel1.Text.Replace(" ", "");
+
+                string HPTel_0_1 = mtxtHPTel_0_1.Text.Trim();
+                string HPTel_0_2 = mtxtHPTel_0_2.Text.Trim();
+                string HPTel_0_3 = mtxtHPTel_0_3.Text.Trim();
+                hptel = string.Format("{0}-{1}-{2}", HPTel_0_1, HPTel_0_2, HPTel_0_3);
+                //if (mtxtTel2.Text.Replace("-", "").Trim() != "") hptel = mtxtTel2.Text.Replace(" ", "");
 
                 if (opt_sell_3.Checked == true) Sell_Mem_TF = 1; //소비자는 1 판매원은 기본 0
                 

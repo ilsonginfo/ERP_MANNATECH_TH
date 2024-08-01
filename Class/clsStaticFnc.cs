@@ -48,44 +48,78 @@ namespace MLM_Program
             Set_MakedTel(tb, string.Empty);
         }
 
-        public static void Set_MakedTel(MaskedTextBox tb,string strInput)
+        public static void Set_MakedTel(MaskedTextBox tb, string strInput)
         {
-            string str = string.Empty;
-            if (string.IsNullOrWhiteSpace(strInput))
+            //2024.07.31 지성경 : 하이폰에따라 뱉어내는게 달라짐
+            bool Hipon2Count = strInput.Split('-').Length == 3;
+                string str = string.Empty;
+
+            //하이폰이있는 경우 여길 태운다
+            if (Hipon2Count)
             {
-                str = tb.Text.Replace("-", string.Empty).Trim();
+                str = strInput;
             }
             else
             {
-                str = strInput.Replace("-", string.Empty).Trim();
+
+
+                if (string.IsNullOrWhiteSpace(strInput))
+                {
+                    str = tb.Text.Replace("-", string.Empty).Trim();
+                }
+                else
+                {
+                    str = strInput.Replace("-", string.Empty).Trim();
+                }
+
+                Debug.WriteLine(str);
+
+                switch (str.Length)
+                {
+                    case 1:
+                        tb.Mask = "9";
+                        break;
+                    case 2:
+                        tb.Mask = "9-9";
+                        break;
+                    case 3:
+                        tb.Mask = "9-9-9";
+                        break;
+                    case 4:
+                        tb.Mask = "9-9-99";
+                        break;
+                    case 5:
+                        tb.Mask = "9-9-999";
+                        break;
+                    case 6:
+                        tb.Mask = "9-9-9999";
+                        break;
+                    case 7:
+                        tb.Mask = "9-99-9999";
+                        break;
+                    case 8:
+                        tb.Mask = "99-999-999";
+                        break;
+                    case 9:
+                        tb.Mask = "99-999-9999";
+                        break;
+                    case 10:
+                        tb.Mask = "999-999-9999";
+                        break;
+                    case 11:
+                        tb.Mask = "999-9999-9999";
+                        break;
+                    case 12:
+                        tb.Mask = "9999-9999-9999";
+                        break;
+                }
             }
 
-            Debug.WriteLine(str);
-
-            switch (str.Length)
-            {
-                case 8:
-                    tb.Mask = "99-999-999";
-                    break;
-                case 9:
-                    tb.Mask = "99-999-9999";
-                    break;
-                case 10:
-                    tb.Mask = "999-999-9999";
-                    break;
-                case 11:
-                    tb.Mask = "999-9999-9999";
-                    break;
-                case 12:
-                    tb.Mask = "9999-9999-9999";
-                    break;
-            }
             tb.Text = str;
 
             Debug.WriteLine($"text:{tb.Text},Length:{tb.Text.Replace("-", string.Empty).Trim().Length},Masking:{tb.Mask}");
 
         }
-
 
 
         public static string Post_Api(string sUrl, string sSend, string oMethod)

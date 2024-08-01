@@ -430,23 +430,17 @@
     <Compile Include="frm_ETC\frm_Promotion_Select.Designer.cs">
       <DependentUpon>frm_Promotion_Select.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_Member\frmMember_TH.cs">
+    <Compile Include="frm_Member\frmMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_Member\frmMember_TH.designer.cs">
-      <DependentUpon>frmMember_TH.cs</DependentUpon>
+    <Compile Include="frm_Member\frmMember.designer.cs">
+      <DependentUpon>frmMember.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_Member\frmMember_Change_SPON.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_Member\frmMember_Change_SPON.Designer.cs">
       <DependentUpon>frmMember_Change_SPON.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frm_Member\frmMember.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_Member\frmMember.designer.cs">
-      <DependentUpon>frmMember.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_Member\frmMember_Auto.cs">
       <SubType>Form</SubType>
@@ -1605,7 +1599,6 @@
     <EmbeddedResource Include="frm_Member\frmMember_Change_SPON.resx">
       <DependentUpon>frmMember_Change_SPON.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_Member\frmMember.resx" />
     <EmbeddedResource Include="frm_Member\frmMember_Auto.resx">
       <DependentUpon>frmMember_Auto.cs</DependentUpon>
     </EmbeddedResource>
@@ -1636,8 +1629,8 @@
     <EmbeddedResource Include="frm_Member\frmMember_Select_Cafe_Select.resx">
       <DependentUpon>frmMember_Select_Cafe_Select.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_Member\frmMember_TH.resx">
-      <DependentUpon>frmMember_TH.cs</DependentUpon>
+    <EmbeddedResource Include="frm_Member\frmMember.resx">
+      <DependentUpon>frmMember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Member\frmMember_UpdateSelect.resx">
       <DependentUpon>frmMember_UpdateSelect.cs</DependentUpon>
@@ -2160,6 +2153,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="frm_Member\frm_Member_20240730_Origin.zip" />
     <None Include="MenatechSQLSupportService\MenatechSQLSupportService.sqlproj">
       <SubType>Designer</SubType>
     </None>

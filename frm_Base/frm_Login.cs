@@ -521,6 +521,8 @@ namespace MLM_Program
             TSql = "Select Log_Date ";
             TSql = TSql + " From tbl_user  (nolock) ";
             TSql = TSql + " Where upper(user_id) = '" + ((txtUserID.Text).Trim()).ToUpper() + "'";
+            TSql = TSql + " AND Na_Code = 'TH'"; //2024-07-30 지성경 : 태국계정만 로그인가능하게 처리
+
 
             DataSet ds = new DataSet();
             //테이블에 맞게  DataSet에 내역을 넣고 제대로되었으면 true가 오고 아니면 걍 튀어나간다.
