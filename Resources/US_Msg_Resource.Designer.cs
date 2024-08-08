@@ -853,6 +853,15 @@ namespace MLM_Program.Resources {
         }
         
         /// <summary>
+        ///   EDC Payment amount과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Msg_Sort_Cacu_Price_7 {
+            get {
+                return ResourceManager.GetString("Msg_Sort_Cacu_Price_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Refund amount과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Msg_Sort_Cacu_Price_R {

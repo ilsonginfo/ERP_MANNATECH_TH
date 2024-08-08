@@ -6,8 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-
-
+using System.Diagnostics;
 
 namespace MLM_Program
 {
@@ -294,6 +293,9 @@ namespace MLM_Program
                 if (N_Chang == 0 )
                     Chang_T_query_N(ref T_query);
 
+
+                
+
                 SqlDataAdapter adapter = new SqlDataAdapter(T_query, Conn);
                 adapter.SelectCommand.CommandTimeout = 0;
                 
@@ -309,6 +311,10 @@ namespace MLM_Program
 
             catch (Exception ec)
             {
+
+                clsStaticFnc.Send_Output_Log(new StackTrace().GetFrame(1).GetMethod().ReflectedType.Name, new StackFrame(1, true).GetMethod().Name, 0, $"{ec.Message.ToString()}\n{T_query}");
+
+
                 if (cls_User.gid == cls_User.SuperUserID)
                     MessageBox.Show(ec.Message);
                 MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Base_Select_Err"));

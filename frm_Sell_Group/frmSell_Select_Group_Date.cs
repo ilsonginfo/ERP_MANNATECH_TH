@@ -314,7 +314,7 @@ namespace MLM_Program
             Tsql = Tsql + " ,Sum(TotalCv)  ";
             Tsql = Tsql + " ,Sum(InputCash)  ";
             Tsql = Tsql + " ,Sum(InputCard)  ";
-            Tsql = Tsql + " ,Sum(InputPassbook+InputPassbook_2)  ";
+            Tsql = Tsql + " ,Sum(InputPayment_8_TH)  ";
             Tsql = Tsql + " ,Sum(InputMile)  ";
             Tsql = Tsql + " , Sum(UnaccMoney) ,  Sum(TotalInputPrice) , Sum(InputPass_Pay) ";
             if (combo_Sort.SelectedIndex == 0)
@@ -495,7 +495,7 @@ namespace MLM_Program
             cgb.basegrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             string[] g_HeaderText = {"날짜"  , "주문액"   , "주문PV"  , "주문CV"  , "현금" 
-                                       , "카드"   , "무통장"   , "마일리지"    , "미결제"   , "입금액"  
+                                       , "카드"   , "PromptPay"   , "마일리지"    , "미결제"   , "입금액"  
                                        , "배송비" , "정산일자"
                                     };
             cgb.grid_col_header_text = g_HeaderText;
@@ -1372,7 +1372,7 @@ namespace MLM_Program
             Tsql = Tsql + " ,TotalCv ";
             Tsql = Tsql + " ,InputCash ";
             Tsql = Tsql + " ,InputCard";
-            Tsql = Tsql + " ,InputPassbook +InputPassbook_2 ";
+            Tsql = Tsql + " ,InputPayment_8_TH ";
             Tsql = Tsql + " ,InputMile ";
             Tsql = Tsql + " ,UnaccMoney ";
 
@@ -1526,7 +1526,7 @@ namespace MLM_Program
             {
                 string[] g_HeaderText = {"주문번호"  , "주문일자"   , "주문종류"  , "회원_번호"   , "성명"        
                             , "주문_센타명"   , "주문액"    , "주문PV" , "주문CV"  , "현금" 
-                            , "카드","무통장" , "마일리지" , "미결제" , "입금액"
+                            , "카드","PromptPay" , "마일리지" , "미결제" , "입금액"
                             , "배송비"  ,"회원_센타명" , "카드승인번호","매출_구분" ,"카드단말기여부"
                            ,"카드수기여부","배송_구분" ,"기록자"  ,"기록일","정산일자"
                             };
@@ -1545,7 +1545,7 @@ namespace MLM_Program
             {
                 string[] g_HeaderText = {"주문번호"  , "주문일자"   , "주문종류"  , "회원_번호"   , "성명"        
                             , "주문_센타명"   , "주문액"    , "주문PV"  , "주문CV"  , "현금" 
-                            , "카드"  ,"무통장" , "" , "미결제" , "입금액"
+                            , "카드"  ,"PromptPay" , "" , "미결제" , "입금액"
                             , "배송비"   , "회원_센타명", "카드승인번호","매출_구분" ,"카드단말기여부"
                              ,"카드수기여부","배송_구분"         ,"기록자"                 ,"기록일" ,"정산일"
                             };

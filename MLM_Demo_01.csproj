@@ -160,10 +160,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\API\clsOutput.cs" />
     <Compile Include="Class\ArchiveManager.cs" />
     <Compile Include="Class\clsCarImg_Up.cs" />
     <Compile Include="Class\clsCommissionDetail.cs" />
     <Compile Include="Class\clsEncryption.cs" />
+    <Compile Include="Class\clsEnum.cs" />
     <Compile Include="Class\clsExcel.cs" />
     <Compile Include="Class\clsStaticFnc.cs" />
     <Compile Include="Class\cls_Excel.cs" />

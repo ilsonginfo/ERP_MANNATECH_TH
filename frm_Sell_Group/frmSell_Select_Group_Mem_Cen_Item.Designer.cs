@@ -215,8 +215,9 @@
             // 
             // butt_Clear
             // 
-            this.butt_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(89)))), ((int)(((byte)(97))))); this.butt_Clear.ForeColor = System.Drawing.Color.White;
+            this.butt_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(89)))), ((int)(((byte)(97)))));
             this.butt_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butt_Clear.ForeColor = System.Drawing.Color.White;
             this.butt_Clear.Location = new System.Drawing.Point(266, 1);
             this.butt_Clear.Name = "butt_Clear";
             this.butt_Clear.Size = new System.Drawing.Size(111, 26);

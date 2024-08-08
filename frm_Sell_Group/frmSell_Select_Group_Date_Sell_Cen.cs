@@ -303,7 +303,7 @@ namespace MLM_Program
             Tsql = Tsql + " ,Sum(TotalCV)  ";
             Tsql = Tsql + " ,Sum(InputCash)  ";
             Tsql = Tsql + " ,Sum(InputCard)  ";
-            Tsql = Tsql + " ,Sum(InputPassbook)  ";
+            Tsql = Tsql + " ,Sum(InputPayment_8_TH)  ";
             Tsql = Tsql + " ,Sum(InputMile)  ";
             Tsql = Tsql + " ,Sum(UnaccMoney)  ";
             Tsql = Tsql + " From tbl_SalesDetail  (nolock) ";
@@ -554,7 +554,7 @@ namespace MLM_Program
 
 
              string[] g_HeaderText = {"주문_일자" ,"정산 일자" ,"센타_코드"  , "센타명"   , "주문액"  
-                    , "주문PV" , "주문CV" , "현금", "카드"   , "무통장"    
+                    , "주문PV" , "주문CV" , "현금", "카드"   , "PromptPay"    
                     , "마일리지" , "미결제"     
                                  
                                     };
@@ -1419,7 +1419,7 @@ namespace MLM_Program
             Tsql = Tsql + " ,TotalCV ";
             Tsql = Tsql + " ,InputCash ";
             Tsql = Tsql + " ,InputCard";
-            Tsql = Tsql + " ,InputPassbook ";
+            Tsql = Tsql + " ,InputPayment_8_TH ";
             Tsql = Tsql + " ,InputMile ";
             Tsql = Tsql + " ,UnaccMoney ";
 
@@ -1534,7 +1534,7 @@ namespace MLM_Program
             {
                 string[] g_HeaderText = {"주문번호"  , "주문일자"   , "주문종류"  , "회원_번호"   , "성명"        
                                 , "주문_센타명"   , "주문액"    , "주문PV"  , "주문CV", "현금" 
-                                , "카드" ,"무통장" , "마일리지" , "미결제" , "회원_센타명"
+                                , "카드" ,"PromptPay" , "마일리지" , "미결제" , "회원_센타명"
                                 };
 
                 cgb_Item.grid_col_header_text = g_HeaderText;
@@ -1550,7 +1550,7 @@ namespace MLM_Program
             {
                 string[] g_HeaderText = {"주문번호"  , "주문일자"   , "주문종류"  , "회원_번호"   , "성명"        
                                 , "주문_센타명"   , "주문액"    , "주문PV" , "주문CV" , "현금" 
-                                , "카드" ,"무통장" , "" , "미결제" , "회원_센타명"
+                                , "카드" ,"PromptPay" , "" , "미결제" , "회원_센타명"
                                 };
 
                 cgb_Item.grid_col_header_text = g_HeaderText;

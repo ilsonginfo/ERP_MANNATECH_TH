@@ -2429,7 +2429,7 @@
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(120, 32);
             this.label25.TabIndex = 0;
-            this.label25.Text = "무통장";
+            this.label25.Text = "PromptPay";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tableLayoutPanel24

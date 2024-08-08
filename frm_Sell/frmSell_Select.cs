@@ -452,6 +452,7 @@ namespace MLM_Program
             Tsql += " ,TotalInputPrice  " + Environment.NewLine;
             Tsql += " ,InputCash";
             Tsql += " ,InputCard ";
+            Tsql += " ,InputPayment_8_TH ";
             //Tsql += " , '' AS 'C_Number1'";
             //Tsql += " , '' AS 'C_Number2'";
             Tsql += " , ISNULL(STUFF(( " + Environment.NewLine;
@@ -1134,7 +1135,7 @@ namespace MLM_Program
                                  , "성명"       , "등급"             , "추천인"      , "추천인명"    , "후원인기준"
                                  , "주민번호"   , "배송구분"         , "구매_센타명" , "등록_센타명" , "구매_종류" 
                                  , "에러메세지" , "총구매액"         , "총PV"        , "총CV"        , "총결제액"  
-                                 , "현금"       , "카드"             , "카드번호"    , "승인번호"    , "가상계좌"
+                                 , "현금"       , "카드"             ,"PromptPay", "카드번호"    , "승인번호"    , "가상계좌"
                                  , "무통장"     , "쿠폰"             , "미수금"      , "구분"        , "비고1"
                                  , "현금영수증번호"
                                  //, "운송장번호"
@@ -1154,7 +1155,7 @@ namespace MLM_Program
                                 , "mname"      , "grade"           , "nmname"       , "추천인명"     , "SaveDefault"
                                 , "cpno"       , "배송구분"        , "구매_센타명"  , "등록_센타명"  , "구매_종류" 
                                 , "에러메세지" , "총구매액"        , "총PV"         , "총CV"         , "총결제액" 
-                                , "현금"       , "카드"            , "CardNumber1"  , "CardNumber2"  , "가상계좌"
+                                , "현금"       , "카드"            ,"InputPayment_8_TH", "CardNumber1"  , "CardNumber2"  , "가상계좌"
                                 , "무통장"     , "쿠폰"            , "미수금"          , "구분"         , "비고1"
                                 , "cash_num"  
                                 //, "운송장번호"
@@ -1174,7 +1175,7 @@ namespace MLM_Program
                     90,  90,  90, 130 ,  SizeSD,
                     130, 90, 130, 130 , 200,
                     100,  80, 80,  80,   80, 80,
-                    80 ,  80, 90,  90,   90,
+                    80 ,80,  80, 90,  90,   90,
                     cls_app_static_var.Using_Mileage_TF ,
                     130, 80, 130,  80,
                       80, 200, 0 , 130
@@ -1190,7 +1191,7 @@ namespace MLM_Program
                     90,  90,  90, 130 ,  SizeSD,
                     130, 90, 130, 130 , 200,
                     100,  80, 80,  80,   80, 80,
-                    80 ,  80, 90,  90,   90,
+                    80 , 80, 80, 90,  90,   90,
                     cls_app_static_var.Using_Mileage_TF ,
                     130, 80, 130,  80,
                       80, 200, 0 , 130
@@ -1205,7 +1206,7 @@ namespace MLM_Program
                                     ,true , true,  true, true ,true
                                     ,true , true,  true, true ,true
                                     ,true , true,  true, true ,true
-                                    ,true , true,
+                                    ,true , true,  true
                                    };
             cgb.grid_col_Lock = g_ReadOnly;
 
@@ -1239,6 +1240,7 @@ namespace MLM_Program
                                ,DataGridViewContentAlignment.MiddleRight
                                ,DataGridViewContentAlignment.MiddleRight
 
+                               ,DataGridViewContentAlignment.MiddleRight
                                ,DataGridViewContentAlignment.MiddleRight
                                ,DataGridViewContentAlignment.MiddleRight
                                ,DataGridViewContentAlignment.MiddleRight
@@ -1279,6 +1281,7 @@ namespace MLM_Program
             gr_dic_cell_format[27] = cls_app_static_var.str_Grid_Currency_Type;
             gr_dic_cell_format[28] = cls_app_static_var.str_Grid_Currency_Type;
             gr_dic_cell_format[29] = cls_app_static_var.str_Grid_Currency_Type;
+            gr_dic_cell_format[30] = cls_app_static_var.str_Grid_Currency_Type;
 
             cgb.grid_cell_format = gr_dic_cell_format;
 

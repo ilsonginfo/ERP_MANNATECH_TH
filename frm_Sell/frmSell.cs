@@ -11,7 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Drawing.Printing;
 using System.Reflection;
-
+using System.Diagnostics;
 
 namespace MLM_Program
 {
@@ -151,6 +151,23 @@ namespace MLM_Program
             combo_C_Card_Month.SelectedIndex = 0;
             combo_C_Card_Per.SelectedIndex = 0;
 
+
+            //•	Payment method : 
+            combo_C_EDC_Method.DataSource = Enum.GetValues(typeof(clsEnum.EDC_Payment_Method))
+            .Cast<clsEnum.EDC_Payment_Method>()
+             .Select(value => new
+             {
+                 (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
+                 value
+             })
+            .OrderBy(item => item.value)
+            .ToList();
+            combo_C_EDC_Method.DisplayMember = "Description";
+            combo_C_EDC_Method.ValueMember = "value";
+
+
+
+
             //Reset_Chart_Total(); // 차트 관련해서 리셋을 시킨다.
 
             //상품코드 자리수에 맞추어 텍스트 박스 길이 셋팅
@@ -201,6 +218,7 @@ namespace MLM_Program
             mtxtPriceDate2.Mask = cls_app_static_var.Date_Number_Fromat;
             mtxtPriceDate4.Mask = cls_app_static_var.Date_Number_Fromat;
             mtxtPriceDate6.Mask = cls_app_static_var.Date_Number_Fromat;
+            mtxtPriceDate7.Mask = cls_app_static_var.Date_Number_Fromat; //EDC 240807 태국요청으로 추가 외부단말기 결제 후 주문 생성
 
             mtxtTel1.Mask = cls_app_static_var.Tel_Number_Fromat;
             mtxtTel2.Mask = cls_app_static_var.Tel_Number_Fromat;
@@ -667,6 +685,12 @@ namespace MLM_Program
                         SendKeys.Send("{TAB}");
                     }
                 }
+
+
+
+
+
+
 
             }
 
@@ -2050,6 +2074,8 @@ namespace MLM_Program
 
         private void Set_gr_Cacu(ref Dictionary<int, object[]> gr_dic_text, int t_key, int fi_cnt)
         {
+                       
+
             object[] row0 = { Sales_Cacu[t_key].C_index
                                 ,Sales_Cacu[t_key].C_TF_Name
                                 ,Sales_Cacu[t_key].C_Price1
@@ -2657,6 +2683,16 @@ namespace MLM_Program
 
                 if (mtxtPriceDate6.Text.Replace("-", "").Trim() == "")
                     mtxtPriceDate6.Text = mtxtSellDate.Text;
+            }
+
+            //EDC결제
+            if (tb.Name == "txt_Price_EDC")
+            {
+                if (tb.Text != "")
+                    tb.Text = string.Format(cls_app_static_var.str_Currency_Type, double.Parse(tb.Text.Replace(",", "")));
+
+                if (mtxtPriceDate7.Text.Replace("-", "").Trim() == "")
+                    mtxtPriceDate7.Text = mtxtSellDate.Text;
             }
 
 
@@ -4842,6 +4878,9 @@ namespace MLM_Program
             if (txt_Price_4.Text.Trim() == "") txt_Price_4.Text = "0";
             if (txt_Price_5_2.Text.Trim() == "") txt_Price_5_2.Text = "0";
             if (txt_Price_6.Text.Trim() == "") txt_Price_6.Text = "0";
+
+            if (txt_Price_7.Text.Trim() == "") txt_Price_7.Text = "0";
+
             //0원짜리도 저장이 ㅗ디게 한다.
             if (double.Parse(txt_Price_1.Text.Trim().Replace(",", "")) == 0
                     && double.Parse(txt_Price_2.Text.Trim().Replace(",", "")) == 0
@@ -4849,6 +4888,7 @@ namespace MLM_Program
                     && double.Parse(txt_Price_4.Text.Trim().Replace(",", "")) == 0
                 && double.Parse(txt_Price_5_2.Text.Trim().Replace(",", "")) == 0
                   && double.Parse(txt_Price_6.Text.Trim().Replace(",", "")) == 0
+                  && double.Parse(txt_Price_7.Text.Trim().Replace(",", "")) == 0
                 )
             {
                 MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Not_Input")
@@ -4863,7 +4903,7 @@ namespace MLM_Program
             {
                 if (Sn_Number_(mtxtPriceDate1.Text, mtxtPriceDate1, "Date") == false)
                 {
-                    tab_Cacu.SelectedIndex = 1;
+                    tab_Cacu.SelectedIndex = 2;
                     mtxtPriceDate1.Focus();
                     return false;
                 }
@@ -4885,22 +4925,22 @@ namespace MLM_Program
             }
 
 
-            if (mtxtPriceDate2.Text.Replace("-", "").Trim() != "")
+            if (mtxtPriceDate2.Text.Replace("-", "").Trim() != "")//무통장
             {
                 if (Sn_Number_(mtxtPriceDate2.Text, mtxtPriceDate2, "Date") == false)
                 {
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 3;
                     mtxtPriceDate2.Focus();
                     return false;
                 }
             }
 
 
-            if (mtxtPriceDate4.Text.Replace("-", "").Trim() != "")
+            if (mtxtPriceDate4.Text.Replace("-", "").Trim() != "") //마일리지
             {
                 if (Sn_Number_(mtxtPriceDate4.Text, mtxtPriceDate4, "Date") == false)
                 {
-                    tab_Cacu.SelectedIndex = 3;
+                    tab_Cacu.SelectedIndex = 5;
                     mtxtPriceDate4.Focus();
                     return false;
                 }
@@ -4916,9 +4956,20 @@ namespace MLM_Program
                 }
             }
 
+            //EDC
+            if (mtxtPriceDate7.Text.Replace("-", "").Trim() != "")
+            {
+                if (Sn_Number_(mtxtPriceDate7.Text, mtxtPriceDate7, "Date") == false)
+                {
+                    tab_Cacu.SelectedIndex = 0;
+                    mtxtPriceDate7.Focus();
+                    return false;
+                }
+            }
 
 
-            if (butt_Cacu_Save.Text == "추가" && (txt_SumCoupon.Text != "0") && tab_Cacu.SelectedIndex == 4)
+
+            if (butt_Cacu_Save.Text == "추가" && (txt_SumCoupon.Text != "0") && tab_Cacu.SelectedIndex == 6)
             {
                 if (txt_SumCoupon.Text != "")
                 {
@@ -4943,7 +4994,7 @@ namespace MLM_Program
             {
                 if (Sn_Number_(mtxtPriceDate6.Text, mtxtPriceDate6, "Date") == false)
                 {
-                    tab_Cacu.SelectedIndex = 4;
+                    tab_Cacu.SelectedIndex = 6;
                     mtxtPriceDate6.Focus();
                     return false;
                 }
@@ -4956,7 +5007,7 @@ namespace MLM_Program
             {
                 if (Sn_Number_(mtxtPriceDate3.Text, mtxtPriceDate3, "Date") == false)
                 {
-                    tab_Cacu.SelectedIndex = 0;
+                    tab_Cacu.SelectedIndex = 1;
                     mtxtPriceDate3.Focus();
                     return false;
                 }
@@ -4966,7 +5017,7 @@ namespace MLM_Program
                 //{
                 //    if (MessageBox.Show("결제일자와 매출 일자가 상이 합니다. 매출 일자 셋팅을 결제 일자에 맞추시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.No)
                 //    {
-                //        tab_Cacu.SelectedIndex = 0;
+                //        tab_Cacu.SelectedIndex = 1;
                 //        mtxtPriceDate3.Focus();
                 //        return false;
                 //    }
@@ -4989,7 +5040,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_AppDate")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 1;
+                    tab_Cacu.SelectedIndex = 2;
                     mtxtPriceDate1.Focus(); return false;
                 }
             }
@@ -5003,7 +5054,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_AppDate")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 3;
                     mtxtPriceDate2.Focus(); return false;
                 }
             }
@@ -5016,7 +5067,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_AppDate")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 0;
+                    tab_Cacu.SelectedIndex = 1;
                     mtxtPriceDate3.Focus(); return false;
                 }
             }
@@ -5029,7 +5080,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_AppDate")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 3;
+                    tab_Cacu.SelectedIndex = 5;
                     mtxtPriceDate4.Focus(); return false;
                 }
             }
@@ -5042,7 +5093,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_AppDate")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 4;
+                    tab_Cacu.SelectedIndex = 6;
                     mtxtPriceDate6.Focus(); return false;
                 }
             }
@@ -5058,7 +5109,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_2")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 3;
                     txt_Price_2.Focus(); return false;
                 }
             }
@@ -5074,7 +5125,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_1")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 1;
+                    tab_Cacu.SelectedIndex = 2;
                     txt_Price_1.Focus(); return false;
                 }
             }
@@ -5149,7 +5200,7 @@ namespace MLM_Program
                            + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_3")
                           + "\n" +
                           cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                        tab_Cacu.SelectedIndex = 0;
+                        tab_Cacu.SelectedIndex = 1;
                         txt_Price_3.Focus(); return false;
                     }
 
@@ -5173,7 +5224,7 @@ namespace MLM_Program
                 }
             }
 
-            if (double.Parse(txt_Price_4.Text) == 0)
+            if (clsStaticFnc.Let_Double(txt_Price_4.Text) == 0)
             {
                 if (mtxtPriceDate4.Text.Replace("-", "").Trim() != "")
                 {
@@ -5181,7 +5232,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_4")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 3;
+                    tab_Cacu.SelectedIndex = 5;
                     txt_Price_4.Focus(); return false;
                 }
             }
@@ -5193,10 +5244,27 @@ namespace MLM_Program
                        + "-" + "쿠폰내역"
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 3;
+                    tab_Cacu.SelectedIndex = 6;
                     txt_Price_6.Focus(); return false;
                 }
             }
+
+            //EDC 체크
+            if(clsStaticFnc.Let_Double(txt_Price_7.Text)  == 0)
+            {
+                if (mtxtPriceDate7.Text.Replace("-", "").Trim() != "")
+                {
+                    MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Not_Input")
+                       + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_7")
+                      + "\n" +
+                      cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                    tab_Cacu.SelectedIndex = 5;
+                    txt_Price_4.Focus(); return false;
+                }
+
+            }
+
+
 
 
             if (txt_C_index.Text != "") // 수정일 경우에는 카드나 현금 무통장 동시에 못넣게 한다.
@@ -5207,7 +5275,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_1_2")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 1;
+                    tab_Cacu.SelectedIndex = 2;
                     txt_Price_1.Focus(); return false;
                 }
 
@@ -5217,7 +5285,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_1_3")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 1;
+                    tab_Cacu.SelectedIndex = 2;
                     txt_Price_1.Focus(); return false;
                 }
 
@@ -5227,7 +5295,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_1_4")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 1;
+                    tab_Cacu.SelectedIndex = 2;
                     txt_Price_1.Focus(); return false;
                 }
                 if (txt_Price_1.Text != "0" && txt_Price_6.Text != "0")
@@ -5236,7 +5304,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_1_4")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 1;
+                    tab_Cacu.SelectedIndex = 2;
                     txt_Price_1.Focus(); return false;
                 }
                 if (txt_Price_2.Text != "0" && txt_Price_3.Text != "0")
@@ -5245,7 +5313,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_2_3")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 3;
                     txt_Price_2.Focus(); return false;
                 }
 
@@ -5255,7 +5323,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_2_4")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 3;
                     txt_Price_2.Focus(); return false;
                 }
                 if (txt_Price_2.Text != "0" && txt_Price_6.Text != "0")
@@ -5264,7 +5332,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_2_4")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 3;
                     txt_Price_2.Focus(); return false;
                 }
 
@@ -5274,7 +5342,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_3_4")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 0;
+                    tab_Cacu.SelectedIndex = 1;
                     txt_Price_3.Focus(); return false;
                 }
                 if (txt_Price_3.Text != "0" && txt_Price_6.Text != "0")
@@ -5283,7 +5351,7 @@ namespace MLM_Program
                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_Cacu_Price_3_4")
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
-                    tab_Cacu.SelectedIndex = 0;
+                    tab_Cacu.SelectedIndex = 1;
                     txt_Price_3.Focus(); return false;
                 }
             }
@@ -5306,7 +5374,7 @@ namespace MLM_Program
                   + "\n" +
                   cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                 }
-                tab_Cacu.SelectedIndex = 0;
+                tab_Cacu.SelectedIndex = 1;
                 txt_Price_3.Focus(); return false;
             }
 
@@ -5327,19 +5395,64 @@ namespace MLM_Program
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                     }
-                        tab_Cacu.SelectedIndex = 0;
+                        tab_Cacu.SelectedIndex = 1;
                     txt_C_Card_Ap_Num.Focus(); return false;
                 }
             }
 
+            //EDC 체크시 
+            if(clsStaticFnc.Let_Double(txt_Price_7.Text) > 0)
+            {
 
+                if (string.IsNullOrWhiteSpace(txt_C_EDC_Ap_Num.Text.Trim()))
+                {
+                    if (cls_User.gid_CountryCode == "TH")
+                    {
+                        MessageBox.Show("If you have entered the EDC amount, you must enter the authorization number." + "\n" +
+                      cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                    }
+                    else
+                    {
+                        MessageBox.Show("EDC 금액을 입력하신 경우에는 승인 번호를 필히 입력 하셔야 합니다.."
+                      + "\n" +
+                      cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                    }
+                    tab_Cacu.SelectedIndex = 0;
+                    txt_C_EDC_Ap_Num.Focus(); return false;
+                }
+
+
+                if((clsEnum.EDC_Payment_Method)combo_C_EDC_Method.SelectedValue == clsEnum.EDC_Payment_Method.EDC_Default )
+                {
+
+                    if (cls_User.gid_CountryCode == "TH")
+                    {
+                        MessageBox.Show("If you have entered the EDC amount, you must select the payment method." + "\n" +
+                      cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                    }
+                    else
+                    {
+                        MessageBox.Show("EDC 금액을 입력하신 경우에는 payment method 필히 선택 하셔야 합니다.."
+                      + "\n" +
+                      cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                    }
+
+                    tab_Cacu.SelectedIndex = 0;
+                    combo_C_EDC_Method.Focus(); return false;
+
+                }
+
+
+
+
+            }
 
 
             if (double.Parse(txt_Price_4.Text) > 0)
             {
                 if (Mileage_Error_Check__01() == false)
                 {
-                    tab_Cacu.SelectedIndex = 3;
+                    tab_Cacu.SelectedIndex = 5;
                     txt_Price_4.Focus();
                     return false;
                 }
@@ -5362,7 +5475,7 @@ namespace MLM_Program
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                     }
-                    tab_Cacu.SelectedIndex = 0;
+                    tab_Cacu.SelectedIndex = 1;
                     txt_C_Card_Number.Focus(); return false;
 
 
@@ -5381,7 +5494,7 @@ namespace MLM_Program
                       + "\n" +
                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                     }
-                    tab_Cacu.SelectedIndex = 0;
+                    tab_Cacu.SelectedIndex = 1;
                     txt_Price_3_2.Focus(); return false;
                 }
 
@@ -5399,7 +5512,7 @@ namespace MLM_Program
                          + "\n" +
                          cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                     }
-                    tab_Cacu.SelectedIndex = 0;
+                    tab_Cacu.SelectedIndex = 1;
                     combo_C_Card_Year.Focus(); return false;
                 }
             }
@@ -6889,9 +7002,32 @@ namespace MLM_Program
                 t_c_sell.C_Coupon = txt_Price_6_2.Text.Replace("-", "").Trim();
             }
 
+            if (C_SF == 10) //EDC
+            {
+                //카드 promptpay로 나눔
+                if((clsEnum.EDC_Payment_Method)combo_C_EDC_Method.SelectedValue == clsEnum.EDC_Payment_Method.EDC_Card)
+                {
+                    t_c_sell.C_TF = 3;
+                    t_c_sell.C_TF_Name = ct._chang_base_caption_search("카드");
+                }
+                else if((clsEnum.EDC_Payment_Method)combo_C_EDC_Method.SelectedValue == clsEnum.EDC_Payment_Method.EDC_Promt)
+                {
 
+                    t_c_sell.C_TF = 8;
+                    t_c_sell.C_TF_Name = "PromptPay";
+                }
 
+                t_c_sell.C_Price1 = clsStaticFnc.Let_Double(txt_Price_7.Text.Trim());
+                t_c_sell.C_AppDate1 = mtxtPriceDate7.Text.Replace("-", "").Trim();
 
+                
+                t_c_sell.C_Number1 = "EDC"; //위는 화면 결제 구분용 이건 결제 후 다른 집계화면등에 표시 하기 위해
+                t_c_sell.C_Number2 = txt_C_EDC_Ap_Num.Text.Trim();
+                t_c_sell.C_Price2 = clsStaticFnc.Let_Double(txt_Price_7.Text.Trim()); //승인금액
+                
+
+                
+            }
 
             t_c_sell.RecordID = cls_User.gid;
             t_c_sell.RecordTime = "";
@@ -6900,6 +7036,18 @@ namespace MLM_Program
 
             t_c_sell.Del_TF = "S";
             Sales_Cacu[New_C_index] = t_c_sell;
+
+
+#if DEBUG
+
+            foreach (KeyValuePair<int, cls_Sell_Cacu> kv in Sales_Cacu)
+            {
+                Debug.WriteLine($"Key:{kv.Key} , Value: {kv.Value.C_TF},{kv.Value.C_TF_Name},{kv.Value.C_Price2}");
+            }
+
+#endif
+
+
         }
 
 
@@ -7091,6 +7239,38 @@ namespace MLM_Program
                 Sales_Cacu[C_index].C_Price1 = double.Parse(txt_Price_4.Text.Trim().Replace(",", ""));
                 Sales_Cacu[C_index].C_AppDate1 = mtxtPriceDate4.Text.Replace("-", "").Trim();
             }
+
+
+            if (double.Parse(txt_Price_7.Text.Trim()) > 0)  //EDC일때
+            {
+
+                //카드 promptpay로 나눔
+                if ((clsEnum.EDC_Payment_Method)combo_C_EDC_Method.SelectedValue == clsEnum.EDC_Payment_Method.EDC_Card)
+                {
+                    Sales_Cacu[C_index].C_TF = 3;
+                    Sales_Cacu[C_index].C_TF_Name = ct._chang_base_caption_search("카드");
+
+                }
+                else if ((clsEnum.EDC_Payment_Method)combo_C_EDC_Method.SelectedValue == clsEnum.EDC_Payment_Method.EDC_Promt)
+                {
+
+                    Sales_Cacu[C_index].C_TF = 8;
+                    Sales_Cacu[C_index].C_TF_Name = "PromptPay";
+                }
+
+                Sales_Cacu[C_index].C_Price1 = clsStaticFnc.Let_Double(txt_Price_7.Text.Trim());
+                Sales_Cacu[C_index].C_AppDate1 = mtxtPriceDate7.Text.Replace("-", "").Trim();
+
+                
+                Sales_Cacu[C_index].C_Number1 = "EDC";//결제목록에서 선택 할때 EDC 탭으로 이동 하기위해 이값 사용 이거 없으면 C_TF 값에 따라 탭이 이동 하니깐.
+                Sales_Cacu[C_index].C_Number2 = txt_C_EDC_Ap_Num.Text.Trim();
+                Sales_Cacu[C_index].C_Price2 = clsStaticFnc.Let_Double(txt_Price_7.Text.Trim()); //승인금액
+
+
+            }
+
+
+
 
             if (double.Parse(txt_Price_5_2.Text.Trim()) > 0)  //현금이다
             {
@@ -7710,6 +7890,12 @@ namespace MLM_Program
                         }
                         Base_Sub_Save_Cacu(3);
                     }
+
+
+
+
+
+
                     if (double.Parse(txt_Price_4.Text.Trim().Replace(",", "")) > 0)  //카드이다
                         Base_Sub_Save_Cacu(4);
                     if (double.Parse(txt_Price_6.Text.Trim().Replace(",", "")) > 0)  //쿠폰이다.
@@ -7819,7 +8005,13 @@ namespace MLM_Program
                             Base_Sub_Save_Cacu(6);
                         }
                     }
-                
+
+                    if (double.Parse(txt_Price_7.Text.Trim().Replace(",", "")) > 0)  //EDC
+                        Base_Sub_Save_Cacu(10);
+
+
+
+
                     Base_Sub_Sum_Cacu();
                     Base_Sub_Clear("Cacu");
                     Save_Button_Click_Cnt++;
@@ -8100,8 +8292,14 @@ namespace MLM_Program
 
             if (dtp.Name == "DTP_PriceDate4")
                 ct.form_DateTimePicker_Search_TextBox(this, (DateTimePicker)sender, butt_Cacu_Save);
+
             if (dtp.Name == "DTP_PriceDate6")
                 ct.form_DateTimePicker_Search_TextBox(this, (DateTimePicker)sender, butt_Cacu_Save);
+
+            if (dtp.Name == "DTP_PriceDate7")
+                ct.form_DateTimePicker_Search_TextBox(this, (DateTimePicker)sender, butt_Cacu_Save);
+
+
             if (dtp.Name == "DTP_IssueDate")
                 ct.form_DateTimePicker_Search_TextBox(this, (DateTimePicker)sender);
         }
@@ -9480,6 +9678,7 @@ namespace MLM_Program
             }
             else
             {
+                
                 StrSql = StrSql + ",C_Coupon= '" + Sales_Cacu[C_index].C_Coupon + "'";
             }
             
@@ -9582,6 +9781,7 @@ namespace MLM_Program
             }
             else
             {
+                
                 StrSql = StrSql + ",'" + Sales_Cacu[C_index].C_Coupon+ "'";
             }
 
@@ -10769,8 +10969,13 @@ namespace MLM_Program
             if (t_STF == "Cacu")
             {
                 Data_Set_Form_TF = 1;
+#if DEBUG
 
-
+                foreach (KeyValuePair<int, cls_Sell_Cacu> kv in Sales_Cacu)
+                {
+                    Console.WriteLine($"Key:{kv.Key} , Value: {kv.Value.C_TF},{kv.Value.C_TF_Name},{kv.Value.C_Price2}");
+                }
+#endif
 
 
                 txt_C_index.Text = SalesItemIndex;
@@ -10785,7 +10990,7 @@ namespace MLM_Program
 
                 if (Sales_Cacu[C_index].C_TF == 1)
                 {
-                    tab_Cacu.SelectedIndex = 1;
+                    tab_Cacu.SelectedIndex = 2;
                     txt_Price_1.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price1);
                     mtxtPriceDate1.Text = Sales_Cacu[C_index].C_AppDate1.ToString().Replace("-", "");
 
@@ -10849,7 +11054,7 @@ namespace MLM_Program
 
                 if (Sales_Cacu[C_index].C_TF == 2)
                 {
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 3;
                     txt_Price_2.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price1);
                     mtxtPriceDate2.Text = Sales_Cacu[C_index].C_AppDate1.ToString().Replace("-", "");
                     txt_C_Name_2.Text = Sales_Cacu[C_index].C_Name1.ToString();
@@ -10909,80 +11114,98 @@ namespace MLM_Program
 
 
 
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 3;
                 }
 
                 if (Sales_Cacu[C_index].C_TF == 3)
                 {
-                    tab_Cacu.SelectedIndex = 0;
 
-                    txt_Price_3.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price1);
-                    mtxtPriceDate3.Text = Sales_Cacu[C_index].C_AppDate1.ToString().Replace("-", "");
-                    txt_C_Name_3.Text = Sales_Cacu[C_index].C_Name1.ToString();
-                    txt_C_Card.Text = Sales_Cacu[C_index].C_CodeName.ToString();
-                    txt_C_Card_Code.Text = Sales_Cacu[C_index].C_Code.ToString();
-                    txt_C_Card_Number.Text = Sales_Cacu[C_index].C_Number1.ToString();
-                    txt_C_Card_Ap_Num.Text = Sales_Cacu[C_index].C_Number2.ToString();
-                    txt_C_CVC.Text = Sales_Cacu[C_index].C_CVC?.ToString();
-
-                    txt_Price_3_2.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price2);
-
-                    if (Sales_Cacu[C_index].C_Period1.ToString().Length == 2)
-                        combo_C_Card_Year.Text = "20" + Sales_Cacu[C_index].C_Period1.ToString();
-                    else
-                        combo_C_Card_Year.Text = Sales_Cacu[C_index].C_Period1.ToString();
-
-                    combo_C_Card_Month.Text = Sales_Cacu[C_index].C_Period2.ToString();
-
-                    if (combo_C_Card_Year.Text != "")
-                        txt_C_Card_Year.Text = combo_C_Card_Year.Text.Substring(2, 2);
-
-                    if (combo_C_Card_Month.Text != "")
-                        txt_C_Card_Month.Text = combo_C_Card_Month.Text;
-
-
-                    combo_C_Card_Per.Text = Sales_Cacu[C_index].C_Installment_Period.ToString();
-
-                    txt_C_P_Number.Text = Sales_Cacu[C_index].C_P_Number.ToString();
-                    txt_C_B_Number.Text = Sales_Cacu[C_index].C_B_Number.ToString();
-
-                    txt_Sugi_TF.Text = Sales_Cacu[C_index].Sugi_TF.ToString();
-
-
-
-                    if (Sales_Cacu[C_index].C_Number3.ToString() != "" && Sales_Cacu[C_index].C_Number4.ToString() == "" && Sales_Cacu[C_index].C_Price1 > 0)
+                    if(Sales_Cacu[C_index].C_Number1.ToString() == "EDC")
                     {
-                        //butt_Cacu_Del.Visible = false;
-                        //tab_Card.Enabled = false;  //카드가 수기특약이나 웹상으로 승인난 내역에 대해서는 취소가 이루어지 않으면.. 수정이나 삭제가 안되게 한다.
-                        enable_Card_info_txt(false);
+                        //EDC탭에서 결재 한건
+                        tab_Cacu.SelectedIndex = 0;
 
-                        button_Ok.Visible = false;
-                        button_Cancel.Visible = true;
-                        //20180830 지성경. lg모듈자체에 부분 금액취소가없다
-                        //tableL_CD.Visible = true;
+                        txt_Price_7.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price1);
+                        mtxtPriceDate7.Text = Sales_Cacu[C_index].C_AppDate1.ToString().Replace("-", "");
+                        combo_C_EDC_Method.SelectedValue = (clsEnum.EDC_Payment_Method)Sales_Cacu[C_index].C_TF;
+                        txt_C_EDC_Ap_Num.Text = Sales_Cacu[C_index].C_Number2;
+
                     }
                     else
                     {
-                        if (Card_Ok_Visible == false)
+                        //기존카드건
+                        tab_Cacu.SelectedIndex = 1;
+                        txt_Price_3.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price1);
+                        mtxtPriceDate3.Text = Sales_Cacu[C_index].C_AppDate1.ToString().Replace("-", "");
+                        txt_C_Name_3.Text = Sales_Cacu[C_index].C_Name1.ToString();
+                        txt_C_Card.Text = Sales_Cacu[C_index].C_CodeName.ToString();
+                        txt_C_Card_Code.Text = Sales_Cacu[C_index].C_Code.ToString();
+                        txt_C_Card_Number.Text = Sales_Cacu[C_index].C_Number1.ToString();
+                        txt_C_Card_Ap_Num.Text = Sales_Cacu[C_index].C_Number2.ToString();
+                        txt_C_CVC.Text = Sales_Cacu[C_index].C_CVC?.ToString();
+
+                        txt_Price_3_2.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price2);
+
+                        if (Sales_Cacu[C_index].C_Period1.ToString().Length == 2)
+                            combo_C_Card_Year.Text = "20" + Sales_Cacu[C_index].C_Period1.ToString();
+                        else
+                            combo_C_Card_Year.Text = Sales_Cacu[C_index].C_Period1.ToString();
+
+                        combo_C_Card_Month.Text = Sales_Cacu[C_index].C_Period2.ToString();
+
+                        if (combo_C_Card_Year.Text != "")
+                            txt_C_Card_Year.Text = combo_C_Card_Year.Text.Substring(2, 2);
+
+                        if (combo_C_Card_Month.Text != "")
+                            txt_C_Card_Month.Text = combo_C_Card_Month.Text;
+
+
+                        combo_C_Card_Per.Text = Sales_Cacu[C_index].C_Installment_Period.ToString();
+
+                        txt_C_P_Number.Text = Sales_Cacu[C_index].C_P_Number.ToString();
+                        txt_C_B_Number.Text = Sales_Cacu[C_index].C_B_Number.ToString();
+
+                        txt_Sugi_TF.Text = Sales_Cacu[C_index].Sugi_TF.ToString();
+
+
+
+                        if (Sales_Cacu[C_index].C_Number3.ToString() != "" && Sales_Cacu[C_index].C_Number4.ToString() == "" && Sales_Cacu[C_index].C_Price1 > 0)
                         {
+                            //butt_Cacu_Del.Visible = false;
+                            //tab_Card.Enabled = false;  //카드가 수기특약이나 웹상으로 승인난 내역에 대해서는 취소가 이루어지 않으면.. 수정이나 삭제가 안되게 한다.
+                            enable_Card_info_txt(false);
+
                             button_Ok.Visible = false;
+                            button_Cancel.Visible = true;
+                            //20180830 지성경. lg모듈자체에 부분 금액취소가없다
+                            //tableL_CD.Visible = true;
                         }
                         else
                         {
-
-                            if (cls_app_static_var.Member_Card_Sugi_TF == 1)
-                                button_Ok.Visible = true;
-                            else
+                            if (Card_Ok_Visible == false)
+                            {
                                 button_Ok.Visible = false;
+                            }
+                            else
+                            {
+
+                                if (cls_app_static_var.Member_Card_Sugi_TF == 1)
+                                    button_Ok.Visible = true;
+                                else
+                                    button_Ok.Visible = false;
+                            }
+                            button_Cancel.Visible = false;
+                            tableL_CD.Visible = false;
                         }
-                        button_Cancel.Visible = false;
-                        tableL_CD.Visible = false;
                     }
+
+
+                    
                 }
 
                 if (Sales_Cacu[C_index].C_TF == 4)
                 {
-                    tab_Cacu.SelectedIndex = 3;
+                    tab_Cacu.SelectedIndex = 5;
 
                     txt_Price_4.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price1);
                     mtxtPriceDate4.Text = Sales_Cacu[C_index].C_AppDate1.ToString().Replace("-", "");
@@ -10999,6 +11222,10 @@ namespace MLM_Program
                     }
 
                 }
+
+
+
+
 
                 if (Sales_Cacu[C_index].C_TF == 6)
                 {
@@ -11023,7 +11250,7 @@ namespace MLM_Program
 
                 if (Sales_Cacu[C_index].C_TF == 5)
                 {
-                    tab_Cacu.SelectedIndex = 2;
+                    tab_Cacu.SelectedIndex = 4;
 
                     txt_Price_5_2.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price2);
                     txt_Price_5.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price1);
@@ -11105,6 +11332,23 @@ namespace MLM_Program
                     }
 
                     // but_Cash_Send.Visible = true;
+
+                }
+
+
+
+                //EDC promptpay
+                if (Sales_Cacu[C_index].C_TF == 8)
+                {
+                    tab_Cacu.SelectedIndex = 0;
+
+                    txt_Price_7.Text = string.Format(cls_app_static_var.str_Currency_Type, Sales_Cacu[C_index].C_Price1);
+                    mtxtPriceDate7.Text = Sales_Cacu[C_index].C_AppDate1.ToString().Replace("-", "");
+
+                    combo_C_EDC_Method.SelectedValue = (clsEnum.EDC_Payment_Method)Sales_Cacu[C_index].C_TF;
+
+                    txt_C_EDC_Ap_Num.Text = Sales_Cacu[C_index].C_Number2;
+
 
                 }
 
@@ -11700,16 +11944,23 @@ namespace MLM_Program
             txt_C_Cash_Number2_2.Text = "";
             btnCashReceiptCancel.Visible = false;
 
+            txt_Price_1.Text = string.Empty;
+            mtxtPriceDate7.Text = string.Empty;
+            combo_C_EDC_Method.SelectedIndex = 0;
+            txt_C_EDC_Ap_Num.Text = string.Empty;
+
             if (tab_Cacu.SelectedIndex == 0)
-                txt_Price_3.Focus();
+                txt_Price_7.Focus();
             if (tab_Cacu.SelectedIndex == 1)
-                txt_Price_1.Focus();
+                txt_Price_3.Focus();
             if (tab_Cacu.SelectedIndex == 2)
+                txt_Price_1.Focus();
+            if (tab_Cacu.SelectedIndex == 3)
                 txt_Price_2.Focus();
 
-            if (tab_Cacu.SelectedIndex == 3)
-                txt_Price_5_2.Focus();
             if (tab_Cacu.SelectedIndex == 4)
+                txt_Price_5_2.Focus();
+            if (tab_Cacu.SelectedIndex == 6)
                 txt_Price_6.Focus();
         }
 
@@ -12442,7 +12693,7 @@ namespace MLM_Program
                   + "\n" +
                   cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                 }
-                tab_Cacu.SelectedIndex = 0;
+                tab_Cacu.SelectedIndex = 1;
                 txt_C_Card_Number.Focus(); return;
             }
             if (txt_Price_3_2.Text.Trim() == "")
@@ -12459,7 +12710,7 @@ namespace MLM_Program
                   + "\n" +
                   cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                 }
-                tab_Cacu.SelectedIndex = 0;
+                tab_Cacu.SelectedIndex = 1;
                 txt_Price_3_2.Focus(); return;
             }
 
@@ -12477,7 +12728,7 @@ namespace MLM_Program
                      + "\n" +
                      cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                 }
-                tab_Cacu.SelectedIndex = 0;
+                tab_Cacu.SelectedIndex = 1;
                 txt_C_Card_Year.Focus(); return;
             }
 
@@ -13520,7 +13771,7 @@ namespace MLM_Program
           + "\n" +
           cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
                     }
-                    tab_Cacu.SelectedIndex = 4;
+                    tab_Cacu.SelectedIndex = 6;
                     mtxtPriceDate6.Focus(); return;
                 }
 
@@ -13832,6 +14083,44 @@ namespace MLM_Program
                 }
             }
         }
-        
+        /// <summary>
+        /// EDC 전체 금액 넣기
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void butt_All_EDC_Click(object sender, EventArgs e)
+        {
+            string T_Mbid = mtxtMbid.Text;
+            string Mbid = ""; int Mbid2 = 0;
+
+            cls_Search_DB csb = new cls_Search_DB();
+            if (csb.Member_Nmumber_Split(T_Mbid, ref Mbid, ref Mbid2) == -1) //올바르게 회원번호 양식에 맞춰서 입력햇는가.
+            {
+                MessageBox.Show(cls_app_static_var.app_msg_rm.GetString("Msg_Not_Input_Err")
+                        + "-" + cls_app_static_var.app_msg_rm.GetString("Msg_Sort_MemNumber")
+                       + "\n" +
+                       cls_app_static_var.app_msg_rm.GetString("Msg_Re_Action"));
+                mtxtMbid.Focus(); return;
+            }
+
+            if (txt_SumPr.Text.Replace(",", "") == "")
+            {
+                string sMsgText = (cls_User.gid_CountryCode == "TH") ? "Please select the product first." : "상품을 먼저 선택하여 주십시오.";
+                MessageBox.Show(sMsgText);
+                txt_ItemCode.Focus();
+                return;
+            }
+
+            double SumPr = clsStaticFnc.Let_Double(txt_SumPr.Text);
+            double InputPass_Pay = clsStaticFnc.Let_Double(txt_InputPass_Pay.Text);
+            double total = SumPr + InputPass_Pay;
+            string final_total = string.Format(cls_app_static_var.str_Currency_Money_Type, total);
+
+            txt_Price_7.Text = final_total.ToString();
+
+            //결제일이 없을때 오늘날짜 넣는다.
+            if (string.IsNullOrWhiteSpace(mtxtPriceDate7.Text.Replace("-", "").Trim()))
+                mtxtPriceDate7.Text = mtxtSellDate.Text;
+        }
     }
 }

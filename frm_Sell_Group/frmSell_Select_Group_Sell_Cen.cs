@@ -282,7 +282,7 @@ namespace MLM_Program
             Tsql = Tsql + " ,Sum(TotalCv)  ";
             Tsql = Tsql + " ,Sum(InputCash)  ";
             Tsql = Tsql + " ,Sum(InputCard)  ";
-            Tsql = Tsql + " ,Sum(InputPassbook+InputPassbook_2)  ";
+            Tsql = Tsql + " ,Sum(InputPayment_8_TH)  ";
             Tsql = Tsql + " ,Sum(InputMile)  ";
             Tsql = Tsql + " ,Sum(UnaccMoney)  ";
             Tsql = Tsql + " From tbl_SalesDetail  (nolock) ";
@@ -434,7 +434,7 @@ namespace MLM_Program
             cgb.basegrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             string[] g_HeaderText = {"센타_코드"  , "센타명"   , "주문액"  , "주문PV"    ,  "주문CV"
-                                      , "현금"       , "카드"   , "무통장"    , "마일리지"   , "미결제"                           
+                                      , "현금"       , "카드"   , "PromptPay"    , "마일리지"   , "미결제"                           
                                     };
             cgb.grid_col_header_text = g_HeaderText;
 
@@ -1271,7 +1271,7 @@ namespace MLM_Program
             Tsql = Tsql + " ,TotalCv ";
             Tsql = Tsql + " ,InputCash ";
             Tsql = Tsql + " ,InputCard";
-            Tsql = Tsql + " ,InputPassbook + InputPassbook_2 AS InputPassbook ";
+            Tsql = Tsql + " ,InputPayment_8_TH";
             Tsql = Tsql + " ,InputMile ";
             Tsql = Tsql + " ,UnaccMoney ";
 
@@ -1331,7 +1331,7 @@ namespace MLM_Program
                 Sum_14 = Sum_14 + double.Parse(ds.Tables[base_db_name].Rows[fi_cnt][8].ToString());//TOTALCV
                 Sum_09 = Sum_09 + double.Parse(ds.Tables[base_db_name].Rows[fi_cnt][9].ToString());//INPUTCASH
                 Sum_10 = Sum_10 + double.Parse(ds.Tables[base_db_name].Rows[fi_cnt][10].ToString());//INPUTCARD
-                Sum_11 = Sum_11 + double.Parse(ds.Tables[base_db_name].Rows[fi_cnt][11].ToString());//INPUTPASSBOOK
+                Sum_11 = Sum_11 + double.Parse(ds.Tables[base_db_name].Rows[fi_cnt][11].ToString());//InputPayment_8_TH
                 Sum_12 = Sum_12 + double.Parse(ds.Tables[base_db_name].Rows[fi_cnt][13].ToString());//UNACCMONEY
                 Sum_13 = Sum_13 + double.Parse(ds.Tables[base_db_name].Rows[fi_cnt][12].ToString());//INPUTMILE
              
@@ -1387,7 +1387,7 @@ namespace MLM_Program
             {
                 string[] g_HeaderText = {"주문번호"  , "주문일자"   , "주문종류"  , "회원_번호"   , "성명"        
                                 , "주문_센타명"   , "주문액"    , "주문PV" , "주문CV"  , "현금"
-                                , "카드" ,"무통장/가상계좌" , "마일리지" , "미결제" , "회원_센타명"
+                                , "카드" ,"PromptPay" , "마일리지" , "미결제" , "회원_센타명"
                                 ,"배송형태","기록자","기록시간","정산일자"
                                 };
                 cgb_Item.grid_col_header_text = g_HeaderText;
@@ -1404,7 +1404,7 @@ namespace MLM_Program
             {
                 string[] g_HeaderText = {"주문번호"  , "주문일자"   , "주문종류"  , "회원_번호"   , "성명"        
                                 , "주문_센타명"   , "주문액"    , "주문PV", "주문CV"   , "현금" 
-                                , "카드","무통장/가상계좌" , "" , "미결제" , "회원_센타명"
+                                , "카드","PromptPay" , "" , "미결제" , "회원_센타명"
                                  ,"배송형태","기록자","기록시간","정산일자"
                                 };
                 cgb_Item.grid_col_header_text = g_HeaderText;

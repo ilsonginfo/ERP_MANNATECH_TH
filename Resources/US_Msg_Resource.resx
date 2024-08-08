@@ -573,4 +573,7 @@
   <data name="Msg_Base_Work_End" xml:space="preserve">
     <value>The requested operation has been completed.</value>
   </data>
+  <data name="Msg_Sort_Cacu_Price_7" xml:space="preserve">
+    <value>EDC Payment amount</value>
+  </data>
 </root>

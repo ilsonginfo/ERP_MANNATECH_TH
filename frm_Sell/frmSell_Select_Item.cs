@@ -544,11 +544,11 @@ namespace MLM_Program
         private void Make_Base_Query2(ref string Tsql, ref string msql)
         {
              msql =  msql = "   select ";
-             msql = msql + " a.ordernumber,   a.InputCash, a.Inputcard, a.InputPassbook_2,a.TotalInputPrice,a.UnaccMoney";
+             msql = msql + " a.ordernumber,   a.InputCash, a.Inputcard, a.InputPayment_8_TH,a.TotalInputPrice,a.UnaccMoney";
              msql = msql + " from tbl_salesdetail a join (";
              msql = msql + Tsql;
              msql = msql + " ) b  on a.OrderNumber= b.OrderNumber ";
-             msql = msql + " group by  a.ordernumber,   a.InputCash, a.Inputcard, a.InputPassbook_2,a.TotalInputPrice,a.UnaccMoney ";
+             msql = msql + " group by  a.ordernumber,   a.InputCash, a.Inputcard, a.InputPayment_8_TH,a.TotalInputPrice,a.UnaccMoney ";
              msql = msql + " order by a.ordernumber";
         }
             private void Base_Grid_Set()
@@ -583,7 +583,7 @@ namespace MLM_Program
 
                 Sum_20 = Sum_20 + double.Parse(ds2.Tables[base_db_name].Rows[fi_cnt]["InputCash"].ToString());  //판매수량
                 Sum_21 = Sum_21 + double.Parse(ds2.Tables[base_db_name].Rows[fi_cnt]["Inputcard"].ToString());  //출고수량
-                Sum_22 = Sum_22 + double.Parse(ds2.Tables[base_db_name].Rows[fi_cnt]["InputPassbook_2"].ToString());  //금액
+                Sum_22 = Sum_22 + double.Parse(ds2.Tables[base_db_name].Rows[fi_cnt]["InputPayment_8_TH"].ToString());  //금액
                 Sum_23 = Sum_23 + double.Parse(ds2.Tables[base_db_name].Rows[fi_cnt]["TotalInputPrice"].ToString());  //PV       
                 Sum_24 = Sum_24 + double.Parse(ds2.Tables[base_db_name].Rows[fi_cnt]["UnaccMoney"].ToString());  //CV      ////
             }

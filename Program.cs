@@ -107,7 +107,7 @@ namespace MLM_Program
             //cls_app_static_var.app_Company_Name = "mannatech_Live";
             //// //++++++++++++++라이브++++++++++++++++ +
 
-            //cls_app_static_var.APP_VER = "live DEBUG 002";
+            cls_app_static_var.APP_VER = "DEBUG 003";
 #else
 
 
@@ -135,7 +135,7 @@ namespace MLM_Program
             /////
 
             //cls_app_static_var.APP_VER = "[RELEASE]240614_UAT (External Access)";
-            cls_app_static_var.APP_VER = "[RELEASE]240801_LIVE 1";
+            cls_app_static_var.APP_VER = "[RELEASE]240806_LIVE 1";
 #endif
 
             //++++++++++++++++++++++++++++++++++++++

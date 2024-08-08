@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +20,61 @@ namespace MLM_Program
 
     class clsStaticFnc
     {
+
+
+        /// <summary>
+        /// 로그 쌓기
+        /// </summary>
+        /// <param name="Form">class 또는 form</param>
+        /// <param name="Function"></param>
+        /// <param name="Type">0=에러로그 1=MPM통신로그 2=API전송로그 </param>
+        /// <param name="Message"></param>
+        public static void Send_Output_Log(string Form, string Function, int Type, string Message)
+        {
+
+            try
+            {
+                string sJson = JsonConvert.SerializeObject(new clsOutput(Form, Function, Type, Message));
+
+                string sRespons = Post_Api("http://DB1.ilsonginfo.co.kr/api/PovasLog", sJson, "POST");
+
+            }
+            catch (Exception ex)
+            {
+                //에러나면 말지머..
+            }
+            finally
+            {
+
+            }
+
+
+
+        }
+
+        /// <summary>
+        /// Enum Description읽어오기
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static string Let_Description(Enum source)
+        {
+            FieldInfo fi = source.GetType().GetField(source.ToString());
+            var att = (DescriptionAttribute)fi.GetCustomAttribute(typeof(DescriptionAttribute));
+            if (att != null)
+            {
+                return att.Description;
+            }
+            else
+            {
+                return source.ToString();
+            }
+        }
+
+
+
+
+
         /// <summary>
         /// 전화 번호 입력 받을때 마스킹 해제
         /// </summary>

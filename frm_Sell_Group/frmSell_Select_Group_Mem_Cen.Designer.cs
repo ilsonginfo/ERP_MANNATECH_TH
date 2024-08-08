@@ -239,8 +239,9 @@
             // 
             // butt_Clear
             // 
-            this.butt_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(89)))), ((int)(((byte)(97))))); this.butt_Clear.ForeColor = System.Drawing.Color.White;
+            this.butt_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(89)))), ((int)(((byte)(97)))));
             this.butt_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butt_Clear.ForeColor = System.Drawing.Color.White;
             this.butt_Clear.Location = new System.Drawing.Point(266, 1);
             this.butt_Clear.Name = "butt_Clear";
             this.butt_Clear.Size = new System.Drawing.Size(111, 26);
@@ -411,7 +412,7 @@
             this.txt_P_7.Size = new System.Drawing.Size(110, 22);
             this.txt_P_7.TabIndex = 196;
             this.txt_P_7.TabStop = false;
-            this.txt_P_7.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_P_7.Tag = "";
             // 
             // tableLayoutPanel6
             // 
@@ -564,7 +565,7 @@
             this.txt_P_1.Size = new System.Drawing.Size(110, 22);
             this.txt_P_1.TabIndex = 178;
             this.txt_P_1.TabStop = false;
-            this.txt_P_1.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_P_1.Tag = "";
             // 
             // tableLayoutPanel7
             // 
@@ -612,7 +613,7 @@
             this.txt_P_6.Size = new System.Drawing.Size(110, 22);
             this.txt_P_6.TabIndex = 188;
             this.txt_P_6.TabStop = false;
-            this.txt_P_6.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_P_6.Tag = "";
             // 
             // tableLayoutPanel8
             // 
@@ -661,7 +662,7 @@
             this.txt_P_5.Size = new System.Drawing.Size(110, 22);
             this.txt_P_5.TabIndex = 186;
             this.txt_P_5.TabStop = false;
-            this.txt_P_5.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_P_5.Tag = "";
             // 
             // tableLayoutPanel19
             // 
@@ -709,7 +710,7 @@
             this.txt_P_3.Size = new System.Drawing.Size(110, 22);
             this.txt_P_3.TabIndex = 182;
             this.txt_P_3.TabStop = false;
-            this.txt_P_3.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_P_3.Tag = "";
             // 
             // tableLayoutPanel9
             // 
@@ -757,7 +758,7 @@
             this.txt_P_2.Size = new System.Drawing.Size(110, 22);
             this.txt_P_2.TabIndex = 180;
             this.txt_P_2.TabStop = false;
-            this.txt_P_2.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_P_2.Tag = "";
             // 
             // tableLayoutPanel18
             // 
@@ -805,7 +806,7 @@
             this.txt_P_4.Size = new System.Drawing.Size(110, 22);
             this.txt_P_4.TabIndex = 184;
             this.txt_P_4.TabStop = false;
-            this.txt_P_4.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_P_4.Tag = "";
             // 
             // tableLayoutPanel5
             // 
@@ -1580,7 +1581,7 @@
             this.txt_PP_7.Size = new System.Drawing.Size(105, 22);
             this.txt_PP_7.TabIndex = 196;
             this.txt_PP_7.TabStop = false;
-            this.txt_PP_7.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_PP_7.Tag = "";
             // 
             // tableLayoutPanel11
             // 
@@ -1628,7 +1629,7 @@
             this.txt_PP_1.Size = new System.Drawing.Size(103, 22);
             this.txt_PP_1.TabIndex = 178;
             this.txt_PP_1.TabStop = false;
-            this.txt_PP_1.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_PP_1.Tag = "";
             // 
             // tableLayoutPanel12
             // 
@@ -1676,7 +1677,7 @@
             this.txt_PP_6.Size = new System.Drawing.Size(105, 22);
             this.txt_PP_6.TabIndex = 188;
             this.txt_PP_6.TabStop = false;
-            this.txt_PP_6.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_PP_6.Tag = "";
             // 
             // tableLayoutPanel13
             // 
@@ -1724,7 +1725,7 @@
             this.txt_PP_5.Size = new System.Drawing.Size(105, 22);
             this.txt_PP_5.TabIndex = 186;
             this.txt_PP_5.TabStop = false;
-            this.txt_PP_5.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_PP_5.Tag = "";
             // 
             // tableLayoutPanel14
             // 
@@ -1772,7 +1773,7 @@
             this.txt_PP_3.Size = new System.Drawing.Size(103, 22);
             this.txt_PP_3.TabIndex = 182;
             this.txt_PP_3.TabStop = false;
-            this.txt_PP_3.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_PP_3.Tag = "";
             // 
             // tableLayoutPanel15
             // 
@@ -1820,7 +1821,7 @@
             this.txt_PP_2.Size = new System.Drawing.Size(105, 22);
             this.txt_PP_2.TabIndex = 180;
             this.txt_PP_2.TabStop = false;
-            this.txt_PP_2.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_PP_2.Tag = "";
             // 
             // tableLayoutPanel16
             // 
@@ -1868,7 +1869,7 @@
             this.txt_PP_4.Size = new System.Drawing.Size(105, 22);
             this.txt_PP_4.TabIndex = 184;
             this.txt_PP_4.TabStop = false;
-            this.txt_PP_4.Tag = global::MLM_Program.Resources.Japan_Msg_Resource.Msg_Sort_Cpno;
+            this.txt_PP_4.Tag = "";
             // 
             // groupBox1
             // 
@@ -1893,9 +1894,9 @@
             legend1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
             legend1.Name = "Legend1";
             this.chart_Item.Legends.Add(legend1);
-            this.chart_Item.Location = new System.Drawing.Point(3, 16);
+            this.chart_Item.Location = new System.Drawing.Point(3, 17);
             this.chart_Item.Name = "chart_Item";
-            this.chart_Item.Size = new System.Drawing.Size(849, 118);
+            this.chart_Item.Size = new System.Drawing.Size(849, 117);
             this.chart_Item.TabIndex = 1;
             // 
             // panel9
