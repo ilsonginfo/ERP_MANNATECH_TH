@@ -2088,7 +2088,7 @@ namespace MLM_Program
                                 ,Sales_Cacu[t_key].C_Etc
                                 ,""
 
-                                ,Sales_Cacu[t_key].C_Coupon
+                                ,Sales_Cacu[t_key].C_Number2
                                 ,Sales_Cacu[t_key].C_Installment_Period
                                 ,Sales_Cacu[t_key].C_CVC
                                  };
@@ -2105,14 +2105,15 @@ namespace MLM_Program
             cgb_Cacu.grid_col_Count = 13;
             cgb_Cacu.basegrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
+            //240809 쿠폰번호 자리에 승인번호 넣는다. 나중에 쿠폰 번호 보여달라고 하면 칸 추가 하세요.. 
             string[] g_HeaderText = {""  , "결제방법"   , "결제액"  , "결제일자"   , "카드_은행명"
                                 , "카드_은행번호"   , "카드소유자_입금자"    , ""  , "_비고" , "" 
-                                , "쿠폰번호", "할부_기간", "카드보안코드"
+                                , "승인번호", "할부_기간", "카드보안코드"
 
                                 };
             string[] g_Cols = {"C_index"  , "C_TF_Name"   , "C_Price1"  , "C_AppDate1"   , "C_CodeName"
                                 , "C_Number1"   , "C_Name1"    , "C_Name2"  , "C_Etc" , "TempCol1" 
-                                ,"C_Coupon", "Installment_Period", "C_CVC"
+                                ,"C_Number2", "Installment_Period", "C_CVC"
                                 };
 
             int[] g_Width = { 0, 90, 70, 90, 100
